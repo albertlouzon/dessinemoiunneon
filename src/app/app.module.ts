@@ -2,15 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { NeonFormComponent } from './neon-form/neon-form.component';
+import { ArchwizardModule } from 'angular-archwizard';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NeonFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ArchwizardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
-})
+})  
 export class AppModule { }

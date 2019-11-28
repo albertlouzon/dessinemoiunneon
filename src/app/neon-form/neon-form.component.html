@@ -1,0 +1,54 @@
+<aw-wizard>
+
+  <div class="neon-wizard-container row">
+    <div class="col-1"></div>
+      <aw-wizard-step stepTitle="intro" class="col-4 step-container">
+        <h5 class="neon-wizard-header">Faîtes votre choix</h5>
+        <div class="illustration"><span></span></div>
+        <div class="neon-wizard-btn-container">
+            <button type="button" class="next-btn col-3" (click)="onCompleteStep(0, 'text', null)" awNextStep>Text</button>
+            <button type="button" class="next-btn col-3" (click)="onCompleteStep(0, 'image', null)" awNextStep>Image</button>
+        </div>
+         </aw-wizard-step>
+         <aw-wizard-step stepTitle="textOrImage" class="col-4 step-container">
+            <div class="neon-wizard-header"><h5 *ngIf="userChoices[0] === 'text'">Ecrivez votre texte + Ajoutez votre style</h5>
+            <h5 *ngIf="userChoices[0] === 'image'">Importez votre image</h5>
+          </div>
+            <div class="illustration"><span></span></div>
+
+       
+
+           <div class="neon-wizard-btn-container">
+              <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+              <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+          </div>
+ 
+         </aw-wizard-step> 
+         <aw-wizard-step stepTitle="colors" class="col-4 step-container">
+          
+           <h5 class="neon-wizard-header">Choisissez vos couleurs</h5>
+           <div class="illustration"><span></span></div>
+           <div class="neon-wizard-btn-container row">
+              <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+              <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+          </div>
+
+         </aw-wizard-step>
+         <aw-wizard-step stepTitle="format" class="col-4 step-container">
+           
+           <h5 class="neon-wizard-header">Choisissez votre format + choisissez votrre suport </h5>
+           <div class="illustration"><span></span></div>
+           <div class="neon-wizard-btn-container">
+              <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+              <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+          </div>
+
+         </aw-wizard-step>
+  </div>
+ 
+  <aw-wizard-completion-step awEnableBackLinks>
+    Final wizard step (Login ou sign up)
+    <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+  </aw-wizard-completion-step>
+
+</aw-wizard>

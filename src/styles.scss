@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/angular-archwizard/archwizard.css';
+
+
+.next-btn {
+        // min-width: 140px;
+        border-radius: 25px;
+        color: black;
+        background-color: #f4cc20;
+        outline: none;
+        min-height: 35px;
+        border: none;
+        font-size: 12px;
+        font-family: 'Nunito', sans-serif;
+        cursor: pointer;
+
+        letter-spacing: 0.4px;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+}
+
+.prev-btn {
+    // min-width: 140px;
+    border-radius: 25px;
+    color: black;
+    background-color: whitesmoke;
+    outline: none;
+    min-height: 35px;
+    border: 1.2px solid  #f4cc20;
+    font-size: 12px;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s; 
+}
+
+// #000b31
+// font-family: 'Mukta', sans-serif;

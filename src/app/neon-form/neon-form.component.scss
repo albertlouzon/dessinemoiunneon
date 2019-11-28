@@ -1,0 +1,40 @@
+.neon-wizard-container {
+    width: 100%;
+}
+.step-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-between;
+    border-radius: 15px;
+    padding-left: 30px;
+    padding-right: 30px; 
+}
+.neon-wizard-header,.illustration, .neon-wizard-btn-container  {
+    text-align: center;
+}
+.neon-wizard-header {
+    padding-top: 5%;
+    padding-bottom: 8%;
+}
+.illustration {
+    min-height: 200px;
+    border-radius: 15px;
+    background-color: lightgray;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.neon-wizard-btn-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;
+    padding-bottom: 2.5%;
+}
+
+.neon-wizard-btn-container > button {
+margin: 10px;
+}

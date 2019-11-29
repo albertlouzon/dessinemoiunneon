@@ -3,19 +3,45 @@
 
   <div   class="neon-wizard-container row">
     <div class="col-1"></div>
-      <aw-wizard-step stepTitle="intro" class="col-5 step-container">
-        <h5 class="neon-wizard-header">Faîtes votre choix</h5>
+      <aw-wizard-step stepTitle="intro" class="col-6 step-container">
+        <h4 class="neon-wizard-header item-container">Faîtes votre choix</h4>
         <div class="illustration"><span></span></div>
         <div class="neon-wizard-btn-container">
             <button type="button" class="next-btn col-3" (click)="onCompleteStep(0, 'text', null)" awNextStep>Text</button>
             <button type="button" class="next-btn col-3" (click)="onCompleteStep(0, 'image', null)" awNextStep>Image</button>
         </div>
          </aw-wizard-step>
-         <aw-wizard-step stepTitle="textOrImage" class="col-4 step-container">
-            <div class="neon-wizard-header"><h5 *ngIf="userChoices[0] === 'text'">Ecrivez votre texte + Ajoutez votre style</h5>
-            <h5 *ngIf="userChoices[0] === 'image'">Importez votre image</h5>
-          </div>
-            <div class="illustration"><span></span></div>
+         <aw-wizard-step stepTitle="textOrImage" class="col-6 step-container">
+           <div *ngIf="userChoices[0] === 'text'">
+              <div class='item-container'>
+                  <div class="neon-wizard-header"><h4>Ecrivez votre texte</h4></div>
+                  <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Britney la Salope" class="basic-input col-10 centered"/>
+              </div>  
+
+              <div class='item-container'>
+                  <div class="neon-wizard-header"><h4>Choisissez votre style</h4></div>
+                  <div class="form-style-container">  
+                      <div (click)="styleSelected = 1" [ngClass]="{'style-item yellow-selected': styleSelected===1, 'style-item':styleSelected!=='2' }" ></div>
+                      <div (click)="styleSelected = 2" [ngClass]="{'style-item yellow-selected': styleSelected===2, 'style-item':styleSelected  !=='1' }"  ></div>
+                  </div>
+              </div>  
+           </div>
+           <div *ngIf="userChoices[0] === 'image'">
+                  <div class='item-container'>
+                      <div class="neon-wizard-header"><h4>Importer votre image</h4></div>
+                      <input (change)="onSelectFile($event)" type="file"  placeholder="" class="basic-input col-10 centered"/>
+               
+                  </div>  
+
+                  <div class='item-container'>
+                      <div class="neon-wizard-header"><h4>Une info en particulier à nous donner ?</h4></div>
+                      <textarea (keyup)="onChangeAdditionnalInfo($event.target.value)" placeholder="" class="large-input col-10 centered">
+
+                        </textarea>               
+                  </div>  
+        
+            </div>      
+
 
        
 
@@ -25,9 +51,9 @@
           </div>
  
          </aw-wizard-step> 
-         <aw-wizard-step stepTitle="colors" class="col-4 step-container">
+         <aw-wizard-step stepTitle="colors" class="col-6 step-container">
           
-           <h5 class="neon-wizard-header">Choisissez vos couleurs</h5>
+           <h4 class="neon-wizard-header">Choisissez vos couleurs</h4>
            <div class="illustration"><span></span></div>
            <div class="neon-wizard-btn-container row">
               <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
@@ -35,9 +61,9 @@
           </div>
 
          </aw-wizard-step>
-         <aw-wizard-step stepTitle="format" class="col-4 step-container">
+         <aw-wizard-step stepTitle="format" class="col-6 step-container">
            
-           <h5 class="neon-wizard-header">Choisissez votre format + choisissez votrre suport </h5>
+           <h4 class="neon-wizard-header">Choisissez votre format + choisissez votrre suport </h4>
            <div class="illustration"><span></span></div>
            <div class="neon-wizard-btn-container">
               <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>

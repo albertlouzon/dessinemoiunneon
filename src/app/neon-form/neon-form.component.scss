@@ -1,5 +1,7 @@
 .neon-wizard-container {
     width: 100%;
+    margin-top: 5%;
+
 }
 .step-container {
     display: flex;
@@ -7,25 +9,55 @@
     background-color: white;
     justify-content: space-between;
     border-radius: 15px;
-    padding-left: 30px;
-    padding-right: 30px; 
-    display: inline-block;
-    margin: 1rem;
-    position: relative;
+    padding-left: 50px;
+    height: 500px;
+    padding-right: 50px; 
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+.centered {
+    align-self: center;
+}
+.basic-input {
+    background-color: #D5D5D5;
+    color:  #000B31;
+    min-height: 30px;
+    border-radius: 15px;
+    border: none;
+    margin: 0 30px;
+    font-family: Mukta-Regular, sans-serif;
+    outline: none;
+}
+.large-input {
+    background-color: #D5D5D5;
+    color:  #000B31;
+    min-height: 200px;
+    border-radius: 15px;
+    border: none;
+    font-family: Mukta-Regular, sans-serif;
+    outline: none;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 3%;
+    padding-bottom: 5%;
 }
 .neon-wizard-header,.illustration, .neon-wizard-btn-container  {
     text-align: center;
 }
 .neon-wizard-header {
-    padding-top: 5%;
-    padding-bottom: 8%;
+
+    font-family: Nunito-Black, sans-serif;
+    color: #000B31;
+
 }
 .illustration {
-    min-height: 200px;
     border-radius: 15px;
-    background-color: lightgray;
+    background-color: #D5D5D5;
     text-align: center;
+    height: 40%;
     display: flex;
     align-items: center;
     padding-top: 8%;
@@ -35,10 +67,30 @@
 .neon-wizard-btn-container {
     display: flex;
     justify-content: center;
-    padding-top: 8%;
-    padding-bottom: 2.5%;
+
 }
 
 .neon-wizard-btn-container > button {
 margin: 10px;
+}
+.steps-indicator {
+    display: none !important;
+}
+
+.form-style-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+}
+.style-item {
+    width: 40%;
+    border-radius: 15px;
+    height: 20vh;
+    background-color: #D5D5D5;
+    cursor: pointer;
+}
+
+.yellow-selected {
+    border: 1px solid #F4CC20;
 }

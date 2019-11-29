@@ -9,6 +9,10 @@
     border-radius: 15px;
     padding-left: 30px;
     padding-right: 30px; 
+    display: inline-block;
+    margin: 1rem;
+    position: relative;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 .neon-wizard-header,.illustration, .neon-wizard-btn-container  {
     text-align: center;

@@ -1,171 +1,271 @@
+<div class='form-container'>
 
-<aw-wizard style="width: 100%;">
+    <aw-wizard style="width: 100%;">
 
-  <div   class="neon-wizard-container row">
-    <div class="col-3"></div>
-      <aw-wizard-step stepTitle="" class="col-6 step-container">
-            <h4 class="neon-wizard-header flex1">Faîtes votre choix</h4>
-
-                  <div class="neon-wizard-btn-container flex3 ">
-            <button type="button" class="form-btn col-5" (click)="onCompleteStep(0, 'text', null)" awNextStep>TEXTE</button>
-            <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)" awNextStep>IMAGE</button>
-        </div>
-  
+        <div   class="neon-wizard-container row">
+          <div class="col-3"></div>
+            <aw-wizard-step stepTitle="" class="col-6 step-container">
+                  <h4 class="neon-wizard-header flex1">Faîtes votre choix</h4>
+      
+                        <div class="neon-wizard-btn-container flex3 ">
+                  <button type="button" class="form-btn col-5" (click)="onCompleteStep(0, 'text', null)" awNextStep>TEXTE</button>
+                  <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)" awNextStep>IMAGE</button>
+              </div>
         
-         </aw-wizard-step>
-         <aw-wizard-step stepTitle="textOrImage" class="col-6 step-container">
-           <div *ngIf="userChoices[0] === 'text'">
-                  <div class="neon-wizard-header"><h4>Ecrivez votre texte</h4></div>
-                  <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " [value]="textInput"  class="basic-input pb5  wizard-element"/>
-
-           </div>
-           <div *ngIf="userChoices[0] === 'image'">
-                      <div class="neon-wizard-header"><h4>Importer votre image</h4></div>
-                      <input (change)="onSelectFile($event)" type="file"  placeholder="" class="basic-input"/>
-               
-
-                      <div class="neon-wizard-header"><h4>Une info en particulier à nous donner ?</h4></div>
-                      <textarea (keyup)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder="" class="large-input">
-
-                        </textarea>               
-        
-            </div>      
-
-
-       
-
-           <div class="neon-wizard-btn-container">
-              <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-              <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
-          </div>
- 
-         </aw-wizard-step> 
-         <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-6 step-container">
-          
-                  <div class="neon-wizard-header"><h4>Choisissez votre style</h4></div>
-                  <div class="form-style-container pb5">  
-                      <div (click)="styleSelected = 0" [ngClass]="{'style-item yellow-selected': styleSelected===0, 'style-item':styleSelected!=='0' }" ></div>
-                      <div (click)="styleSelected = 1" [ngClass]="{'style-item yellow-selected': styleSelected===1, 'style-item':styleSelected!=='1' }" ></div>
-                      <div (click)="styleSelected = 2" [ngClass]="{'style-item yellow-selected': styleSelected===2, 'style-item':styleSelected  !=='2' }"  ></div>
-                  </div>
-          <!-- <div class='item-container npb'>
-            <div class="neon-wizard-header"><h4>Choisissez votre format</h4></div>
-            <div class="row">
-                <label><input type="checkbox" class="ios-switch"  /><div><div></div></div></label>
-                <span class="tailleperso">Taille personalisée</span>
-            </div>
-  
-
-        </div>   -->
-
-
-        <!-- <div class='item-container npt npb  row'> -->
-
-                
-              <!-- <div class="size-container row">
-                 <div  class="circle-cont col" (click)="selectedFormatSize = i" *ngFor="let format of formatSizes;  let i = index"   >
-                    <div [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='2' }">{{format.size}}</div>
-                    
-                 <div class=format-subtitle>{{format.width}}</div> 
+              
+               </aw-wizard-step>
+               <aw-wizard-step stepTitle="textOrImage" class="col-6 step-container">
+                 <div *ngIf="userChoices[0] === 'text'">
+                        <div class="neon-wizard-header"><h5>Ecrivez votre texte</h5></div>
+                        <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " [value]="textInput"  class="basic-input mb5  wizard-element"/>
+      
                  </div>
-
-              </div></div> -->
-
-<!-- 
-        <div class='item-container npt npb'>
-            <div class="neon-wizard-header"><h4>Choisissez votre support</h4></div>
-          <div class="form-style-container-small">    
-              <div (click)="imageSupportSelected = 1" [ngClass]="{'style-item-small yellow-selected': imageSupportSelected===1, 'style-item-small':imageSupportSelected!=='2' }" >
-                    
-                    <span  style='position: relative; top: 40%'>Image support Standard</span>
-              </div>
-              <div (click)="imageSupportSelected = 2" [ngClass]="{'style-item-small yellow-selected': imageSupportSelected===2, 'style-item-small':imageSupportSelected  !=='1' }"  >
-                   
-                    <span  style='position: relative; top: 40%'> Image support detournée</span>
-              </div>
-          </div>  
-      </div> -->
-           <div class="neon-wizard-btn-container row">
-              <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-              <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
-          </div>
-
-         </aw-wizard-step>
-         <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="colors" class="col-6 step-container">
-           
-            <div class="neon-wizard-header"><h4>Choisissez une ou plusieurs couleurs</h4></div>
-                
-            <div class="wrapper">
-                <div class="item-list">
-                  <ul>
-                    <li><div class="inner-circle"></div></li>
-                    <li><div class="inner-circle"></div></li>
-                    <li><div class="inner-circle"></div></li>
-                    <li><div class="inner-circle"></div></li>
-                    <li><div class="inner-circle"></div></li>
-                    <li><div class="inner-circle"></div></li>
-                    <li><div class="inner-circle"></div></li>
-                    <li><div class="inner-circle"></div></li>
-
-                  </ul>
+                 <div *ngIf="userChoices[0] === 'image'">
+                            <div class="neon-wizard-header"><h5>Importer votre image</h5></div>
+                            <input (change)="onSelectFile($event)" type="file"  placeholder="" class="basic-input"/>
+                     
+      
+                            <div class="neon-wizard-header"><h4>Une info en particulier à nous donner ?</h4></div>
+                            <textarea (keyup)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder="" class="large-input">
+      
+                              </textarea>               
+              
+                  </div>      
+      
+      
+             
+      
+                 <div class="neon-wizard-btn-container">
+                    <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+                    <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
                 </div>
-              </div>
-     
- 
-            <div class="neon-wizard-btn-container">
-               <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-               <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
-
-           </div>
- 
-          </aw-wizard-step>
-         <aw-wizard-step stepTitle="format" class="col-6 step-container">
+       
+               </aw-wizard-step> 
+               <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-6 step-container">
+                
+                        <div class="neon-wizard-header"><h5>Choisissez votre style</h5></div>
+                        <div class="form-style-container pb5">  
+                            <div (click)="styleSelected = 0" [ngClass]="{'style-item yellow-selected': styleSelected===0, 'style-item':styleSelected!=='0' }" ></div>
+                            <div (click)="styleSelected = 1" [ngClass]="{'style-item yellow-selected': styleSelected===1, 'style-item':styleSelected!=='1' }" ></div>
+                            <div (click)="styleSelected = 2" [ngClass]="{'style-item yellow-selected': styleSelected===2, 'style-item':styleSelected  !=='2' }"  ></div>
+                        </div>
+                <!-- <div class='item-container npb'>
+                  <div class="neon-wizard-header"><h4>Choisissez votre format</h4></div>
+                  <div class="row">
+                      <label><input type="checkbox" class="ios-switch"  /><div><div></div></div></label>
+                      <span class="tailleperso">Taille personalisée</span>
+                  </div>
+        
+      
+              </div>   -->
+      
+      
+              <!-- <div class='item-container npt npb  row'> -->
+      
+                      
+                    <!-- <div class="size-container row">
+                       <div  class="circle-cont col" (click)="selectedFormatSize = i" *ngFor="let format of formatSizes;  let i = index"   >
+                          <div [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='2' }">{{format.size}}</div>
+                          
+                       <div class=format-subtitle>{{format.width}}</div> 
+                       </div>
+      
+                    </div></div> -->
+      
+      <!-- 
+              <div class='item-container npt npb'>
+                  <div class="neon-wizard-header"><h4>Choisissez votre support</h4></div>
+                <div class="form-style-container-small">    
+                    <div (click)="imageSupportSelected = 1" [ngClass]="{'style-item-small yellow-selected': imageSupportSelected===1, 'style-item-small':imageSupportSelected!=='2' }" >
+                          
+                          <span  style='position: relative; top: 40%'>Image support Standard</span>
+                    </div>
+                    <div (click)="imageSupportSelected = 2" [ngClass]="{'style-item-small yellow-selected': imageSupportSelected===2, 'style-item-small':imageSupportSelected  !=='1' }"  >
+                         
+                          <span  style='position: relative; top: 40%'> Image support detournée</span>
+                    </div>
+                </div>  
+            </div> -->
+                 <div class="neon-wizard-btn-container row">
+                    <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+                    <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+                </div>
+      
+               </aw-wizard-step>
+               <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="colors" class="col-6 step-container">
+                 
+                  <div class="neon-wizard-header"><h4>Choisissez une ou plusieurs couleurs</h4></div>
+                      
+                  <div class="wrapper">
+                      <div class="item-list">
+                        <ul>
+                          <li><div class="inner-circle"></div></li>
+                          <li><div class="inner-circle"></div></li>
+                          <li><div class="inner-circle"></div></li>
+                          <li><div class="inner-circle"></div></li>
+                          <li><div class="inner-circle"></div></li>
+                          <li><div class="inner-circle"></div></li>
+                          <li><div class="inner-circle"></div></li>
+                          <li><div class="inner-circle"></div></li>
+      
+                        </ul>
+                      </div>
+                    </div>
            
-            <div class="neon-wizard-header"><h4>Choisissez votre format</h4></div>
-           <div class="size-container row">
-                 <div  class="circle-cont col" (click)="selectedFormatSize = i" *ngFor="let format of formatSizes;  let i = index"   >
-                    <div [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='2' }">{{format.size}}</div>
-                    
-                 <!-- <div class=format-subtitle>{{format.width}}</div>  -->
+       
+                  <div class="neon-wizard-btn-container">
+                     <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+                     <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+      
                  </div>
-
+       
+                </aw-wizard-step>
+               <aw-wizard-step stepTitle="format" class="col-6 step-container">
+                 
+                  <div class="neon-wizard-header"><h5>Choisissez votre format</h5></div>
+                 <div class="size-container row">
+                       <div  class="circle-cont col" (click)="selectedFormatSize = i" *ngFor="let format of formatSizes;  let i = index"   >
+                          <div  [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='i' }">{{format.size}}</div>
+                          
+                       <!-- <div class=format-subtitle>{{format.width}}</div>  -->
+                       </div>
+      
+                    </div>
+          
+      
+                 <div class="neon-wizard-btn-container">
+                    <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+                    <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+                </div>
+      
+               </aw-wizard-step>
+               <aw-wizard-step stepTitle="" class="col-6 step-container">
+                  <h5 class="neon-wizard-header flex1">Choisissez votre support</h5>
+      
+                        <div class="neon-wizard-btn-container flex3 ">
+                  <button type="button" class="form-btn  col-5" (click)="imageSupportSelected = 'détouré'" awNextStep>Image détouré</button>
+                  <button type="button" class="form-btn  col-5" (click)="imageSupportSelected = 'standard'" awNextStep>Image standard</button>
+      
+                  
+       
+          
               </div>
-    
-
-           <div class="neon-wizard-btn-container">
-              <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-              <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
-          </div>
-
-         </aw-wizard-step>
-         <aw-wizard-step stepTitle="" class="col-6 step-container">
-            <h4 class="neon-wizard-header flex1">Choisissez votre support</h4>
-
-                  <div class="neon-wizard-btn-container flex3 ">
-            <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'text', null)" awNextStep>Image détouré</button>
-            <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)" awNextStep>Image standard</button>
-        </div>
-  
+              <div class="neon-wizard-btn-container">
+                  <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button> 
+              </div>
+              
+               </aw-wizard-step>
+      
+               <aw-wizard-step stepTitle="" class="col-6 step-container">
+                  <h5 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h5>
+      
+                        <div class="neon-wizard-btn-container flex3 ">
+                  <button type="button" class="form-btn  col-5" (click)="onCompleteStep(5, 'business', null)" awNextStep>Professionnel</button>
+                  <button type="button" class="form-btn  col-5" (click)="onCompleteStep(5, 'consumer', null)" awNextStep>Personnel</button>
+                   
+             
+              </div>
         
-         </aw-wizard-step>
-
-         <aw-wizard-step stepTitle="" class="col-6 step-container">
-            <h4 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h4>
-
-                  <div class="neon-wizard-btn-container flex3 ">
-            <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'text', null)" awNextStep>Professionnel</button>
-            <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)" awNextStep>Image standard</button>
-        </div>
-  
+              <div class="neon-wizard-btn-container">
+                  <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button> 
+              </div>
+               </aw-wizard-step>
+      
+      
+               
+      
+      
+               <aw-wizard-step stepTitle="" class="col-6">
+      
+                  <div  *ngIf="projectType === 'consumer'"  class="step-container" >
+                      <h5 class="neon-wizard-header ">Obtenez votre dessin technique en créeant votre espace !</h5>
+      
+      
+                      
+                      <div class="neon-wizard-input-cont mb3">
+          
+                          <div class='user-info-row-cont nestedInput'>
+                              <span class="user-info-row-title">Prénom</span>
+                                <input (keyup)="onChangeUserInfo('prénom', $event.target.value)" [value]="userInfoPerso['prénom'] || ''"  class="basic-input smallHeight "/>
+                            </div>
+      
+                            
+                          <div class='user-info-row-cont nestedInput'>
+                              <span class="user-info-row-title">Nom</span>
+                                <input (keyup)="onChangeUserInfo('nom', $event.target.value)"  [value]="userInfoPerso['nom'] || ''"  class="basic-input smallHeight "/>
+                            </div>
         
-         </aw-wizard-step>
-         
-         <div class="col-2"></div>
-  </div>
- 
-  <aw-wizard-completion-step awEnableBackLinks>
-    Final wizard step (Login ou sign up)
-    <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-  </aw-wizard-completion-step>
-
-</aw-wizard>
+            </div>
+          
+          
+                  <div class='user-info-row-cont'>
+                      <span class="user-info-row-title">Adresse mail</span>
+                        <input (keyup)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
+          
+                    </div>
+          
+      
+                    <div class='user-info-row-cont'>
+                        <span class="user-info-row-title">Mot de passe</span>
+                          <input type="password" (keyup)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"  class="basic-input smallHeight mb3 "/>
+                          <span class='user-info-row-title textcenter'>En cliquant sur "envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
+      
+                    
+                        </div>
+                  <div class="neon-wizard-btn-container">
+                      <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button> 
+                      <button  (click)="onSubmitForm()" class="next-btn col-3" type="button" awNextStep>Envoyer</button>
+          
+                  </div>
+                  <span class='user-info-row-title textcenter'>Déja membre ? <a href="#">Connexion</a></span>
+      
+                  </div>
+      
+                  
+                  <div  *ngIf="projectType === 'business'"  class="step-container" >
+                      <h5 class="neon-wizard-header ">Obtenez votre devis gratuit</h5>
+                      <div class='user-info-row-cont'>
+                        <span class="user-info-row-title">Société</span>
+                          <input (keyup)="onChangeUserInfo('société', $event.target.value)" [value]="userInfoPerso['société'] || ''"  class="basic-input smallHeight mb3 "/>
+                      </div>
+          
+                            <div class="neon-wizard-input-cont mb3">
+          
+                                <div class='user-info-row-cont nestedInput'>
+                                    <span class="user-info-row-title">Prénom</span>
+                                      <input (keyup)="onChangeUserInfo('prénom', $event.target.value)" [value]="userInfoPerso['prénom'] || ''"  class="basic-input smallHeight "/>
+                                  </div>
+          
+                                  
+                                <div class='user-info-row-cont nestedInput'>
+                                    <span class="user-info-row-title">Nom</span>
+                                      <input (keyup)="onChangeUserInfo('nom', $event.target.value)"  [value]="userInfoPerso['nom'] || ''"  class="basic-input smallHeight "/>
+                                  </div>
+              
+                  </div>
+          
+                  <div class='user-info-row-cont'>
+                      <span class="user-info-row-title">Adresse mail</span>
+                        <input (keyup)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
+          
+                    </div>
+                    <span class='user-info-row-title mt5 textcenter'>En cliquant sur "envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
+      
+                  <div class="neon-wizard-btn-container">
+                      <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button> 
+                      <button (click)="onSubmitForm()" class="next-btn col-3" type="button" awNextStep>Envoyer</button>
+          
+                  </div>
+                    </div>
+      
+      
+              
+               </aw-wizard-step>
+               <div class="col-2"></div>
+        </div>
+      
+      
+        
+      
+      </aw-wizard>
+</div>

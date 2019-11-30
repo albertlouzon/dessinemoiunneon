@@ -3,6 +3,15 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+.form-container {
+    font-family: 'Nunito', sans-serif;
+background-color: #000b31;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+ }
 .neon-wizard-container {
     width: 100%;
     margin-top: 5%;
@@ -15,7 +24,7 @@
     justify-content: flex-start   ;
     border-radius: 7px;
     padding-left: 50px;
-    height: 275px;
+    height: 315px;
     padding-right: 50px; 
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
@@ -30,8 +39,8 @@
 .basic-input {
     background-color: #D5D5D5;
     color:  #000B31;
-    min-height: 35px;
-    border-radius: 15px;
+    height: 35px;
+    border-radius: 25px;
     padding-left: 15px;
     padding-right: 15px;
     border: none;
@@ -103,7 +112,7 @@ letter-spacing: 0.8px;
 background-color: white;
 box-shadow: 0 0 6px 2px rgba(0,0,0,.1);
 cursor: pointer;
-outline: none;}
+outline: none !important;}
 
 .form-btn:hover {
     transform: scale(1.1);
@@ -295,18 +304,45 @@ input[type="checkbox"].ios-switch:checked + div > div {
     }
   }
 
+  .user-info-row-cont {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .user-info-row-title {
+   font-size: 0.8em;
+   font-family: Mukta-Regular, sans-serif;
+   padding-left: 20px;
+   padding-right: 20px;
+   color: #000B31;
+}
 
 // .main{
 //     margin: 0 auto;
 //     flex: 2;
 //   }
   
-  
+  .smallHeight {
+      height: 28px !important;
+  }
   
 
   
 
-  
+  .neon-wizard-input-cont {
+      display: flex;
+      justify-content: space-between;
+  }
+.textcenter {
+    text-align: center  ;
+}
+  .nestedInput {
+      width: 45%;
+  }
+
+  a {
+      text-decoration: underline;
+  }
 //   .cards {
 //     display: flex;
 //     flex-wrap: wrap;

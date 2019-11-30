@@ -14,7 +14,7 @@
         
               
                </aw-wizard-step>
-               <aw-wizard-step stepTitle="textOrImage" class="col-6 step-container">
+               <aw-wizard-step stepTitle="" class="col-6 step-container">
                  <div *ngIf="userChoices[0] === 'text'">
                         <div class="neon-wizard-header"><h5>Ecrivez votre texte</h5></div>
                         <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " [value]="textInput"  class="basic-input mb5  wizard-element"/>
@@ -35,7 +35,7 @@
       
              
       
-                 <div class="neon-wizard-btn-container">
+                 <div class="neon-wizard-btn-container pb5">
                     <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
                     <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
                 </div>
@@ -86,13 +86,13 @@
                     </div>
                 </div>  
             </div> -->
-                 <div class="neon-wizard-btn-container row">
+                 <div class="neon-wizard-btn-container pb5 row">
                     <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
                     <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
                 </div>
       
                </aw-wizard-step>
-               <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="colors" class="col-6 step-container">
+               <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-6 step-container">
                  
                   <div class="neon-wizard-header"><h4>Choisissez une ou plusieurs couleurs</h4></div>
                       
@@ -113,14 +113,14 @@
                     </div>
            
        
-                  <div class="neon-wizard-btn-container">
+                  <div class="neon-wizard-btn-container pb5">
                      <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
                      <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
       
                  </div>
        
                 </aw-wizard-step>
-               <aw-wizard-step stepTitle="format" class="col-6 step-container">
+               <aw-wizard-step stepTitle="" class="col-6 step-container">
                  
                   <div class="neon-wizard-header"><h5>Choisissez votre format</h5></div>
                  <div class="size-container row">
@@ -133,7 +133,7 @@
                     </div>
           
       
-                 <div class="neon-wizard-btn-container">
+                 <div class="neon-wizard-btn-container pb5">
                     <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
                     <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
                 </div>

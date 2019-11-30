@@ -7,10 +7,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class NeonFormComponent implements OnInit {
+  formatSizes: Array<{size:string, width: number}> = [{size: 'S', width: 25},{size: 'L', width: 35}, {size: 'L', width: 45}, {size: 'XL', width: 50} ];
+  selectedFormatSize = 0;
+  imageSupportSelected = 1;
+  projectType = 'consumer'
   userChoices = {};
   styleSelected = 1;
   textInput = '';
   imageFile = '';
+  mainChoice = '';
   imageAdditionalInfo = '';
   constructor() { }
 
@@ -34,12 +39,14 @@ export class NeonFormComponent implements OnInit {
     }
   }
   onSubmitForm(){
-    const payload: Array<{choice: string, data : {}}> = []
-    if(this.userChoices[0] === 'text') {
-      payload.push({choice: 'text', data: {value: this.textInput, style: this.styleSelected}})
+    const payload: Array<{title: string, data : {}}> = []
+    if(this.mainChoice === 'text') {
+      payload.push({title: 'textAndStyle', data: {value: this.textInput, style: this.styleSelected}});
+      payload.push({title: 'format', data: {size: this.selectedFormatSize, imageSupport: this.imageSupportSelected}})
 
+ 
     } else {
-      payload.push({choice: 'image', data: {file: this.imageFile, info: this.imageAdditionalInfo}})
+      payload.push({title: 'imageFile', data: {file: this.imageFile, info: this.imageAdditionalInfo}})
 
     }
     console.log('payload : ', payload)
@@ -47,7 +54,8 @@ export class NeonFormComponent implements OnInit {
 
   onCompleteStep(step: number, choice: string, data: any) {
     console.log('step ', step, ' completed. The user chose ', choice, '... data to save: ', data);
-    if(choice) {
+    if(choice && step === 0) {  
+      this.mainChoice = choice
       this.userChoices[step] = choice;
     }
   }

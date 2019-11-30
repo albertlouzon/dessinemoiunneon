@@ -2,14 +2,16 @@
 <aw-wizard style="width: 100%;">
 
   <div   class="neon-wizard-container row">
-    <div class="col-1"></div>
-      <aw-wizard-step stepTitle="intro" class="col-6 step-container">
-        <h4 class="neon-wizard-header item-container">Faîtes votre choix</h4>
-        <div class="illustration"><span></span></div>
-        <div class="neon-wizard-btn-container">
-            <button type="button" class="next-btn col-3" (click)="onCompleteStep(0, 'text', null)" awNextStep>Text</button>
-            <button type="button" class="next-btn col-3" (click)="onCompleteStep(0, 'image', null)" awNextStep>Image</button>
+    <div class="col-3"></div>
+      <aw-wizard-step stepTitle="" class="col-6 step-container">
+            <h4 class="neon-wizard-header ">Faîtes votre choix</h4>
+
+                  <div class="neon-wizard-btn-container">
+            <button type="button" class="form-btn col-5" (click)="onCompleteStep(0, 'text', null)" awNextStep>TEXTE</button>
+            <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)" awNextStep>IMAGE</button>
         </div>
+  
+        
          </aw-wizard-step>
          <aw-wizard-step stepTitle="textOrImage" class="col-6 step-container">
            <div *ngIf="userChoices[0] === 'text'">
@@ -51,10 +53,42 @@
           </div>
  
          </aw-wizard-step> 
-         <aw-wizard-step stepTitle="colors" class="col-6 step-container">
+         <aw-wizard-step stepTitle="format" class="col-6 step-container">
           
-           <h4 class="neon-wizard-header">Choisissez vos couleurs</h4>
-           <div class="illustration"><span></span></div>
+          <div class='item-container npb'>
+            <div class="neon-wizard-header"><h4>Choisissez votre format</h4></div>
+            <div class="row">
+                <label><input type="checkbox" class="ios-switch"  /><div><div></div></div></label>
+                <span class="tailleperso">Taille personalisée</span>
+            </div>
+  
+
+        </div>  
+        <div class='item-container npt npb  row'>
+
+                
+              <div class="size-container row">
+                 <div  class="circle-cont col" (click)="selectedFormatSize = i" *ngFor="let format of formatSizes;  let i = index"   >
+                    <div [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='2' }">{{format.size}}</div>
+                    
+                  <!-- <div class=format-subtitle>{{format.width}}</div> -->
+                 </div>
+
+              </div>
+      </div>
+        <div class='item-container npt npb'>
+            <div class="neon-wizard-header"><h4>Choisissez votre support</h4></div>
+          <div class="form-style-container-small">    
+              <div (click)="imageSupportSelected = 1" [ngClass]="{'style-item-small yellow-selected': imageSupportSelected===1, 'style-item-small':imageSupportSelected!=='2' }" >
+                    
+                    <span  style='position: relative; top: 40%'>Image support Standard</span>
+              </div>
+              <div (click)="imageSupportSelected = 2" [ngClass]="{'style-item-small yellow-selected': imageSupportSelected===2, 'style-item-small':imageSupportSelected  !=='1' }"  >
+                   
+                    <span  style='position: relative; top: 40%'> Image support detournée</span>
+              </div>
+          </div>  
+      </div>
            <div class="neon-wizard-btn-container row">
               <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
               <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
@@ -63,14 +97,43 @@
          </aw-wizard-step>
          <aw-wizard-step stepTitle="format" class="col-6 step-container">
            
-           <h4 class="neon-wizard-header">Choisissez votre format + choisissez votrre suport </h4>
-           <div class="illustration"><span></span></div>
+            <div class='item-container npb'>
+                <div class="neon-wizard-header"><h2>Pour Faire Briller</h2></div>
+            </div>  
+            <div class="form-style-container main">    
+                    <ul class="cards">
+                    
+                      <li class="cards_item">
+                        <div class="card">
+                          <div class="card_content">
+                            <h2 class="card_title">Un projet personnel</h2>
+                            <p class="card_text">Créer votre compte gratuitement pour obtenir votre dessin technique</p>
+                            <button class=" card_btn">Créer mon compte</button>
+                          </div>
+                        </div>
+                      </li>
+                      
+                        <li class="cards_item">
+                        <div class="card">
+                          <div class="card_content">
+                            <h2 class="card_title">Un projet professionnel</h2>
+                            <p class="card_text">Vous avez un projet de décoration et souhaitez booster votre visibilité ? Suivez le guide !</p>
+                            <button class=" card_btn">Demander mon devis</button>
+                          </div>
+                        </div>
+                      </li>
+                      
+                      
+                    </ul>
+                  
+            </div>  
+
            <div class="neon-wizard-btn-container">
               <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-              <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
           </div>
 
          </aw-wizard-step>
+         <div class="col-2"></div>
   </div>
  
   <aw-wizard-completion-step awEnableBackLinks>

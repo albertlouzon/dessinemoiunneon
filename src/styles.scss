@@ -27,6 +27,7 @@
         font-size: 1rem;
         font-family: Mukta-Bold, sans-serif;
         cursor: pointer;
+        max-height: 35px;
 
         letter-spacing: 0.4px;
         border: none;
@@ -42,6 +43,7 @@
     background-color: whitesmoke;
     outline: none !important;
     min-height: 35px;
+    max-height: 35px;
     border: 1.2px solid  #f4cc20;
     font-size: 1rem;
     font-family: Mukta-Bold, sans-serif;
@@ -60,4 +62,12 @@
 }
 .npt {
   padding-top: 0 !important;
+}
+
+.pb5 {
+  padding-bottom: 5% !important;
+}
+
+.nmt {
+  margin-top: 0 !important;
 }

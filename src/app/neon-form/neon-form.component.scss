@@ -12,32 +12,42 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    justify-content: space-around   ;
+    justify-content: flex-start   ;
     border-radius: 7px;
     padding-left: 50px;
     height: 275px;
     padding-right: 50px; 
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
+
+.wizard-element {
+    margin-top: 5% !important;
+}
+
 .centered {
     align-self: center;
 }
 .basic-input {
     background-color: #D5D5D5;
     color:  #000B31;
-    min-height: 30px;
+    min-height: 35px;
     border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     border: none;
-    margin: 0 30px;
+    width: 100%;
     font-family: Mukta-Regular, sans-serif;
     outline: none;
 }
 .large-input {
     background-color: #D5D5D5;
     color:  #000B31;
-    min-height: 200px;
+    min-height: 50px;
     border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     border: none;
+    width: 100%;
     font-family: Mukta-Regular, sans-serif;
     outline: none;
 }
@@ -56,6 +66,9 @@
     margin-top: 20px;
     font-family: Nunito-Black, sans-serif;
     color: #000B31;
+
+}
+.flex1 {
     flex:1;
 }
 .illustration {
@@ -72,10 +85,13 @@
 .neon-wizard-btn-container {
     display: flex;
         justify-content: space-around;
-        flex:3;
-
 }
-
+.flex3 {
+    flex:3;
+}
+.form-btn:hover {
+    color: #F4CC20;
+}
 .form-btn {
 height: 100px;
 border: none;
@@ -97,8 +113,7 @@ outline: none;}
 margin: 10px;
 }
 .steps-indicator {
-position: absolute;
-top: 60%;
+display: none !important;
 }
 
 .form-style-container {
@@ -108,9 +123,9 @@ top: 60%;
     padding-top: 15px;
 }
 .style-item {
-    width: 40%;
+    width: 30%;
     border-radius: 15px;
-    height: 20vh;
+    height: 100px;
     background-color: #D5D5D5;
     cursor: pointer;
 }
@@ -237,102 +252,143 @@ input[type="checkbox"].ios-switch:checked + div > div {
     background-color: #ffffff;
 }
 
-
-
-
-.main{
-    margin: 0 auto;
-    flex: 2;
+.wrapper {
+    margin: auto;
   }
   
-  
-  
-
-  
-
-  
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    justify-content: space-around;  
-    padding: 0;
-  }
-  .card_btn {
-    border-radius: 25px;
-    color: black;
-    background-color: #f4cc20;
-    outline: none !important;
-    min-height: 35px;
-    border: none;
-    font-size: 1.12rem;
-    font-family: Mukta-Bold, sans-serif;
-    cursor: pointer;
-    height: 42px;
-    letter-spacing: 0.4px;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    width: 80%;
-    align-self: center;
-}
-  
-  .cards_item {
-    display: flex;
-    padding: 1rem;
-    height: 100%;
-    border-radius: 15px;
-    border: 1px solid black;
-    background-color: white;
-    text-align: center;
-  }
-  
-  @media (min-width: 40rem) {
-    .cards_item {
-      width: 45%;
+  .item-list {
+    max-width: 960px;
+    max-height: 150px;
+    ul {
+      list-style: none;
+      margin: 0 -30px;
+      padding: 0;
+      display: flex;
+      flex-flow: row wrap;
+      
+      li {
+        flex: 0 0 calc(25% - 60px);
+        position: relative;
+        margin: 0 30px 10px 30px;        
+        &:before {
+          display: block;
+          content: "";
+          width: 100%;
+          padding-top: 100%;
+        }
+        .inner-circle {
+          border-radius: 100%;
+          background: #D5D5D5;
+          text-decoration: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          color: white;
+        }
+      }
     }
   }
-  
-  @media (min-width: 30rem) {
-    .cards_item {
-    //   width: 33.333 %;
-    }
-  }
-  
-  .card {
-    background-color: white;
-    border-radius: 0.25rem;
-    box-shadow: 0 20px 40px -14px white;
-    display: flex;
-    border: none !important;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
-  .card_content {
-    height: 100%    ;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 
-  }
+
+// .main{
+//     margin: 0 auto;
+//     flex: 2;
+//   }
   
-  .card_title {
-    color: #000B31;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    font-family: Nunito-Black, sans-serif;
-    margin: 0px;
-  }
   
-  .card_text {
-    color: #000B31;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    font-size: 1.1rem;
-    font-family: Muktar-Regular , sans-serif;
-    margin-bottom: 1.25rem;    
-    font-weight: 400;
-  }
+  
+
+  
+
+  
+//   .cards {
+//     display: flex;
+//     flex-wrap: wrap;
+//     list-style: none;
+//     margin: 0;
+//     justify-content: space-around;  
+//     padding: 0;
+//   }
+//   .card_btn {
+//     border-radius: 25px;
+//     color: black;
+//     background-color: #f4cc20;
+//     outline: none !important;
+//     min-height: 35px;
+//     border: none;
+//     font-size: 1.12rem;
+//     font-family: Mukta-Bold, sans-serif;
+//     cursor: pointer;
+//     height: 42px;
+//     letter-spacing: 0.4px;
+//     border: none;
+//     border-radius: 45px;
+//     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+//     transition: all 0.3s ease 0s;
+//     width: 80%;
+//     align-self: center;
+// }
+  
+//   .cards_item {
+//     display: flex;
+//     padding: 1rem;
+//     height: 100%;
+//     border-radius: 15px;
+//     border: 1px solid black;
+//     background-color: white;
+//     text-align: center;
+//   }
+  
+//   @media (min-width: 40rem) {
+//     .cards_item {
+//       width: 45%;
+//     }
+//   }
+  
+//   @media (min-width: 30rem) {
+//     .cards_item {
+//     //   width: 33.333 %;
+//     }
+//   }
+  
+//   .card {
+//     background-color: white;
+//     border-radius: 0.25rem;
+//     box-shadow: 0 20px 40px -14px white;
+//     display: flex;
+//     border: none !important;
+//     flex-direction: column;
+//     overflow: hidden;
+//   }
+  
+//   .card_content {
+//     height: 100%    ;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+
+//   }
+  
+//   .card_title {
+//     color: #000B31;
+//     font-size: 1.2rem;
+//     letter-spacing: 1px;
+//     font-family: Nunito-Black, sans-serif;
+//     margin: 0px;
+//   }
+  
+//   .card_text {
+//     color: #000B31;
+//     font-size: 0.875rem;
+//     line-height: 1.5;
+//     font-size: 1.1rem;
+//     font-family: Muktar-Regular , sans-serif;
+//     margin-bottom: 1.25rem;    
+//     font-weight: 400;
+//   }

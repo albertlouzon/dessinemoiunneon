@@ -8,19 +8,19 @@ import { NeonFormComponent } from './neon-form/neon-form.component';
 })
 export class AppComponent {
   constructor(injector: Injector) {
-      const FormElement = createCustomElement(NeonFormComponent,  {injector});
-      customElements.define('suce-mes-boules', FormElement);
+      // const FormElement = createCustomElement(NeonFormComponent,  {injector});
+      // customElements.define('suce-mes-boules', FormElement);
 
-      const formEl: NgElement & WithProperties<NeonFormComponent> = document.createElement('suce-mes-boules') as any;
+      // const formEl: NgElement & WithProperties<NeonFormComponent> = document.createElement('suce-mes-boules') as any;
 
-      // Listen to the close event
-      // formEl.addEventListener('closed', () => document.body.removeChild(popupEl));
+      // // Listen to the close event
+      // // formEl.addEventListener('closed', () => document.body.removeChild(popupEl));
   
-      // Set the message
+      // // Set the message
   
-      // Add to the DOM
-      console.log('appending formEl ', formEl)
-      document.body.appendChild(formEl);
+      // // Add to the DOM
+      // console.log('appending formEl ', formEl)
+      // document.body.appendChild(formEl);
   }
   title = 'concourseRepro';
   

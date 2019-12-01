@@ -6,7 +6,7 @@
           <div class="col-3"></div>
             <aw-wizard-step stepTitle="" class="col-6 step-container">
                   <h4 class="neon-wizard-header flex1">Faîtes votre choix</h4>
-      
+              
                         <div class="neon-wizard-btn-container flex3 ">
                   <button type="button" class="form-btn col-5" (click)="onCompleteStep(0, 'text', null)" awNextStep>TEXTE</button>
                   <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)" awNextStep>IMAGE</button>
@@ -17,7 +17,7 @@
                <aw-wizard-step stepTitle="" class="col-6 step-container">
                  <div *ngIf="userChoices[0] === 'text'">
                         <div class="neon-wizard-header"><h5>Ecrivez votre texte</h5></div>
-                        <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " [value]="textInput"  class="basic-input mb5  wizard-element"/>
+                        <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " [value]="textInput"  class="basic-input mb5  mt15"/>
       
                  </div>
                  <div *ngIf="userChoices[0] === 'image'">
@@ -123,17 +123,17 @@
                <aw-wizard-step stepTitle="" class="col-6 step-container">
                  
                   <div class="neon-wizard-header"><h5>Choisissez votre format</h5></div>
-                 <div class="size-container row">
-                       <div  class="circle-cont col" (click)="selectedFormatSize = i" *ngFor="let format of formatSizes;  let i = index"   >
-                          <div  [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='i' }">{{format.size}}</div>
-                          
-                       <!-- <div class=format-subtitle>{{format.width}}</div>  -->
-                       </div>
-      
+     
+                  <div class="size-container row flex3">
+                    <div  class="circle-cont col" (click)="selectedFormatSize = i" *ngFor="let format of formatSizes;  let i = index"   >
+                       <div  [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='i' }">{{format.size}}</div>
+                       
+                    <!-- <div class=format-subtitle>{{format.width}}</div>  -->
                     </div>
-          
+   
+                 </div>
       
-                 <div class="neon-wizard-btn-container pb5">
+                 <div class="neon-wizard-btn-container flex1 pb5">
                     <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
                     <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
                 </div>
@@ -249,7 +249,7 @@
                         <input (keyup)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
           
                     </div>
-                    <span class='user-info-row-title mt5 textcenter'>En cliquant sur "envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
+                    <span class='user-info-row-title mt3 textcenter'>En cliquant sur "envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
       
                   <div class="neon-wizard-btn-container">
                       <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button> 

@@ -1,21 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
-@import '../node_modules/angular-archwizard/archwizard.css';
 @font-face {
-    font-family: Mukta-Regular;
-    src:  url('./assets/fonts/Mukta-Regular.ttf')  format('truetype');
-  }
+  font-family: Mukta-Regular; 
+  src:  url('./assets/fonts/Mukta-Regular.ttf')  format('truetype');
+}
 @font-face {
-    font-family: Mukta-Bold;
-    src:  url('./assets/fonts/Mukta-Bold.ttf')  format('truetype');
-  }
-  @font-face {
-    font-family: Nunito-Black;
-    src:  url('./assets/fonts/Nunito-Black.ttf')  format('truetype');
-  }
-  @font-face {
-    font-family: Caca;
-    src:  url('./assets/fonts/Mukta-Light.ttf')  format('truetype');
-  }
+  font-family: Mukta-Bold;
+  src:  url('./assets/fonts/Mukta-Bold.ttf')  format('truetype');
+}
+@font-face {
+  font-family: Nunito-Black;
+  src:  url('./assets/fonts/Nunito-Black.ttf')  format('truetype');
+}
+
 .next-btn {
         // min-width: 140px;
         border-radius: 25px;
@@ -84,3 +79,8 @@
 .mt5 {
   margin-top: 5% !important;
 }
+
+
+
+
+// GRANDE FRONTIERE 

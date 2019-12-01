@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-neon-form',
   templateUrl: './neon-form.component.html',
   styleUrls: ['./neon-form.component.scss'],
-  // encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.None
 })
 export class NeonFormComponent implements OnInit {
   formatSizes: Array<{size:string, width: number}> = [{size: 'S', width: 25},{size: 'L', width: 35}, {size: 'L', width: 45}, {size: 'XL', width: 50} ];

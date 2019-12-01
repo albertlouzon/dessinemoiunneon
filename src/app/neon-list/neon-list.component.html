@@ -99,5 +99,34 @@
 
 
 <div *ngIf="neonSelected" class='ec-bigbox'>
-  <button class="prev-btn" (click)="neonSelected = null">Précédent</button>
+    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
+
+  <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.name}}"</h2>
+
+  <div class="ec-top-row row">
+    <div class="col-8 neon-canvas-cont">
+      <div class="neon-canvas"></div>
+      <div class="neon-bar">
+        <div class="neon-bar-item">Incassable</div>
+        <div class="neon-bar-item">Réistant à l'eau</div>
+        <div class="neon-bar-item">50 000 heures</div>
+        <div class="neon-bar-item">Technologie LED</div>
+        <div style="flex: 0.6"></div>
+
+        <div class="bar-btn-cont">
+            <button  class="prev-btn" >Télécharger mon dessin</button>
+            <button   class="prev-btn" >Demander une notification</button>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-1"></div>
+    <div class="col-3">
+
+    </div>
+
+  </div>
+  <div class="ec-bottom-row row"></div>
+
 </div>

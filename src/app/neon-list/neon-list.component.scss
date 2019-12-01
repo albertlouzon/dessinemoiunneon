@@ -2,6 +2,8 @@
     height: 800px;
     border: 1px solid black;
     padding: 1.5rem;
+    padding-left: 7%;
+    padding-right: 7%;
 }
 
 .ec-top-row {
@@ -36,6 +38,11 @@
 }
 .ec-list-title h2 {
     margin-right: 5%;
+}
+
+h2 {
+    font-family: Nunito-Black, sans-serif;
+    color: #000b31;
 }
 
 
@@ -252,3 +259,45 @@ only screen and (max-width: 760px) {
     transition: 0.4s;
   }
   */
+
+  .neon-canvas-cont {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #000b31;
+      padding: 0;
+  }
+
+  .neon-canvas {
+      height: 85%;
+
+      background-image: url('../../assets/outer-space-neon.jpg');
+      background-repeat:no-repeat;
+      background-position:center;
+  }
+
+  .neon-bar {
+    background-color: #F4F4F4;
+      display: flex;
+      height: 15%;
+  }
+
+  .bar-btn-cont {
+      flex: 3;
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .neon-bar-item {
+      font-family: Mukta-Regular, sans-serif;
+      font-size: 11px;
+      flex: 1;
+      align-self: flex-end;
+      text-align: center;
+  }
+
+  .neon-bar .prev-btn {
+    font-size: 11px !important  ;
+    align-self: center !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}

@@ -1,11 +1,19 @@
 .ec-bigbox {
     height: 800px;
-    border: 1px solid black;
     padding: 1.5rem;
     padding-left: 7%;
     padding-right: 7%;
 }
 
+.ec-bigbox-detail {
+    height: 1000px;
+    padding: 1.5rem;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+.ec-top-row-detail {
+    height: 45%;
+}
 .ec-top-row {
     height: 55%;
 }
@@ -66,6 +74,18 @@ h2 {
     transition: 0.4s;
     flex-direction: row;
   }
+
+  .little-card {
+    margin: 30px auto;
+    width: 20%;
+    display: flex;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+    flex-direction: row;
+  }
   
   .card .card_image {
     width: inherit;
@@ -78,7 +98,7 @@ h2 {
       display: flex;
       flex-direction: column;
       height: 100%;
-      width: 80%;
+    //   width: 80%;
       padding: 1em;
   } 
   ::-webkit-scrollbar {
@@ -106,6 +126,9 @@ h2 {
     height: 40px;
   }
 
+
+  .ec-bigbox {
+      
   table { 
 	width: 100%; 
 	border-collapse: collapse; 
@@ -205,6 +228,7 @@ only screen and (max-width: 760px) {
 	}
 
 }
+  }
 
   .ec-title {
           font-family: Nunito-Black, sans-serif;
@@ -235,9 +259,14 @@ only screen and (max-width: 760px) {
   .title-black {
     color: black;
   }
+  .card-tarace {
+      flex-direction: column !important;
+      text-align: center !important;
+  }
+  
   
   @media all and (max-width: 500px) {
-    .card-list {    
+    .cards-list {    
       /* On small screens, we are no longer using row direction but column */
       flex-direction: column !important;
     }
@@ -263,6 +292,7 @@ only screen and (max-width: 760px) {
   .neon-canvas-cont {
       display: flex;
       flex-direction: column;
+      z-index: 10;
       border: 1px solid #000b31;
       padding: 0;
   }
@@ -293,6 +323,8 @@ only screen and (max-width: 760px) {
       flex: 1;
       align-self: flex-end;
       text-align: center;
+      color: #000b31; 
+
   }
 
   .neon-bar .prev-btn {
@@ -300,4 +332,51 @@ only screen and (max-width: 760px) {
     align-self: center !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
+}
+
+.detail-configu-title {
+    font-family: Nunito-Black, sans-serif;
+    color: #000b31;
+    font-size: 17px;
+    padding-bottom: 5%;
+}
+
+.ec-bigbox-detail th, .ec-bigbox-detail td {
+    padding-bottom: 10% ;
+    padding-top: 3%;
+}
+
+.ec-bigbox-detail tr {
+    border-bottom: 1px solid #D5D5D5;
+
+}
+
+.neon-tarif-cont {
+    border: 1px solid #D5D5D5;
+    border-radius: 15px;
+    padding-top: 5%;
+    margin-top: 5%;
+    margin-left: -5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.neon-tarif {
+    display: flex;
+    flex-direction: column;
+    color: #000b31;
+    margin-left: 5%;
+}
+
+.neon-tarif-price {
+    font-size: 24px;
+    font-family: Mukta-Bold, sans-serif;
+}
+
+
+.neon-tarif-blabla {
+    font-size: 11px;
+    font-family: Mukta-Regular, sans-serif;
 }

@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,8 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class NeonListComponent implements OnInit {
 
   constructor() { }
-
+  neonSelected = null;
   ngOnInit() {
+  }
+
+  goToNeonDetail(neonPayload) {
+    console.log('the neon to see: ', neonPayload);
+    if(neonPayload['id']) {
+      this.neonSelected = neonPayload
+    }
+
   }
 
 }

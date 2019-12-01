@@ -1,0 +1,254 @@
+.ec-bigbox {
+    height: 800px;
+    border: 1px solid black;
+    padding: 1.5rem;
+}
+
+.ec-top-row {
+    height: 55%;
+}
+
+.ec-bottom-row {
+    margin-top: 5%;
+}
+
+.ec-petit-prince {
+    // background-color: lightgray;
+    height: 90%;
+}
+
+.ec-list-cont {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start   ;
+    border-radius: 7px;
+    height: 80%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 2%;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.ec-list-title {
+    display: flex;
+    margin-bottom: 2.5%;
+}
+.ec-list-title h2 {
+    margin-right: 5%;
+}
+
+
+
+.cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    margin: 30px auto;
+    width: 30%;
+    display: flex;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+    flex-direction: row;
+  }
+  
+  .card .card_image {
+    width: inherit;
+    // background-color: lightgray;
+    height: inherit;
+    flex:1;
+  }
+
+  .card_content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 80%;
+      padding: 1em;
+  } 
+  ::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+  .card_content {
+      flex: 3;
+  }
+  
+  .card .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+  }
+  
+  .card .card_title {
+    text-align: center;
+    border-radius: 0px 0px 40px 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -80px;
+    height: 40px;
+  }
+
+  table { 
+	width: 100%; 
+	border-collapse: collapse; 
+	}
+
+/* Zebra striping */
+
+.table-position-circle {
+    padding: 5px;
+    border-radius: 50%;
+
+    font-size: 10px;
+    background-color: pink;
+    text-align: center;
+    display: inline-block;
+    width: 20px;
+    color: #000b31 !important;
+    height: 20px;
+    margin-right: 3%;
+}
+
+
+tr {
+    color: #000b31; 
+    border-bottom: 1px solid #D5D5D5;
+}
+
+tbody tr:hover {  
+    // background-color: rgba(0,11,49, 0.8);
+    // color: white !important;
+    color: #F4CC20;
+        transform: scale(1.05);
+}
+
+td, th { 
+	padding: 10px; 
+    text-align: left; 
+    cursor: pointer;
+    padding-bottom: 20px;
+    font-family: Mukta-Bold, sans-serif;
+}
+
+th {
+    font-size: 17px;
+}
+
+td {
+    font-size: 14px;
+}
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px) {
+
+	table { 
+	  	width: 100%; 
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+	}
+
+}
+
+  .ec-title {
+          font-family: Nunito-Black, sans-serif;
+    font-size: 1.5rem;
+    color: #000b31;
+  }
+  
+.ec-card-title {
+    font-family: Nunito-Black, sans-serif;
+    font-size: 1.5rem;
+    color: #000b31;
+    margin-bottom: 5%;
+
+}
+    
+.ec-card-descr {
+    font-family: Mukta-Regular, sans-serif;
+    font-size: 14px;
+    overflow-y: scroll;
+
+    color: #000b31;
+
+}
+  .title-white {
+    color: white;
+  }
+  
+  .title-black {
+    color: black;
+  }
+  
+  @media all and (max-width: 500px) {
+    .card-list {    
+      /* On small screens, we are no longer using row direction but column */
+      flex-direction: column !important;
+    }
+  }
+  
+  
+  /*
+  .card {
+    margin: 30px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+  box-shadow: 5pxs 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    transition: 0.4s;
+  }
+  */

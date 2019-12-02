@@ -34,10 +34,10 @@
       
       
              
-      
+                  <!-- ||  -->
                  <div class="neon-wizard-btn-container pb5">
-                    <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-                    <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+                    <button class="prev-btn col-3" type="button"  awPreviousStep>Précedent</button>
+                    <button [ngClass]="textInput.trim() === ''? 'next-btn col-3 disabled' : 'next-btn col-3'" type="button"  [disabled]="textInput.trim() === '' " awNextStep>Suivant</button>
                 </div>
        
                </aw-wizard-step> 

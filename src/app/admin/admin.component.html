@@ -1,0 +1,34 @@
+<div class="row adminContainer">
+    <div class='admin-list-title col-12'>
+      <h2 class="admin-title">SUR DU GRADUR FAIS DES POMPES DES TRACTIONS</h2>
+    </div>
+
+    <div class="admin-list-cont col-12 row">
+      <table class="col-12">
+        <thead>
+          <tr>
+            <th >Yencli</th>
+            <th >Type</th>
+            <th >Dessin technique</th>
+            <th >Recu le</th>
+            <th >Etat</th>
+            <th >Détails</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)">
+            <td data-column="Yencli"><div class="table-position-circle">{{i+1}}</div>{{command.name}}</td>
+            <td data-column="Type">{{command.customer}}</td>
+            <td data-column="Dessin technique">{{command.name}}</td>
+            <td data-column="Recu le">?</td>
+
+            <td data-column="Etat">{{command.state}}</td>
+            <button style="padding-right: 30px; padding-left: 30px; margin-top: 5px;" class="next-btn">Acceder</button>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>

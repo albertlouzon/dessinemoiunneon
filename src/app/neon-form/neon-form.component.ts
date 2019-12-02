@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { markParentViewsForCheck } from '@angular/core/src/view/util';
 
 @Component({
   selector: 'app-neon-form',
@@ -7,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class NeonFormComponent implements OnInit {
-  formatSizes: Array<{size:string, width: number}> = [{size: 'S', width: 25},{size: 'L', width: 35}, {size: 'L', width: 45}, {size: 'XL', width: 50} ];
+  formatSizes: Array<{size:string, width: number}> = [{size: 'S', width: 25},{size: 'M', width: 35}, {size: 'L', width: 45}, {size: 'XL', width: 50} ];
   selectedFormatSize = 0;
   imageSupportSelected = 'standard';
   projectType = 'consumer'
@@ -18,19 +20,18 @@ export class NeonFormComponent implements OnInit {
   imageFile = '';
   mainChoice = '';
   imageAdditionalInfo = '';
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
   onChangeTextTitle(value: string) {
-    if(value.trim() !== '') {
       this.textInput = value;
-    }
   }
   onSelectFile(event) {
     console.log('file selected' , event);
     if(event.target.files) {
       console.log('file selected' , event.target.files);
+      this.textInput = event.target.files[0]['name']
       this.imageFile =  event.target.files[0];
     }
   }
@@ -58,10 +59,29 @@ export class NeonFormComponent implements OnInit {
     }
     payload.push({title: this.projectType, data: {data}});
     console.log('payload : ', payload)
+
+    const mapTypo = ['Typo marmelade', 'Arabica Bold', 'Jewish Juice']
+    const payload2 = {
+      name: this.textInput,
+      typo: mapTypo[this.styleSelected],
+      colors: 'Not implemented', 
+      height: this.formatSizes[this.selectedFormatSize].width,
+      price: Math.floor(Math.random() * 2000) + 1 ,
+      state: 'created', 
+      userData: data,
+      customer: this.projectType
+    }
+    this.http.post('http://localhost:5555/command', payload2).subscribe((newNeonList: Array<Object>) => {
+      console.log('updated list after post :', newNeonList);
+    })
+    
   }
 
   onCompleteStep(step: number, choice: string, data: any) {
     if(choice && step === 0) {  
+      if(choice !== this.mainChoice) {
+        this.textInput = '';
+      }
       this.mainChoice = choice
       this.userChoices[step] = choice;
     }

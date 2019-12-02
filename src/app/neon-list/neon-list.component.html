@@ -18,22 +18,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr (click)="goToNeonDetail({id: 1, name: 'money', typo: 'Las Vegas', colors:'Vert kaki', height:'35cm' ,  price: 500, state: 'design_inprocess'})">
-              <td data-column="Vos dessins techniques"><div class="table-position-circle">1</div>Money</td>
-              <td data-column="Etat">En cours de design</td>
+            <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)">
+              <td data-column="Vos dessins techniques"><div class="table-position-circle">{{i+1}}</div>{{command.name}}</td>
+              <td data-column="Etat">{{command.state}}</td>
             </tr>
-            <tr (click)="goToNeonDetail({id: 2, name: 'sweet orange', typo: 'Marmelade', colors:'Bah orange', height:'25cm' ,  price: 333,state: 'maquette'})">
-              <td data-column="Vos dessins techniques"><div class="table-position-circle">2</div>Sweet Orange</td>
-              <td data-column="Etat">En attente de maquette</td>
-            </tr>
-            <tr (click)="goToNeonDetail({id: 2, name: 'tamas', typo: 'Arial New Roman', colors:'Violet', height:'45cm' , price: 410, state: 'delivery_inprocess'})">
-              <td data-column="FVos dessins techniques"><div class="table-position-circle">3</div>Tamas</td>
-              <td data-column="Etat">Livraison en cours</td>
-            </tr>
-            <tr (click)="goToNeonDetail({id: 4, name: 'Libérez Karim', typo: 'Arabica sans serif', colors:'Marron', height:'1.4cm' , price: 100000, state: 'failed'})">
-              <td data-column="Vos dessins techniques"><div class="table-position-circle">4</div>Libérez Karim</td>
-              <td data-column="Etat">Paiement frauduleux</td>
-            </tr>
+
   
           </tbody>
         </table>
@@ -145,7 +134,7 @@
               </tr>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
-                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}</td>
+                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
               </tr>
               <tr >
                   <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
@@ -161,7 +150,7 @@
               <span class="neon-tarif-blabla">Livraison incluse </span>
 
             </div>
-            <button  style="margin-right: 5%; padding-left: 25px; padding-right: 25px;" class="next-btn">Commander</button>
+            <button  style="margin-right: 5%;" class="next-btn">Commander</button>
           </div>
     </div>
 
@@ -178,7 +167,6 @@
            <div class="card_content">
             <span class="ec-card-title">
               Paiement sécurisé
-    
             </span>
             <span class="ec-card-descr">
               Les paiements sur notre site sont sécurisés. Nous acceptons tous les paiement dont Visa, Master Card, Amex, Paypal et Maestro.

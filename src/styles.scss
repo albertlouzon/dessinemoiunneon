@@ -17,14 +17,14 @@
         color: black;
         background-color: #f4cc20;
         outline: none !important;
-        min-height: 35px;
         border: none;
         font-size: 1rem;
         font-family: Mukta-Bold, sans-serif;
         cursor: pointer;
-        max-height: 35px;
         align-self: flex-end;
-
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
         letter-spacing: 0.4px;
         border: none;
         border-radius: 45px;
@@ -38,8 +38,10 @@
     color: black;
     background-color: transparent;
     outline: none !important;
-    min-height: 35px;
-    max-height: 35px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
     border: 1.2px solid  #f4cc20;
     font-size: 1rem;
     font-family: Mukta-Bold, sans-serif;
@@ -81,6 +83,9 @@
 }
 
 
-
+.disabled {
+  opacity: 0.5;
+  cursor: none !important;
+}
 
 // GRANDE FRONTIERE 

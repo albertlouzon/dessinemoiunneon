@@ -9,7 +9,7 @@ app.use(express.static('./dist/dmun'));
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname,'/dist/dmun/index.html'));
+res.sendFile(path.join(__dirname,'/dist/concourseRepro/index.html'));
 });
 
 // Start the app by listening on the default Heroku port

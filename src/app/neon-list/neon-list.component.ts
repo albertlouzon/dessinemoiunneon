@@ -12,7 +12,7 @@ export class NeonListComponent implements OnInit {
   constructor(private http: HttpClient) { }
   neonSelected = null;
   neonList = [];
-
+  commandMode = false;
   ngOnInit() {
 
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))

@@ -20,6 +20,8 @@ export class AdminComponent implements OnInit {
              this.neonList.push(command)
            })
          }
+
+         
          console.log('User data after fetch : ', this.neonList);
        })
   }

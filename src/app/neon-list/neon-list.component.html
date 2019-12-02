@@ -233,3 +233,67 @@
   </div>
 
 </div>
+
+
+<div class="ec-bigbox" *ngIf="!commandMode">
+  <div class="row commandMainCont">
+    <div class="col-6 command-form-cont">
+      <h2>Informations de livraison</h2>
+      <div class="command-form-card">
+
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <div class="big-card  ">
+        <!-- <div class="card_image">
+ 
+        </div> -->
+        <div style="padding: 0 !important" class="card_content">
+         <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
+           Récapitulatif
+         </span>
+
+         <div  class="recapList row">
+            <div  style='margin-left: 20px !important;' class="row">
+              <div class="col-5">Néon LED "{{neonSelected.name}}"</div>
+              <div class="col-2"></div>
+              <div class="col-5">{{neonSelected.price}}$</div>
+
+            </div>
+
+            <div style='margin-left: 20px !important;' class="row">
+              <div class="col-5">Livraison</div>
+              <div class="col-2"></div>
+              <div class="col-5">Gratuit</div>
+
+            </div>
+
+         </div>
+  
+         <div class=" ttcList">
+          <div class="col-4 ttc">Total TTC</div>
+          <div class="col-4 ttc">{{neonSelected.price}}$</div>
+
+        </div>
+       </div>
+       </div>
+    </div>
+
+  </div>
+
+  <div class="row commandBotCont">
+    <div class="col-6 command-form-cont">
+      <h2>Mode de livraison</h2>
+      <div class="tiny-card">
+          <input style="margin-right: 10px; align-self: center;" type="checkbox" />
+          <div class="livraisonDom">Livraison à domicile: 15 jours ouvrés</div>
+        </div>
+
+
+            <!-- <button   class="next-btn">Passer au paiement</button> -->
+
+    </div>
+  </div>
+
+</div>

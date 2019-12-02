@@ -75,8 +75,9 @@ export class NeonFormComponent implements OnInit {
       userData: data,
       customer: this.projectType
     }
-    this.http.post('http://localhost:5555/command', payload2).subscribe((newNeonList: Array<Object>) => {
+    this.http.post('https://neon-server.herokuapp.com/command', payload2).subscribe((newNeonList: Array<Object>) => {
       console.log('updated list after post :', newNeonList);
+        alert('Commande posté. Todo: Loading circle during the time the server adds the command. Then redirect to Wordpress php page Espace client')
     })
     
   }

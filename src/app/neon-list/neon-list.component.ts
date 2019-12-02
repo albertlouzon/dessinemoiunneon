@@ -28,7 +28,7 @@ export class NeonListComponent implements OnInit {
   }
 
   getConfig() {
-    return this.http.get('http://localhost:5555');
+    return this.http.get('https://neon-server.herokuapp.com/');
   }
 
   goToNeonDetail(neonPayload) {

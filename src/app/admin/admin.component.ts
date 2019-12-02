@@ -21,13 +21,13 @@ export class AdminComponent implements OnInit {
            })
          }
 
-         
+
          console.log('User data after fetch : ', this.neonList);
        })
   }
 
   getConfig() {
-    return this.http.get('http://localhost:5555');
+    return this.http.get('https://neon-server.herokuapp.com/');
   }
 
 

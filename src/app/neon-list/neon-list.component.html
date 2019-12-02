@@ -1,4 +1,4 @@
-<div  *ngIf="!neonSelected" class="ec-bigbox">
+<div  *ngIf="!neonSelected && !commandMode" class="ec-bigbox">
   <div class="row ec-top-row">
     <div class="col-4 ec-petit-prince"></div>
     <div class="col-1"></div>
@@ -87,7 +87,7 @@
 </div>
 
 
-<div *ngIf="neonSelected" class='ec-bigbox-detail'>
+<div *ngIf="neonSelected  && !commandMode" class='ec-bigbox-detail'>
     <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
 
   <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.name}}"</h2>
@@ -150,7 +150,7 @@
               <span class="neon-tarif-blabla">Livraison incluse </span>
 
             </div>
-            <button  style="margin-right: 5%;" class="next-btn">Commander</button>
+            <button  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Commander</button>
           </div>
     </div>
 
@@ -235,12 +235,69 @@
 </div>
 
 
-<div class="ec-bigbox" *ngIf="!commandMode">
+<div class="ec-bigbox" *ngIf="commandMode && neonSelected">
+    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="openCommand();">Précédent</button>
+
   <div class="row commandMainCont">
     <div class="col-6 command-form-cont">
       <h2>Informations de livraison</h2>
-      <div class="command-form-card">
+      <div class="command-form-card row">
 
+        <div class="row livraisonRow">
+            <div class='user-info-row-cont nestedInput col-5'>
+                <span class="user-info-row-title">Prénom</span>
+                  <input class="basic-input  "/>
+              </div>
+  
+              <div class="col-2"></div>
+            <div class='user-info-row-cont nestedInput col-5'>
+                <span class="user-info-row-title">Nom</span>
+                  <input   class="basic-input "/>
+              </div>
+
+        </div>
+
+        <div class=' livraisonRow user-info-row-cont'>
+            <span class="user-info-row-title">Société (facultatif)</span>
+              <input   class="basic-input "/>
+
+          </div>
+
+          <div class=' livraisonRow user-info-row-cont'>
+              <span class="user-info-row-title">Adresse</span>
+                <input   class="basic-input "/>
+  
+            </div>
+
+            <div class="row livraisonRow">
+                <div class='user-info-row-cont nestedInput col-5'>
+                    <span class="user-info-row-title">Ville</span>
+                      <input class="basic-input  "/>
+                  </div>
+      
+                  <div class="col-2"></div>
+                <div class='user-info-row-cont nestedInput col-5'>
+                    <span class="user-info-row-title">Code postal</span>
+                      <input   class="basic-input "/>
+                  </div>
+    
+            </div>
+
+
+            <div class="row livraisonRow">
+                <div class='user-info-row-cont nestedInput col-5'>
+                    <span class="user-info-row-title">Pays</span>
+                      <input class="basic-input  "/>
+                  </div>
+      
+                  <div class="col-2"></div>
+                <div class='user-info-row-cont nestedInput col-5'>
+                    <span class="user-info-row-title">Téléphone</span>
+                      <input   class="basic-input "/>
+                  </div>
+    
+            </div>
+     
       </div>
     </div>
     <div class="col-1"></div>

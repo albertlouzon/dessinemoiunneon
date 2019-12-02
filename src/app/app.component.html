@@ -3,6 +3,15 @@
         <app-neon-form></app-neon-form>
 </div>
  -->
-        <!-- <app-neon-form></app-neon-form> -->
-        <app-neon-list></app-neon-list>
-<!-- <app-admin></app-admin> -->
+        <app-neon-form *ngIf="currentView === 'form'"></app-neon-form>
+<app-admin *ngIf="currentView === 'admin'"></app-admin>
+
+
+<app-neon-list *ngIf="currentView === 'client'"></app-neon-list>
+
+
+<div style="position: fixed; bottom: 25px;">
+        <button (click)="currentView = 'form'">Form</button>
+        <button (click)="currentView = 'client'">Espace Client</button>
+        <button (click)="currentView = 'admin'">Admin</button>
+</div>

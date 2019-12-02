@@ -429,8 +429,7 @@ box-shadow: 5pxs 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.
   border-radius: 7px;
   overflow-y: scroll;
   height: 90%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+  padding: 2em;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
@@ -467,3 +466,69 @@ box-shadow: 5pxs 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.
 
   font-family: Mukta-Bold, sans-serif;
   font-size: 17px;}
+
+
+  
+  .user-info-row-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-row-title {
+ font-size: 0.8em;
+ font-family: Mukta-Regular, sans-serif;
+ padding-left: 20px;
+ padding-right: 20px;
+ color: #000B31;
+}
+
+// .main{
+//     margin: 0 auto;
+//     flex: 2;
+//   }
+
+.smallHeight {
+    height: 28px !important;
+}
+
+
+
+
+.neon-wizard-input-cont {
+    display: flex;
+    justify-content: space-between;
+}
+.textcenter {
+  text-align: center  ;
+}
+.nestedInput {
+    width: 45%;
+}
+.basic-input {
+  background-color: #F4F4F4;
+  color:  #000B31;
+  height: 35px;
+  border-radius: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  width: 100%;
+  font-family: Mukta-Regular, sans-serif;
+  outline: none;
+}
+.large-input {
+  background-color: #F4F4F4;
+  color:  #000B31;
+  min-height: 50px;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  width: 100%;
+  font-family: Mukta-Regular, sans-serif;
+  outline: none;
+}
+
+.livraisonRow {
+  padding-bottom: 3.5%;
+}

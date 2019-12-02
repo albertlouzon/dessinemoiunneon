@@ -39,4 +39,8 @@ export class NeonListComponent implements OnInit {
 
   }
 
+  openCommand(){
+    this.commandMode = !this.commandMode;
+  }
+
 }

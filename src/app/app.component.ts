@@ -23,5 +23,5 @@ export class AppComponent {
       // document.body.appendChild(formEl);
   }
   title = 'concourseRepro';
-  
+  currentView = 'form'
 }

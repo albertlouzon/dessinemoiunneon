@@ -47,6 +47,196 @@
 
 
 
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  }
+  
+  /* Zebra striping */
+  
+  .table-position-circle {
+    padding: 5px;
+    border-radius: 50%;
+  
+    font-size: 10px;
+    background-color: pink;
+    text-align: center;
+    display: inline-block;
+    width: 20px;
+    color: #000b31 !important;
+    height: 20px;
+    margin-right: 3%;
+  }
+  
+  
+  tr {
+    color: #000b31; 
+    border-bottom: 1px solid #D5D5D5;
+  }
+  
+  tbody tr:hover {  
+    // background-color: rgba(0,11,49, 0.8);
+    // color: white !important;
+    color: #F4CC20;
+        // transform: scale(1.05);
+  }
+  
+  td, th { 
+  padding: 10px; 
+    text-align: left; 
+    cursor: pointer;
+    padding-bottom: 20px;
+    font-family: Mukta-Bold, sans-serif;
+  }
+  
+  th {
+    font-size: 17px;
+  }
+  
+  td {
+    font-size: 14px;
+  }
+  /* 
+  Max width before this PARTICULAR table gets nasty
+  This query will take effect for any screen smaller than 760px
+  and also iPads specifically.
+  */
+  @media 
+  only screen and (max-width: 760px) {
+  
+  table { 
+      width: 100%; 
+  }
+  
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  
+  td { 
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+  }
+  
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+    /* Label the data */
+    content: attr(data-column);
+  
+    color: #000;
+    font-weight: bold;
+  }
+  
+  }
+  
+.modal-window {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.6);
+    top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  &>div {
+    width: 50%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: #ffffff;
+  }
+  header {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 150%;
+    margin: 0 0 15px;
+  }
+}
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+  &:hover {
+    color: black;
+  }
+}
+
+/* Demo Styles */
+
+
+
+
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+small {
+  color: #aaa;
+}
+
+.btn {
+  background-color: #fff;
+  padding: 1em 1.5em;
+  border-radius: 3px;
+  text-decoration: none;
+  i {
+    padding-right: 0.3em;
+  }
+}
+
+
+.next-btn a {
+  text-decoration:  none !important;
+  list-style: none; 
+  color: black;
+}
+
+.modal-recap-body {
+
+}
 
 *, *:before, *:after {
 	margin: 0;

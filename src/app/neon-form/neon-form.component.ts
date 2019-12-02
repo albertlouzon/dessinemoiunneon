@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { markParentViewsForCheck } from '@angular/core/src/view/util';
 
 @Component({
   selector: 'app-neon-form',
@@ -20,10 +19,15 @@ export class NeonFormComponent implements OnInit {
   imageFile = '';
   mainChoice = '';
   imageAdditionalInfo = '';
+  closeResult: string;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
+
+
+
   onChangeTextTitle(value: string) {
       this.textInput = value;
   }

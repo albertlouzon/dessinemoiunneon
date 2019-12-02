@@ -214,13 +214,17 @@
                         </div>
                   <div class="neon-wizard-btn-container">
                       <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button> 
-                      <button  (click)="onSubmitForm()" class="next-btn col-3" type="button" awNextStep>Envoyer</button>
+                    
+                    
+                      
+
+                      <button  class="next-btn col-3" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
           
                   </div>
-                  <span class='user-info-row-title textcenter'>Déja membre ? <a href="#">Connexion</a></span>
+                  <span style='margin-top: -10px;' class='user-info-row-title textcenter'>Déja membre ? <a href="#">Connexion</a></span>
       
                   </div>
-      
+                  
                   
                   <div  *ngIf="projectType === 'business'"  class="step-container" >
                       <h5 class="neon-wizard-header ">Obtenez votre devis gratuit</h5>
@@ -249,11 +253,11 @@
                         <input (keyup)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
           
                     </div>
-                    <span class='user-info-row-title mt3 textcenter'>En cliquant sur "envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
+                    <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
       
                   <div class="neon-wizard-btn-container">
                       <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button> 
-                      <button (click)="onSubmitForm()" class="next-btn col-3" type="button" awNextStep>Envoyer</button>
+                      <button  class="next-btn col-3" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
           
                   </div>
                     </div>
@@ -268,4 +272,52 @@
         
       
       </aw-wizard>
-</div>
+
+
+      <div class="container">
+     
+      <div id="open-modal" class="modal-window">
+        <div>
+          <a href="#" title="Close" class="modal-close">Close</a>
+          <h1>Voici votre commande !</h1>
+          <div style="height: 220px;">
+
+            <table>
+              <thead>
+      
+              </thead>
+              <tbody>
+                <tr >
+                  <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">{{mainChoice === 'text' ? 'Texte' :' Fichier img'}}</td>
+                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{textInput}}</td>
+                </tr>
+                <tr >
+                  <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
+                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{styleSelected}}</td>
+                </tr>
+                <!-- <tr >
+                  <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleurs</td>
+                  <td style="font-family: Mukta-Regular;" data-column="Etat"></td>
+                </tr> -->
+                <tr >
+                  <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
+                  <td  style="font-family: Mukta-Regular;" data-column="Etat">{{formatSizes[selectedFormatSize].width}} cm</td>
+                </tr>
+                <tr >
+                    <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Email</td>
+                    <td  style="font-family: Mukta-Regular;" data-column="Etat">{{userInfoPerso['email']}}</td>
+                  </tr>
+        
+              </tbody>
+            </table>
+
+          </div>
+          <button (click)="onSubmitForm()" style="float: right;" class="next-btn" type="button" > <a href="#">Confirmer ma commande</a></button>
+
+          </div>
+      </div>
+
+
+
+
+      

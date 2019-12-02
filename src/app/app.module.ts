@@ -24,7 +24,7 @@ import { AdminComponent } from './admin/admin.component';
     ArchwizardModule,
   ],
   entryComponents: [NeonFormComponent],
-  providers: [],
+  providers: [ArchwizardModule],
   bootstrap: [AppComponent]
 })  
 export class AppModule { }

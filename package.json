@@ -1,14 +1,19 @@
-{
+  {
   "name": "concourse-repro",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build — aot — prod"
+ },
+ "engines": {
+  "node": "10.16.3",
+  "npm": "6.9.0"
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.1.0",
@@ -28,12 +33,12 @@
     "ngx-bootstrap": "^5.2.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "@angular/cli": "1.4.9",
+    "@angular/compiler-cli": "^4.4.6"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.0",
-    "@angular/cli": "~7.1.4",
-    "@angular/compiler-cli": "~7.1.0",
+    "@angular-devkit/build-angular": "~0.11.0",    
     "@angular/language-service": "~7.1.0",
     "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",

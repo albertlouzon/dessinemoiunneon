@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { currentView } from './../app.component';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class LoginComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  isSignIn = true;
+  isSignIn = false;
   loginFailed = false;
   email = '';
   password= '';
@@ -77,14 +78,16 @@ export class LoginComponent implements OnInit {
             this.loginFailed = false;
             this.signUpError = 'Vous devez fournir un email et un mot de passe...'
             this.signUp().subscribe(() => {
-              alert('User sucessfully created !!!');
+              alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
               this.saveToStorage();
               this.loading = false;
+              currentView.caca = 'client'
             }, err => {
               if(err.status === 201)  {
-                alert('User sucessfully created !!!');
+                alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
                 this.loading = false;
               this.saveToStorage();
+              currentView.caca = 'client'
               } else {
                 alert('Signup failed'); console.log('signup failed', err);
                 this.loading = false;
@@ -108,7 +111,9 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         this.loginFailed = false;
         this.saveToStorage();
-        alert('Wesh ' + userData.find(x => x.email === this.email))['name'];
+        const name = userData.find(x => x.email === this.email)['name']
+        alert('Wesh ' + name);
+        currentView.caca = 'client';
         
       }, err => {
         console.log('failed login ', err);

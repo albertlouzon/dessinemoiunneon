@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { currentView } from './../app.component';
 
 @Component({
   selector: 'app-neon-list',
@@ -18,12 +19,14 @@ export class NeonListComponent implements OnInit {
 
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
     this.neonList = []
+    this.loading = true;
     this.getConfig().subscribe((res: Array<Object>) => {
       if(res) {
-
+        this.loading = false;
         console.log('ok ', res, localStorage.getItem('email'))
         if(!res.find(x => x['email'] === localStorage.getItem('email')) || !localStorage.getItem('email')) {
-          alert('you are not logged in. T as rien a faire la va t inscrire')
+          alert('you are not logged in. T as rien a faire la va t inscrire');
+          currentView['caca'] = 'login'
         } else {
           console.log(localStorage.getItem('email'))
           var commands = res.find(x => x['email'] === localStorage.getItem('email'))['commands']
@@ -37,6 +40,10 @@ export class NeonListComponent implements OnInit {
       } 
       console.log('User data after fetch : ', this.neonList);
     })
+  }
+
+  goToForm() {
+    currentView.caca = 'form'
   }
 
   getConfig() {

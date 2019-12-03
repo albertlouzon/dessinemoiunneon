@@ -1,6 +1,6 @@
-<div class='form-container'>
+<div  class='form-container'>
 
-    <aw-wizard style="width: 100%;">
+    <aw-wizard  style="width: 100%;">
 
         <div   class="neon-wizard-container row">
           <div class="col-3"></div>
@@ -26,7 +26,7 @@
                      
       
                             <div class="neon-wizard-header"><h4>Une info en particulier à nous donner ?</h4></div>
-                            <textarea (keyup)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder="" class="large-input">
+                            <textarea (change)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder="" class="large-input">
       
                               </textarea>               
               
@@ -186,13 +186,13 @@
           
                           <div class='user-info-row-cont nestedInput'>
                               <span class="user-info-row-title">Prénom</span>
-                                <input (keyup)="onChangeUserInfo('prénom', $event.target.value)" [value]="userInfoPerso['prénom'] || ''"  class="basic-input smallHeight "/>
+                                <input (change)="onChangeUserInfo('nickname', $event.target.value)" [value]="userInfoPerso['nickname'] || ''"  class="basic-input smallHeight "/>
                             </div>
       
                             
                           <div class='user-info-row-cont nestedInput'>
                               <span class="user-info-row-title">Nom</span>
-                                <input (keyup)="onChangeUserInfo('nom', $event.target.value)"  [value]="userInfoPerso['nom'] || ''"  class="basic-input smallHeight "/>
+                                <input (change)="onChangeUserInfo('name', $event.target.value)"  [value]="userInfoPerso['name'] || ''"  class="basic-input smallHeight "/>
                             </div>
         
             </div>
@@ -200,14 +200,14 @@
           
                   <div class='user-info-row-cont'>
                       <span class="user-info-row-title">Adresse mail</span>
-                        <input (keyup)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
+                        <input (change)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
           
                     </div>
           
       
                     <div class='user-info-row-cont'>
                         <span class="user-info-row-title">Mot de passe</span>
-                          <input type="password" (keyup)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"  class="basic-input smallHeight mb3 "/>
+                          <input type="password" (change)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"  class="basic-input smallHeight mb3 "/>
                           <span class='user-info-row-title textcenter'>En cliquant sur "envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
       
                     
@@ -219,9 +219,9 @@
                       
 
                       <button  class="next-btn col-3" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
-          
+                    
                   </div>
-                  <span style='margin-top: -10px;' class='user-info-row-title textcenter'>Déja membre ? <a href="#">Connexion</a></span>
+                  <span (click)="signuptrue()"  style='margin-top: -10px;' class='user-info-row-title textcenter'>Déja membre ? <a (click)="signuptrue()" href="#">Connexion</a></span>
       
                   </div>
                   
@@ -230,27 +230,27 @@
                       <h5 class="neon-wizard-header ">Obtenez votre devis gratuit</h5>
                       <div class='user-info-row-cont'>
                         <span class="user-info-row-title">Société</span>
-                          <input (keyup)="onChangeUserInfo('société', $event.target.value)" [value]="userInfoPerso['société'] || ''"  class="basic-input smallHeight mb3 "/>
+                          <input (change)="onChangeUserInfo('société', $event.target.value)" [value]="userInfoPerso['société'] || ''"  class="basic-input smallHeight mb3 "/>
                       </div>
           
                             <div class="neon-wizard-input-cont mb3">
           
                                 <div class='user-info-row-cont nestedInput'>
                                     <span class="user-info-row-title">Prénom</span>
-                                      <input (keyup)="onChangeUserInfo('prénom', $event.target.value)" [value]="userInfoPerso['prénom'] || ''"  class="basic-input smallHeight "/>
+                                      <input (change)="onChangeUserInfo('nickname', $event.target.value)" [value]="userInfoPerso['nickname'] || ''"  class="basic-input smallHeight "/>
                                   </div>
           
                                   
                                 <div class='user-info-row-cont nestedInput'>
                                     <span class="user-info-row-title">Nom</span>
-                                      <input (keyup)="onChangeUserInfo('nom', $event.target.value)"  [value]="userInfoPerso['nom'] || ''"  class="basic-input smallHeight "/>
+                                      <input (change)="onChangeUserInfo('name', $event.target.value)"  [value]="userInfoPerso['name'] || ''"  class="basic-input smallHeight "/>
                                   </div>
               
                   </div>
           
                   <div class='user-info-row-cont'>
                       <span class="user-info-row-title">Adresse mail</span>
-                        <input (keyup)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
+                        <input (change)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"  class="basic-input smallHeight "/>
           
                     </div>
                     <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a href="#">Conditions générales d'utilisation</a></span>
@@ -273,7 +273,11 @@
       
       </aw-wizard>
 
+      <!-- <div *ngIf="signUp">
+        CACAC
+          <app-login ></app-login>
 
+      </div> -->
       <div class="container">
      
       <div id="open-modal" class="modal-window">
@@ -312,12 +316,14 @@
             </table>
 
           </div>
+          <div *ngIf="loginFailed" class="errorMessage">{{signUpError}}</div>
           <button (click)="onSubmitForm()" style="float: right;" class="next-btn" type="button" > <a href="#">Confirmer ma commande</a></button>
 
           </div>
+
+
       </div>
 
+<div *ngIf="loading" class="blendContainer">
 
-
-
-      
+</div>

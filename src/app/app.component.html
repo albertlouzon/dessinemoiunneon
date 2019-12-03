@@ -4,19 +4,19 @@
 </div>
  -->
 
- <app-login *ngIf="currentView === 'login'"></app-login>
+ <app-login *ngIf="getView() === 'login'"></app-login>
 
-        <app-neon-form *ngIf="currentView === 'form'"></app-neon-form>
-<app-admin *ngIf="currentView === 'admin'"></app-admin>
+<app-neon-form *ngIf="getView()  === 'form'"></app-neon-form>
+<app-admin *ngIf="getView()  === 'admin'"></app-admin>
 
 
-<app-neon-list *ngIf="currentView === 'client'"></app-neon-list>
+<app-neon-list *ngIf="getView()  === 'client'"></app-neon-list>
 
 
 <div style="position: fixed; bottom: 25px;">
                 <button (click)="logout()">Logout</button>
-        <button (click)="currentView = 'login'">Login</button>  
-        <button (click)="currentView = 'form'">Form</button>
-        <button (click)="currentView = 'client'">Espace Client</button>
-        <button (click)="currentView = 'admin'">Admin</button>
+        <button (click)="onClickView('login')">Login</button>  
+        <button (click)="onClickView('form')">Form</button>
+        <button (click)="onClickView('client')">Espace Client</button>
+        <button (click)="onClickView('admin')">Admin</button>
 </div>

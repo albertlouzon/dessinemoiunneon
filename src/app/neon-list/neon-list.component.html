@@ -5,7 +5,7 @@
     <div class="col-7">
       <div class='ec-list-title'>
         <h2 class="ec-title">Tous vos néons</h2>
-        <button class="prev-btn">Créer un nouveau dessin</button>
+        <button class="prev-btn" (click)="goToForm();">Créer un nouveau dessin</button>
       </div>
   
       <div class="ec-list-cont">
@@ -354,3 +354,7 @@
   </div>
 
 </div>
+
+<div *ngIf="loading" class="blendContainer">
+
+  </div>

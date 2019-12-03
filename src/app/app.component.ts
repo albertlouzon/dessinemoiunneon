@@ -1,6 +1,7 @@
 import { Component, Injector } from '@angular/core';
 import  {createCustomElement, NgElement, WithProperties} from '@angular/elements';
 import { NeonFormComponent } from './neon-form/neon-form.component';
+export let currentView =  {caca :'login', signUp: false}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,10 +24,17 @@ export class AppComponent {
       // document.body.appendChild(formEl);
   }
   title = 'concourseRepro';
-  currentView = 'login'
 
   logout() {
-    localStorage.setItem('email', null);
-    localStorage.setItem('pw', null);
+    localStorage.removeItem('email');
+    localStorage.removeItem('pw');
+  }
+
+  onClickView(target) {
+    currentView.caca = target;
+  }
+
+  getView() {
+    return currentView.caca;
   }
 }

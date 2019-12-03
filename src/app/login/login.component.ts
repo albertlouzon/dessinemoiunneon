@@ -78,12 +78,13 @@ export class LoginComponent implements OnInit {
             this.signUpError = 'Vous devez fournir un email et un mot de passe...'
             this.signUp().subscribe(() => {
               alert('User sucessfully created !!!');
+              this.saveToStorage();
               this.loading = false;
             }, err => {
               if(err.status === 201)  {
                 alert('User sucessfully created !!!');
                 this.loading = false;
-              
+              this.saveToStorage();
               } else {
                 alert('Signup failed'); console.log('signup failed', err);
                 this.loading = false;
@@ -106,7 +107,8 @@ export class LoginComponent implements OnInit {
        const  userData = res['userData']
         this.loading = false;
         this.loginFailed = false;
-        alert('Wesh ' + userData['name']);
+        this.saveToStorage();
+        alert('Wesh ' + userData.find(x => x.email === this.email))['name'];
         
       }, err => {
         console.log('failed login ', err);

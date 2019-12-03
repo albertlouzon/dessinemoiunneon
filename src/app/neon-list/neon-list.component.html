@@ -19,8 +19,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)">
-              <td data-column="Vos dessins techniques"><div class="table-position-circle">{{i+1}}</div>{{command.name}}</td>
-              <td data-column="Etat">{{command.state}}</td>
+              <td data-column="Vos dessins techniques"><div class="table-position-circle">{{i+1}}</div>{{command.text}}</td>
+              <td data-column="Etat">Traitement en cours</td>
             </tr>
 
   
@@ -90,7 +90,7 @@
 <div *ngIf="neonSelected  && !commandMode" class='ec-bigbox-detail'>
     <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
 
-  <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.name}}"</h2>
+  <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
 
   <div class="ec-top-row-detail row">
     <div class="col-8 neon-canvas-cont">
@@ -122,7 +122,7 @@
             <tbody>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Texte</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.name}}</td>
+                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td>
               </tr>
               <tr >
                 <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
@@ -134,11 +134,11 @@
               </tr>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
-                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
+                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.size}}cm</td>
               </tr>
               <tr >
                   <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
-                  <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.state}}</td>
+                  <td  style="font-family: Mukta-Regular;" data-column="Etat">Traitement en cours</td>
                 </tr>
       
             </tbody>
@@ -313,7 +313,7 @@
 
          <div  class="recapList row">
             <div  style='margin-left: 20px !important;' class="row">
-              <div class="col-5">Néon LED "{{neonSelected.name}}"</div>
+              <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
               <div class="col-2"></div>
               <div class="col-5">{{neonSelected.price}}$</div>
 

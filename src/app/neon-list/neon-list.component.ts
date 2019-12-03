@@ -13,22 +13,34 @@ export class NeonListComponent implements OnInit {
   neonSelected = null;
   neonList = [];
   commandMode = false;
+  loading = false;
   ngOnInit() {
 
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
     this.neonList = []
     this.getConfig().subscribe((res: Array<Object>) => {
       if(res) {
-        res.forEach((command) => {
-          this.neonList.push(command)
-        })
-      }
+
+        console.log('ok ', res, localStorage.getItem('email'))
+        if(!res.find(x => x['email'] === localStorage.getItem('email')) || !localStorage.getItem('email')) {
+          alert('you are not logged in. T as rien a faire la va t inscrire')
+        } else {
+          console.log(localStorage.getItem('email'))
+          var commands = res.find(x => x['email'] === localStorage.getItem('email'))['commands']
+          console.log(commands)
+  
+          commands.forEach((command) => {
+            this.neonList.push(command)
+          })
+        }
+   
+      } 
       console.log('User data after fetch : ', this.neonList);
     })
   }
 
   getConfig() {
-    return this.http.get('https://neon-server.herokuapp.com/');
+    return this.http.get('https://neon-server.herokuapp.com/users');
   }
 
   goToNeonDetail(neonPayload) {

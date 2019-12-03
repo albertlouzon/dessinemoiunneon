@@ -3,6 +3,9 @@
         <app-neon-form></app-neon-form>
 </div>
  -->
+
+ <app-login *ngIf="currentView === 'login'"></app-login>
+
         <app-neon-form *ngIf="currentView === 'form'"></app-neon-form>
 <app-admin *ngIf="currentView === 'admin'"></app-admin>
 
@@ -11,6 +14,7 @@
 
 
 <div style="position: fixed; bottom: 25px;">
+        <button (click)="currentView = 'login'">Login</button>
         <button (click)="currentView = 'form'">Form</button>
         <button (click)="currentView = 'client'">Espace Client</button>
         <button (click)="currentView = 'admin'">Admin</button>

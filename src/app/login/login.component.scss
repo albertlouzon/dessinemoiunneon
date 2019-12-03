@@ -1,0 +1,33 @@
+.login-container {
+    font-family: 'Nunito', sans-serif;
+background-color: #000b31;
+height: 100vh;
+ }
+
+ .login-title {
+     font-family: Nunito-Black, sans-serif;
+     text-align: center;
+    color: #000b31;
+    padding-left: 10%;
+    padding-right: 10%;
+
+ 
+ }
+ .step-container-inner {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+ .login-step-container {
+     align-self: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start   ;
+    border-radius: 15px;
+    padding: 1.2rem;
+    width: 80%;
+    height: 500px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}

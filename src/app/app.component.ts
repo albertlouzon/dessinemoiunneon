@@ -24,4 +24,9 @@ export class AppComponent {
   }
   title = 'concourseRepro';
   currentView = 'login'
+
+  logout() {
+    localStorage.setItem('email', null);
+    localStorage.setItem('pw', null);
+  }
 }

@@ -21,6 +21,7 @@ height: 100vh;
     align-self: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
  .login-step-container {
@@ -32,7 +33,7 @@ height: 100vh;
     border-radius: 15px;
     padding: 1.5rem;
     width: 80%;
-    height: 500px;
+    height: 525px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
@@ -69,8 +70,22 @@ height: 100vh;
     min-width: 200px;
 }
 
+.signup-btn {
+    align-self: center;
+    margin-top: 3%;
+    min-width: 200px;
+}
+
 .errorMessage {
     color: #F44336;
     font-family: Mukta-Bold;
     text-align: center;
+}
+
+.login-header {
+    font-family: Nunito-Black, sans-serif;
+    color: white;
+    text-align: center;
+    margin-bottom: 15%;
+    font-size: 2.5em;
 }

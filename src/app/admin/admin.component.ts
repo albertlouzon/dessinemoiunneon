@@ -16,8 +16,13 @@ export class AdminComponent implements OnInit {
        this.neonList = []
        this.getConfig().subscribe((res: Array<Object>) => {
          if(res) {
-           res.forEach((command) => {
-             this.neonList.push(command)
+           res.forEach((user) => {
+             if(user['commands'].length > 0) {
+              user['commands'].forEach((command) => {
+                this.neonList.push({email: user['email'], type: user['type'], text: command ['text'], state: command['state'], price: command['price'] })
+
+              })
+             }
            })
          }
 
@@ -27,7 +32,7 @@ export class AdminComponent implements OnInit {
   }
 
   getConfig() {
-    return this.http.get('https://neon-server.herokuapp.com/');
+    return this.http.get('https://neon-server.herokuapp.com/users'); 
   }
 
 

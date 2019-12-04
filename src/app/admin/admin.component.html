@@ -12,18 +12,20 @@
             <th >Dessin technique</th>
             <th >Recu le</th>
             <th >Etat</th>
+            <th >Prix</th>
             <th >Détails</th>
 
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)">
-            <td data-column="Yencli"><div class="table-position-circle">{{i+1}}</div>{{command.name}}</td>
-            <td data-column="Type">{{command.customer}}</td>
-            <td data-column="Dessin technique">{{command.name}}</td>
+            <td data-column="Yencli"><div class="table-position-circle">{{i+1}}</div>{{command.email}}</td>
+            <td data-column="Type">{{command.type}}</td>
+            <td data-column="Dessin technique">{{command.text}}</td>
             <td data-column="Recu le">?</td>
 
             <td data-column="Etat">{{command.state}}</td>
+            <td data-column="Prix">{{command.price}}</td>
             <button style="padding-right: 30px; padding-left: 30px; margin-top: 5px;" class="next-btn">Acceder</button>
           </tr>
 

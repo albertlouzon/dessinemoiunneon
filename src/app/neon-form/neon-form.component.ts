@@ -16,7 +16,7 @@ export class NeonFormComponent implements OnInit {
   userChoices = {};
   userInfoPerso  =  {};
   trim = String.prototype.trim;
-  signUp = false;
+  signUp = true;
   styleSelected = 1;
   signUpError = 'Il existe déjà un compte avec cet email...';
   loginFailed = false;
@@ -37,7 +37,11 @@ export class NeonFormComponent implements OnInit {
   }
 
   signuptrue() {
-    this.signUp = true;
+    this.userInfoPerso['password'] = '';
+    this.userInfoPerso['name'] = '';
+    this.userInfoPerso['nickname'] = '';
+
+    this.signUp = !this.signUp;
   }
 
   onChangeTextTitle(value: string) {
@@ -74,10 +78,8 @@ export class NeonFormComponent implements OnInit {
       data[field] = this.userInfoPerso[field]
     }
     payload.push({title: this.projectType, data: {data}});
-    console.log('payload : ', payload)
-
     const mapTypo = ['Typo marmelade', 'Arabica Bold', 'Jewish Juice']
-    const payload2 = {
+    const commandPayload = {
       text: this.textInput,
       typo: mapTypo[this.styleSelected],
       colors: 'Not implemented', 
@@ -95,25 +97,51 @@ export class NeonFormComponent implements OnInit {
           if(allUsers) {
             if(allUsers.find(x => x['email'] === this.userInfoPerso['email'])) {
               this.loginFailed = true;
-              this.signUpError = 'Il existe déjà un compte avec cet email...'
+              const userId = allUsers.find(x => x['email'] === this.userInfoPerso['email']).id
+              this.signUpError = 'Il existe déjà un compte avec cet email...';
+              this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
+                console.log('updated list after post :', newNeonList);
+                this.saveToStorage();
+                currentView.caca = 'client';
+                console.log('debu 4');
+
+              }, err => {
+                if(err.status === 201 || err.status === 200 ) {
+                  console.log('debu 5');
+
+                  this.saveToStorage();
+                  currentView.caca = 'client';
+                }
+              })
             } else {
               this.loginFailed = false;
               this.signUpError = 'Vous devez fournir un email et un mot de passe...'
+              console.log('debu 2');
+
               this.signUpObs().subscribe(() => {
-                alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
-                this.loading = false;
-                this.saveToStorage();
+                this.loading = false;  
                 this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
                   this.allUsers = users;
+                  this.saveToStorage();
                   const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
-                  this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, payload2).subscribe((newNeonList: any) => {
+                  this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                     console.log('updated list after post :', newNeonList);
-                    currentView.caca = 'client';
-                    this.saveToStorage();
+
+                    if(this.projectType === "consumer") {
+                      this.saveToStorage();
+                      currentView.caca = 'client';
+                      console.log('debu 4');
+                    }
+
                   }, err => {
                     if(err.status === 201 || err.status === 200 ) {
-                      currentView.caca = 'client';
-                      this.saveToStorage();
+               
+                      if(this.projectType === "consumer") {
+                        this.saveToStorage();
+                        currentView.caca = 'client';
+                        console.log('debu 4');
+                      }
+  
                     }
                   })
                 })
@@ -122,22 +150,35 @@ export class NeonFormComponent implements OnInit {
   
               }, err => {
                 if(err.status === 201 || err.status === 200 )  {
+                  console.log('debu 6');
+
                   alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
                   this.loading = false;
+                  this.saveToStorage();
                   this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
                     this.allUsers = users;
                     const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
-                    this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, payload2).subscribe((newNeonList: any) => {
+                    this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                       console.log('updated list after post :', newNeonList);
+                      
+                    if(this.projectType === "consumer") {
+
                       currentView.caca = 'client';
-                      this.saveToStorage();
                       console.log('success', currentView.caca)
+                    }
+
 
                     }, err => {
                       if(err.status === 201 || err.status === 200 ) {
-                        currentView.caca = 'client';
-                        this.saveToStorage();
-                        console.log('success', currentView.caca)
+                        console.log('debu 7');
+
+                                
+                        if(this.projectType === "consumer") {
+
+                          currentView.caca = 'client';
+                          console.log('success', currentView.caca)
+                        }
+    
                       }
                     })
                   })
@@ -153,15 +194,18 @@ export class NeonFormComponent implements OnInit {
         alert('Vous devez fournir un email et un mot de passe');
       }
     } else {
+      console.log('debu 8', localStorage.getItem('email'));
+
     const userId = this.allUsers.find(x => x.email === localStorage.getItem('email')).id;
-    this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, payload2).subscribe((newNeonList: any) => {
+    this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
       console.log('updated list after post :', newNeonList);
-      this.saveToStorage();
       currentView.caca = 'client';
-    }, err => {
+
+    }, err => { 
       if(err.status === 201 || err.status === 200 ) {
+        console.log('debu 9   ');
+
         currentView.caca = 'client';
-        this.saveToStorage();
         console.log('success', currentView.caca)
       }
     })
@@ -197,16 +241,15 @@ export class NeonFormComponent implements OnInit {
 
   signUpObs() {
     let headers = new HttpHeaders({ "content-type": "application/json", "Accept": "application/json" });
-
-    const payload =   {
+    const password = this.projectType === "consumer" ? this.userInfoPerso['password'] : this.userInfoPerso['société'];
+     const payload = {
       email: this.userInfoPerso['email'],
-      password: this.userInfoPerso['password'],
+      password: password,
       name: this.userInfoPerso['name'],
       nickname: this.userInfoPerso['nickname'],
       type: this.projectType
      }
-     console.log('payload', payload)
-    return this.http.post('https://neon-server.herokuapp.com/users', payload, {headers: headers});
+    return this.http.post('https://neon-server.herokuapp.com/users',  payload, {headers: headers});
   }
 
   getUser() {
@@ -214,41 +257,6 @@ export class NeonFormComponent implements OnInit {
 
   }
 
-  onSignUp(){
-      this.loginFailed = false;
-      this.loading = true;
-      this.getUser().subscribe((allUsers: Array<any>) => {
-        console.log('all the users , ', allUsers)
-        if(allUsers) {
-          if(allUsers.find(x => x['email'] === this.userInfoPerso['email'])) {
-            this.loginFailed = true;
-            this.signUpError = 'Il existe déjà un compte avec cet email...'
-          } else {
-            this.loginFailed = false;
-            this.signUpError = 'Vous devez fournir un email et un mot de passe...'
-            this.signUpObs().subscribe(() => {
-              alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
-              this.saveToStorage();
-              this.loading = false;
-              currentView.caca = 'client'
-
-
-
-            }, err => {
-              if(err.status === 201 || err.status === 200)  {
-                alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
-                this.loading = false;
-              this.saveToStorage();
-              currentView.caca = 'client'
-              } else {
-                alert('Signup failed'); console.log('signup failed', err);
-                this.loading = false;
-              }
-            })
-          }
-        }
-      })
-  }
 
   saveToStorage(){
     localStorage.setItem('email', this.userInfoPerso['email']);

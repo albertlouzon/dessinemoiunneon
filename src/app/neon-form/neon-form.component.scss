@@ -467,7 +467,10 @@ input[type="checkbox"] {
     opacity: 0;
 }   
 
-
+.toggleCont {
+  align-self: center;
+  margin-top: -4%;
+}
 input[type="checkbox"].ios-switch + div {
     vertical-align: middle;
     width: 40px;    height: 20px;
@@ -477,7 +480,7 @@ input[type="checkbox"].ios-switch + div {
     -webkit-transition-duration: .4s;
     -webkit-transition-property: background-color, box-shadow;
     box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
-    margin: 15px 1.2em 15px 2.5em;
+    margin: 15px;
 }
 
 /* Checked Track (Blue) */
@@ -514,7 +517,7 @@ label {
 
 .tailleperso {
     align-self: center;
-    font-family: Mukta-Regular, sans-serif;
+    font-family: Nunito-Black, sans-serif;
 }
 /* Checked Knob (Blue Style) */
 input[type="checkbox"].ios-switch:checked + div > div {

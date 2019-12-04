@@ -32,6 +32,7 @@
   justify-content: flex-start   ;
   border-radius: 7px;
   overflow-y: scroll;
+  max-height: 450px;
   height: 80%;
   padding-left: 2.5%;
   padding-right: 2.5%;
@@ -46,7 +47,9 @@
 .ec-list-title h2 {
   margin-right: 5%;
 }
-
+.tailleperso {
+  font-family: Nunito-Regular, sans-serif;
+}
 h2 {
   font-family: Nunito-Black, sans-serif;
   color: #000b31;

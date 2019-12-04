@@ -31,9 +31,6 @@
                               </textarea>               
               
                   </div>      
-      
-      
-             
                   <!-- ||  -->
                  <div class="neon-wizard-btn-container pb5">
                     <button class="prev-btn col-3" type="button"  awPreviousStep>Précedent</button>
@@ -184,13 +181,13 @@
                       
                       <div class="neon-wizard-input-cont mb3">
           
-                          <div class='user-info-row-cont nestedInput'>
+                          <div *ngIf="signUp" class='user-info-row-cont nestedInput'>
                               <span class="user-info-row-title">Prénom</span>
                                 <input (change)="onChangeUserInfo('nickname', $event.target.value)" [value]="userInfoPerso['nickname'] || ''"  class="basic-input smallHeight "/>
                             </div>
       
                             
-                          <div class='user-info-row-cont nestedInput'>
+                          <div *ngIf="signUp" class='user-info-row-cont nestedInput'>
                               <span class="user-info-row-title">Nom</span>
                                 <input (change)="onChangeUserInfo('name', $event.target.value)"  [value]="userInfoPerso['name'] || ''"  class="basic-input smallHeight "/>
                             </div>
@@ -221,7 +218,12 @@
                       <button  class="next-btn col-3" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
                     
                   </div>
-                  <span (click)="signuptrue()"  style='margin-top: -10px;' class='user-info-row-title textcenter'>Déja membre ? <a (click)="signuptrue()" href="#">Connexion</a></span>
+
+                  <div class="row toggleCont">
+                    <label><input  (change)="signuptrue()" type="checkbox" class="ios-switch"  /><div><div></div></div></label>
+                    <span class="tailleperso">Déja membre ?</span>
+                </div>
+                  <!-- <span (click)="signuptrue()"  style='margin-top: -10px;' class='user-info-row-title textcenter'>Déja membre ? <a  href="#">Connexion</a></span> -->
       
                   </div>
                   

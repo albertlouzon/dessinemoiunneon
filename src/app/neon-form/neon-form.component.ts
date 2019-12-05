@@ -204,7 +204,6 @@ export class NeonFormComponent implements OnInit {
     }, err => { 
       if(err.status === 201 || err.status === 200 ) {
         console.log('debu 9   ');
-
         currentView.caca = 'client';
         console.log('success', currentView.caca)
       }

@@ -52,8 +52,10 @@ export class NeonListComponent implements OnInit {
 
   goToNeonDetail(neonPayload) {
     console.log('the neon to see: ', neonPayload);
-    if(neonPayload) {
-      this.neonSelected = neonPayload
+    if(neonPayload && neonPayload.state !== 'created') {
+      this.neonSelected = neonPayload 
+    } else {
+      alert('le DT est en cours de préparation')
     }
 
   }

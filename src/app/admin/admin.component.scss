@@ -36,7 +36,18 @@ h2 {
 }
 
 
-
+.blendContainer{
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    opacity: .5;
+    z-index: 5;
+    background: white;
+    background-blend-mode: multiply;
+  }
+  
 
 .admin-list-cont {
       

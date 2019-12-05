@@ -326,6 +326,9 @@
 
       </div>
 
-<div *ngIf="loading" class="blendContainer">
-
-</div>
+      <div *ngIf="loading" class="blendContainer">
+        <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">
+                <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->
+                <circle stroke="#f4cc20" class="path" cx="25" cy="25" r="20" fill="none" stroke-width="8.3"></circle>
+              </svg>
+    </div>

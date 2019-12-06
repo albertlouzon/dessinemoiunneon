@@ -87,6 +87,22 @@ export class NeonListComponent implements OnInit {
   previous() {
     this.commandMode = false;
   }
+
+  changeCommandToPaid() {
+    this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'payé';
+    this.user['changeCommand'] = {text: 'Votre facture', newState: 'payé'};
+
+    this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
+      alert('Néon commandé. Email sent')
+      this.fetchCommands();
+
+    }, err => {
+      if (err.status === 200) {
+        alert('Néon commandé. Email sent')
+        this.fetchCommands();
+      }
+    });
+  }
   openCommand() {
     if (this.neonSelected.state === "commandé") {
       this.commandFailed = false;
@@ -109,6 +125,7 @@ export class NeonListComponent implements OnInit {
           this.loading = false;
           this.payMode = true;
           this.removeStripe();
+          this.changeCommandToPaid();
         }
       });
    
@@ -139,6 +156,8 @@ export class NeonListComponent implements OnInit {
     this.loading = true;
     this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
     this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'commandé';
+    this.user['changeCommand'] = {text: 'Vous avez commandé', newState: 'commandé'};
+
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
       alert('Néon commandé. Email sent')
       this.fetchCommands();

@@ -87,7 +87,7 @@
 </div>
 
 
-<div *ngIf="neonSelected  && !commandMode " class='ec-bigbox-detail'>
+<div *ngIf="neonSelected  && !commandMode && !payMode" class='ec-bigbox-detail'>
     <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
 
   <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
@@ -363,8 +363,8 @@
 
 </div>
 
-<div>
-  
+<div *ngIf="payMode">
+  AHHAHAHAHAHAHA
 </div>
 <div *ngIf="loading" class="blendContainer">
   <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">

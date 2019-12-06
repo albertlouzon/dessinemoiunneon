@@ -16,6 +16,7 @@ export class NeonListComponent implements OnInit {
   neonList = [];
   commandMode = false;
   user = {};
+  handler: any;
   commandInfos: { nom: string, prénom: string, société: string, adresse: string, ville: string, ['code-postal']: string, pays: string, téléphone: string }
     = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };;
   errorMessage = 'Des champs sont incomplets...'
@@ -92,13 +93,12 @@ export class NeonListComponent implements OnInit {
       this.payInfos = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
       this.commandMode = false;
       // this.payMode = true;
-      this.loading = true;
       // setTimeout(() => {
       //   this.loading = false;
 
       // }, 3000);
       this.loadStripe();
-      var handler = (<any>window).StripeCheckout.configure({
+      this.handler = (<any>window).StripeCheckout.configure({
         key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
         locale: 'auto',
         token:  (token: any) => {
@@ -106,12 +106,13 @@ export class NeonListComponent implements OnInit {
           // Get the token ID to your server-side code for use.
           console.log(token)
           alert('Token Created!!');
+          this.loading = false;
           this.payMode = true;
           this.removeStripe();
         }
       });
    
-      handler.open({
+      this.handler.open({
         name: 'Stripe payment for:  ' + this.neonSelected.text,
         // description: '2 widgets',
         amount: this.neonSelected.price * 100
@@ -157,11 +158,25 @@ export class NeonListComponent implements OnInit {
   }
   loadStripe() {
 
-    if (!window.document.getElementById('stripe-script')) {
+    if(!window.document.getElementById('stripe-script')) {
       var s = window.document.createElement("script");
       s.id = "stripe-script";
       s.type = "text/javascript";
       s.src = "https://checkout.stripe.com/checkout.js";
+      
+      // s.onload = () => { this.loading = false;
+      //   this.handler = (<any>window).StripeCheckout.configure({
+      //     key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
+      //     locale: 'auto',
+      //     token: function (token: any) {
+      //       // You can access the token ID with `token.id`.
+      //       // Get the token ID to your server-side code for use.
+      //       console.log(token)
+      //       alert('Payment Success!!');
+      //     }
+      //   });
+      // }
+       
       window.document.body.appendChild(s);
     }
   }

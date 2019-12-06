@@ -145,9 +145,7 @@ export class NeonFormComponent implements OnInit {
                     }
                   })
                 })
-           
-  
-  
+          
               }, err => {
                 if(err.status === 201 || err.status === 200 )  {
                   console.log('debu 6');
@@ -186,7 +184,7 @@ export class NeonFormComponent implements OnInit {
                   alert('Signup failed'); console.log('signup failed', err);
                   this.loading = false;
                 }
-              })
+              })  
             }
           }
         })

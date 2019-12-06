@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -36,28 +36,39 @@ this.fetchCommands();
   }
 
   importDT(event, command) {
+    let params = new HttpParams().set("userId",command.userId).set("commandId", command.id); //Create new HttpParams
+
     console.log('import DT. file :', event, ' command: ', command)
     const file = event.target.files[0];
     let formData: FormData = new FormData(); 
     formData.append('file', file);
-    this.http.get('https://neon-server.herokuapp.com/users/' + command['userId']).subscribe((user) => {
-      console.log('user:' , user)
-      let updatedUser = user[0];
-      updatedUser['dtFile'] = formData;
-      updatedUser['changeCommand'] = {text: command.text, newState: 'DT disponible'};
-      if(updatedUser['commands'].find(x => x.id === command['id'])) {
-        updatedUser['commands'].find(x => x.id === command['id']).state = 'DT disponible';
-        this.http.put('https://neon-server.herokuapp.com/users/' + command['userId'], updatedUser).subscribe((res) => {
 
-        }, err => {
-          if(err.status === 200) {
-            this.fetchCommands();
-          }
-        });
-      } else {
-        console.log('cant find this command in user: ', updatedUser)
-      }
-    })
+    this.http.post('https://neon-server.herokuapp.com/fileUpload', formData, {params: params}).subscribe((user) => {
+      console.log('sucess:' , file);
+      this.fetchCommands();
+    //       this.http.get('https://neon-server.herokuapp.com/users/' + command['userId']).subscribe((user) => {
+    //   console.log('user:' , user)
+    //   let updatedUser = user[0];
+    //   updatedUser['dtFile'] = formData;
+    //   updatedUser['changeCommand'] = {text: command.text, newState: 'DT disponible'};
+    //   if(updatedUser['commands'].find(x => x.id === command['id'])) {
+    //     updatedUser['commands'].find(x => x.id === command['id']).state = 'DT disponible';
+    //     this.http.put('https://neon-server.herokuapp.com/users/' + command['userId'], updatedUser).subscribe((res) => {
+    //       alert('DT uploaded. Email sent')
+
+    //     }, err => {
+    //       if(err.status === 200) {
+    
+    //         this.fetchCommands();
+    //       }
+    //     });
+    //   } else {
+    //     console.log('cant find this command in user: ', updatedUser)
+    //   }
+    // })
+ 
+    },err => console.log('err' , err))
+
   }
 
   getConfig() {

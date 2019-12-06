@@ -94,7 +94,7 @@
 
   <div class="ec-top-row-detail row">
     <div class="col-8 neon-canvas-cont">
-      <div class="neon-canvas"></div>
+      <div [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
       <div class="neon-bar">
         <div class="neon-bar-item">Incassable</div>
         <div class="neon-bar-item">Réistant à l'eau</div>
@@ -103,8 +103,11 @@
         <div style="flex: 0.6"></div>
 
         <div class="bar-btn-cont">
-            <button  class="prev-btn" >Télécharger mon dessin</button>
-            <button   class="prev-btn" >Demander une notification</button>
+            <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
+
+
+            <button click class="prev-btn" ><a  target="_blank" [href]="neonSelected.filePath">Télécharger mon dessin</a></button>
+            <!-- <button   class="prev-btn" >Demander une notification</button> --> 
 
         </div>
       </div>
@@ -138,7 +141,7 @@
               </tr>
               <tr >
                   <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
-                  <td  style="font-family: Mukta-Regular;" data-column="Etat">Traitement en cours</td>
+                  <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.state}}</td>
                 </tr>
       
             </tbody>
@@ -150,7 +153,9 @@
               <span class="neon-tarif-blabla">Livraison incluse </span>
 
             </div>
-            <button  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Commander</button>
+            <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button>
+            <button  *ngIf="neonSelected.state !== 'commandé' && neonSelected.state !== 'payé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Commander</button>
+
           </div>
     </div>
 
@@ -246,39 +251,39 @@
         <div class="row livraisonRow">
             <div class='user-info-row-cont nestedInput col-5'>
                 <span class="user-info-row-title">Prénom</span>
-                  <input class="basic-input  "/>
+                  <input  (change)="onChangeCommandInfo('prénom', $event.target.value)"  class="basic-input  "/>
               </div>
   
               <div class="col-2"></div>
             <div class='user-info-row-cont nestedInput col-5'>
                 <span class="user-info-row-title">Nom</span>
-                  <input   class="basic-input "/>
+                  <input (change)="onChangeCommandInfo('nom', $event.target.value)"   class="basic-input "/>
               </div>
 
         </div>
 
         <div class=' livraisonRow user-info-row-cont'>
             <span class="user-info-row-title">Société (facultatif)</span>
-              <input   class="basic-input "/>
+              <input (change)="onChangeCommandInfo('société', $event.target.value)"   class="basic-input "/>
 
           </div>
 
           <div class=' livraisonRow user-info-row-cont'>
               <span class="user-info-row-title">Adresse</span>
-                <input   class="basic-input "/>
+                <input  (change)="onChangeCommandInfo('adresse', $event.target.value)"  class="basic-input "/>
   
             </div>
 
             <div class="row livraisonRow">
                 <div class='user-info-row-cont nestedInput col-5'>
                     <span class="user-info-row-title">Ville</span>
-                      <input class="basic-input  "/>
+                      <input (change)="onChangeCommandInfo('ville', $event.target.value)"  class="basic-input  "/>
                   </div>
       
                   <div class="col-2"></div>
                 <div class='user-info-row-cont nestedInput col-5'>
                     <span class="user-info-row-title">Code postal</span>
-                      <input   class="basic-input "/>
+                      <input (change)="onChangeCommandInfo('code-postal', $event.target.value)"   class="basic-input "/>
                   </div>
     
             </div>
@@ -287,18 +292,21 @@
             <div class="row livraisonRow">
                 <div class='user-info-row-cont nestedInput col-5'>
                     <span class="user-info-row-title">Pays</span>
-                      <input class="basic-input  "/>
+                      <input (change)="onChangeCommandInfo('pays', $event.target.value)"  class="basic-input  "/>
                   </div>
       
                   <div class="col-2"></div>
                 <div class='user-info-row-cont nestedInput col-5'>
                     <span class="user-info-row-title">Téléphone</span>
-                      <input   class="basic-input "/>
+                      <input (change)="onChangeCommandInfo('téléphone', $event.target.value)"   class="basic-input "/>
                   </div>
     
             </div>
-     
+            <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
+            <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Passer ma commande</button>
+
       </div>
+
     </div>
     <div class="col-1"></div>
     <div class="col-5">

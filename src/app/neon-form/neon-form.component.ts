@@ -44,10 +44,14 @@ export interface ActiveSlides {
   encapsulation: ViewEncapsulation.None
 })
 export class NeonFormComponent implements OnInit {
-  formatSizes: Array<{size:string, width: number}> = [{size: 'S', width: 25},{size: 'M', width: 35}, {size: 'L', width: 45}, {size: 'XL', width: 50} ];
+  formatSizes: Array<{size:string, width: number, url: string}> = [{size: 'S', width: 25, url: '../.././assets/Fichier-S.png'
+},
+  {size: 'M', width: 35, url: '../.././assets/Fichier-M.png'}, 
+  {size: 'L', width: 45, url: '../.././assets/Fichier-L.png'}, 
+  {size: 'XL', width: 50, url: '../.././assets/Fichier-XL.png'} ];
   selectedFormatSize = 0;
   imageSupportSelected = 'standard';
-  projectType = 'consumer'
+  projectType = 'consumer';
   userChoices = {};
   userInfoPerso  =  {};
   trim = String.prototype.trim;
@@ -100,17 +104,17 @@ export class NeonFormComponent implements OnInit {
   ]
 
   colorList = [
-    {name: 'blancFroid' , color: '#ffffff'},
-    {name: 'blancChaud' , color: '#ddcaaf'},
-    {name: 'orange' , color: '#ffa42c'},
-    {name: 'jaune' , color: '#ffe600'},
-    {name: 'rouge' , color: '#ff0000'},
-    {name: 'rose' , color: '#ff73ff'},
-    {name: 'fuschia' , color: '#df29ff'},
-    {name: 'violet' , color: '#9527ff'},
-    {name: 'bleu' , color: '#337dff'},
-    {name: 'vert' , color: '#15e81f'},
-    {name: 'turquoise' , color: '#17fff9'},
+    {name: 'blancFroid' , color: '#ffffff', url: '../.././assets/blanc.png' },
+    {name: 'blancChaud' , color: '#ddcaaf', url: '../.././assets/blancChaud.png' },
+    {name: 'orange' , color: '#ffa42c', url: '../.././assets/orange.png' },
+    {name: 'jaune' , color: '#ffe600', url: '../.././assets/jaune.png' },
+    {name: 'rouge' , color: '#ff0000', url: '../.././assets/rouge.png' },
+    {name: 'rose' , color: '#ff73ff', url: '../.././assets/rose.png' },
+    {name: 'fuschia' , color: '#df29ff', url: '../.././assets/fuschia.png' },
+    {name: 'violet' , color: '#9527ff', url: '../.././assets/violet.png' },
+    {name: 'bleu' , color: '#337dff', url: '../.././assets/bleu.png' },
+    {name: 'vert' , color: '#15e81f', url: '../.././assets/vert.png' },
+    {name: 'turquoise' , color: '#17fff9', url: '../.././assets/turquoise.png' },
   ]
   @Input()
   isNavigationVisible = true;

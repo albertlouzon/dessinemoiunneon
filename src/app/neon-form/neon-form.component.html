@@ -156,16 +156,27 @@
 
         <!-- <div class="wrapper"> -->
           <!-- <div class="item float-item"> -->
-            <ul id="flexible">
+
+            
+        <div  class=" row colorCont">
+            <div class='col-2 colorIcon'   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color)" 
+              *ngFor="let color of colorList;  let i = index">
+  
+  
+              <!-- <div class=format-subtitle>{{format.width}}</div>  -->
+            </div>
+  
+          </div>
+            <!-- <ul id="flexible">
               <li [style.background-color]="color.color"  (click)="onSelectColor(color)" *ngFor="let color of colorList">
               </li>
              
-            </ul>
+            </ul> -->
           <!-- </div> -->
         <!-- </div> -->
 
 
-        <div class="neon-wizard-btn-container pb5">
+        <div class="neon-wizard-btn-container flex0">
           <button  class="next-btn col-3"  type="button" awPreviousStep>Précedent</button>
           <button [ngClass]="!selectedColor? 'next-btn col-3 disabled' : 'next-btn col-3'"  type="button" [disabled]="!selectedColor" awNextStep>Suivant</button>
 
@@ -178,11 +189,10 @@
           <h5>Choisissez votre format</h5>
         </div>
 
-        <div class="size-container row flex3">
-          <div class="circle-cont col" (click)="selectedFormatSize = i"
+        <div  class=" row flex3">
+          <div  [ngClass]=" selectedFormatSize=== i? 'size yellow-selected  col-3' : 'size  col-3'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="selectedFormatSize = i"
             *ngFor="let format of formatSizes;  let i = index">
-            <div [ngClass]="{'circle yellow-selected': selectedFormatSize===i, 'circle':selectedFormatSize!=='i' }">
-              {{format.size}}</div>
+
 
             <!-- <div class=format-subtitle>{{format.width}}</div>  -->
           </div>

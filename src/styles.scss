@@ -55,8 +55,9 @@
   justify-content: center;
   align-items: center;
 }
-
-
+.flex0 {
+  flex: 0 !important;
+}
 #progress-circle {
   height: 78px;
   & .path {

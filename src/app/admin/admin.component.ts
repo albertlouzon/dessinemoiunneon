@@ -15,6 +15,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   commandPrice = 0;
   currentFile;
   pollInterval;
+  numOfCommands = 0;
+  numOfCreated = 0;
+  numOfDT = 0;
+  numOfPayes = 0;
+
   ngOnInit() {
        // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
 this.fetchCommands();
@@ -136,7 +141,12 @@ changePrice(price) {
     this.loading = true;
     this.neonList = []
     this.currentFile = null,
-    this.commandPrice = 0;    
+    this.commandPrice = 0;  
+    this.numOfCommands = 0;  
+    this.numOfCreated = 0;  
+    this.numOfDT = 0;  
+    this.numOfPayes = 0;  
+
     this.getConfig().subscribe((res: Array<Object>) => {
       this.loading = false;
       if(res) {
@@ -146,6 +156,16 @@ changePrice(price) {
              this.neonList.push({email: user['email'], type: user['type'], text: command ['text'], state: command['state'], price: command['price'], userId: user['id'], id: command['id'],
              commandInfo: command['commandInfo'], filePath: command['filePath'], userFull: user , typo: command['typo'],
               colors: command['colors'], height: command['height'], support: command['support']});
+              this.numOfCommands++;
+              if(command['state'] === 'created') {
+                  this.numOfCreated++;
+              }
+              if(command['state'] === 'DT disponible') {
+                this.numOfDT++;
+            }
+            if(command['state'] === 'payé') {
+              this.numOfPayes++;
+          }
            })
           }
         })

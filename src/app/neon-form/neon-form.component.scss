@@ -233,6 +233,8 @@ display: none;
     .turquoise {
       color: #17fff9 !important;
     }
+
+
 .thumbnails li {
   cursor: pointer;
   /* padding: 6%; */
@@ -702,9 +704,32 @@ margin: 10px;
 .mt3 {
   margin-top: 2.5%;
 }
-.size-container {
-    display: flex;
+.size-container  {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 1rem;
 }
+
+.colorCont {
+  height: 50%;
+}
+.colorIcon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 1rem;
+  margin-bottom: 5px;
+  margin-top: 5px;
+cursor: pointer;
+}
+.size {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 1rem;
+cursor: pointer;}
 .circle-cont {
     align-self: center;
     .circle {

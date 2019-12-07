@@ -17,6 +17,8 @@ export class NeonListComponent implements OnInit {
   commandMode = false;
   user = {};
   handler: any;
+  snackbarClass = '';
+  snackMsg = 'Oops'
   commandInfos: { nom: string, prénom: string, société: string, adresse: string, ville: string, ['code-postal']: string, pays: string, téléphone: string }
     = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };;
   errorMessage = 'Des champs sont incomplets...'
@@ -55,7 +57,11 @@ export class NeonListComponent implements OnInit {
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
     this.fetchCommands();
   }
-
+  openSnackbar(msg) {
+    this.snackbarClass = 'show ';
+    this.snackMsg = msg;
+    setTimeout(() => { this.snackbarClass = ''; }, 3000);
+  }
   fetchCommands() {
     this.neonList = []
     this.loading = true;
@@ -64,7 +70,7 @@ export class NeonListComponent implements OnInit {
         this.loading = false;
         console.log('ok ', res, localStorage.getItem('email'))
         if (!res.find(x => x['email'] === localStorage.getItem('email')) || !localStorage.getItem('email')) {
-          alert('you are not logged in. T as rien a faire la va t inscrire');
+          this.openSnackbar('Vous n êtes pas connecté à votre compte. Veuillez vous connecter ou créer un compte.')
           currentView['caca'] = 'login'
         } else {
           console.log(localStorage.getItem('email'))
@@ -98,11 +104,9 @@ export class NeonListComponent implements OnInit {
 
   goToNeonDetail(neonPayload) {
     console.log('the neon to see: ', neonPayload);
-    if (neonPayload && neonPayload.state !== 'created') {
+    if (neonPayload) {
       this.neonSelected = neonPayload
-    } else {
-      alert('le DT est en cours de préparation')
-    }
+    } 
 
   }
   onChangeCommandInfo(field, value: string) {
@@ -119,12 +123,12 @@ export class NeonListComponent implements OnInit {
     this.user['changeCommand'] = {text: 'Votre facture', newState: 'payé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      alert('Néon payé. FActure sent')
+      this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !')
       // this.fetchCommands();
 
     }, err => {
       if (err.status === 200) {
-        alert('Néon payé. FActure sent')
+        this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !')
         // this.fetchCommands();
       }
     });
@@ -147,7 +151,8 @@ export class NeonListComponent implements OnInit {
           // You can access the token ID with `token.id`.
           // Get the token ID to your server-side code for use.
           console.log(token)
-          alert('Token Created!!');
+          // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !')
+
           this.loading = false;
           this.payMode = true;
           this.removeStripe();
@@ -185,12 +190,13 @@ export class NeonListComponent implements OnInit {
     this.user['changeCommand'] = {text: 'Vous avez commandé', newState: 'commandé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      alert('Néon commandé. Email sent')
+      this.openSnackbar('Votre demande à été enregistrée. Notre équipe va designer votre dessin technique !')
+
       this.fetchCommands();
 
     }, err => {
       if (err.status === 200) {
-        alert('Néon commandé. Email sent')
+        this.openSnackbar('Votre demande à été enregistrée. Notre équipe va designer votre dessin technique !')
         this.fetchCommands();
       }
     });

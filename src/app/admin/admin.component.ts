@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
   neonSelected = 'none';
   neonList = [];
   cachedList = [];
@@ -14,9 +14,17 @@ export class AdminComponent implements OnInit {
   loading = false;
   commandPrice = 0;
   currentFile;
+  pollInterval;
   ngOnInit() {
        // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
 this.fetchCommands();
+this.pollInterval = setInterval(() => {
+  this.fetchCommands();
+}, 80000)
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.pollInterval);
   }
   goToDetail(command) {
     this.neonSelected = command;
@@ -38,8 +46,12 @@ this.fetchCommands();
     if(type === 'Payé') {
       this.neonList = this.cachedList.filter(c => c.state === 'payé')
     }
+    
     if(type === 'all') {
       this.neonList = this.cachedList;
+    } else {
+      this.neonList = this.cachedList.filter(c => c.typo === type)
+
     }
   }
 
@@ -86,28 +98,31 @@ fromCreatedToDT(command){
 }
 deleteCommand(command){
   const del = confirm("Confirmer vouloir effacer " + command.text);
-  if(command['userFull']) {
-    command['userFull']['commands'] =  command['userFull']['commands'].filter(c => c.id !== command.id);
-    
-    this.http.put('https://neon-server.herokuapp.com/users/' + command['userId'],  command['userFull']).subscribe((res) => {
-      // this.fetchCommands();
-      alert('Commande effacée');
-      setTimeout(() => {
-        this.fetchCommands();
-      }, 500);
-
-    }, err => {
-      if (err.status === 200) {
+  if(del) {
+    if(command['userFull']) {
+      command['userFull']['commands'] =  command['userFull']['commands'].filter(c => c.id !== command.id);
+      
+      this.http.put('https://neon-server.herokuapp.com/users/' + command['userId'],  command['userFull']).subscribe((res) => {
+        // this.fetchCommands();
         alert('Commande effacée');
         setTimeout(() => {
           this.fetchCommands();
         }, 500);
-        // this.fetchCommands();
-      }
-    });
-  } else {
-    alert("cant delete")
+  
+      }, err => {
+        if (err.status === 200) {
+          alert('Commande effacée');
+          setTimeout(() => {
+            this.fetchCommands();
+          }, 500);
+          // this.fetchCommands();
+        }
+      });
+    } else {
+      alert("cant delete")
+    }
   }
+
 }
 
 changePrice(price) {

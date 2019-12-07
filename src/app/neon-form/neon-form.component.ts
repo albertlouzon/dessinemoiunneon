@@ -71,19 +71,19 @@ export class NeonFormComponent implements OnInit {
   slides = [
     {
       url: '../.././assets/Billie-16.png',
-      font: 'TheAbsolute'
+      font: 'Billie'
     },
     {
       url: '../.././assets/Cobby-16.png',
-      font: 'Nickainley'
+      font: 'Cobby'
     },
     {
       url: '../.././assets/Jackie-16.png',
-      font: 'Hero'
+      font: 'Jackie'
     },
     {
       url: '../.././assets/Jerry-16.png',
-      font: 'Australia'
+      font: 'Jerry'
     },
     {
       url: '../.././assets/Jimmy-16.png',
@@ -91,11 +91,11 @@ export class NeonFormComponent implements OnInit {
     },
     {
       url: '../.././assets/Johnny-16.png',
-      font: 'Quinzey_Bold'
+      font: 'Johnny'
     },
     {
       url: '../.././assets/Perrie-16.png',
-      font: 'Rigoletto'
+      font: 'Perrie'
     },
   ]
 

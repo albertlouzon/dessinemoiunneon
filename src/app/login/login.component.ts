@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   projectType = 'consumer';
   name :'';
   nickname : '';
+  snackbarClass = '';
+  snackMsg = 'Oops'
   society: '';
   loading = false;
   signUpError = 'Vous devez fournir un email et un mot de passe...';
@@ -78,18 +80,24 @@ export class LoginComponent implements OnInit {
             this.loginFailed = false;
             this.signUpError = 'Vous devez fournir un email et un mot de passe...'
             this.signUp().subscribe(() => {
-              alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
-              this.saveToStorage();
+              this.openSnackbar('Votre utilisateur à été crée !!!')
+              // alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
+              setTimeout(() => {
+                this.saveToStorage();
               this.loading = false;
               currentView.caca = 'client'
+              }, 2000);
             }, err => {
               if(err.status === 201)  {
-                alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
+                              this.openSnackbar('Votre utilisateur à été crée !!!')
+                // alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
+                setTimeout(() => {
+                  this.saveToStorage();
                 this.loading = false;
-              this.saveToStorage();
-              currentView.caca = 'client'
+                currentView.caca = 'client'
+                }, 2000);
               } else {
-                alert('Signup failed'); console.log('signup failed', err);
+                this.openSnackbar('Le mot de passe est incorrect')
                 this.loading = false;
               }
             })
@@ -112,8 +120,9 @@ export class LoginComponent implements OnInit {
         this.loginFailed = false;
         this.saveToStorage();
         const name = userData.find(x => x.email === this.email)['name']
-        alert('Wesh ' + name);
+        // this.openSnackbar('Rebonjour ' + name + ' !!!');
         currentView.caca = 'client';
+
         
       }, err => {
         console.log('failed login ', err);
@@ -122,6 +131,11 @@ export class LoginComponent implements OnInit {
       })
     }
     
+  }
+  openSnackbar(msg) {
+    this.snackbarClass = 'show ';
+    this.snackMsg = msg;
+    setTimeout(() => { this.snackbarClass = ''; }, 3000);
   }
 
   onChangeUserInfoSignUp(target, value) {

@@ -224,10 +224,10 @@
         <h5 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h5>
 
         <div class="neon-wizard-btn-container flex3 ">
-          <button type="button"  [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'" (click)="onCompleteStep(5, 'business', null)"
-            >Professionnel</button>
-          <button type="button"  [ngClass]=" projectType==='consumer'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'"  (click)="onCompleteStep(5, 'consumer', null)"
-            >Personnel</button>
+          <div  [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'" (click)="onCompleteStep(5, 'business', null)"
+            >Professionnel</div>
+          <div [ngClass]=" projectType==='consumer'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'"  (click)="onCompleteStep(5, 'consumer', null)"
+            >Personnel</div>
 
 
         </div>

@@ -24,6 +24,32 @@ export class NeonListComponent implements OnInit {
   loading = false;
   payInfos = {};
   payMode = false;
+  // colorsList = {
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+  //   blancFroid:'#ffffff',
+    
+  // }
+  //  [
+  //   {name: 'blancFroid' , color: '#ffffff'},
+  //   {name: 'blancChaud' , color: '#ddcaaf'},
+  //   {name: 'orange' , color: '#ffa42c'},
+  //   {name: 'jaune' , color: '#ffe600'},
+  //   {name: 'rouge' , color: '#ff0000'},
+  //   {name: 'rose' , color: '#ff73ff'},
+  //   {name: 'fuschia' , color: '#df29ff'},
+  //   {name: 'violet' , color: '#9527ff'},
+  //   {name: 'bleu' , color: '#337dff'},
+  //   {name: 'vert' , color: '#15e81f'},
+  //   {name: 'turquoise' , color: '#17fff9'},
+  // ]
   ngOnInit() {
 
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))

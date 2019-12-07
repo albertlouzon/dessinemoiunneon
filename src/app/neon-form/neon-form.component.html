@@ -1,6 +1,6 @@
 <div class='form-container'>
   <input (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput"  maxlength="25" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
-   style="align-self: center; text-align: center; letter-spacing: 2px;"  *ngIf="userChoices[0] === 'text'" class='dynamicNeonTitle'>
+   style="align-self: center; text-align: center; letter-spacing: 2px;"  *ngIf="userChoices[0] === 'text'" >
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
 

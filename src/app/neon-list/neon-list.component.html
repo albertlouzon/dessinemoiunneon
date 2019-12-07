@@ -1,3 +1,6 @@
+<div  *ngIf="!neonSelected && !commandMode" class="ec-top-layer"></div>
+
+
 <div  *ngIf="!neonSelected && !commandMode" class="ec-bigbox">
   <div class="row ec-top-row">
     <div class="col-4 ec-petit-prince"></div>
@@ -34,12 +37,12 @@
     <div class="cards-list">
   
       <div class="card 1">
-       <div class="card_image">
+       <div [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'"  class="card_image">
 
        </div>
        <div class="card_content">
         <span class="ec-card-title">
-          Paiement sécurisé
+          Paiement sécurisé 
 
         </span>
         <span class="ec-card-descr">
@@ -50,7 +53,7 @@
       </div>
       
         <div class="card 2">
-          <div class="card_image">
+          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'"  class="card_image">
 
           </div>
           <div class="card_content">
@@ -65,7 +68,7 @@
       </div>
       
       <div class="card 3">
-        <div class="card_image">
+        <div class="card_image"  [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'" >
 
         </div>
         <div class="card_content">
@@ -98,10 +101,25 @@
       <div *ngIf="neonSelected.state === 'created'"   class="neon-canvas"><div class='no-dt'>Dessin technique en cours de design</div></div>
 
       <div class="neon-bar">
-        <div class="neon-bar-item">Incassable</div>
-        <div class="neon-bar-item">Réistant à l'eau</div>
-        <div class="neon-bar-item">50 000 heures</div>
-        <div class="neon-bar-item">Technologie LED</div>
+        <div class="neon-bar-item-cont">
+            <div  [style.backgroundImage]="'url('+ '../.././assets/Incassable.png' +')'"  class="neon-bar-item"></div>
+            <span>Incassable</span>
+        </div>
+
+        <div class="neon-bar-item-cont">
+            <div  [style.backgroundImage]="'url('+ '../.././assets/aqua.png' +')'"  class="neon-bar-item"></div>
+            <span>Réistant à l'eau</span>
+        </div>
+
+        <div class="neon-bar-item-cont">
+            <div  [style.backgroundImage]="'url('+ '../.././assets/horloge.png' +')'"  class="neon-bar-item"></div>
+            <span>50 000 heures</span>
+        </div>
+
+        <div class="neon-bar-item-cont">
+            <div  [style.backgroundImage]="'url('+ '../.././assets/LED.png' +')'"  class="neon-bar-item"></div>
+            <span>Technologie LED</span>
+        </div>
         <div style="flex: 0.6"></div>
 
         <div class="bar-btn-cont">

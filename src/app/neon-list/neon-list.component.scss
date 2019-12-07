@@ -12,8 +12,19 @@
 .ec-top-row-detail {
   height: 45%;
 }
+
+.ec-top-layer {
+  height: 584px;  margin: 2em;
+  width: 60%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('../../assets/Illu-espace-client.png');
+}
 .ec-top-row {
-  height: 55%;
+  height: 65%; 
+
 }
 
 .ec-bottom-row {
@@ -121,11 +132,18 @@ h2 {
   flex-direction: row;
 }
 
+.card {
+  padding: 1em;
+}
+
 .card .card_image {
   width: inherit;
   // background-color: lightgray;
   height: inherit;
   flex:1;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: contain;
 }
 .big_card_content {
   display: flex;
@@ -406,13 +424,30 @@ box-shadow: 5pxs 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.
     justify-content: space-around;
 }
 
+.neon-bar-item-cont {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  margin-top: 5px;
+}
+
+.neon-bar-item-cont span {
+  text-align: center;
+  color: #000b31;
+  font-family: Mukta-Regular, sans-serif;
+}
+
 .neon-bar-item {
     font-family: Mukta-Regular, sans-serif;
     font-size: 11px;
     flex: 1;
-    align-self: flex-end;
+    height: 80%;
     text-align: center;
     color: #000b31; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
 }
 

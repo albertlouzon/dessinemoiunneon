@@ -34,7 +34,210 @@ h2 {
     font-family: Nunito-Black, sans-serif;
     color: #000b31;
 }
+.bottom-row-cont {
+    padding: 2rem;
+}
+.bottom-row-cont, .neon-detail-container {
+    
+    table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    }
+    
+    /* Zebra striping */
+    
+    .table-position-circle {
+      padding: 5px;
+      border-radius: 50%;
+    
+      font-size: 10px;
+      background-color: #D61F6A;
+      text-align: center;
+      display: inline-block;
+      width: 20px;
+      color: white !important;
+      height: 20px;
+      margin-right: 3%;
+    }
+    
+    
+    tr, td {
+      color: #000b31; 
+      border-bottom: 1px solid #D5D5D5;
+      font-family: Nunito-Regular, sans-serif;
+    }
+    
 
+    
+    td, th { 
+    padding: 3px; 
+      text-align: left; 
+    //   cursor: pointer;
+    //   padding-bottom: 20px;
+      font-family: Mukta-Bold, sans-serif;
+    }
+    
+    th {
+      font-size: 17px;
+    }
+    
+    td {
+      font-size: 14px;
+    }
+    /* 
+    Max width before this PARTICULAR table gets nasty
+    This query will take effect for any screen smaller than 760px
+    and also iPads specifically.
+    */
+    @media 
+    only screen and (max-width: 760px) {
+    
+    table { 
+        width: 100%; 
+    }
+    
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 50%; 
+    }
+    
+    td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+      /* Label the data */
+      content: attr(data-column);
+    
+      color: #000;
+      font-weight: bold;
+    }
+    
+    }
+    }
+    
+.ec-bigbox-detail {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+  .ec-top-row-detail {
+    height: 45%;
+  }
+  .ec-top-row {
+    height: 55%;
+  }.neon-canvas-cont {
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    border: 1px solid #000b31;
+    padding: 0;
+    background-color: white;
+}
+
+.neon-canvas {
+    // height: 85%;
+    height: 100%;
+    width: 100%;
+    // background-image: url('../../assets/outer-space-neon.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+
+.neon-bar {
+  background-color: #F4F4F4;
+    display: flex;
+    height: 15%;
+}
+
+.bar-btn-cont {
+    flex: 3;
+    display: flex;
+    justify-content: space-around;
+}
+
+.neon-bar-item {
+    font-family: Mukta-Regular, sans-serif;
+    font-size: 11px;
+    flex: 1;
+    align-self: flex-end;
+    text-align: center;
+    color: #000b31; 
+
+}
+
+.neon-bar .prev-btn {
+  font-size: 11px !important  ;
+  align-self: center !important;
+
+}
+
+.detail-configu-title {
+  font-family: Nunito-Black, sans-serif;
+  color: #000b31;
+  font-size: 17px;
+  padding-bottom: 5%;
+}
+
+.ec-bigbox-detail th, .ec-bigbox-detail td {
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
+.ec-bigbox-detail tr {
+  border-bottom: 1px solid #D5D5D5;
+
+}
+
+.neon-tarif-cont {
+  border: 1px solid #D5D5D5;
+  border-radius: 15px;
+  padding-top: 5%;
+  margin-top: 5%;
+  margin-left: -5%;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.neon-tarif {
+  display: flex;
+  flex-direction: column;
+  color: #000b31;
+  margin-left: 5%;
+}
+
+.neon-tarif-price {
+  font-size: 24px;
+  font-family: Mukta-Bold, sans-serif;
+}
+
+
+.neon-tarif-blabla {
+  font-size: 11px;
+  font-family: Mukta-Regular, sans-serif;
+}
 
 .blendContainer{
     position: fixed;
@@ -150,3 +353,63 @@ h2 {
   
   }
     }
+
+    
+
+    input[type=file] {
+        height: 30px;
+        overflow: hidden;
+        margin-left: 3%;
+        cursor: pointer;
+      }
+      
+      input[type=file]:before {
+        height: 25px;
+        font-size: 16px;
+        padding: 3px;
+        content: 'Upload le DT';
+        // display: inline-block;
+        background: white;
+        border: 1px solid #000;
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      
+      input[type=file]::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+
+      
+.money{
+    display:inline-block;
+    border:1px solid #ababab;
+	-moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    margin-left: 3%;
+}
+
+.money > div {
+    display:inline-block;
+    padding:8px 8px 8px 8px;
+    font-size:14px;
+    cursor:text;
+    color:#666;
+/*     pointer-events: none; */
+}
+
+.money > input{
+    width:70px;
+    border:0;
+    padding:8px 4px 8px 8px;
+    margin:0;
+    font-size:14px;
+    color:#666;
+    cursor:text;
+    text-align:left;
+    outline:none;
+}
+
+.money > input::-ms-clear{
+    display: none;
+}

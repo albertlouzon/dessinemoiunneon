@@ -93,13 +93,13 @@ export class NeonListComponent implements OnInit {
     this.user['changeCommand'] = {text: 'Votre facture', newState: 'payé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      alert('Néon commandé. Email sent')
-      this.fetchCommands();
+      alert('Néon payé. FActure sent')
+      // this.fetchCommands();
 
     }, err => {
       if (err.status === 200) {
-        alert('Néon commandé. Email sent')
-        this.fetchCommands();
+        alert('Néon payé. FActure sent')
+        // this.fetchCommands();
       }
     });
   }

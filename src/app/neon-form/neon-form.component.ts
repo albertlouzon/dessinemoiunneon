@@ -84,7 +84,7 @@ export class NeonFormComponent implements OnInit {
       typo: mapTypo[this.styleSelected],
       colors: 'Not implemented', 
       height: this.formatSizes[this.selectedFormatSize].width,
-      price: Math.floor(Math.random() * 2000) + 1 ,
+      // price: Math.floor(Math.random() * 2000) + 1 ,
       state: 'created', 
       type: this.projectType
     }

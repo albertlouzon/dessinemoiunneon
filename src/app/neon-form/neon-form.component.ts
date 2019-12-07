@@ -207,6 +207,7 @@ onSelectColor(color) {
       text: this.textInput,
       typo: this.selectedTypo,
       colors: this.selectedColor, 
+      support: this.imageSupportSelected, 
       height: this.formatSizes[this.selectedFormatSize].width,
       // price: Math.floor(Math.random() * 2000) + 1 ,
       state: 'created', 

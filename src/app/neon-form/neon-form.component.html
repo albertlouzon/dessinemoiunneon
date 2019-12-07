@@ -195,10 +195,14 @@
         <h5 class="neon-wizard-header flex1">Choisissez votre support</h5>
 
         <div class="neon-wizard-btn-container flex3 ">
-          <button type="button" class="form-btn  col-5" (click)="imageSupportSelected = 'détouré'" awNextStep>Image
-            détouré</button>
-          <button type="button" class="form-btn  col-5" (click)="imageSupportSelected = 'standard'" awNextStep>Image
-            standard</button>
+          <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected' : ''"
+           (click)="imageSupportSelected = 'détouré'" >
+            </div>
+
+            <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-standard-18.png' +')'"   id='supportImg'   [ngClass]=" imageSupportSelected==='standard'? 'yellow-selected' : ''"
+            (click)="imageSupportSelected = 'standard'" >
+          </div>
+  
 
 
 
@@ -206,6 +210,8 @@
         </div>
         <div class="neon-wizard-btn-container">
           <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+          <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+
         </div>
 
       </aw-wizard-step>
@@ -214,16 +220,17 @@
         <h5 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h5>
 
         <div class="neon-wizard-btn-container flex3 ">
-          <button type="button" class="form-btn  col-5" (click)="onCompleteStep(5, 'business', null)"
-            awNextStep>Professionnel</button>
-          <button type="button" class="form-btn  col-5" (click)="onCompleteStep(5, 'consumer', null)"
-            awNextStep>Personnel</button>
+          <button type="button"  [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'" (click)="onCompleteStep(5, 'business', null)"
+            >Professionnel</button>
+          <button type="button"  [ngClass]=" projectType==='consumer'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'"  (click)="onCompleteStep(5, 'consumer', null)"
+            >Personnel</button>
 
 
         </div>
 
         <div class="neon-wizard-btn-container">
           <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+          <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
         </div>
       </aw-wizard-step>
 

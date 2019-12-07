@@ -13,7 +13,18 @@
             <th >Recu le</th>
             <th >Etat</th>
             <th >Prix</th>  
-            <th >Détails</th>
+            <th >Filtrer
+                <div class="select">
+                    <select (change)="filterCommand($event.target.value)"  name="slct" id="slct">
+                      <option selected disabled>Choisit un filtre</option>
+                      <option value="all">Tout voir</option>
+                      <option value="Created">Created</option>
+                      <option value="DT disponible">DT disponible</option>
+                      <option value="Commandé">Commandé</option>
+                      <option value="Payé">Payé</option>
+                    </select>
+                  </div>
+            </th>
 
           </tr>
         </thead>
@@ -22,19 +33,19 @@
             <td (click)="goToDetail(command)" data-column="Yencli"><div class="table-position-circle">{{i+1}}</div>{{command.email}}</td>
             <td (click)="goToDetail(command)" data-column="Type">{{command.type}}</td>
             <td (click)="goToDetail(command)" data-column="Dessin technique">{{command.text}}</td>
-            <td (click)="goToDetail(command)" data-column="Recu le">?</td>
+            <td (click)="goToDetail(command)" data-column="Recu le">{{command.creationDate}}</td>
 
             <td (click)="goToDetail(command)" data-column="Etat">{{command.state}}</td>
             <td (click)="goToDetail(command)" data-column="Prix">{{command.price}}</td>
 
             <div class="row" >
-              <div class="col-10">
-                  <button  *ngIf="command.state === 'created'" (click)="fromCreatedToDT(command);"  style="padding-right: 30px; padding-left: 30px; margin-top: 5px;" class="next-btn">Envoyer DT et prix</button>
-                  <div  *ngIf="command.state === 'created'" class="money">
+              <div  class="col-10">
+                  <button  *ngIf="command.state === 'created'  && command.type === 'consumer'" (click)="fromCreatedToDT(command);"  style="padding-right: 30px; padding-left: 30px; margin-top: 5px;" class="next-btn">Envoyer DT et prix</button>
+                  <div  *ngIf="command.state === 'created' && command.type === 'consumer'" class="money">
                       <input (change)="changePrice($event.target.value)" type="text" class="numberOnly" autocomplete="off" maxlength="8" /><div>$</div>                      
                   </div>                  
                   
-                  <input *ngIf="command.state === 'created'" (change)="importDT($event, command)" type="file"   class="basic-input"/>
+                  <input *ngIf="command.state === 'created' && command.type === 'consumer'" (change)="importDT($event, command)" type="file"   class="basic-input"/>
                   <!-- <span *ngIf="currentFile && command.state === 'created'" style="text-align: center;">{{currentFile?.fileName}}</span> -->
 
               </div>

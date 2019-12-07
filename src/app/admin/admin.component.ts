@@ -9,6 +9,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class AdminComponent implements OnInit {
   neonSelected = 'none';
   neonList = [];
+  cachedList = [];
   constructor(private http: HttpClient) { }
   loading = false;
   commandPrice = 0;
@@ -21,6 +22,25 @@ this.fetchCommands();
     this.neonSelected = command;
     this.commandPrice = 0;
     console.log('command selected by admin : ', command)
+  }
+
+  filterCommand(type) {
+    console.log(type)
+    if(type === 'Created') {
+      this.neonList = this.cachedList.filter(c => c.state === 'created')
+    }
+    if(type === 'DT disponible') {
+      this.neonList = this.cachedList.filter(c => c.state === 'DT disponible')
+    }
+    if(type === 'Commandé') {
+      this.neonList = this.cachedList.filter(c => c.state === 'commandé')
+    }
+    if(type === 'Payé') {
+      this.neonList = this.cachedList.filter(c => c.state === 'payé')
+    }
+    if(type === 'all') {
+      this.neonList = this.cachedList;
+    }
   }
 
 
@@ -114,6 +134,7 @@ changePrice(price) {
         })
       }
       console.log('User data after fetch : ', this.neonList);
+      this.cachedList = this.neonList
     })
   }
 

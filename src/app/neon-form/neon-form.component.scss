@@ -46,7 +46,7 @@
 
   }
 
-  input[type=file] {
+  .basic-input-form {
     overflow: hidden;
     margin-left: 3%;
     cursor: pointer;
@@ -57,7 +57,7 @@
     font-family: Mukta-Bold, sans-serif;
   }
   
-  input[type=file]:before {
+  .basic-input-form:before {
     height: auto;
     padding-left: 30px;
     padding-right: 30px;
@@ -74,7 +74,7 @@
     font-family: Nunito-Black, sans-serif;
   }
   
-  input[type=file]::-webkit-file-upload-button {
+  .basic-input-form::-webkit-file-upload-button {
     visibility: hidden;
   }
 

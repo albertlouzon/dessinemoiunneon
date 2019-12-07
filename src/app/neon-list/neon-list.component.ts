@@ -19,8 +19,8 @@ export class NeonListComponent implements OnInit {
   handler: any;
   snackbarClass = '';
   snackMsg = 'Oops'
-  commandInfos: { nom: string, prénom: string, société: string, adresse: string, ville: string, ['code-postal']: string, pays: string, téléphone: string }
-    = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };;
+  commandInfos: { nom: string, prénom: string, adresse: string, ville: string, ['code-postal']: string, pays: string, téléphone: string }
+    = { nom: '', prénom: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };;
   errorMessage = 'Des champs sont incomplets...'
   commandFailed = false;
   loading = false;
@@ -143,31 +143,31 @@ export class NeonListComponent implements OnInit {
       //   this.loading = false;
 
       // }, 3000);
-      this.loadStripe();
-      this.handler = (<any>window).StripeCheckout.configure({
-        key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
-        locale: 'auto',
-        token:  (token: any) => {
-          // You can access the token ID with `token.id`.
-          // Get the token ID to your server-side code for use.
-          console.log(token)
-          // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !')
+      // this.loadStripe();
+      // this.handler = (<any>window).StripeCheckout.configure({
+      //   key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
+      //   locale: 'auto',
+      //   token:  (token: any) => {
+      //     // You can access the token ID with `token.id`.
+      //     // Get the token ID to your server-side code for use.
+      //     console.log(token)
+      //     // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !')
 
-          this.loading = false;
-          this.payMode = true;
-          this.removeStripe();
-          this.changeCommandToPaid();
-        }
-      });
+      //     this.loading = false;
+      //     this.payMode = true;
+      //     this.removeStripe();
+      //     this.changeCommandToPaid();
+      //   }
+      // });
    
-      this.handler.open({
-        name: 'Stripe payment for:  ' + this.neonSelected.text,
-        // description: '2 widgets',
-        amount: this.neonSelected.price * 100
-      });
+      // this.handler.open({
+      //   name: 'Stripe payment for:  ' + this.neonSelected.text,
+      //   // description: '2 widgets',
+      //   amount: this.neonSelected.price * 100
+      // });
     } else {
       this.commandFailed = false;
-      this.commandInfos = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
+      this.commandInfos = { nom: '', prénom: '',  adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
       this.commandMode = !this.commandMode;
 
     }
@@ -184,22 +184,23 @@ export class NeonListComponent implements OnInit {
     }
     console.log('the command is valid :', this.commandInfos);
     this.commandFailed = false;
-    this.loading = true;
-    this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
-    this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'commandé';
-    this.user['changeCommand'] = {text: 'Vous avez commandé', newState: 'commandé'};
+    this.payMode = true;
+    // this.loading = true;
+    // this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
+    // this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'commandé';
+    // this.user['changeCommand'] = {text: 'Vous avez commandé', newState: 'commandé'};
 
-    this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      this.openSnackbar('Votre demande à été enregistrée. Notre équipe va designer votre dessin technique !')
+    // this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
+    //   this.openSnackbar('Votre demande à été enregistrée. Notre équipe va designer votre dessin technique !')
 
-      this.fetchCommands();
+    //   this.fetchCommands();
 
-    }, err => {
-      if (err.status === 200) {
-        this.openSnackbar('Votre demande à été enregistrée. Notre équipe va designer votre dessin technique !')
-        this.fetchCommands();
-      }
-    });
+    // }, err => {
+    //   if (err.status === 200) {
+    //     this.openSnackbar('Votre demande à été enregistrée. Notre équipe va designer votre dessin technique !')
+    //     this.fetchCommands();
+    //   }
+    // });
 
   }
   removeStripe() {
@@ -207,28 +208,28 @@ export class NeonListComponent implements OnInit {
     document.getElementById("stripe-script").outerHTML = "";
 
   }
-  loadStripe() {
+  // loadStripe() {
 
-    if(!window.document.getElementById('stripe-script')) {
-      var s = window.document.createElement("script");
-      s.id = "stripe-script";
-      s.type = "text/javascript";
-      s.src = "https://checkout.stripe.com/checkout.js";
+  //   if(!window.document.getElementById('stripe-script')) {
+  //     var s = window.document.createElement("script");
+  //     s.id = "stripe-script";
+  //     s.type = "text/javascript";
+  //     s.src = "https://checkout.stripe.com/checkout.js";
       
-      // s.onload = () => { this.loading = false;
-      //   this.handler = (<any>window).StripeCheckout.configure({
-      //     key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
-      //     locale: 'auto',
-      //     token: function (token: any) {
-      //       // You can access the token ID with `token.id`.
-      //       // Get the token ID to your server-side code for use.
-      //       console.log(token)
-      //       alert('Payment Success!!');
-      //     }
-      //   });
-      // }
+  //     // s.onload = () => { this.loading = false;
+  //     //   this.handler = (<any>window).StripeCheckout.configure({
+  //     //     key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
+  //     //     locale: 'auto',
+  //     //     token: function (token: any) {
+  //     //       // You can access the token ID with `token.id`.
+  //     //       // Get the token ID to your server-side code for use.
+  //     //       console.log(token)
+  //     //       alert('Payment Success!!');
+  //     //     }
+  //     //   });
+  //     // }
        
-      window.document.body.appendChild(s);
-    }
-  }
+  //     window.document.body.appendChild(s);
+  //   }
+  // }
 } 

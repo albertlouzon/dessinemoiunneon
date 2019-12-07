@@ -261,6 +261,142 @@
 </div>
 
 
+<div class="ec-bigbox" *ngIf="payMode">
+    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="previous();">Précédent</button>
+
+  <div class="row commandMainCont">
+    <div class="col-6 command-form-cont">
+      <h2>Mode de Paiement</h2>
+      <div class="command-form-card-payer row">
+          <h2>Carte bancaire</h2>
+
+          <div class=' livraisonRow user-info-row-cont'>
+              <span class="user-info-row-title">Numéro de carte</span>
+                <input  (change)="onChangeCommandInfo('adresse', $event.target.value)"  class="basic-input "/>
+  
+            </div>
+        <div class="row livraisonRow">
+            <div class='user-info-row-cont nestedInput col-5'>
+                <span class="user-info-row-title">Date d'expiration</span>
+                  <input  (change)="onChangeCommandInfo('prénom', $event.target.value)"  class="basic-input  "/>
+              </div>
+  
+              <div class="col-2"></div>
+            <div class='user-info-row-cont nestedInput col-5'>
+                <span class="user-info-row-title">Code de sécurité</span>
+                  <input (change)="onChangeCommandInfo('nom', $event.target.value)"   class="basic-input "/>
+              </div>
+
+        </div>
+
+        <!-- <div class=' livraisonRow user-info-row-cont'>
+            <span class="user-info-row-title">Société (facultatif)</span>
+              <input (change)="onChangeCommandInfo('société', $event.target.value)"   class="basic-input "/>
+
+          </div> -->
+
+
+
+            <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
+            <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button>
+            <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
+
+      </div>
+
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <div class="big-card  ">
+        <!-- <div class="card_image">
+ 
+        </div> -->
+        <div style="padding: 0 !important" class="card_content">
+         <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
+           Récapitulatif
+         </span>
+
+         <div  class="recapList row">
+            <div  style='margin-left: 20px !important;' class="row">
+              <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+              <div class="col-2"></div>
+              <div class="col-5">{{neonSelected.price}}$</div>
+
+            </div>
+
+            <div style='margin-left: 20px !important;' class="row">
+              <div class="col-5">Livraison</div>
+              <div class="col-2"></div>
+              <div class="col-5">Gratuit</div>
+
+            </div>
+
+         </div>
+  
+         <div class=" ttcList">
+          <div class="col-4 ttc">Total TTC</div>
+          <div class="col-4 ttc">{{neonSelected.price}}$</div>
+
+        </div>
+       </div>
+       </div>
+
+
+       <div class="big-card  ">
+          <!-- <div class="card_image">
+   
+          </div> -->
+          <div style="padding: 0 !important" class="card_content">
+           <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
+             Adresse de livraison
+           </span>
+  
+           <div  class="recapList row">
+              <div  style='margin-left: 20px !important;' class="row">
+                <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+                <div class="col-2"></div> -->
+                <div class="col-5">{{commandInfos.adresse}}</div>
+  
+              </div>
+  
+              <div  style='margin-left: 20px !important;' class="row">
+                  <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+                  <div class="col-2"></div> -->
+                  <div class="col-5">{{commandInfos['code-postal']}}, {{commandInfos.ville}}</div>
+    
+                </div>
+                <div  style='margin-left: 20px !important;' class="row">
+                    <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+                    <div class="col-2"></div> -->
+                    <div class="col-5">{{commandInfos.pays}}</div>
+      
+                  </div>
+           </div>
+    
+         
+         </div>
+         </div>
+    </div>
+
+  </div>
+
+  <div class="row commandBotCont">
+    <div class="col-6 command-form-cont">
+      <h2>Mode de livraison</h2>
+      <div class="tiny-card">
+          <!-- <input style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
+          <div class="livraisonDom">Livraison à domicile: 15 jours ouvrés</div>
+        </div>
+
+
+            <!-- <button   class="next-btn">Passer au paiement</button> -->
+
+    </div>
+  </div>
+
+</div>
+
+
+
 <div class="ec-bigbox" *ngIf="commandMode && neonSelected">
     <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="previous();">Précédent</button>
 
@@ -283,11 +419,11 @@
 
         </div>
 
-        <div class=' livraisonRow user-info-row-cont'>
+        <!-- <div class=' livraisonRow user-info-row-cont'>
             <span class="user-info-row-title">Société (facultatif)</span>
               <input (change)="onChangeCommandInfo('société', $event.target.value)"   class="basic-input "/>
 
-          </div>
+          </div> -->
 
           <div class=' livraisonRow user-info-row-cont'>
               <span class="user-info-row-title">Adresse</span>
@@ -373,7 +509,7 @@
     <div class="col-6 command-form-cont">
       <h2>Mode de livraison</h2>
       <div class="tiny-card">
-          <input style="margin-right: 10px; align-self: center;" type="checkbox" />
+          <!-- <input style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
           <div class="livraisonDom">Livraison à domicile: 15 jours ouvrés</div>
         </div>
 
@@ -385,9 +521,9 @@
 
 </div>
 
-<div *ngIf="payMode">
-  AHHAHAHAHAHAHA
-</div>
+
+
+
 <div *ngIf="loading" class="blendContainer">
   <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">
           <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->

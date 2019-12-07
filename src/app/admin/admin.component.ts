@@ -45,11 +45,14 @@ this.pollInterval = setInterval(() => {
     else  if(type === 'DT disponible') {
       this.neonList = this.cachedList.filter(c => c.state === 'DT disponible')
     }
-    else   if(type === 'Commandé') {
-      this.neonList = this.cachedList.filter(c => c.state === 'commandé')
-    }
     else  if(type === 'Payé') {
       this.neonList = this.cachedList.filter(c => c.state === 'payé')
+    }
+    else  if(type === 'Consumer') {
+      this.neonList = this.cachedList.filter(c => c.type === 'consumer')
+    }
+    else  if(type === 'Business') {
+      this.neonList = this.cachedList.filter(c => c.type === 'business')
     }
     
     else if(type === 'all') {
@@ -70,11 +73,12 @@ fromCreatedToDT(command){
     formData.append('file', this.currentFile);
     this.loading = true;
     this.http.post('https://neon-server.herokuapp.com/fileUpload', formData, {params: params}).subscribe((user) => {
-      this.loading = false;
       console.log('sucess:' , user);
       setTimeout(() => {
         this.fetchCommands();
-      }, 500);
+        this.loading = false;
+        this.neonSelected = "none"
+      }, 1000);
     //       this.http.get('https://neon-server.herokuapp.com/users/' + command['userId']).subscribe((user) => {
     //   console.log('user:' , user)
     //   let updatedUser = user[0];
@@ -112,7 +116,7 @@ deleteCommand(command){
         alert('Commande effacée');
         setTimeout(() => {
           this.fetchCommands();
-        }, 500);
+        }, 1000);
   
       }, err => {
         if (err.status === 200) {

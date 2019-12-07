@@ -525,8 +525,22 @@ box-shadow: 5pxs 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.
   justify-content: flex-start   ;
   border-radius: 7px;
   overflow-y: scroll;
-  height: 90%;
-  padding: 2em;
+  height: 87%;
+    padding: 2em;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+.command-form-card-payer {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: flex-start   ;
+  border-radius: 7px;
+  overflow-y: scroll;
+  height: 65%;
+    padding: 2em;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 

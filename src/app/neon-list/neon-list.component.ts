@@ -88,8 +88,8 @@ export class NeonListComponent implements OnInit {
     // });
   }
   ngOnDestroy() {
-    this.card.removeEventListener('change', this.cardHandler);
-    this.card.destroy();
+    // this.card.removeEventListener('change', this.cardHandler);
+    // this.card.destroy();
   }
   onChange({ error }) {
     if (error) {

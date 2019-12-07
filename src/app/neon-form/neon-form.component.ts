@@ -56,6 +56,10 @@ export class NeonFormComponent implements OnInit {
   signUpError = 'Il existe déjà un compte avec cet email...';
   loginFailed = false;
   textInput = '';
+  neonTypoClass = 'TheAbsolute'
+  neonColorClass = '';
+  selectedColor = 'violet + #undefined';
+  selectedTypo = 'TheAbsolute';
   imageFile = '';
   loading = false;
   mainChoice = '';
@@ -64,11 +68,47 @@ export class NeonFormComponent implements OnInit {
   closeResult: string;
   slides = [
     {
-      url: 'https://source.unsplash.com/1600x900/?nature,water'
+      url: '../.././assets/Billie-16.png',
+      font: 'TheAbsolute'
     },
     {
-      url: 'https://source.unsplash.com/1600x1600/?nature,forest'
-    }
+      url: '../.././assets/Cobby-16.png',
+      font: 'Nickainley'
+    },
+    {
+      url: '../.././assets/Jackie-16.png',
+      font: 'Hero'
+    },
+    {
+      url: '../.././assets/Jerry-16.png',
+      font: 'Australia'
+    },
+    {
+      url: '../.././assets/Jimmy-16.png',
+      font: 'Jimmy'
+    },
+    {
+      url: '../.././assets/Johnny-16.png',
+      font: 'Quinzey_Bold'
+    },
+    {
+      url: '../.././assets/Perrie-16.png',
+      font: 'Rigoletto'
+    },
+  ]
+
+  colorList = [
+    {name: 'blancFroid' , color: '#ffffff'},
+    {name: 'blancChaud' , color: '#ddcaaf'},
+    {name: 'orange' , color: '#ffa42c'},
+    {name: 'jaune' , color: '#ffe600'},
+    {name: 'rouge' , color: '#ff0000'},
+    {name: 'rose' , color: '#ff73ff'},
+    {name: 'fuschia' , color: '#df29ff'},
+    {name: 'violet' , color: '#9527ff'},
+    {name: 'bleu' , color: '#337dff'},
+    {name: 'vert' , color: '#15e81f'},
+    {name: 'turquoise' , color: '#17fff9'},
   ]
   @Input()
   isNavigationVisible = true;
@@ -106,12 +146,13 @@ export class NeonFormComponent implements OnInit {
     this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
       this.allUsers = users;
     })
+    this.neonColorClass = this.colorList.find(x => x.name === 'violet').name;
     if (this.slides) {
       this.activeSlides = this.getPreviousCurrentNextIndexes(0);
       this.differ = this.differs.find(this.activeSlides).create();
-
     }
   }
+
 
   signuptrue() {
     this.userInfoPerso['password'] = '';
@@ -120,7 +161,10 @@ export class NeonFormComponent implements OnInit {
 
     this.signUp = !this.signUp;
   }
-
+onSelectColor(color) {
+  this.neonColorClass = color['name'];
+  this.selectedColor = color['name'] + ' / ' + color['color'];
+}
   onChangeTextTitle(value: string) {
       this.textInput = value;
   }
@@ -155,11 +199,10 @@ export class NeonFormComponent implements OnInit {
       data[field] = this.userInfoPerso[field]
     }
     payload.push({title: this.projectType, data: {data}});
-    const mapTypo = ['Typo marmelade', 'Arabica Bold', 'Jewish Juice']
     const commandPayload = {
       text: this.textInput,
-      typo: mapTypo[this.styleSelected],
-      colors: 'Not implemented', 
+      typo: this.selectedTypo,
+      colors: this.selectedColor, 
       height: this.formatSizes[this.selectedFormatSize].width,
       // price: Math.floor(Math.random() * 2000) + 1 ,
       state: 'created', 
@@ -303,11 +346,10 @@ export class NeonFormComponent implements OnInit {
       this.projectType = choice;
       if(localStorage.getItem('email')) {
         this.loading = true;
-        const mapTypo = ['Typo marmelade', 'Arabica Bold', 'Jewish Juice']
         const commandPayload = {
           text: this.textInput,
-          typo: mapTypo[this.styleSelected],
-          colors: 'Not implemented', 
+          typo: this.selectedTypo,
+          colors: this.selectedColor, 
           height: this.formatSizes[this.selectedFormatSize].width,
           // price: Math.floor(Math.random() * 2000) + 1 ,
           state: 'created', 
@@ -384,11 +426,10 @@ export class NeonFormComponent implements OnInit {
   }
 
   select(index: number): void {
-    this.resetTimer();
     this.activeSlides = this.getPreviousCurrentNextIndexes(index);
     this.direction = this.getDirection(this.activeSlides.current, index);
-    this.startTimer();
-
+    this.neonTypoClass = this.slides[index]['font'];
+    this.selectedTypo = this.slides[index]['font'];
     if (this.differ.diff(this.activeSlides)) {
       this.cd.detectChanges();
     }

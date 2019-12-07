@@ -127,7 +127,7 @@ changePrice(price) {
           if(user['commands'].length > 0) {
            user['commands'].forEach((command) => {
              this.neonList.push({email: user['email'], type: user['type'], text: command ['text'], state: command['state'], price: command['price'], userId: user['id'], id: command['id'],
-             commandInfo: command['commandInfo'], filePath: command['filePath'], userFull: user })
+             commandInfo: command['commandInfo'], filePath: command['filePath'], userFull: user , typo: command['typo'], colors: command['colors'], height: command['height']})
 
            })
           }

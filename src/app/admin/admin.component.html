@@ -45,7 +45,7 @@
                       <input (change)="changePrice($event.target.value)" type="text" class="numberOnly" autocomplete="off" maxlength="8" /><div>$</div>                      
                   </div>                  
                   
-                  <input *ngIf="command.state === 'created' && command.type === 'consumer'" (change)="importDT($event, command)" type="file"   class="basic-input"/>
+                  <input *ngIf="command.state === 'created' && command.type === 'consumer'" (change)="importDT($event, command)" type="file"   class="basic-input-admin"/>
                   <!-- <span *ngIf="currentFile && command.state === 'created'" style="text-align: center;">{{currentFile?.fileName}}</span> -->
 
               </div>
@@ -105,7 +105,7 @@
               </tr>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
-                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.size}}cm</td>
+                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
               </tr>
               <tr >
                   <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>

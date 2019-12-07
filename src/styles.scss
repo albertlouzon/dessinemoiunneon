@@ -11,7 +11,34 @@
   src:  url('./assets/fonts/Nunito-Black.ttf')  format('truetype');
 }
 
-
+@font-face {
+  font-family: Australia;
+  src:  url('./assets/fonts/Australia-Signature.ttf')  format('truetype');
+}
+@font-face {
+  font-family: Hero;
+  src:  url('./assets/fonts/Hero-Regular.ttf')  format('truetype');
+}
+@font-face {
+  font-family: Nickainley;
+  src:  url('./assets/fonts/Nickainley-Normal.ttf')  format('truetype');
+}
+@font-face {
+  font-family: Quinzey_Bold;
+  src:  url('./assets/fonts/Quinzey_Bold.otf')  format('truetype');
+}
+@font-face {
+  font-family: Rigoletto;
+  src:  url('./assets/fonts/rigoletto-9b6a.ttf')  format('truetype');
+}
+@font-face {
+  font-family: TheAbsolute;
+  src:  url('./assets/fonts/TheAbsolute.otf')  format('truetype');
+}
+@font-face {
+  font-family: TheSecret;
+  src:  url('./assets/fonts/TheSecret-Regular.ttf')  format('truetype');
+}
 .animation-circle {
   animation: rotate 2s linear infinite;
   & .path {
@@ -55,7 +82,9 @@
   }
 }
 
-
+.mtm5 {
+  margin-top: -5%;
+}
 
 .next-btn {
         // min-width: 140px;

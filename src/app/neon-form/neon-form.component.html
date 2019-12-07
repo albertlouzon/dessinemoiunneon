@@ -1,13 +1,16 @@
 <div class='form-container'>
+  <input (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput"  maxlength="25" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
+   style="align-self: center; text-align: center; letter-spacing: 2px;"  *ngIf="userChoices[0] === 'text'" class='dynamicNeonTitle'>
+      <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
+
 
   <aw-wizard style="width: 100%;">
-
     <div class="neon-wizard-container row">
       <div class="col-3"></div>
       <aw-wizard-step stepTitle="" class="col-6 step-container">
         <h4 class="neon-wizard-header flex1">Faîtes votre choix</h4>
 
-        <div class="neon-wizard-btn-container flex3 ">
+        <div class="neon-wizard-btn-container flex3 ">  
           <button type="button" class="form-btn col-5" (click)="onCompleteStep(0, 'text', null)"
             awNextStep>TEXTE</button>
           <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)"
@@ -21,7 +24,7 @@
           <div class="neon-wizard-header">
             <h5>Ecrivez votre texte</h5>
           </div>
-          <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " [value]="textInput"
+          <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " maxlength="25" [(value)]="textInput"
             class="basic-input mb5  mt15" />
 
         </div>
@@ -69,12 +72,12 @@
                                   </button>
                                   <div>
                                     <ol class="thumbnails" *ngIf="slides.length > 1 && isThumbnailsVisible">
-                                      <li [style.backgroundImage]="'url('+ slide.url +')'" #carouselItem *ngFor="let slide of slides; let i = index;" [class.is-active]="i === activeSlides.current" (click)="select(i)">
+                                      <li [style.backgroundImage]="'url('+ slide.url +')'" [class.is-active]="i === activeSlides.current" #carouselItem *ngFor="let slide of slides; let i = index;" (click)="select(i)">
                                        
                                       </li>
                                     </ol>
                                   </div>
-                                  <button type="button" (click)="select(activeSlides.next)" *ngIf="slides.length > 1 && isNavigationVisible">
+                                  <button type="button"  (click)="select(activeSlides.next)" *ngIf="slides.length > 1 && isNavigationVisible">
                                       <span>right</span> 
                                   </button>
                                 </div>
@@ -139,7 +142,7 @@
                     </div>
                 </div>  
             </div> -->
-        <div class="neon-wizard-btn-container pb5 row">
+        <div class="neon-wizard-btn-container mtm5 row">
           <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
           <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
         </div>
@@ -148,40 +151,18 @@
       <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-6 step-container">
 
         <div class="neon-wizard-header">
-          <h4>Choisissez une ou plusieurs couleurs</h4>
+          <h4>Choisissez une couleur</h4>
         </div>
 
-        <div class="wrapper">
-          <div class="item-list">
-            <ul>
-              <li>
-                <div class="inner-circle"></div>
+        <!-- <div class="wrapper"> -->
+          <!-- <div class="item float-item"> -->
+            <ul id="flexible">
+              <li [style.background-color]="color.color" (click)="onSelectColor(color)" *ngFor="let color of colorList">
               </li>
-              <li>
-                <div class="inner-circle"></div>
-              </li>
-              <li>
-                <div class="inner-circle"></div>
-              </li>
-              <li>
-                <div class="inner-circle"></div>
-              </li>
-              <li>
-                <div class="inner-circle"></div>
-              </li>
-              <li>
-                <div class="inner-circle"></div>
-              </li>
-              <li>
-                <div class="inner-circle"></div>
-              </li>
-              <li>
-                <div class="inner-circle"></div>
-              </li>
-
+             
             </ul>
-          </div>
-        </div>
+          <!-- </div> -->
+        <!-- </div> -->
 
 
         <div class="neon-wizard-btn-container pb5">

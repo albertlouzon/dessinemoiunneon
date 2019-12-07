@@ -12,6 +12,40 @@
     src:  url('../.././assets/fonts/Nunito-Black.ttf')  format('truetype');
   }
 
+
+  .Australia {
+    font-family: Australia, sans-serif !important;
+    font-size: 4vw !important;
+  }
+  .Hero {
+    font-family: Hero, sans-serif !important;
+    font-size: 3vw !important;
+  }
+  .Nickainley {
+    font-family: Nickainley, sans-serif !important;
+    font-size: 3vw !important;
+
+  }
+  .Quinzey_Bold {
+    font-family: Quinzey_Bold, sans-serif !important;
+    font-size: 3vw !important;
+
+  }
+  .Rigoletto {
+    font-family: Rigoletto, sans-serif !important;    font-size: 3vw !important;
+
+  }
+  .TheAbsolute {
+    font-family: TheAbsolute, sans-serif !important;
+    font-size: 3vw !important;
+
+  }
+  .TheSecret {
+    font-family: TheSecret, sans-serif !important;
+    font-size: 3vw !important;
+
+  }
+
   .errorMessage {
     color: #F44336;
     font-family: Mukta-Bold;
@@ -92,18 +126,65 @@
   height: 100%
 }
 
+    .blancFroid {
+      color: #ffffff !important;
+    }
+    .blancChaud {
+      color: #ddcaaf !important;
+    }
+    .orange {
+      color: #ffa42c !important;
+    }
+    .jaune {
+      color: #ffe600 !important;
+    }
+    .rouge {
+      color: #ff0000 !important;
+    }
+    .rose {
+      color: #ff73ff !important;
+    }
+    .fuschia {
+      color: #df29ff !important;
+    }
+    .violet {
+      color: #9527ff !important;
+    }
+
+    .bleu {
+      color: #337dff !important;
+    }
+    .vert {
+      color: #15e81f !important;
+    }
+    .turquoise {
+      color: #17fff9 !important;
+    }
 .thumbnails li {
   cursor: pointer;
   padding: 5%;
+  padding-right: 10%;
+  padding-left: 10%;
   border: 2px solid transparent;
   width: 50px;
   height: 50px;
   opacity: 0.2;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: contain;
 }
+.thumbnails li.is-hidden {
+ display: none;
+  // padding: 5%;
+
+}
+
+
+
 .thumbnails li.is-active {
-  border-color: var(--color-brand-1);
+  // border: 1px solid #F4CC20;
   opacity: 1;
-  padding: 5%;
+  // padding: 5%;
 
 }
 
@@ -327,9 +408,6 @@ small {
   color: black;
 }
 
-.modal-recap-body {
-
-}
 
 *, *:before, *:after {
 	margin: 0;
@@ -337,10 +415,36 @@ small {
 	box-sizing: border-box;
 }
 
+.steps-indicator {
+  // position: absolute !important;
+  // top: 60% !important;
+  display: none !important;
+}
+
+.dynamicNeonTitle {
+  align-self: center;
+  /* position: absolute; */
+  text-align: center;
+  padding-top: 0.5%;
+  background-color: white;
+  outline: none !important;
+  /* height: 168px; */
+  font-size: 2vw;
+  width: 30%;
+  padding-bottom: 1%;
+  /* padding-bottom: 1%; */
+  display: -webkit-box;
+  display: flex;
+  /* top: 10%; */
+  border-radius: 15px;
+}
+
+
 .form-container {
     font-family: 'Nunito', sans-serif;
 background-color: #000b31;
 height: 100vh;
+padding-top: 7%;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
@@ -619,48 +723,70 @@ input[type="checkbox"].ios-switch:checked + div > div {
     background-color: #ffffff;
 }
 
-.wrapper {
-    margin: auto;
+
+
+#flexible {
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+ 
+  li {
+     margin: .5em;
+    padding: 2.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-box-flex: 1;
+    flex: 1 0;
   }
+}
+
+
+
+
+// .wrapper {
+//     margin: auto;
+//   }
   
-  .item-list {
-    max-width: 960px;
-    max-height: 150px;
-    ul {
-      list-style: none;
-      margin: 0 -30px;
-      padding: 0;
-      display: flex;
-      flex-flow: row wrap;
+//   .item-list {
+//     max-width: 960px;
+//     max-height: 150px;
+//     ul {
+//       list-style: none;
+//       margin: 0 -30px;
+//       padding: 0;
+//       display: flex;
+//       flex-flow: row wrap;
       
-      li {
-        flex: 0 0 calc(25% - 60px);
-        position: relative;
-        margin: 0 30px 10px 30px;        
-        &:before {
-          display: block;
-          content: "";
-          width: 100%;
-          padding-top: 100%;
-        }
-        .inner-circle {
-          border-radius: 100%;
-          background: #F4F4F4;
-          text-decoration: none;
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          color: white;
-        }
-      }
-    }
-  }
+//       li {
+//         flex: 0 0 calc(25% - 60px);
+//         position: relative;
+//         margin: 0 20px 10px 20px;       
+//         &:before {
+//           display: block;
+//           content: "";
+//           width: 100%;
+//           padding-top: 100%;
+//         }
+//         .inner-circle {
+//           border-radius: 100%;
+//           background: #F4F4F4;
+//           text-decoration: none;
+//           position: absolute;
+//           top: 0;
+//           left: 0;
+//           right: 0;
+//           bottom: 0;
+//           display: flex;
+//           flex-direction: column;
+//           justify-content: center;
+//           align-items: center;
+//           color: white;
+//         }
+//       }
+//     }
+//   }
 
   .user-info-row-cont {
       display: flex;

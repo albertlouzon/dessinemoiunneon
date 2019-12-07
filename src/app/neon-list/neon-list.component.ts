@@ -1,5 +1,15 @@
 
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef
+} from '@angular/core';
+
+// import { AngularStripeService } from '@fireflysemantics/angular-stripe-service';
 import { HttpClient } from '@angular/common/http';
 import { currentView } from './../app.component';
 import { saveAs } from 'file-saver';
@@ -10,8 +20,18 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./neon-list.component.scss']
 })
 export class NeonListComponent implements OnInit {
+  @ViewChild('cardInfo') cardInfo: ElementRef;
 
-  constructor(private http: HttpClient) { }
+  stripe;
+  loading = false;
+  confirmation;
+
+  card: any;
+  cardHandler = this.onChange.bind(this);
+  error: string;
+  constructor(private http: HttpClient,     private cd: ChangeDetectorRef,
+  ) { }
+  
   neonSelected = null;
   neonList = [];
   commandMode = false;
@@ -23,7 +43,6 @@ export class NeonListComponent implements OnInit {
     = { nom: '', prénom: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };;
   errorMessage = 'Des champs sont incomplets...'
   commandFailed = false;
-  loading = false;
   payInfos = {};
   payMode = false;
   // colorsList = {
@@ -56,6 +75,41 @@ export class NeonListComponent implements OnInit {
 
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
     this.fetchCommands();
+  }
+
+  ngAfterViewInit() {
+    // this.stripeService.setPublishableKey('pk_test_2syov9fTMRwOxYG97AAXbOgt008X6NL46o').then(
+    //   stripe=> {
+    //     this.stripe = stripe;
+    // const elements = stripe.elements();    
+    // this.card = elements.create('card');
+    // this.card.mount(this.cardInfo.nativeElement);
+    // this.card.addEventListener('change', this.cardHandler);
+    // });
+  }
+  ngOnDestroy() {
+    this.card.removeEventListener('change', this.cardHandler);
+    this.card.destroy();
+  }
+  onChange({ error }) {
+    if (error) {
+      this.error = error.message;
+    } else {
+      this.error = null;
+    }
+    this.cd.detectChanges();
+  }
+
+  async onSubmitPay() {
+    console.log('aa', )
+
+    const { token, error } = await this.stripe.createToken(this.card);
+    console.log('ee', )
+    if (error) {
+      console.log('Error:', error);
+    } else {
+      console.log('Success!', token);
+    }
   }
   openSnackbar(msg) {
     this.snackbarClass = 'show ';
@@ -136,7 +190,7 @@ export class NeonListComponent implements OnInit {
   openCommand() {
     if (this.neonSelected.state === "commandé") {
       this.commandFailed = false;
-      this.payInfos = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
+      // this.payInfos = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
       this.commandMode = false;
       // this.payMode = true;
       // setTimeout(() => {
@@ -167,7 +221,7 @@ export class NeonListComponent implements OnInit {
       // });
     } else {
       this.commandFailed = false;
-      this.commandInfos = { nom: '', prénom: '',  adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
+      // this.commandInfos = { nom: '', prénom: '',  adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
       this.commandMode = !this.commandMode;
 
     }

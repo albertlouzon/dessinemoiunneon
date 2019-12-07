@@ -46,6 +46,72 @@
 
   }
 
+  input[type=file] {
+    overflow: hidden;
+    margin-left: 3%;
+    cursor: pointer;
+    padding: 3%;
+    width: 100%;
+    outline: none !important;
+    color: #000b31;
+    font-family: Mukta-Bold, sans-serif;
+  }
+  
+  input[type=file]:before {
+    height: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    float: right;
+    border-radius: 25px;
+    background-color: #000b31;
+    color: white;
+    content: 'Importer';
+    /* background: white; */
+    border: 1px solid #000;
+    text-align: center;
+    font-family: Nunito-Black, sans-serif;
+  }
+  
+  input[type=file]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  
+.money{
+display:inline-block;
+border:1px solid #ababab;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+border-radius:3px;
+margin-left: 3%;
+}
+
+.money > div {
+display:inline-block;
+padding:8px 8px 8px 8px;
+font-size:14px;
+cursor:text;
+color:#666;
+/*     pointer-events: none; */
+}
+
+.money > input{
+width:70px;
+border:0;
+padding:8px 4px 8px 8px;
+margin:0;
+font-size:14px;
+color:#666;
+cursor:text;
+text-align:left;
+outline:none;
+}
+
+.money > input::-ms-clear{
+display: none;
+}
   .errorMessage {
     color: #F44336;
     font-family: Mukta-Bold;
@@ -447,7 +513,7 @@ small {
   outline: none !important;
   /* height: 168px; */
   font-size: 2vw;
-  width: 30%;
+  width: 50%;
   padding-bottom: 1%;
   /* padding-bottom: 1%; */
   display: -webkit-box;

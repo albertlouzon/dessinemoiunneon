@@ -1,5 +1,5 @@
 <div class='form-container'>
-  <input (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput"  maxlength="25" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
+  <input (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput"  maxlength="35" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
    style="align-self: center; text-align: center; letter-spacing: 2px;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " >
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
@@ -24,7 +24,7 @@
           <div class="neon-wizard-header">
             <h5>Ecrivez votre texte</h5>
           </div>
-          <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Texte" maxlength="25" [(value)]="textInput"
+          <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Texte" maxlength="35" [(value)]="textInput"
             class="basic-input-text mb5  mt5" />
 
         </div>
@@ -32,7 +32,11 @@
           <div class="neon-wizard-header">
             <h5>Importer votre image</h5>
           </div>
-          <input (change)="onSelectFile($event)" type="file" placeholder="" class="basic-input" />
+          <input (change)="onSelectFile($event)"  type="file"   class="basic-input-admin"/>
+<!-- 
+          <div   class="money">
+              <input (change)="onSelectFile($event)" type="text" class="numberOnly" autocomplete="off" maxlength="8" /><div>$</div>                      
+          </div>      -->
 
 
           <div class="neon-wizard-header">
@@ -162,8 +166,8 @@
 
 
         <div class="neon-wizard-btn-container pb5">
-          <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-          <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+          <button  class="next-btn col-3"  type="button" awPreviousStep>Précedent</button>
+          <button [ngClass]="!selectedColor? 'next-btn col-3 disabled' : 'next-btn col-3'"  type="button" [disabled]="!selectedColor" awNextStep>Suivant</button>
 
         </div>
 
@@ -365,7 +369,7 @@
     <div id="open-modal" class="modal-window">
       <div>
         <a href="#" title="Close" class="modal-close">Close</a>
-        <h1>Voici votre commande !</h1>
+        <h1>Récapitulatif de votre demande: </h1>
         <div style="height: 220px;">
 
           <table>
@@ -382,27 +386,28 @@
                 <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
                 <td style="font-family: Mukta-Regular;" data-column="Etat">{{styleSelected}}</td>
               </tr>
-              <!-- <tr >
+              <tr >
                   <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleurs</td>
-                  <td style="font-family: Mukta-Regular;" data-column="Etat"></td>
-                </tr> -->
+                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{selectedColor}}</td>
+                </tr>
               <tr>
                 <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
                 <td style="font-family: Mukta-Regular;" data-column="Etat">{{formatSizes[selectedFormatSize].width}} cm
                 </td>
               </tr>
+              <tr >
+                  <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Support</td>
+                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{imageSupportSelected}}</td>
+                </tr>
               <tr>
-                <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Email</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{userInfoPerso['email']}}</td>
-              </tr>
+  
 
             </tbody>
           </table>
 
         </div>
         <div *ngIf="loginFailed" class="errorMessage">{{signUpError}}</div>
-        <button (click)="onSubmitForm()" style="float: right;" class="next-btn" type="button"> <a href="#">Confirmer ma
-            commande</a></button>
+        <button (click)="onSubmitForm()" style="float: right;" class="next-btn" type="button"> <a href="#">Valider</a></button>
 
       </div>
 

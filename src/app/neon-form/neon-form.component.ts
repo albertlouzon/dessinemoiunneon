@@ -59,7 +59,7 @@ export class NeonFormComponent implements OnInit {
   neonColorCode = '';
   neonTypoClass = 'TheAbsolute'
   neonColorClass = '';
-  selectedColor = 'violet + #undefined';
+  selectedColor ;
   selectedTypo = 'TheAbsolute';
   imageFile = '';
   loading = false;
@@ -148,7 +148,7 @@ export class NeonFormComponent implements OnInit {
     this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
       this.allUsers = users;
     })
-    this.neonColorClass = this.colorList.find(x => x.name === 'violet').name;
+    // this.neonColorClass = this.colorList.find(x => x.name === 'violet').name;
     if (this.slides) {
       this.activeSlides = this.getPreviousCurrentNextIndexes(0);
       this.differ = this.differs.find(this.activeSlides).create();
@@ -208,6 +208,7 @@ onSelectColor(color) {
       typo: this.selectedTypo,
       colors: this.selectedColor, 
       support: this.imageSupportSelected, 
+      imageAdditionalInfo: this.imageAdditionalInfo,
       height: this.formatSizes[this.selectedFormatSize].width,
       // price: Math.floor(Math.random() * 2000) + 1 ,
       state: 'created', 
@@ -363,6 +364,8 @@ onSelectColor(color) {
           text: this.textInput,
           typo: this.selectedTypo,
           colors: this.selectedColor, 
+          support: this.imageSupportSelected, 
+          imageAdditionalInfo: this.imageAdditionalInfo,
           height: this.formatSizes[this.selectedFormatSize].width,
           // price: Math.floor(Math.random() * 2000) + 1 ,
           state: 'created', 

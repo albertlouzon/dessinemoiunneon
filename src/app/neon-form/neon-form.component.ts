@@ -56,6 +56,7 @@ export class NeonFormComponent implements OnInit {
   signUpError = 'Il existe déjà un compte avec cet email...';
   loginFailed = false;
   textInput = '';
+  neonColorCode = '';
   neonTypoClass = 'TheAbsolute'
   neonColorClass = '';
   selectedColor = 'violet + #undefined';
@@ -66,6 +67,7 @@ export class NeonFormComponent implements OnInit {
   imageAdditionalInfo = '';
   allUsers = [];
   closeResult: string;
+  colorTitle = 'Choisissez une couleur'
   slides = [
     {
       url: '../.././assets/Billie-16.png',
@@ -163,7 +165,9 @@ export class NeonFormComponent implements OnInit {
   }
 onSelectColor(color) {
   this.neonColorClass = color['name'];
+  this.neonColorCode = color['color'];
   this.selectedColor = color['name'] + ' / ' + color['color'];
+  this.colorTitle = 'Couleur selectionnée:  '
 }
   onChangeTextTitle(value: string) {
       this.textInput = value;
@@ -338,6 +342,14 @@ onSelectColor(color) {
       }
       this.mainChoice = choice
       this.userChoices[step] = choice;
+    }
+    if(step === 3) {  
+      if(choice === 'erase') {
+        this.userChoices[step] = null;
+      } else {
+        this.userChoices[step] = choice;
+
+      }
     }
     if(choice && step === 5) {  
       if(choice !== this.projectType) {

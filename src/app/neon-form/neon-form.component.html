@@ -1,6 +1,6 @@
 <div class='form-container'>
   <input (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput"  maxlength="25" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
-   style="align-self: center; text-align: center; letter-spacing: 2px;"  *ngIf="userChoices[0] === 'text'" >
+   style="align-self: center; text-align: center; letter-spacing: 2px;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " >
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
 
@@ -24,8 +24,8 @@
           <div class="neon-wizard-header">
             <h5>Ecrivez votre texte</h5>
           </div>
-          <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Votre texte " maxlength="25" [(value)]="textInput"
-            class="basic-input mb5  mt15" />
+          <input (keyup)="onChangeTextTitle($event.target.value)" placeholder="Texte" maxlength="25" [(value)]="textInput"
+            class="basic-input-text mb5  mt5" />
 
         </div>
         <div *ngIf="userChoices[0] === 'image'">
@@ -46,8 +46,8 @@
         </div>
         <!-- ||  -->
         <div class="neon-wizard-btn-container pb5">
-          <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-          <button [ngClass]="textInput.trim() === ''? 'next-btn col-3 disabled' : 'next-btn col-3'" type="button"
+          <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+          <button [ngClass]="textInput.trim() === ''? 'next-btn col-3 disabled' : 'next-btn col-3'" type="button" (click)="onCompleteStep(3, 'typo', null)"
             [disabled]="textInput.trim() === '' " awNextStep>Suivant</button>
         </div>
 
@@ -67,19 +67,15 @@
                               
                                 <!-- navigations & thumbnails -->
                                 <div class="navigations">
-                                  <button type="button" (click)="select(activeSlides.previous)" *ngIf="slides.length > 1 && isNavigationVisible">
-                                      <span>left</span> 
-                                  </button>
+          
                                   <div>
                                     <ol class="thumbnails" *ngIf="slides.length > 1 && isThumbnailsVisible">
-                                      <li [style.backgroundImage]="'url('+ slide.url +')'" [class.is-active]="i === activeSlides.current" #carouselItem *ngFor="let slide of slides; let i = index;" (click)="select(i)">
+                                      <li  [style.backgroundImage]="'url('+ slide.url +')'" [class.is-active]="i === activeSlides.current" #carouselItem *ngFor="let slide of slides; let i = index;" (click)="select(i)">
                                        
                                       </li>
                                     </ol>
                                   </div>
-                                  <button type="button"  (click)="select(activeSlides.next)" *ngIf="slides.length > 1 && isNavigationVisible">
-                                      <span>right</span> 
-                                  </button>
+                     
                                 </div>
                               </div>
 
@@ -143,21 +139,21 @@
                 </div>  
             </div> -->
         <div class="neon-wizard-btn-container mtm5 row">
-          <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
+          <button class="prev-btn col-3" type="button" (click)="onCompleteStep(3, 'erase', null)" awPreviousStep>Précedent</button>
           <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-6 step-container">
+      <aw-wizard-step stepTitle="" class="col-6 step-container">
 
-        <div class="neon-wizard-header">
-          <h4>Choisissez une couleur</h4>
+        <div  [style.background-color]="userChoices[0] !== 'text' ? neonColorCode : ''" class="neon-wizard-header">
+          <h4>Choisissez une couleur </h4>
         </div>
 
         <!-- <div class="wrapper"> -->
           <!-- <div class="item float-item"> -->
             <ul id="flexible">
-              <li [style.background-color]="color.color" (click)="onSelectColor(color)" *ngFor="let color of colorList">
+              <li [style.background-color]="color.color"  (click)="onSelectColor(color)" *ngFor="let color of colorList">
               </li>
              
             </ul>

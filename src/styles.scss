@@ -36,9 +36,12 @@
   src:  url('./assets/fonts/TheAbsolute.otf')  format('truetype');
 }
 @font-face {
-  font-family: TheSecret;
+  font-family: Jimmy;
   src:  url('./assets/fonts/TheSecret-Regular.ttf')  format('truetype');
 }
+
+
+
 .animation-circle {
   animation: rotate 2s linear infinite;
   & .path {

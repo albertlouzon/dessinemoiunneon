@@ -27,7 +27,8 @@ export class NeonListComponent implements OnInit {
   confirmation;
 
   card: any;
-  cardHandler = this.onChange.bind(this);
+  // cardHandler = this.onChange.bind(this);
+  cardHandler: any;
   error: string;
   constructor(private http: HttpClient,     private cd: ChangeDetectorRef,
   ) { }

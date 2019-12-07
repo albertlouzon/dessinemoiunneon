@@ -120,6 +120,8 @@ changePrice(price) {
   fetchCommands(){
     this.loading = true;
     this.neonList = []
+    this.currentFile = null,
+    this.commandPrice = 0;
     this.getConfig().subscribe((res: Array<Object>) => {
       this.loading = false;
       if(res) {

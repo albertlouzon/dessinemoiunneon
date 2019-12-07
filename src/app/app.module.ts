@@ -9,6 +9,7 @@ import { NeonListComponent } from './neon-list/neon-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     HttpClientModule,
     ArchwizardModule,
+    FormsModule
+
   ],
   entryComponents: [NeonFormComponent],
   providers: [ArchwizardModule],

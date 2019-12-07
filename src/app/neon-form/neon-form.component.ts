@@ -55,6 +55,7 @@ export class NeonFormComponent implements OnInit {
   userChoices = {};
   userInfoPerso  =  {};
   trim = String.prototype.trim;
+  suceMaBite = ' créant votre espace !'
   signUp = true;
   styleSelected = 1;
   signUpError = 'Il existe déjà un compte avec cet email...';
@@ -164,6 +165,13 @@ export class NeonFormComponent implements OnInit {
     this.userInfoPerso['password'] = '';
     this.userInfoPerso['name'] = '';
     this.userInfoPerso['nickname'] = '';
+    if(this.signUp) {
+      this.suceMaBite = ' créant votre espace !'
+
+    } else {
+      this.suceMaBite = ' vous connectant !'
+
+    }
 
     this.signUp = !this.signUp;
   }

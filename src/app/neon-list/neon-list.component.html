@@ -398,7 +398,7 @@
       <div class="command-form-card-payer row">
           <h2>Carte bancaire</h2>
 
-          <div class=' livraisonRow user-info-row-cont'>
+          <!-- <div class=' livraisonRow user-info-row-cont'>
               <span class="user-info-row-title">Numéro de carte</span>
                 <input  (change)="onChangeCommandInfo('adresse', $event.target.value)"  class="basic-input "/>
   
@@ -415,7 +415,7 @@
                   <input (change)="onChangeCommandInfo('nom', $event.target.value)"   class="basic-input "/>
               </div>
 
-        </div>
+        </div> -->
 
         <!-- <div class=' livraisonRow user-info-row-cont'>
             <span class="user-info-row-title">Société (facultatif)</span>
@@ -432,7 +432,16 @@
             
               <button type="submit">Pay $5</button>
             </form> -->
-
+            <form #checkout="ngForm" (ngSubmit)="onSubmitPay(checkout)" class="checkout">
+                <!-- <div class="form-row"> -->
+                  <div id="card-info livraisonRow" #cardInfo></div>
+              
+                  <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+                <!-- </div> -->
+              
+                <button type="submit">Pay $777</button>
+              </form>
+              
 
             <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
             <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button>

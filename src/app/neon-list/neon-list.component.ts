@@ -13,7 +13,8 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { currentView } from './../app.component';
 import { saveAs } from 'file-saver';
-
+declare var stripe: any;
+declare var elements: any;
 @Component({
   selector: 'app-neon-list',
   templateUrl: './neon-list.component.html',
@@ -22,17 +23,13 @@ import { saveAs } from 'file-saver';
 export class NeonListComponent implements OnInit {
   @ViewChild('cardInfo') cardInfo: ElementRef;
 
-  stripe;
   loading = false;
-  confirmation;
-
-  card: any;
-  // cardHandler = this.onChange.bind(this);
-  cardHandler: any;
-  error: string;
   constructor(private http: HttpClient,     private cd: ChangeDetectorRef,
   ) { }
-  
+  card: any;
+  cardHandler = this.onChange.bind(this);
+  error: string;
+
   neonSelected = null;
   neonList = [];
   commandMode = false;
@@ -76,22 +73,20 @@ export class NeonListComponent implements OnInit {
 
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
     this.fetchCommands();
+     // Your Stripe public key
+    
   }
 
   ngAfterViewInit() {
-    // this.stripeService.setPublishableKey('pk_test_2syov9fTMRwOxYG97AAXbOgt008X6NL46o').then(
-    //   stripe=> {
-    //     this.stripe = stripe;
-    // const elements = stripe.elements();    
-    // this.card = elements.create('card');
-    // this.card.mount(this.cardInfo.nativeElement);
-    // this.card.addEventListener('change', this.cardHandler);
-    // });
+
   }
   ngOnDestroy() {
     // this.card.removeEventListener('change', this.cardHandler);
     // this.card.destroy();
+    this.card.removeEventListener('change', this.cardHandler);
+    this.card.destroy();
   }
+
   onChange({ error }) {
     if (error) {
       this.error = error.message;
@@ -102,14 +97,13 @@ export class NeonListComponent implements OnInit {
   }
 
   async onSubmitPay() {
-    console.log('aa', )
+    const { token, error } = await stripe.createToken(this.card);
 
-    const { token, error } = await this.stripe.createToken(this.card);
-    console.log('ee', )
     if (error) {
-      console.log('Error:', error);
+      console.log('Something is wrong:', error);
     } else {
       console.log('Success!', token);
+      // ...send the token to the your backend to process the charge
     }
   }
   openSnackbar(msg) {
@@ -240,6 +234,13 @@ export class NeonListComponent implements OnInit {
     console.log('the command is valid :', this.commandInfos);
     this.commandFailed = false;
     this.payMode = true;
+
+    setTimeout(() => {
+      this.card = elements.create('card');
+      this.card.mount(this.cardInfo.nativeElement);
+      this.card.addEventListener('change', this.cardHandler);
+
+    }, 10);
     // this.loading = true;
     // this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
     // this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'commandé';

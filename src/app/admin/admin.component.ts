@@ -42,17 +42,17 @@ this.pollInterval = setInterval(() => {
     if(type === 'Created') {
       this.neonList = this.cachedList.filter(c => c.state === 'created')
     }
-    if(type === 'DT disponible') {
+    else  if(type === 'DT disponible') {
       this.neonList = this.cachedList.filter(c => c.state === 'DT disponible')
     }
-    if(type === 'Commandé') {
+    else   if(type === 'Commandé') {
       this.neonList = this.cachedList.filter(c => c.state === 'commandé')
     }
-    if(type === 'Payé') {
+    else  if(type === 'Payé') {
       this.neonList = this.cachedList.filter(c => c.state === 'payé')
     }
     
-    if(type === 'all') {
+    else if(type === 'all') {
       this.neonList = this.cachedList;
     } else {
       this.neonList = this.cachedList.filter(c => c.typo === type)

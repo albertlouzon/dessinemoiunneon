@@ -879,5 +879,20 @@ form.checkout {
   .little-card {
     width: 45%;
   }
+  .neon-bar-item-cont {
+    display: none;
+  }
+  .checkout {
+    padding: 0 !important;
+    margin-bottom: 10%;
+    margin-top: 10%;
+  }
+  .command-form-card-payer {
+    padding: 15px;
+  }
+
+  .hyperlink {
+    margin-top: 5%;
+  }
 
 }

@@ -134,7 +134,7 @@ min-height: 100vh;
 
 /* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .login-header{
+  .login-header, .login-title{
     font-size: 32px;
   }
 }

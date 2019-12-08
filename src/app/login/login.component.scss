@@ -1,7 +1,7 @@
 .login-container {
     font-family: Mukta-Regular, sans-serif;
 background-color: #000b31;
-height: 100vh;
+min-height: 100vh;
  }
 
  .login-title {
@@ -131,4 +131,10 @@ height: 100vh;
     //-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     //animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
-  
+
+/* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .login-header{
+    font-size: 32px;
+  }
+}

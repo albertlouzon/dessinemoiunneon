@@ -44,10 +44,10 @@ export interface ActiveSlides {
   encapsulation: ViewEncapsulation.None
 })
 export class NeonFormComponent implements OnInit {
-  formatSizes: Array<{size:string, width: number, url: string}> = [{size: 'S', width: 25, url: '../.././assets/Fichier-S.png'
+  formatSizes: Array<{size: string, width: number, url: string}> = [{size: 'S', width: 25, url: '../.././assets/Fichier-S.png'
 },
-  {size: 'M', width: 35, url: '../.././assets/Fichier-M.png'}, 
-  {size: 'L', width: 45, url: '../.././assets/Fichier-L.png'}, 
+  {size: 'M', width: 35, url: '../.././assets/Fichier-M.png'},
+  {size: 'L', width: 45, url: '../.././assets/Fichier-L.png'},
   {size: 'XL', width: 50, url: '../.././assets/Fichier-XL.png'} ];
   selectedFormatSize = 0;
   imageSupportSelected = 'standard';
@@ -55,14 +55,14 @@ export class NeonFormComponent implements OnInit {
   userChoices = {};
   userInfoPerso  =  {};
   trim = String.prototype.trim;
-  suceMaBite = ' créant votre espace !'
+  suceMaBite = ' créant votre espace !';
   signUp = true;
   styleSelected = 1;
   signUpError = 'Il existe déjà un compte avec cet email...';
   loginFailed = false;
   textInput = '';
   neonColorCode = '';
-  neonTypoClass = 'TheAbsolute'
+  neonTypoClass = 'TheAbsolute';
   neonColorClass = '';
   selectedColor ;
   selectedTypo = 'TheAbsolute';
@@ -72,7 +72,7 @@ export class NeonFormComponent implements OnInit {
   imageAdditionalInfo = '';
   allUsers = [];
   closeResult: string;
-  colorTitle = 'Choisissez une couleur'
+  colorTitle = 'Choisissez une couleur';
   slides = [
     {
       url: '../.././assets/Billie-16.png',
@@ -102,7 +102,7 @@ export class NeonFormComponent implements OnInit {
       url: '../.././assets/Perrie-16.png',
       font: 'Perrie'
     },
-  ]
+  ];
 
   colorList = [
     {name: 'blancFroid' , color: '#ffffff', url: '../.././assets/blanc.png' },
@@ -116,7 +116,7 @@ export class NeonFormComponent implements OnInit {
     {name: 'bleu' , color: '#337dff', url: '../.././assets/bleu.png' },
     {name: 'vert' , color: '#15e81f', url: '../.././assets/vert.png' },
     {name: 'turquoise' , color: '#17fff9', url: '../.././assets/turquoise.png' },
-  ]
+  ];
   @Input()
   isNavigationVisible = true;
   @Input()
@@ -128,7 +128,7 @@ export class NeonFormComponent implements OnInit {
   @Input()
   slideTemplateRef: TemplateRef<any>;
   @Input()
-  thumbnailTemplateRef: TemplateRef<any>
+  thumbnailTemplateRef: TemplateRef<any>;
   currentInterval;
   differ: KeyValueDiffer<ActiveSlides, any>;
 
@@ -152,7 +152,7 @@ export class NeonFormComponent implements OnInit {
   ngOnInit() {
     this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
       this.allUsers = users;
-    })
+    });
     // this.neonColorClass = this.colorList.find(x => x.name === 'violet').name;
     if (this.slides) {
       this.activeSlides = this.getPreviousCurrentNextIndexes(0);
@@ -165,11 +165,11 @@ export class NeonFormComponent implements OnInit {
     this.userInfoPerso['password'] = '';
     this.userInfoPerso['name'] = '';
     this.userInfoPerso['nickname'] = '';
-    if(this.signUp) {
-      this.suceMaBite = ' créant votre espace !'
+    if (this.signUp) {
+      this.suceMaBite = ' créant votre espace !';
 
     } else {
-      this.suceMaBite = ' vous connectant !'
+      this.suceMaBite = ' vous connectant !';
 
     }
 
@@ -179,63 +179,63 @@ onSelectColor(color) {
   this.neonColorClass = color['name'];
   this.neonColorCode = color['color'];
   this.selectedColor = color['name'] + ' / ' + color['color'];
-  this.colorTitle = 'Couleur selectionnée:  '
+  this.colorTitle = 'Couleur selectionnée:  ';
 }
   onChangeTextTitle(value: string) {
       this.textInput = value;
   }
   onSelectFile(event) {
     console.log('file selected' , event);
-    if(event.target.files) {
+    if (event.target.files) {
       console.log('file selected' , event.target.files);
       this.textInput = event.target.files[0]['name'];
       this.imageFile =  event.target.files[0];
     }
   }
   onChangeAdditionnalInfo(value: string) {
-    if(value.trim() !== '') {
+    if (value.trim() !== '') {
       this.imageAdditionalInfo = value;
     }
   }
-   onSubmitForm(){
-    const payload: Array<{title: string, data : {}}> = []
-    if(this.mainChoice === 'text') {
+   onSubmitForm() {
+    const payload: Array<{title: string, data: {}}> = [];
+    if (this.mainChoice === 'text') {
       payload.push({title: this.mainChoice, data: {value: this.textInput, style: this.styleSelected}});
-      payload.push({title: 'format', data: {size: this.formatSizes[this.selectedFormatSize], imageSupport: this.imageSupportSelected}})
+      payload.push({title: 'format', data: {size: this.formatSizes[this.selectedFormatSize], imageSupport: this.imageSupportSelected}});
 
- 
+
     } else {
-      payload.push({title: this.mainChoice, data: {file: this.imageFile, info: this.imageAdditionalInfo}})
-      payload.push({title: 'format', data: {size:this.formatSizes[this.selectedFormatSize], imageSupport: this.imageSupportSelected}})
+      payload.push({title: this.mainChoice, data: {file: this.imageFile, info: this.imageAdditionalInfo}});
+      payload.push({title: 'format', data: {size: this.formatSizes[this.selectedFormatSize], imageSupport: this.imageSupportSelected}});
 
     }
 
-    const data = {}
-    for(let field in this.userInfoPerso) {
-      data[field] = this.userInfoPerso[field]
+    const data = {};
+    for (const field in this.userInfoPerso) {
+      data[field] = this.userInfoPerso[field];
     }
     payload.push({title: this.projectType, data: {data}});
     const commandPayload = {
       text: this.textInput,
       typo: this.selectedTypo,
-      colors: this.selectedColor, 
-      support: this.imageSupportSelected, 
+      colors: this.selectedColor,
+      support: this.imageSupportSelected,
       imageAdditionalInfo: this.imageAdditionalInfo,
       height: this.formatSizes[this.selectedFormatSize].width,
       // price: Math.floor(Math.random() * 2000) + 1 ,
-      state: 'created', 
+      state: 'created',
       type: this.projectType
-    }
-    if(localStorage.getItem('email') === null) {
-      if((this.userInfoPerso['email'] || this.userInfoPerso['password']) && (this.userInfoPerso['email'].trim() !== '' || this.userInfoPerso['password'].trim() !== '') ) {
+    };
+    if (localStorage.getItem('email') === null) {
+      if ((this.userInfoPerso['email'] || this.userInfoPerso['password']) && (this.userInfoPerso['email'].trim() !== '' || this.userInfoPerso['password'].trim() !== '') ) {
         this.loginFailed = false;
         this.loading = true;
         this.getUser().subscribe((allUsers: Array<any>) => {
-          console.log('all the users , ', allUsers)
-          if(allUsers) {
-            if(allUsers.find(x => x['email'] === this.userInfoPerso['email'])) {
+          console.log('all the users , ', allUsers);
+          if (allUsers) {
+            if (allUsers.find(x => x['email'] === this.userInfoPerso['email'])) {
               this.loginFailed = true;
-              const userId = allUsers.find(x => x['email'] === this.userInfoPerso['email']).id
+              const userId = allUsers.find(x => x['email'] === this.userInfoPerso['email']).id;
               this.signUpError = 'Il existe déjà un compte avec cet email...';
               this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                 console.log('updated list after post :', newNeonList);
@@ -244,20 +244,20 @@ onSelectColor(color) {
                 console.log('debu 4');
 
               }, err => {
-                if(err.status === 201 || err.status === 200 ) {
+                if (err.status === 201 || err.status === 200 ) {
                   console.log('debu 5');
 
                   this.saveToStorage();
                   currentView.caca = 'client';
                 }
-              })
+              });
             } else {
               this.loginFailed = false;
-              this.signUpError = 'Vous devez fournir un email et un mot de passe...'
+              this.signUpError = 'Vous devez fournir un email et un mot de passe...';
               console.log('debu 2');
 
               this.signUpObs().subscribe(() => {
-                this.loading = false;  
+                this.loading = false;
                 this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
                   this.allUsers = users;
                   this.saveToStorage();
@@ -265,27 +265,27 @@ onSelectColor(color) {
                   this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                     console.log('updated list after post :', newNeonList);
 
-                    if(this.projectType === "consumer") {
+                    if (this.projectType === 'consumer') {
                       this.saveToStorage();
                       currentView.caca = 'client';
                       console.log('debu 4');
                     }
 
                   }, err => {
-                    if(err.status === 201 || err.status === 200 ) {
-               
-                      if(this.projectType === "consumer") {
+                    if (err.status === 201 || err.status === 200 ) {
+
+                      if (this.projectType === 'consumer') {
                         this.saveToStorage();
                         currentView.caca = 'client';
                         console.log('debu 4');
                       }
-  
+
                     }
-                  })
-                })
-          
+                  });
+                });
+
               }, err => {
-                if(err.status === 201 || err.status === 200 )  {
+                if (err.status === 201 || err.status === 200 )  {
                   console.log('debu 6');
 
                   alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
@@ -296,36 +296,36 @@ onSelectColor(color) {
                     const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
                     this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                       console.log('updated list after post :', newNeonList);
-                      
-                    if(this.projectType === "consumer") {
+
+                    if (this.projectType === 'consumer') {
 
                       currentView.caca = 'client';
-                      console.log('success', currentView.caca)
+                      console.log('success', currentView.caca);
                     }
 
 
                     }, err => {
-                      if(err.status === 201 || err.status === 200 ) {
+                      if (err.status === 201 || err.status === 200 ) {
                         console.log('debu 7');
 
-                                
-                        if(this.projectType === "consumer") {
+
+                        if (this.projectType === 'consumer') {
 
                           currentView.caca = 'client';
-                          console.log('success', currentView.caca)
+                          console.log('success', currentView.caca);
                         }
-    
+
                       }
-                    })
-                  })
+                    });
+                  });
                 } else {
                   alert('Signup failed'); console.log('signup failed', err);
                   this.loading = false;
                 }
-              })  
+              });
             }
           }
-        })
+        });
       } else {
         alert('Vous devez fournir un email et un mot de passe');
       }
@@ -337,65 +337,65 @@ onSelectColor(color) {
       console.log('updated list after post :', newNeonList);
       currentView.caca = 'client';
 
-    }, err => { 
-      if(err.status === 201 || err.status === 200 ) {
+    }, err => {
+      if (err.status === 201 || err.status === 200 ) {
         console.log('debu 9   ');
         currentView.caca = 'client';
-        console.log('success', currentView.caca)
+        console.log('success', currentView.caca);
       }
-    })
+    });
     }
- 
-    
+
+
   }
 
   onCompleteStep(step: number, choice: string, data: any) {
-    if(choice && step === 0) {  
-      if(choice !== this.mainChoice) {
+    if (choice && step === 0) {
+      if (choice !== this.mainChoice) {
         this.textInput = '';
       }
-      this.mainChoice = choice
+      this.mainChoice = choice;
       this.userChoices[step] = choice;
     }
-    if(step === 3) {  
-      if(choice === 'erase') {
+    if (step === 3) {
+      if (choice === 'erase') {
         this.userChoices[step] = null;
       } else {
         this.userChoices[step] = choice;
 
       }
     }
-    if(choice && step === 5) {  
-      if(choice !== this.projectType) {
+    if (choice && step === 5) {
+      if (choice !== this.projectType) {
           this.userInfoPerso = {};
-      };
+      }
       this.projectType = choice;
-      if(localStorage.getItem('email')) {
+      if (localStorage.getItem('email')) {
         this.loading = true;
         const commandPayload = {
           text: this.textInput,
           typo: this.selectedTypo,
-          colors: this.selectedColor, 
-          support: this.imageSupportSelected, 
+          colors: this.selectedColor,
+          support: this.imageSupportSelected,
           imageAdditionalInfo: this.imageAdditionalInfo,
           height: this.formatSizes[this.selectedFormatSize].width,
           // price: Math.floor(Math.random() * 2000) + 1 ,
-          state: 'created', 
+          state: 'created',
           type: this.projectType
-        }
-        
+        };
+
     const userId = this.allUsers.find(x => x.email === localStorage.getItem('email')).id;
     this.http.post(  `https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
       console.log('updated list after post :', newNeonList);
       currentView.caca = 'client';
 
-    }, err => { 
-      if(err.status === 201 || err.status === 200 ) {
+    }, err => {
+      if (err.status === 201 || err.status === 200 ) {
         console.log('debu 9   ');
         currentView.caca = 'client';
-        console.log('success', currentView.caca)
+        console.log('success', currentView.caca);
       }
-    })
+    });
         // this.getUser().subscribe((allUsers: Array<any>) => {
         //   this.loginFailed = true;
         //   const userId = allUsers.find(x => x['email'] ===localStorage.getItem('email')).id
@@ -405,18 +405,18 @@ onSelectColor(color) {
         //     this.saveToStorage();
         //     currentView.caca = 'client';
         //     console.log('debu 4');
-  
+
         //   }, err => {
         //     if(err.status === 201 || err.status === 200 ) {
         //       console.log('debu 5');
-  
+
         //       this.saveToStorage();
         //       currentView.caca = 'client';
         //     }
         //   })
         // })
       }
-  
+
 
     }
     console.log('step ', step, ' completed. The user chose ', choice, '... data to save: ',  this.projectType);
@@ -424,21 +424,21 @@ onSelectColor(color) {
   }
 
   onChangeUserInfo(target: string, value: string) {
-    if(value.trim() !== '') {
+    if (value.trim() !== '') {
       this.userInfoPerso[target] = value;
     }
   }
 
   signUpObs() {
-    let headers = new HttpHeaders({ "content-type": "application/json", "Accept": "application/json" });
-    const password = this.projectType === "consumer" ? this.userInfoPerso['password'] : this.userInfoPerso['société'];
+    const headers = new HttpHeaders({ 'content-type': 'application/json', 'Accept': 'application/json' });
+    const password = this.projectType === 'consumer' ? this.userInfoPerso['password'] : this.userInfoPerso['société'];
      const payload = {
       email: this.userInfoPerso['email'],
       password: password,
       name: this.userInfoPerso['name'],
       nickname: this.userInfoPerso['nickname'],
       type: this.projectType
-     }
+     };
     return this.http.post('https://neon-server.herokuapp.com/users',  payload, {headers: headers});
   }
 
@@ -448,9 +448,9 @@ onSelectColor(color) {
   }
 
 
-  saveToStorage(){
+  saveToStorage() {
     localStorage.setItem('email', this.userInfoPerso['email']);
-    localStorage.setItem('pw',this.userInfoPerso['password']);
+    localStorage.setItem('pw', this.userInfoPerso['password']);
   }
 
   select(index: number): void {
@@ -486,7 +486,7 @@ onSelectColor(color) {
   }
 
   getAnimationSlideState(index: number) {
-    return index === this.activeSlides.current ? 'current' : index === this.activeSlides.next ? 'next' : index === this.activeSlides.previous ? 'previous' : ''
+    return index === this.activeSlides.current ? 'current' : index === this.activeSlides.next ? 'next' : index === this.activeSlides.previous ? 'previous' : '';
   }
 
   startTimer(): void {

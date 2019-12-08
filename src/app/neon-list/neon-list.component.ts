@@ -83,8 +83,11 @@ export class NeonListComponent implements OnInit {
   ngOnDestroy() {
     // this.card.removeEventListener('change', this.cardHandler);
     // this.card.destroy();
-    this.card.removeEventListener('change', this.cardHandler);
-    this.card.destroy();
+    if(this.payMode) {
+      this.card.removeEventListener('change', this.cardHandler);
+      this.card.destroy();
+    }
+
   }
 
   onChange({ error }) {
@@ -103,6 +106,7 @@ export class NeonListComponent implements OnInit {
       console.log('Something is wrong:', error);
     } else {
       console.log('Success!', token);
+      this.changeCommandToPaid(token);
       // ...send the token to the your backend to process the charge
     }
   }
@@ -162,13 +166,21 @@ export class NeonListComponent implements OnInit {
     this.commandInfos[field] = value;
   }
 
+  fromPayToCommand() {
+    this.card.removeEventListener('change', this.cardHandler);
+    this.card.destroy();
+    this.payMode = false;
+    this.commandMode = true;
+  }
 
   previous() {
     this.commandMode = false;
   }
 
-  changeCommandToPaid() {
+  changeCommandToPaid(token) {
     this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'payé';
+    this.user['commands'].find(c => c.id === this.neonSelected.id)['cardToken'] = token;
+
     this.user['changeCommand'] = {text: 'Votre facture', newState: 'payé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {

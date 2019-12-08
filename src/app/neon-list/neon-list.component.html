@@ -390,13 +390,13 @@
 
 
 <div class="ec-bigbox" *ngIf="payMode">
-    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="payMode = false">Précédent</button>
+    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="fromPayToCommand()">Précédent</button>
 
   <div class="row commandMainCont">
     <div class="col-6 command-form-cont">
       <h2>Mode de Paiement</h2>
       <div class="command-form-card-payer row">
-          <h2>Carte bancaire</h2>
+          <h2>Carte bancaire avec <a target="_blank" href="https://stripe.com/fr">Stripe</a></h2>
 
           <!-- <div class=' livraisonRow user-info-row-cont'>
               <span class="user-info-row-title">Numéro de carte</span>
@@ -439,13 +439,14 @@
                   <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
                 <!-- </div> -->
               
-                <button type="submit">Pay $777</button>
+                <button class='next-btn mt5 ' type="submit">Payer {{neonSelected.price}} Euros</button>
               </form>
               
 
             <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-            <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button>
+            <!-- <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button> -->
             <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
+            <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Conditions légales d'utilisation du module de paiement Stripe</a>
 
       </div>
 

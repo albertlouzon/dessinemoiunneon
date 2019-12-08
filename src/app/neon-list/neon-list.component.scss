@@ -406,36 +406,28 @@ form.checkout {
   max-width: 500px;
   margin: 2rem auto;
   text-align: center;
-  border: 2px solid #eee;
   border-radius: 8px;
   padding: 1rem 2rem;
   background: white;
   width: 100%;
-  font-family: monospace;
-  color: #525252;
+  font-family: Nunito-Regular, sans-serif;
+
   font-size: 1.1rem;
 }
 
-form.checkout button {
-  padding: 0.5rem 1rem;
-  color: white;
-  background: coral;
-  border: none;
-  border-radius: 4px;
-  margin-top: 1rem;
-}
 
-form.checkout button:active {
-  background: rgb(165, 76, 43);
+.hyperlink {
+  font-family: Nunito-Regular, sans-serif;
+  text-align: center;
 }
-
 
 .StripeElement {
   margin: 1rem 0 1rem;
   background-color: white;
-  padding: 8px 12px;
+  padding: 20px;
   border-radius: 4px;
   border: 1px solid transparent;
+  font-family: Nunito-Regular, sans-serif;
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
@@ -595,39 +587,7 @@ form.checkout button:active {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 // Main form styling
-.StripeElement { }
 
-// Focused field that user has text cursor in
-.StripeElement--focus { }
-
-// A field with an error or incomplete
-.StripeElement--invalid { }
-.checkout {
-  max-width: 500px;
-  margin: 2rem auto;
-  text-align: center;
-  border: 2px solid #eee;
-  border-radius: 8px;
-  padding: 1rem 2rem;
-  background: white;
-
-  font-family: monospace;
-  color: #525252;
-  font-size: 1.1rem;
-}
-
-.checkout button {
-  padding: 0.5rem 1rem;
-  color: white;
-  background: coral;
-  border: none;
-  border-radius: 4px;
-  margin-top: 1rem;
-}
-
-.checkout button:active {
-  background: rgb(165, 76, 43);
-}
 
 .recapList {
   display: flex;

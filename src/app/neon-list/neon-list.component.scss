@@ -330,6 +330,39 @@ td:before {
 }
 
 
+.Jerry {
+  font-family: Jerry, sans-serif !important;
+  font-size: 4vw !important;
+}
+.Jackie {
+  font-family: Jackie, sans-serif !important;
+  font-size: 3vw !important;
+}
+.Cobby {
+  font-family: Cobby, sans-serif !important;
+  font-size: 3vw !important;
+
+}
+.Johnny {
+  font-family: Johnny, sans-serif !important;
+  font-size: 3vw !important;
+
+}
+.Perrie {
+  font-family: Perrie, sans-serif !important;    font-size: 3vw !important;
+
+}
+.Billie {
+  font-family: Billie, sans-serif !important;
+  font-size: 3vw !important;
+
+}
+.Jimmy {
+  font-family: Jimmy, sans-serif !important;
+  font-size: 3vw !important;
+
+}
+
 /*
 .card {
   margin: 30px auto;
@@ -797,4 +830,21 @@ form.checkout {
   However, delay the fade out process for 2.5 seconds */
   //-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   //animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@media screen and (max-width: 700px) {
+
+
+}
+@media screen and (max-width: 1024px) {
+  .ec-petit-prince{
+    display: none;
+  };
+  .ec-top-layer {
+    display: none;
+  };
+  .forBigPussy {
+    display: none;
+  }
+
 }

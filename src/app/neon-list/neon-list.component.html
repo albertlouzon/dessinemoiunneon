@@ -3,9 +3,9 @@
 
 <div  *ngIf="!neonSelected && !commandMode" class="ec-bigbox">
   <div class="row ec-top-row">
-    <div class="col-4 ec-petit-prince"></div>
-    <div class="col-1"></div>
-    <div class="col-7">
+    <div class="col-lg-4  ec-petit-prince"></div>
+    <div class="col-lg-1 forBigPussy"></div>
+    <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
       <div class='ec-list-title'>
         <h2 class="ec-title">Tous vos néons</h2>
         <button class="prev-btn" (click)="goToForm();">Créer un nouveau néon !</button>
@@ -22,7 +22,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)"  >
-              <td  data-column="Vos dessins techniques">{{command.text}}</td>
+              <td  data-column="Vos dessins techniques" [className]="command.typo + ' dynamicNeonTitle ' + getColor(command.colors) ">{{command.text}}</td>
               <td data-column="Etat">{{command.state}}</td>
             </tr>
 

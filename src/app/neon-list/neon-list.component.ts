@@ -26,6 +26,52 @@ export class NeonListComponent implements OnInit {
   loading = false;
   constructor(private http: HttpClient,     private cd: ChangeDetectorRef,
   ) { }
+  slides = [
+    {
+      url: '../.././assets/Billie-16.png',
+      font: 'Billie'
+    },
+    {
+      url: '../.././assets/Cobby-16.png',
+      font: 'Cobby'
+    },
+    {
+      url: '../.././assets/Jackie-16.png',
+      font: 'Jackie'
+    },
+    {
+      url: '../.././assets/Jerry-16.png',
+      font: 'Jerry'
+    },
+    {
+      url: '../.././assets/Jimmy-16.png',
+      font: 'Jimmy'
+    },
+    {
+      url: '../.././assets/Johnny-16.png',
+      font: 'Johnny'
+    },
+    {
+      url: '../.././assets/Perrie-16.png',
+      font: 'Perrie'
+    },
+  ];
+
+  colorList = [
+    {name: 'blancFroid' , color: '#ffffff', url: '../.././assets/blanc.png' },
+    {name: 'blancChaud' , color: '#ddcaaf', url: '../.././assets/blancChaud.png' },
+    {name: 'orange' , color: '#ffa42c', url: '../.././assets/orange.png' },
+    {name: 'jaune' , color: '#ffe600', url: '../.././assets/jaune.png' },
+    {name: 'rouge' , color: '#ff0000', url: '../.././assets/rouge.png' },
+    {name: 'rose' , color: '#ff73ff', url: '../.././assets/rose.png' },
+    {name: 'fuschia' , color: '#df29ff', url: '../.././assets/fuschia.png' },
+    {name: 'violet' , color: '#9527ff', url: '../.././assets/violet.png' },
+    {name: 'bleu' , color: '#337dff', url: '../.././assets/bleu.png' },
+    {name: 'vert' , color: '#15e81f', url: '../.././assets/vert.png' },
+    {name: 'turquoise' , color: '#17fff9', url: '../.././assets/turquoise.png' },
+  ];
+  neonTypoClass = 'Billie';
+  neonColorClass = '';
   card: any;
   cardHandler = this.onChange.bind(this);
   error: string;
@@ -37,10 +83,10 @@ export class NeonListComponent implements OnInit {
   customMail = '';
   handler: any;
   snackbarClass = '';
-  snackMsg = 'Oops'
+  snackMsg = 'Oops';
   commandInfos: { nom: string, prénom: string, adresse: string, ville: string, ['code-postal']: string, pays: string, téléphone: string }
-    = { nom: '', prénom: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };;
-  errorMessage = 'Des champs sont incomplets...'
+    = { nom: '', prénom: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
+  errorMessage = 'Des champs sont incomplets...';
   commandFailed = false;
   payInfos = {};
   payMode = false;
@@ -55,7 +101,7 @@ export class NeonListComponent implements OnInit {
   //   blancFroid:'#ffffff',
   //   blancFroid:'#ffffff',
   //   blancFroid:'#ffffff',
-    
+
   // }
   //  [
   //   {name: 'blancFroid' , color: '#ffffff'},
@@ -75,7 +121,7 @@ export class NeonListComponent implements OnInit {
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
     this.fetchCommands();
      // Your Stripe public key
-    
+
   }
 
   ngAfterViewInit() {
@@ -84,7 +130,7 @@ export class NeonListComponent implements OnInit {
   ngOnDestroy() {
     // this.card.removeEventListener('change', this.cardHandler);
     // this.card.destroy();
-    if(this.payMode) {
+    if (this.payMode) {
       this.card.removeEventListener('change', this.cardHandler);
       this.card.destroy();
     }
@@ -100,13 +146,13 @@ export class NeonListComponent implements OnInit {
     this.cd.detectChanges();
   }
 
-  onChangeAdditionnalInfo(text){ 
+  onChangeAdditionnalInfo(text) {
     this.customMail = text;
   }
 
-  sendCustomEmail(){
-    if(this.customMail.trim() !== '') {
-      this.user['changeCommand'] = {text: '', newState: ''}
+  sendCustomEmail() {
+    if (this.customMail.trim() !== '') {
+      this.user['changeCommand'] = {text: '', newState: ''};
       this.user['changeCommand']['text'] = 'customEmail';
       this.user['changeCommand']['newState'] = this.customMail;
       this.loading = true;
@@ -114,7 +160,7 @@ export class NeonListComponent implements OnInit {
         this.fetchCommands();
         this.neonSelected = null;
         location.reload();
-  
+
       }, err => {
         if (err.status === 200) {
           this.fetchCommands();
@@ -143,33 +189,43 @@ export class NeonListComponent implements OnInit {
     setTimeout(() => { this.snackbarClass = ''; }, 3000);
   }
   fetchCommands() {
-    this.neonList = []
+    this.neonList = [];
     this.loading = true;
     this.getConfig().subscribe((res: Array<Object>) => {
       if (res) {
         this.loading = false;
-        console.log('ok ', res, localStorage.getItem('email'))
+        console.log('ok ', res, localStorage.getItem('email'));
         if (!res.find(x => x['email'] === localStorage.getItem('email')) || !localStorage.getItem('email')) {
-          this.openSnackbar('Vous n êtes pas connecté à votre compte. Veuillez vous connecter ou créer un compte.')
-          currentView['caca'] = 'login'
+          this.openSnackbar('Vous n êtes pas connecté à votre compte. Veuillez vous connecter ou créer un compte.');
+          currentView['caca'] = 'login';
         } else {
-          console.log(localStorage.getItem('email'))
-          var commands = res.find(x => x['email'] === localStorage.getItem('email'))['commands']
+          console.log(localStorage.getItem('email'));
+          const commands = res.find(x => x['email'] === localStorage.getItem('email'))['commands'];
           this.user = res.find(x => x['email'] === localStorage.getItem('email'));
-          console.log(commands)
+          console.log(commands);
 
           commands.forEach((command) => {
-            this.neonList.push(command)
-          })
+            this.neonList.push(command);
+            console.log(command['colors']);
+          });
         }
 
       }
       console.log('User data after fetch : ', this.neonList);
-    })
+    });
+  }
+
+  getColor(color) {
+    for (let i = 0; i <= color.length; i++) {
+      if (color[i] === '/') {
+        return color.substring(0, i - 1);
+      }
+    }
+
   }
 
   goToForm() {
-    currentView.caca = 'form'
+    currentView.caca = 'form';
   }
 
   getConfig() {
@@ -185,8 +241,8 @@ export class NeonListComponent implements OnInit {
   goToNeonDetail(neonPayload) {
     console.log('the neon to see: ', neonPayload);
     if (neonPayload) {
-      this.neonSelected = neonPayload
-    } 
+      this.neonSelected = neonPayload;
+    }
 
   }
   onChangeCommandInfo(field, value: string) {
@@ -211,18 +267,18 @@ export class NeonListComponent implements OnInit {
     this.user['changeCommand'] = {text: 'Votre facture', newState: 'payé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !')
+      this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
       // this.fetchCommands();
 
     }, err => {
       if (err.status === 200) {
-        this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !')
+        this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
         // this.fetchCommands();
       }
     });
   }
   openCommand() {
-    if (this.neonSelected.state === "commandé") {
+    if (this.neonSelected.state === 'commandé') {
       this.commandFailed = false;
       // this.payInfos = { nom: '', prénom: '', société: '', adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
       this.commandMode = false;
@@ -247,7 +303,7 @@ export class NeonListComponent implements OnInit {
       //     this.changeCommandToPaid();
       //   }
       // });
-   
+
       // this.handler.open({
       //   name: 'Stripe payment for:  ' + this.neonSelected.text,
       //   // description: '2 widgets',
@@ -300,7 +356,7 @@ export class NeonListComponent implements OnInit {
   }
   removeStripe() {
     // !window.document.getElementById('stripe-script')
-    document.getElementById("stripe-script").outerHTML = "";
+    document.getElementById('stripe-script').outerHTML = '';
 
   }
   // loadStripe() {
@@ -310,7 +366,7 @@ export class NeonListComponent implements OnInit {
   //     s.id = "stripe-script";
   //     s.type = "text/javascript";
   //     s.src = "https://checkout.stripe.com/checkout.js";
-      
+
   //     // s.onload = () => { this.loading = false;
   //     //   this.handler = (<any>window).StripeCheckout.configure({
   //     //     key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
@@ -323,8 +379,8 @@ export class NeonListComponent implements OnInit {
   //     //     }
   //     //   });
   //     // }
-       
+
   //     window.document.body.appendChild(s);
   //   }
   // }
-} 
+}

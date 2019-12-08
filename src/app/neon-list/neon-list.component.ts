@@ -223,7 +223,11 @@ export class NeonListComponent implements OnInit {
     }
 
   }
-
+  resetView() {
+    this.payMode = false;
+    this.commandMode = false;
+    this.neonSelected = null;
+  }
   goToForm() {
     currentView.caca = 'form';
   }

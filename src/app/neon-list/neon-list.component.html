@@ -99,7 +99,7 @@
 </div>
 
 
-<div *ngIf="neonSelected  && !commandMode && !payMode" class='ec-bigbox-detail'>
+<div *ngIf="neonSelected  && !commandMode && !payMode && neonSelected.state !== 'payé'" class='ec-bigbox-detail'>
   <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
 
   <h2 style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
@@ -555,6 +555,19 @@
 
   </div>
 
+
+</div>
+
+<div *ngIf="neonSelected?.state === 'payé'" class="ec-bigbox-detail row"> 
+  <div class=col-2></div>
+    <div class = 'col-8'>
+        <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"
+        class="neon-canvas"></div>
+        <button  (click)="resetView();"
+        style="" class="next-btn">Revenir à mon espace</button>
+        <h2>Merci pour votre commande ! Votre néon arrivera à l'adresse indiquée dans un délai de 15 à 20 jours. Notre équipe est joignable sur contact@dessinemoiunneon.fr</h2>
+    </div>
+    <div class=col-2></div>
 
 </div>
 

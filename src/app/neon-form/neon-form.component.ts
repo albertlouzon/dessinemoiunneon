@@ -111,7 +111,7 @@ export class NeonFormComponent implements OnInit {
     {name: 'jaune' , color: '#ffe600', url: '../.././assets/jaune.png' },
     {name: 'rouge' , color: '#ff0000', url: '../.././assets/rouge.png' },
     {name: 'rose' , color: '#ff73ff', url: '../.././assets/rose.png' },
-    {name: 'fuschia' , color: '#df29ff', url: '../.././assets/fuschfia.png' },
+    {name: 'fuschia' , color: '#df29ff', url: '../.././assets/fuschia.png' },
     {name: 'violet' , color: '#9527ff', url: '../.././assets/violet.png' },
     {name: 'bleu' , color: '#337dff', url: '../.././assets/bleu.png' },
     {name: 'vert' , color: '#15e81f', url: '../.././assets/vert.png' },

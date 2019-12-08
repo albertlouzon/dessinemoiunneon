@@ -198,15 +198,24 @@
           </div>
 
         </div>
+        <div class="row ">
+            <div  class='sizeName  col-3'
+            *ngFor="let format of formatSizes;  let i = index">
+           {{format.width}} cm
+  
+  
+            <!-- <div class=format-subtitle>{{format.width}}</div>  -->
+          </div>
 
-        <div class="neon-wizard-btn-container row flex1 pb5">
+        </div>
+        <div class="neon-wizard-btn-container mt5 row flex1 pb5">
           <button class="prev-btn col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
           <button class="next-btn col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
 
       </aw-wizard-step>
       <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
-        <h5 class="neon-wizard-header flex1">Choisissez votre support</h5>
+        <h5 class="neon-wizard-header flex1 mb5">Choisissez votre support</h5>
 
         <div class="neon-wizard-btn-container row flex3 ">
           <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected' : ''"
@@ -222,7 +231,7 @@
 
 
         </div>
-        <div class="neon-wizard-btn-container row">
+        <div class="neon-wizard-btn-container mt5 row">
           <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
           <button class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
 
@@ -233,11 +242,11 @@
       <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h5 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h5>
 
-        <div class="neon-wizard-btn-container row flex3 ">
-          <div  [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'" (click)="onCompleteStep(5, 'business', null)"
-            >Professionnel</div>
-          <div [ngClass]=" projectType==='consumer'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'"  (click)="onCompleteStep(5, 'consumer', null)"
-            >Personnel</div>
+        <div class="neon-wizard-btn-container row flex3 mt5 mb5">
+          <div style="display: flex;" [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-md-5 col-sm-12' : 'form-btn  col-md-5 col-sm-12'" (click)="onCompleteStep(5, 'business', null)"
+            ><span>Professionnel</span></div>
+          <div  style="display: flex;" [ngClass]=" projectType==='consumer'? 'yellow-selected form-btn  col-md-5 col-sm-12  ' : 'form-btn  col-md-5 col-sm-12'"  (click)="onCompleteStep(5, 'consumer', null)"
+            ><span>Personnel</span></div>
 
 
         </div>

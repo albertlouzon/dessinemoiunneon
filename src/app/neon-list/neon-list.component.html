@@ -1,7 +1,7 @@
-<div  *ngIf="!neonSelected && !commandMode" class="ec-top-layer"></div>
+<div *ngIf="!neonSelected && !commandMode" class="ec-top-layer"></div>
 
 
-<div  *ngIf="!neonSelected && !commandMode" class="ec-bigbox">
+<div *ngIf="!neonSelected && !commandMode" class="ec-bigbox">
   <div class="row ec-top-row">
     <div class="col-lg-4  ec-petit-prince"></div>
     <div class="col-lg-1 forBigPussy"></div>
@@ -10,24 +10,27 @@
         <h2 class="ec-title">Tous vos néons</h2>
         <button class="prev-btn" (click)="goToForm();">Créer un nouveau néon !</button>
       </div>
-  
+
       <div class="ec-list-cont">
+        <th>Vos dessins techniques</th>
+
         <table>
+
           <thead>
+
             <tr>
-              <th >Vos dessins techniques</th>
-      
-              <th >Etat</th>
+
+              <th>Etat</th>
             </tr>
           </thead>
           <tbody>
-            <tr  *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)"  >
-<!--              [className]="command.typo + ' dynamicNeonTitle ' + getColor(command.colors) "-->
-              <td class="pb3 pt3" data-column="Vos dessins techniques" >{{command.text}}</td>
+            <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)">
+              <!--              [className]="command.typo + ' dynamicNeonTitle ' + getColor(command.colors) "-->
+              <td class="pb3 pt3" data-column="Vos dessins techniques">{{command.text}}</td>
               <td data-column="Etat">{{command.state}}</td>
             </tr>
 
-  
+
           </tbody>
         </table>
       </div>
@@ -36,99 +39,109 @@
   </div>
   <div class="row ec-bottom-row">
     <div class="cards-list">
-  
+
       <div class="card 1">
-       <div [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'"  class="card_image">
-
-       </div>
-       <div class="card_content">
-        <span class="ec-card-title">
-          Paiement sécurisé 
-
-        </span>
-        <span class="ec-card-descr">
-          Les paiements sur notre site sont sécurisés. Nous acceptons tous les paiement dont Visa, Master Card, Amex, Paypal et Maestro.
-        </span>
-
-      </div>
-      </div>
-      
-        <div class="card 2">
-          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'"  class="card_image">
-
-          </div>
-          <div class="card_content">
-           <span class="ec-card-title">
-             Livraison
-           </span>
-           <span class="ec-card-descr">
-             Nous vous livrons dans un délai de deux à trois semaines, selon la production et la destination. En cas de demande urgente merci de nous contacter directement afin de procéder à une "Commande express"
-           </span>
-   
-         </div>
-      </div>
-      
-      <div class="card 3">
-        <div class="card_image"  [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'" >
+        <div [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'" class="card_image">
 
         </div>
         <div class="card_content">
-         <span class="ec-card-title">
-           Garantie
-         </span>
-         <span class="ec-card-descr">
-           Tous nos néons possèdent une garantie d'un an à compter de la data d'achat. Si vous devez retourner un article défectueux, veuillez 
-           nous contacter avec votre numéro de commande et les détails concernant le produit que vous souhaitez retourner !
-         </span>
- 
-       </div>
+          <span class="ec-card-title">
+            Paiement sécurisé
+
+          </span>
+          <span class="ec-card-descr">
+            Les paiements sur notre site sont sécurisés. Nous acceptons tous les paiement dont Visa, Master Card, Amex,
+            Paypal et Maestro.
+          </span>
+
+        </div>
       </div>
-        
-        
-      
+
+      <div class="card 2">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'"
+          class="card_image">
+
+        </div>
+        <div class="card_content">
+          <span class="ec-card-title">
+            Livraison
+          </span>
+          <span class="ec-card-descr">
+            Nous vous livrons dans un délai de deux à trois semaines, selon la production et la destination. En cas de
+            demande urgente merci de nous contacter directement afin de procéder à une "Commande express"
+          </span>
+
+        </div>
       </div>
+
+      <div class="card 3">
+        <div class="card_image" [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'">
+
+        </div>
+        <div class="card_content">
+          <span class="ec-card-title">
+            Garantie
+          </span>
+          <span class="ec-card-descr">
+            Tous nos néons possèdent une garantie d'un an à compter de la data d'achat. Si vous devez retourner un
+            article défectueux, veuillez
+            nous contacter avec votre numéro de commande et les détails concernant le produit que vous souhaitez
+            retourner !
+          </span>
+
+        </div>
+      </div>
+
+
+
+    </div>
   </div>
 </div>
 
 
 <div *ngIf="neonSelected  && !commandMode && !payMode" class='ec-bigbox-detail'>
-    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
+  <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
 
-  <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
+  <h2 style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
 
   <div class="ec-top-row-detail row">
     <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
-      <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
-      <div *ngIf="neonSelected.state === 'created'"   class="neon-canvas"><div class='no-dt'>Dessin technique en cours de design</div></div>
+      <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"
+        class="neon-canvas"></div>
+      <div *ngIf="neonSelected.state === 'created'" class="neon-canvas">
+        <div class='no-dt'>Dessin technique en cours de design</div>
+      </div>
 
       <div class="neon-bar">
         <div class="neon-bar-item-cont">
-            <div  [style.backgroundImage]="'url('+ '../.././assets/Incassable.png' +')'"  class="neon-bar-item"></div>
-            <span>Incassable</span>
+          <div [style.backgroundImage]="'url('+ '../.././assets/Incassable.png' +')'" class="neon-bar-item"></div>
+          <span>Incassable</span>
         </div>
 
         <div class="neon-bar-item-cont">
-            <div  [style.backgroundImage]="'url('+ '../.././assets/aqua.png' +')'"  class="neon-bar-item"></div>
-            <span>Réistant à l'eau</span>
+          <div [style.backgroundImage]="'url('+ '../.././assets/aqua.png' +')'" class="neon-bar-item"></div>
+          <span>Réistant à l'eau</span>
         </div>
 
         <div class="neon-bar-item-cont">
-            <div  [style.backgroundImage]="'url('+ '../.././assets/horloge.png' +')'"  class="neon-bar-item"></div>
-            <span>50 000 heures</span>
+          <div [style.backgroundImage]="'url('+ '../.././assets/horloge.png' +')'" class="neon-bar-item"></div>
+          <span>50 000 heures</span>
         </div>
 
         <div class="neon-bar-item-cont">
-            <div  [style.backgroundImage]="'url('+ '../.././assets/LED.png' +')'"  class="neon-bar-item"></div>
-            <span>LED</span>
+          <div [style.backgroundImage]="'url('+ '../.././assets/LED.png' +')'" class="neon-bar-item"></div>
+          <span>LED</span>
         </div>
         <div style="flex: 0.6"></div>
 
         <div class="bar-btn-cont">
-            <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
+          <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
 
-            <button *ngIf="neonSelected.state === 'created'" click class="prev-btn" ><a href="#open-modal">Modifier ma commande</a></button>
-            <button *ngIf="neonSelected.state !== 'created'" click class="prev-btn" ><a  target="_blank" class='customHyperlink' [href]="neonSelected.filePath">Télécharger mon dessin</a></button>
-            <!-- <button   class="prev-btn" >Demander une notification</button> --> 
+          <button *ngIf="neonSelected.state === 'created'" click class="prev-btn"><a href="#open-modal">Modifier ma
+              commande</a></button>
+          <button *ngIf="neonSelected.state !== 'created'" click class="prev-btn"><a target="_blank"
+              class='customHyperlink' [href]="neonSelected.filePath">Télécharger mon dessin</a></button>
+          <!-- <button   class="prev-btn" >Demander une notification</button> -->
 
         </div>
       </div>
@@ -138,128 +151,132 @@
 
 
     <div class="col-md-4 col-sm-6 col-xs-12">
-        <table>
-            <thead>
-              <tr>
-                <th class='detail-configu-title'>Configuration</th>
-                <th class='detail-configu-title'></th>
+      <table>
+        <thead>
+          <tr>
+            <th class='detail-configu-title'>Configuration</th>
+            <th class='detail-configu-title'></th>
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Texte</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Texte</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td>
 
-                <!-- <td  [className]="neonSelected.typo + ' dynamicNeonTitle ' + colorsList[neonSelected.colors] " style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td> -->
-              </tr>
-              <tr >
-                <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.typo}}</td>
-              </tr>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleurs</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.colors}}</td>
-              </tr>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
-                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
-              </tr>
-              <tr >
-                  <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
-                  <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.state}}</td>
-                </tr>
-      
-            </tbody>
-          </table>
+            <!-- <td  [className]="neonSelected.typo + ' dynamicNeonTitle ' + colorsList[neonSelected.colors] " style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td> -->
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.typo}}</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleurs</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.colors}}</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.state}}</td>
+          </tr>
 
-          <div class="neon-tarif-cont">
-            <div class="neon-tarif">
-              <span class="neon-tarif-price">Tarif: {{neonSelected.price}}$</span>
-              <span class="neon-tarif-blabla">Livraison incluse </span>
+        </tbody>
+      </table>
 
-            </div>
-            <button  *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Commander</button>
+      <div class="neon-tarif-cont">
+        <div class="neon-tarif">
+          <span class="neon-tarif-price">Tarif: {{neonSelected.price}}$</span>
+          <span class="neon-tarif-blabla">Livraison incluse </span>
 
-          </div>
+        </div>
+        <button *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'" (click)="openCommand();"
+          style="margin-right: 5%;" class="next-btn">Commander</button>
+
+      </div>
     </div>
 
   </div>
   <div class="ec-bottom-row row">
-      <h1 class="ec-title">Un service sûr et complet</h1>
+    <h1 class="ec-title">Un service sûr et complet</h1>
 
-      <div class="cards-list">
-  
-          <div class="little-card  card-tarace 1">
-           <!-- <div class="card_image">
+    <div class="cards-list">
+
+      <div class="little-card  card-tarace 1">
+        <!-- <div class="card_image">
     
            </div> -->
-           <div class="card_content">
-            <span class="ec-card-title">
-              Paiement sécurisé
-            </span>
-            <span class="ec-card-descr">
-              Les paiements sur notre site sont sécurisés. Nous acceptons tous les paiement dont Visa, Master Card, Amex, Paypal et Maestro.
-            </span>
-    
-          </div>
-          </div>
+        <div class="card_content">
+          <span class="ec-card-title">
+            Paiement sécurisé
+          </span>
+          <span class="ec-card-descr">
+            Les paiements sur notre site sont sécurisés. Nous acceptons tous les paiement dont Visa, Master Card, Amex,
+            Paypal et Maestro.
+          </span>
 
-          <div class="little-card  card-tarace 2">
-           <!-- <div class="card_image">
+        </div>
+      </div>
+
+      <div class="little-card  card-tarace 2">
+        <!-- <div class="card_image">
     
            </div> -->
-           <div class="card_content">
-            <span class="ec-card-title">
-              Garantie un an
-    
-            </span>
-            <span class="ec-card-descr">
-              Tous nos néons posèdent une garantie d'un an à compter de la data d'achat. Vous devez retourner un article défectueux ? Contactez-nous avec le numéro de commande !
-            </span>
-    
-          </div>
-          </div>
+        <div class="card_content">
+          <span class="ec-card-title">
+            Garantie un an
 
-          
-          <div class="little-card  card-tarace 3">
-              <!-- <div class="card_image">
+          </span>
+          <span class="ec-card-descr">
+            Tous nos néons posèdent une garantie d'un an à compter de la data d'achat. Vous devez retourner un article
+            défectueux ? Contactez-nous avec le numéro de commande !
+          </span>
+
+        </div>
+      </div>
+
+
+      <div class="little-card  card-tarace 3">
+        <!-- <div class="card_image">
        
               </div> -->
-              <div class="card_content">
-               <span class="ec-card-title">
-                 Livraison offerte
-       
-               </span>
-               <span class="ec-card-descr">
-                 Nous vous offrons la livraison pour chaque néon commandé.
-               </span>
-       
-             </div>
-             </div>
+        <div class="card_content">
+          <span class="ec-card-title">
+            Livraison offerte
 
-             
-          <div class="little-card  card-tarace 4">
-              <!-- <div class="card_image">
+          </span>
+          <span class="ec-card-descr">
+            Nous vous offrons la livraison pour chaque néon commandé.
+          </span>
+
+        </div>
+      </div>
+
+
+      <div class="little-card  card-tarace 4">
+        <!-- <div class="card_image">
        
               </div> -->
-              <div class="card_content">
-               <span class="ec-card-title">
-                  Livré sous 15 jours
-       
-               </span>
-               <span class="ec-card-descr">
-                 Nous livrons dans un délai de 15 jours selon la production et la destination. En cas de demande urgente merci de nous contacter directement
-                 afin de procéder à une "Livraison express"
-               </span>
-       
-             </div>
-             </div>
+        <div class="card_content">
+          <span class="ec-card-title">
+            Livré sous 15 jours
+
+          </span>
+          <span class="ec-card-descr">
+            Nous livrons dans un délai de 15 jours selon la production et la destination. En cas de demande urgente
+            merci de nous contacter directement
+            afin de procéder à une "Livraison express"
+          </span>
+
+        </div>
+      </div>
 
 
 
 
-          </div>
+    </div>
   </div>
 
 </div>
@@ -268,7 +285,7 @@
 
 
 <div class="ec-bigbox" *ngIf="commandMode && neonSelected && !payMode">
-    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="previous();">Précédent</button>
+  <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="previous();">Précédent</button>
 
   <div class="row commandMainCont">
     <div class="col-lg-6 col-sm-12 command-form-cont">
@@ -276,16 +293,18 @@
       <div class="command-form-card row">
 
         <div class="row livraisonRow">
-            <div class='user-info-row-cont nestedInput col-5'>
-                <span class="user-info-row-title">Prénom</span>
-                  <input  [value]="commandInfos['prénom']" (change)="onChangeCommandInfo('prénom', $event.target.value)"  class="basic-input  "/>
-              </div>
-  
-              <div class=" col-2"></div>
-            <div class='user-info-row-cont nestedInput col-5'>
-                <span class="user-info-row-title">Nom</span>
-                  <input  [value]="commandInfos['nom']" (change)="onChangeCommandInfo('nom', $event.target.value)"   class="basic-input "/>
-              </div>
+          <div class='user-info-row-cont nestedInput col-5'>
+            <span class="user-info-row-title">Prénom</span>
+            <input [value]="commandInfos['prénom']" (change)="onChangeCommandInfo('prénom', $event.target.value)"
+              class="basic-input  " />
+          </div>
+
+          <div class=" col-2"></div>
+          <div class='user-info-row-cont nestedInput col-5'>
+            <span class="user-info-row-title">Nom</span>
+            <input [value]="commandInfos['nom']" (change)="onChangeCommandInfo('nom', $event.target.value)"
+              class="basic-input " />
+          </div>
 
         </div>
 
@@ -295,43 +314,48 @@
 
           </div> -->
 
-          <div class=' livraisonRow user-info-row-cont'>
-              <span class="user-info-row-title">Adresse</span>
-                <input [value]="commandInfos['adresse']" (change)="onChangeCommandInfo('adresse', $event.target.value)"  class="basic-input "/>
-  
-            </div>
+        <div class=' livraisonRow user-info-row-cont'>
+          <span class="user-info-row-title">Adresse</span>
+          <input [value]="commandInfos['adresse']" (change)="onChangeCommandInfo('adresse', $event.target.value)"
+            class="basic-input " />
 
-            <div class="row livraisonRow">
-                <div class='user-info-row-cont nestedInput col-5'>
-                    <span class="user-info-row-title">Ville</span>
-                      <input  [value]="commandInfos['ville']" (change)="onChangeCommandInfo('ville', $event.target.value)"  class="basic-input  "/>
-                  </div>
-      
-                  <div class="col-2"></div>
-                <div class='user-info-row-cont nestedInput col-5'>
-                    <span class="user-info-row-title">Code postal</span>
-                      <input  [value]="commandInfos['code-postal']" (change)="onChangeCommandInfo('code-postal', $event.target.value)"   class="basic-input "/>
-                  </div>
-    
-            </div>
+        </div>
+
+        <div class="row livraisonRow">
+          <div class='user-info-row-cont nestedInput col-5'>
+            <span class="user-info-row-title">Ville</span>
+            <input [value]="commandInfos['ville']" (change)="onChangeCommandInfo('ville', $event.target.value)"
+              class="basic-input  " />
+          </div>
+
+          <div class="col-2"></div>
+          <div class='user-info-row-cont nestedInput col-5'>
+            <span class="user-info-row-title">Code postal</span>
+            <input [value]="commandInfos['code-postal']"
+              (change)="onChangeCommandInfo('code-postal', $event.target.value)" class="basic-input " />
+          </div>
+
+        </div>
 
 
-            <div class="row livraisonRow">
-                <div class='user-info-row-cont nestedInput col-5'>
-                    <span class="user-info-row-title">Pays</span>
-                      <input  [value]="commandInfos['pays']" (change)="onChangeCommandInfo('pays', $event.target.value)"  class="basic-input  "/>
-                  </div>
-      
-                  <div class="col-2"></div>
-                <div class='user-info-row-cont nestedInput col-5'>
-                    <span class="user-info-row-title">Téléphone</span>
-                      <input  [value]="commandInfos['téléphone']" (change)="onChangeCommandInfo('téléphone', $event.target.value)"   class="basic-input "/>
-                  </div>
-    
-            </div>
-            <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-            <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Passer ma commande</button>
-            <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
+        <div class="row livraisonRow">
+          <div class='user-info-row-cont nestedInput col-5'>
+            <span class="user-info-row-title">Pays</span>
+            <input [value]="commandInfos['pays']" (change)="onChangeCommandInfo('pays', $event.target.value)"
+              class="basic-input  " />
+          </div>
+
+          <div class="col-2"></div>
+          <div class='user-info-row-cont nestedInput col-5'>
+            <span class="user-info-row-title">Téléphone</span>
+            <input [value]="commandInfos['téléphone']" (change)="onChangeCommandInfo('téléphone', $event.target.value)"
+              class="basic-input " />
+          </div>
+
+        </div>
+        <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
+        <button (click)="command();" style="margin-right: 5%;;" class="next-btn">Passer ma commande</button>
+        <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
 
       </div>
 
@@ -343,12 +367,12 @@
  
         </div> -->
         <div style="padding: 0 !important" class="card_content ">
-         <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
-           Récapitulatif
-         </span>
+          <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
+            Récapitulatif
+          </span>
 
-         <div  class="recapList row">
-            <div  style='margin-left: 20px !important;' class="row">
+          <div class="recapList row">
+            <div style='margin-left: 20px !important;' class="row">
               <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
               <div class="col-md-2"></div>
               <div class="col-5">{{neonSelected.price}}$</div>
@@ -362,15 +386,15 @@
 
             </div>
 
-         </div>
-  
-         <div class=" ttcList">
-          <div class="col-4 ttc">Total TTC</div>
-          <div class="col-4 ttc">{{neonSelected.price}}$</div>
+          </div>
 
+          <div class=" ttcList">
+            <div class="col-4 ttc">Total TTC</div>
+            <div class="col-4 ttc">{{neonSelected.price}}$</div>
+
+          </div>
         </div>
-       </div>
-       </div>
+      </div>
     </div>
 
   </div>
@@ -379,12 +403,12 @@
     <div class="col-md-6 col-sm-12 command-form-cont">
       <h2>Mode de livraison</h2>
       <div class="tiny-card">
-          <!-- <input style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
-          <div class="livraisonDom">Livraison à domicile: 15 jours ouvrés</div>
-        </div>
+        <!-- <input style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
+        <div class="livraisonDom">Livraison à domicile: 15 jours ouvrés</div>
+      </div>
 
 
-            <!-- <button   class="next-btn">Passer au paiement</button> -->
+      <!-- <button   class="next-btn">Passer au paiement</button> -->
 
     </div>
   </div>
@@ -394,15 +418,15 @@
 
 
 <div class="ec-bigbox" *ngIf="payMode">
-    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="fromPayToCommand()">Précédent</button>
+  <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="fromPayToCommand()">Précédent</button>
 
   <div class="row commandMainCont">
     <div class="col-lg-6 col-md-8 col-sm-12 command-form-cont">
-      <h2>Informations de Paiement</h2>   
+      <h2>Informations de Paiement</h2>
       <div class="command-form-card-payer row">
-          <h2>Carte bancaire</h2>
+        <h2>Carte bancaire</h2>
 
-          <!-- <div class=' livraisonRow user-info-row-cont'>
+        <!-- <div class=' livraisonRow user-info-row-cont'>
               <span class="user-info-row-title">Numéro de carte</span>
                 <input  (change)="onChangeCommandInfo('adresse', $event.target.value)"  class="basic-input "/>
   
@@ -426,7 +450,7 @@
               <input (change)="onChangeCommandInfo('société', $event.target.value)"   class="basic-input "/>
 
           </div> -->
-          <!-- <form #checkout="ngForm" (ngSubmit)="onSubmitPay()" class="checkout">
+        <!-- <form #checkout="ngForm" (ngSubmit)="onSubmitPay()" class="checkout">
               <div class="form-row">
                 <label for="card-info">Card Info</label>
                 <div id="card-info" #cardInfo></div>
@@ -436,21 +460,22 @@
             
               <button type="submit">Pay $5</button>
             </form> -->
-            <form #checkout="ngForm" (ngSubmit)="onSubmitPay()" class="checkout">
-                <!-- <div class="form-row"> -->
-                  <div id="card-info livraisonRow" #cardInfo></div>
-              
-                  <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
-                <!-- </div> -->
-              
-                <button class='next-btn mt5 ' type="submit">Payer {{neonSelected.price}} Euros</button>
-              </form>
-              
+        <form #checkout="ngForm" (ngSubmit)="onSubmitPay()" class="checkout">
+          <!-- <div class="form-row"> -->
+          <div id="card-info livraisonRow" #cardInfo></div>
 
-            <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-            <!-- <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button> -->
-            <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
-            <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Conditions légales d'utilisation du module de paiement Stripe</a>
+          <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+          <!-- </div> -->
+
+          <button class='next-btn mt5 ' type="submit">Payer {{neonSelected.price}} Euros</button>
+        </form>
+
+
+        <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
+        <!-- <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button> -->
+        <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
+        <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Conditions légales d'utilisation du
+          module de paiement Stripe</a>
 
       </div>
 
@@ -462,12 +487,12 @@
  
         </div> -->
         <div style="padding: 0 !important" class="card_content">
-         <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
-           Récapitulatif
-         </span>
+          <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
+            Récapitulatif
+          </span>
 
-         <div  class="recapList row">
-            <div  style='margin-left: 20px !important;' class="row">
+          <div class="recapList row">
+            <div style='margin-left: 20px !important;' class="row">
               <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
               <div class="col-2"></div>
               <div class="col-5">{{neonSelected.price}}$</div>
@@ -481,51 +506,51 @@
 
             </div>
 
-         </div>
-  
-         <div class=" ttcList">
-          <div class="col-4 ttc">Total TTC</div>
-          <div class="col-4 ttc">{{neonSelected.price}}$</div>
+          </div>
 
+          <div class=" ttcList">
+            <div class="col-4 ttc">Total TTC</div>
+            <div class="col-4 ttc">{{neonSelected.price}}$</div>
+
+          </div>
         </div>
-       </div>
-       </div>
+      </div>
 
 
-       <div class="big-card  ">
-          <!-- <div class="card_image">
+      <div class="big-card  ">
+        <!-- <div class="card_image">
    
           </div> -->
-          <div style="padding: 0 !important" class="card_content">
-           <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
-             Adresse de livraison
-           </span>
-  
-           <div  class="recapList2 row">
-              <div  style='margin-left: 20px !important;' class="row">
-                <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+        <div style="padding: 0 !important" class="card_content">
+          <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
+            Adresse de livraison
+          </span>
+
+          <div class="recapList2 row">
+            <div style='margin-left: 20px !important;' class="row">
+              <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
                 <div class="col-2"></div> -->
-                <div class="col-5">{{commandInfos.adresse}}</div>
-  
-              </div>
-  
-              <div  style='margin-left: 20px !important;' class="row">
-                  <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+              <div class="col-5">{{commandInfos.adresse}}</div>
+
+            </div>
+
+            <div style='margin-left: 20px !important;' class="row">
+              <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
                   <div class="col-2"></div> -->
-                  <div class="col-5">{{commandInfos['code-postal']}}, {{commandInfos.ville}}</div>
-    
-                </div>
-                <div  style='margin-left: 20px !important;' class="row">
-                    <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+              <div class="col-5">{{commandInfos['code-postal']}}, {{commandInfos.ville}}</div>
+
+            </div>
+            <div style='margin-left: 20px !important;' class="row">
+              <!-- <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
                     <div class="col-2"></div> -->
-                    <div class="col-5">{{commandInfos.pays}}</div>
-      
-                  </div>
-           </div>
-    
-         
-         </div>
-         </div>
+              <div class="col-5">{{commandInfos.pays}}</div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
     </div>
 
   </div>
@@ -534,28 +559,28 @@
 </div>
 
 <div id="open-modal" class="modal-window">
-    <div>
-      <a href="#" title="Close" class="modal-close">Close</a>
-      <h1>Décrivez nous votre problème: </h1>
-      <div style="height: 220px;">
-          <textarea (change)="onChangeAdditionnalInfo($event.target.value)" [value]="customMail" placeholder=""
-          class="large-input mt5">
+  <div>
+    <a href="#" title="Close" class="modal-close">Close</a>
+    <h1>Décrivez nous votre problème: </h1>
+    <div style="height: 220px;">
+      <textarea (change)="onChangeAdditionnalInfo($event.target.value)" [value]="customMail" placeholder=""
+        class="large-input mt5">
 
                             </textarea>
-      </div>
-      <button (click)="sendCustomEmail()" style="float: right;" class="next-btn" type="button">Envoyer</button>
-
     </div>
-
+    <button (click)="sendCustomEmail()" style="float: right;" class="next-btn" type="button">Envoyer</button>
 
   </div>
 
 
+</div>
+
+
 <div *ngIf="loading" class="blendContainer">
   <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">
-          <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->
-          <circle stroke="#f4cc20" class="path" cx="25" cy="25" r="20" fill="none" stroke-width="8.3"></circle>
-        </svg>
+    <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->
+    <circle stroke="#f4cc20" class="path" cx="25" cy="25" r="20" fill="none" stroke-width="8.3"></circle>
+  </svg>
 </div>
 
 <div id="dpl-snackbar" [class]="snackbarClass">{{snackMsg}}</div>

@@ -6,20 +6,20 @@
 
   <aw-wizard style="width: 100%;">
     <div class="neon-wizard-container row">
-      <div class="col-3"></div>
-      <aw-wizard-step stepTitle="" class="col-6 step-container">
+      <div class="forBigPussy col-3"></div>
+      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10 step-container">
         <h4 class="neon-wizard-header flex1">Faîtes votre choix</h4>
 
-        <div class="neon-wizard-btn-container flex3 ">  
-          <button type="button" class="form-btn col-5" (click)="onCompleteStep(0, 'text', null)"
+        <div class="neon-wizard-btn-container  row flex3 ">  
+          <button type="button" class="form-btn col-md-3 col-sm-12" (click)="onCompleteStep(0, 'text', null)"
             awNextStep>TEXTE</button>
-          <button type="button" class="form-btn  col-5" (click)="onCompleteStep(0, 'image', null)"
+          <button type="button" class="form-btn col-md-3 col-sm-12" (click)="onCompleteStep(0, 'image', null)"
             awNextStep>IMAGE</button>
         </div>
 
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-6 step-container">
+      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
         <div *ngIf="userChoices[0] === 'text'">
           <div class="neon-wizard-header">
             <h5>Ecrivez votre texte</h5>
@@ -49,14 +49,14 @@
 
         </div>
         <!-- ||  -->
-        <div class="neon-wizard-btn-container pb5">
-          <button  class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-          <button [ngClass]="textInput.trim() === ''? 'next-btn col-3 disabled' : 'next-btn col-3'" type="button" (click)="onCompleteStep(3, 'typo', null)"
+        <div class="neon-wizard-btn-container row pb5">
+          <button  class="prev-btn col-md-3 col-sm-10" type="button" awPreviousStep>Précedent</button>
+          <button [ngClass]="textInput.trim() === ''? 'next-btn col-md-3 col-sm-10 disabled' : 'next-btn col-md-3 col-sm-10'" type="button" (click)="onCompleteStep(3, 'typo', null)"
             [disabled]="textInput.trim() === '' " awNextStep>Suivant</button>
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-6 step-container">
+      <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div class="neon-wizard-header">
           <h5>Choisissez la typographie</h5>
@@ -142,13 +142,13 @@
                     </div>
                 </div>  
             </div> -->
-        <div class="neon-wizard-btn-container mtm5 row">
-          <button class="prev-btn col-3" type="button" (click)="onCompleteStep(3, 'erase', null)" awPreviousStep>Précedent</button>
-          <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+        <div class="neon-wizard-btn-container row ">
+          <button class="prev-btn col-md-3 col-sm-12" type="button" (click)="onCompleteStep(3, 'erase', null)" awPreviousStep>Précedent</button>
+          <button class="next-btn col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-6 step-container">
+      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div  [style.background-color]="userChoices[0] !== 'text' ? neonColorCode : ''" class="neon-wizard-header">
           <h4>Choisissez une couleur </h4>
@@ -158,8 +158,8 @@
           <!-- <div class="item float-item"> -->
 
             
-        <div  class=" row colorCont">
-            <div class='col-2 colorIcon'   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color)" 
+        <div  class="mt5 mb5 row colorCont">
+            <div class='col-md-2 col-sm-3 colorIcon'   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color)" 
               *ngFor="let color of colorList;  let i = index">
   
   
@@ -176,14 +176,14 @@
         <!-- </div> -->
 
 
-        <div class="neon-wizard-btn-container flex0">
-          <button  class="next-btn col-3"  type="button" awPreviousStep>Précedent</button>
-          <button [ngClass]="!selectedColor? 'next-btn col-3 disabled' : 'next-btn col-3'"  type="button" [disabled]="!selectedColor" awNextStep>Suivant</button>
+        <div class="neon-wizard-btn-container row flex0">
+          <button  class="next-btn col-md-3 col-sm-12"  type="button" awPreviousStep>Précedent</button>
+          <button [ngClass]="!selectedColor? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button" [disabled]="!selectedColor" awNextStep>Suivant</button>
 
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-6 step-container">
+      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div class="neon-wizard-header">
           <h5>Choisissez votre format</h5>
@@ -199,16 +199,16 @@
 
         </div>
 
-        <div class="neon-wizard-btn-container flex1 pb5">
-          <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-          <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+        <div class="neon-wizard-btn-container row flex1 pb5">
+          <button class="prev-btn col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+          <button class="next-btn col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-6 step-container">
+      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h5 class="neon-wizard-header flex1">Choisissez votre support</h5>
 
-        <div class="neon-wizard-btn-container flex3 ">
+        <div class="neon-wizard-btn-container row flex3 ">
           <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected' : ''"
            (click)="imageSupportSelected = 'détouré'" >
             </div>
@@ -222,18 +222,18 @@
 
 
         </div>
-        <div class="neon-wizard-btn-container">
-          <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-          <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+        <div class="neon-wizard-btn-container row">
+          <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+          <button class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
 
         </div>
 
       </aw-wizard-step>
 
-      <aw-wizard-step stepTitle="" class="col-6 step-container">
+      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h5 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h5>
 
-        <div class="neon-wizard-btn-container flex3 ">
+        <div class="neon-wizard-btn-container row flex3 ">
           <div  [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'" (click)="onCompleteStep(5, 'business', null)"
             >Professionnel</div>
           <div [ngClass]=" projectType==='consumer'? 'yellow-selected form-btn  col-5' : 'form-btn  col-5'"  (click)="onCompleteStep(5, 'consumer', null)"
@@ -242,9 +242,9 @@
 
         </div>
 
-        <div class="neon-wizard-btn-container">
-          <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-          <button class="next-btn col-3" type="button" awNextStep>Suivant</button>
+        <div class="neon-wizard-btn-container row">
+          <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+          <button class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
       </aw-wizard-step>
 
@@ -252,7 +252,7 @@
 
 
 
-      <aw-wizard-step stepTitle="" class="col-6">
+      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10 ">
 
         <div *ngIf="projectType === 'consumer'" class="step-container">
           <h5 class="neon-wizard-header ">Obtenez votre dessin technique en {{suceMaBite}}</h5>
@@ -294,13 +294,9 @@
 
 
           </div>
-          <div class="neon-wizard-btn-container">
-            <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-
-
-
-
-            <button class="next-btn col-3" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
+          <div class="neon-wizard-btn-container row">
+            <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+            <button class="next-btn  col-md-3 col-sm-12" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
 
           </div>
 
@@ -317,7 +313,7 @@
         </div>
 
 
-        <div *ngIf="projectType === 'business'" class="step-container">
+        <div *ngIf="projectType === 'business'" class="step-container col-md-6 col-sm-10 ">
           <h5 class="neon-wizard-header ">Obtenez votre devis gratuit</h5>
           <div class='user-info-row-cont'>
             <span class="user-info-row-title">Société</span>
@@ -351,9 +347,9 @@
           <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
               href="#">Conditions générales d'utilisation</a></span>
 
-          <div class="neon-wizard-btn-container">
-            <button class="prev-btn col-3" type="button" awPreviousStep>Précedent</button>
-            <button class="next-btn col-3" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
+          <div class="neon-wizard-btn-container row">
+            <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+            <button class="next-btn col-md-3 col-sm-12" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
 
           </div>
         </div>
@@ -361,7 +357,7 @@
 
 
       </aw-wizard-step>
-      <div class="col-2"></div>
+      <div class="forBigPussy col-2"></div>
     </div>
 
 

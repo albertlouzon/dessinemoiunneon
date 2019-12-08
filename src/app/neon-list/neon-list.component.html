@@ -21,8 +21,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)"  >
-              <td  data-column="Vos dessins techniques" [className]="command.typo + ' dynamicNeonTitle ' + getColor(command.colors) ">{{command.text}}</td>
+            <tr  *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)"  >
+<!--              [className]="command.typo + ' dynamicNeonTitle ' + getColor(command.colors) "-->
+              <td class="pb3 pt3" data-column="Vos dessins techniques" >{{command.text}}</td>
               <td data-column="Etat">{{command.state}}</td>
             </tr>
 
@@ -96,7 +97,7 @@
   <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
 
   <div class="ec-top-row-detail row">
-    <div class="col-8 neon-canvas-cont">
+    <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
       <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
       <div *ngIf="neonSelected.state === 'created'"   class="neon-canvas"><div class='no-dt'>Dessin technique en cours de design</div></div>
 
@@ -118,7 +119,7 @@
 
         <div class="neon-bar-item-cont">
             <div  [style.backgroundImage]="'url('+ '../.././assets/LED.png' +')'"  class="neon-bar-item"></div>
-            <span>Technologie LED</span>
+            <span>LED</span>
         </div>
         <div style="flex: 0.6"></div>
 
@@ -133,7 +134,10 @@
       </div>
 
     </div>
-    <div class="col-4">
+
+
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
         <table>
             <thead>
               <tr>
@@ -267,7 +271,7 @@
     <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="previous();">Précédent</button>
 
   <div class="row commandMainCont">
-    <div class="col-6 command-form-cont">
+    <div class="col-lg-6 col-sm-12 command-form-cont">
       <h2>Informations de livraison</h2>
       <div class="command-form-card row">
 
@@ -277,7 +281,7 @@
                   <input  [value]="commandInfos['prénom']" (change)="onChangeCommandInfo('prénom', $event.target.value)"  class="basic-input  "/>
               </div>
   
-              <div class="col-2"></div>
+              <div class=" col-2"></div>
             <div class='user-info-row-cont nestedInput col-5'>
                 <span class="user-info-row-title">Nom</span>
                   <input  [value]="commandInfos['nom']" (change)="onChangeCommandInfo('nom', $event.target.value)"   class="basic-input "/>
@@ -332,13 +336,13 @@
       </div>
 
     </div>
-    <div class="col-1"></div>
-    <div class="col-5">
-      <div class="big-card  ">
+    <div class="col-md-1"></div>
+    <div class="col-md-5 col-sm-12">
+      <div class="big-card  recap">
         <!-- <div class="card_image">
  
         </div> -->
-        <div style="padding: 0 !important" class="card_content">
+        <div style="padding: 0 !important" class="card_content ">
          <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
            Récapitulatif
          </span>
@@ -346,7 +350,7 @@
          <div  class="recapList row">
             <div  style='margin-left: 20px !important;' class="row">
               <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
-              <div class="col-2"></div>
+              <div class="col-md-2"></div>
               <div class="col-5">{{neonSelected.price}}$</div>
 
             </div>
@@ -372,7 +376,7 @@
   </div>
 
   <div class="row commandBotCont">
-    <div class="col-6 command-form-cont">
+    <div class="col-md-6 col-sm-12 command-form-cont">
       <h2>Mode de livraison</h2>
       <div class="tiny-card">
           <!-- <input style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
@@ -393,7 +397,7 @@
     <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="fromPayToCommand()">Précédent</button>
 
   <div class="row commandMainCont">
-    <div class="col-6 command-form-cont">
+    <div class="col-lg-6 col-md-8 col-sm-12 command-form-cont">
       <h2>Informations de Paiement</h2>   
       <div class="command-form-card-payer row">
           <h2>Carte bancaire</h2>
@@ -432,7 +436,7 @@
             
               <button type="submit">Pay $5</button>
             </form> -->
-            <form #checkout="ngForm" (ngSubmit)="onSubmitPay(checkout)" class="checkout">
+            <form #checkout="ngForm" (ngSubmit)="onSubmitPay()" class="checkout">
                 <!-- <div class="form-row"> -->
                   <div id="card-info livraisonRow" #cardInfo></div>
               
@@ -452,7 +456,7 @@
 
     </div>
     <div class="col-1"></div>
-    <div class="col-5">
+    <div class="col-md-5 col-sm-12">
       <div class="big-card  ">
         <!-- <div class="card_image">
  

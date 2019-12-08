@@ -101,8 +101,8 @@ h2 {
   flex-direction: row;
 }
 .big-card  {
-  margin-top: 10%;
-  width: 70%;
+  margin-top: 12%;
+  width: 100%;
   display: flex;
   padding: 0 !important;
   height: 250px;
@@ -197,7 +197,6 @@ border-collapse: collapse;
 .table-position-circle {
   padding: 5px;
   border-radius: 50%;
-
   font-size: 10px;
   background-color: #D61F6A;
   text-align: center;
@@ -223,7 +222,8 @@ tbody tr:hover {
 
 td, th { 
 padding: 10px; 
-  text-align: left; 
+  text-align: left;
+  width: 100%;
   cursor: pointer;
   font-family: Mukta-Bold, sans-serif;
 }
@@ -291,6 +291,7 @@ td:before {
         font-family: Nunito-Black, sans-serif;
   font-size: 1.5rem;
   color: #000b31;
+  align-self: center;
 }
 
 .ec-card-title {
@@ -552,7 +553,9 @@ form.checkout {
 .neon-canvas {
     // height: 85%;
     height: 100%;
+  min-height: 350px;
     width: 100%;
+  margin-bottom: 15px;
     // background-image: url('../../assets/outer-space-neon.jpg');
     background-repeat:no-repeat;
     display: flex;
@@ -575,9 +578,9 @@ form.checkout {
 .neon-bar-item-cont {
   display: flex;
   flex-direction: column;
-  padding: 1em;
   flex: 1;
   height: 100%;
+  padding: 0.4em;
   margin-top: 5px;
 }
 
@@ -834,7 +837,34 @@ form.checkout {
 
 @media screen and (max-width: 700px) {
 
+.card {
+  width: 100%;
+}
+  .little-card {
+    width: 100%;
+  }
+  .card_content {
+    width: 100%;
+  }
 
+  .neon-canvas {
+    margin-bottom: 30px;
+
+  }
+
+  .ec-title {
+    text-align: center;
+  }
+
+  .recap {
+    display: none;
+  }
+  .command-form-card-payer {
+    height: 450px;
+  }
+  form.checkout {
+    margin: 0 !important;
+  }
 }
 @media screen and (max-width: 1024px) {
   .ec-petit-prince{
@@ -845,6 +875,9 @@ form.checkout {
   };
   .forBigPussy {
     display: none;
+  }
+  .little-card {
+    width: 45%;
   }
 
 }

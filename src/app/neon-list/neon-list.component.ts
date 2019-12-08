@@ -34,6 +34,7 @@ export class NeonListComponent implements OnInit {
   neonList = [];
   commandMode = false;
   user = {};
+  customMail = '';
   handler: any;
   snackbarClass = '';
   snackMsg = 'Oops'
@@ -99,9 +100,35 @@ export class NeonListComponent implements OnInit {
     this.cd.detectChanges();
   }
 
+  onChangeAdditionnalInfo(text){ 
+    this.customMail = text;
+  }
+
+  sendCustomEmail(){
+    if(this.customMail.trim() !== '') {
+      this.user['changeCommand'] = {text: '', newState: ''}
+      this.user['changeCommand']['text'] = 'customEmail';
+      this.user['changeCommand']['newState'] = this.customMail;
+      this.loading = true;
+      this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
+        this.fetchCommands();
+        this.neonSelected = null;
+        location.reload();
+  
+      }, err => {
+        if (err.status === 200) {
+          this.fetchCommands();
+          this.neonSelected = null;
+          location.reload();
+
+        }
+      });
+    }
+  }
+
   async onSubmitPay() {
     const { token, error } = await stripe.createToken(this.card);
-
+    this.loading = false;
     if (error) {
       console.log('Something is wrong:', error);
     } else {

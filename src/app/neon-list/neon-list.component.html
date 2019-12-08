@@ -8,21 +8,21 @@
     <div class="col-7">
       <div class='ec-list-title'>
         <h2 class="ec-title">Tous vos néons</h2>
-        <button class="prev-btn" (click)="goToForm();">Créer un nouveau dessin</button>
+        <button class="prev-btn" (click)="goToForm();">Créer un nouveau néon !</button>
       </div>
   
       <div class="ec-list-cont">
         <table>
           <thead>
             <tr>
-              <th style="padding-left: 5%;">Vos dessins techniques</th>
+              <th >Vos dessins techniques</th>
       
               <th >Etat</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)"  >
-              <td data-column="Vos dessins techniques">{{command.text}}</td>
+              <td  data-column="Vos dessins techniques">{{command.text}}</td>
               <td data-column="Etat">{{command.state}}</td>
             </tr>
 
@@ -125,8 +125,8 @@
         <div class="bar-btn-cont">
             <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
 
-
-            <button click class="prev-btn" ><a  target="_blank" [href]="neonSelected.filePath">Télécharger mon dessin</a></button>
+            <button *ngIf="neonSelected.state === 'created'" click class="prev-btn" ><a href="#open-modal">Modifier ma commande</a></button>
+            <button *ngIf="neonSelected.state !== 'created'" click class="prev-btn" ><a  target="_blank" class='customHyperlink' [href]="neonSelected.filePath">Télécharger mon dessin</a></button>
             <!-- <button   class="prev-btn" >Demander une notification</button> --> 
 
         </div>
@@ -394,9 +394,9 @@
 
   <div class="row commandMainCont">
     <div class="col-6 command-form-cont">
-      <h2>Mode de Paiement</h2>
+      <h2>Informations de Paiement</h2>   
       <div class="command-form-card-payer row">
-          <h2>Carte bancaire avec <a target="_blank" href="https://stripe.com/fr">Stripe</a></h2>
+          <h2>Carte bancaire</h2>
 
           <!-- <div class=' livraisonRow user-info-row-cont'>
               <span class="user-info-row-title">Numéro de carte</span>
@@ -529,7 +529,22 @@
 
 </div>
 
+<div id="open-modal" class="modal-window">
+    <div>
+      <a href="#" title="Close" class="modal-close">Close</a>
+      <h1>Décrivez nous votre problème: </h1>
+      <div style="height: 220px;">
+          <textarea (change)="onChangeAdditionnalInfo($event.target.value)" [value]="customMail" placeholder=""
+          class="large-input mt5">
 
+                            </textarea>
+      </div>
+      <button (click)="sendCustomEmail()" style="float: right;" class="next-btn" type="button">Envoyer</button>
+
+    </div>
+
+
+  </div>
 
 
 <div *ngIf="loading" class="blendContainer">

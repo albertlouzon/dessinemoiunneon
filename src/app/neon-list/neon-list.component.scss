@@ -562,7 +562,17 @@ form.checkout {
     background-position:center;
     background-size: contain;
 }
-
+.neon-canvas2 {
+  // height: 85%;
+min-height: 350px;
+  width: 100%;
+margin-bottom: 15px;
+  // background-image: url('../../assets/outer-space-neon.jpg');
+  background-repeat:no-repeat;
+  display: flex;
+  background-position:center;
+  background-size: contain;
+}
 .neon-bar {
   background-color: rgba(0,0,0,0.10);
     display: flex;
@@ -864,6 +874,12 @@ form.checkout {
   }
   form.checkout {
     margin: 0 !important;
+  }
+
+  .remerciements {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5%;
   }
 }
 @media screen and (max-width: 1024px) {

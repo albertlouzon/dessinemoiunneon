@@ -4,7 +4,9 @@
     padding-left: 7%;
     padding-right: 7%;
 }
-
+.smFilter {
+  display: none;
+}
 .admin-list-cont {
     display: flex;
     flex-direction: column;
@@ -462,4 +464,12 @@ select {
 
 .money > input::-ms-clear{
     display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .smFilter {
+    display: inline;
+    position: fixed;
+    bottom:0;
+  }
 }

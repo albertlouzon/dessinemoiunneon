@@ -1,4 +1,5 @@
 <div *ngIf="neonSelected === 'none'" class="row   ">
+
     <div class='admin-list-title col-12'>
       <h2 class="admin-title">Vue Globale: {{numOfCommands}} demandes dont {{numOfCreated}} en attente , {{numOfDT}} traitées, {{numOfPayes}} payées</h2>
     </div>
@@ -226,7 +227,29 @@
   </div>
 
 </div>
+<div class='smFilter'>
+  Filtrer
+  <div class="select">
+    <select (change)="filterCommand($event.target.value)"  name="slct" id="slct">
+      <option value="all">Tout voir</option>
+      <option selected disabled>Choisit un filtre</option>
+      <option value="Created">Created</option>
+      <option value="DT disponible">DT disponible</option>
+      <option value="Payé">Payé</option>
+      <option disabled>------------------------</option>
+      <option value="Consumer">Consumer</option>
+      <option value="Business">Business</option>
+      <option disabled>------------------------</option>
+      <option value="Billie">Billie</option>
+      <option value="Cobby">Cobby</option>
+      <option value="Jackie">Jackie</option>
+      <option value="Jerry">Jerry</option>
+      <option value="Jimmy">Jimmy</option>
+      <option value="Johnny">Johnny</option>
+      <option value="Perrie">Perrie</option>
 
+    </select>
+  </div>
 
   <div *ngIf="loading" class="blendContainer">
     <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">

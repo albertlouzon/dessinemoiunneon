@@ -102,7 +102,7 @@
 <div *ngIf="neonSelected  && !commandMode && !payMode && neonSelected.state !== 'payé'" class='ec-bigbox-detail'>
   <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
 
-  <h2 style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
+  <h2 style="margin-bottom: 3%;">Néon LED "{{neonSelected?.text}}"</h2>
 
   <div class="ec-top-row-detail row">
     <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
@@ -137,10 +137,10 @@
         <div class="bar-btn-cont">
           <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
 
-          <button *ngIf="neonSelected.state === 'created'" click class="prev-btn"><a href="#open-modal">Modifier ma
+          <button *ngIf="neonSelected?.state === 'created'" click class="prev-btn"><a href="#open-modal">Modifier ma
               commande</a></button>
-          <button *ngIf="neonSelected.state !== 'created'" click class="prev-btn"><a target="_blank"
-              class='customHyperlink' [href]="neonSelected.filePath">Télécharger mon dessin</a></button>
+          <button *ngIf="neonSelected?.state !== 'created'" click class="prev-btn"><a target="_blank"
+              class='customHyperlink' [href]="neonSelected?.filePath">Télécharger mon dessin</a></button>
           <!-- <button   class="prev-btn" >Demander une notification</button> -->
 
         </div>
@@ -162,25 +162,25 @@
         <tbody>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Texte</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.text}}</td>
 
             <!-- <td  [className]="neonSelected.typo + ' dynamicNeonTitle ' + colorsList[neonSelected.colors] " style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td> -->
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Typographie</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.typo}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.typo}}</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Couleurs</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.colors}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.colors}}</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.height}}cm</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.state}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td>
           </tr>
 
         </tbody>
@@ -188,7 +188,7 @@
 
       <div class="neon-tarif-cont">
         <div class="neon-tarif">
-          <span class="neon-tarif-price">Tarif: {{neonSelected.price}}$</span>
+          <span class="neon-tarif-price">Tarif: {{neonSelected?.price}}$</span>
           <span class="neon-tarif-blabla">Livraison incluse </span>
 
         </div>
@@ -373,9 +373,9 @@
 
           <div class="recapList row">
             <div style='margin-left: 20px !important;' class="row">
-              <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+              <div class="col-5">Néon LED "{{neonSelected?.text}}"</div>
               <div class="col-md-2"></div>
-              <div class="col-5">{{neonSelected.price}}$</div>
+              <div class="col-5">{{neonSelected?.price}}$</div>
 
             </div>
 
@@ -390,7 +390,7 @@
 
           <div class=" ttcList">
             <div class="col-4 ttc">Total TTC</div>
-            <div class="col-4 ttc">{{neonSelected.price}}$</div>
+            <div class="col-4 ttc">{{neonSelected?.price}}$</div>
 
           </div>
         </div>
@@ -467,7 +467,7 @@
           <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
           <!-- </div> -->
 
-          <button class='next-btn mt5 ' type="submit">Payer {{neonSelected.price}} Euros</button>
+          <button class='next-btn mt5 ' type="submit">Payer {{neonSelected?.price}} Euros</button>
         </form>
 
 
@@ -493,9 +493,9 @@
 
           <div class="recapList row">
             <div style='margin-left: 20px !important;' class="row">
-              <div class="col-5">Néon LED "{{neonSelected.text}}"</div>
+              <div class="col-5">Néon LED "{{neonSelected?.text}}"</div>
               <div class="col-2"></div>
-              <div class="col-5">{{neonSelected.price}}$</div>
+              <div class="col-5">{{neonSelected?.price}}$</div>
 
             </div>
 
@@ -510,7 +510,7 @@
 
           <div class=" ttcList">
             <div class="col-4 ttc">Total TTC</div>
-            <div class="col-4 ttc">{{neonSelected.price}}$</div>
+            <div class="col-4 ttc">{{neonSelected?.price}}$</div>
 
           </div>
         </div>

@@ -183,7 +183,7 @@
     <div class="col-1"></div>
     <div *ngIf="neonSelected.state === 'commandé' || neonSelected.state === 'payé'" class="col-6">
         <h2  style="margin-bottom: 3%;">Coordonnées / Commande</h2>
-        <table>
+        <table *ngIf="neonSelected?.commandInfo">
             <thead>
               <tr>
                 <!-- <th class='detail-configu-title'>Info</th>
@@ -194,31 +194,31 @@
             <tbody>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Nom et prénom</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.commandInfo.nom}} {{neonSelected.commandInfo['prénom  ']}}</td>
+                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.nom}} {{neonSelected?.commandInfo['prénom']}}</td>
               </tr>
               <tr > 
                 <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Pays</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.commandInfo.pays}}</td>
+                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.pays}}</td>
               </tr>
               <tr > 
                   <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Ville</td>
-                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.commandInfo.ville}}</td>
+                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.ville}}</td>
                 </tr>
                 <tr > 
                     <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Pays</td>
-                    <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.commandInfo.pays}}</td>
+                    <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.pays}}</td>
                   </tr>
                   <tr > 
                       <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Adresse</td>
-                      <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.commandInfo.adresse}}</td>
+                      <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.adresse}}</td>
                     </tr>
                     <tr > 
                         <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Code Postal</td>
-                        <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.commandInfo['code-postal']}}</td>
+                        <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo  ['code-postal']}}</td>
                       </tr>
                       <tr > 
                           <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Société (optionnel)</td>
-                          <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.commandInfo['société']}}</td>
+                          <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo['société']}}</td>
                         </tr>
             </tbody>
           </table>

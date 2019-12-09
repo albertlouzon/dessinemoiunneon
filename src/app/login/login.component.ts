@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
           if(allUsers.find(x => x['email'] === this.email)) {
             this.loginFailed = true;
             this.signUpError = 'Il existe déjà un compte avec cet email...'
+            this.loading = false;
           } else {
             this.loginFailed = false;
             this.signUpError = 'Vous devez fournir un email et un mot de passe...'

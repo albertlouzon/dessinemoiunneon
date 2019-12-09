@@ -44,11 +44,11 @@ export interface ActiveSlides {
   encapsulation: ViewEncapsulation.None
 })
 export class NeonFormComponent implements OnInit {
-  formatSizes: Array<{size: string, width: number, url: string}> = [{size: 'S', width: 25, url: '../.././assets/Fichier-S.png'
+  formatSizes: Array<{size: string, width: number, url: string}> = [{size: 'S', width: 20, url: '../.././assets/Fichier-S.png'
 },
-  {size: 'M', width: 35, url: '../.././assets/Fichier-M.png'},
-  {size: 'L', width: 45, url: '../.././assets/Fichier-L.png'},
-  {size: 'XL', width: 50, url: '../.././assets/Fichier-XL.png'} ];
+  {size: 'M', width: 25, url: '../.././assets/Fichier-M.png'},
+  {size: 'L', width: 30, url: '../.././assets/Fichier-L.png'},
+  {size: 'XL', width: 40, url: '../.././assets/Fichier-XL.png'} ];
   selectedFormatSize = 0;
   imageSupportSelected = 'standard';
   projectType = 'consumer';

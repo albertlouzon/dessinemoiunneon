@@ -174,7 +174,7 @@ export class NeonListComponent implements OnInit {
 
   async onSubmitPay() {
     const { token, error } = await stripe.createToken(this.card);
-    this.loading = false;
+    this.loading = true;
     if (error) {
       console.log('Something is wrong:', error);
     } else {
@@ -273,10 +273,15 @@ export class NeonListComponent implements OnInit {
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
       this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
       // this.fetchCommands();
-
+      this.loading = false;
+      this.resetView();
     }, err => {
       if (err.status === 200) {
         this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
+        this.loading = false;
+        this.resetView();
+
+
         // this.fetchCommands();
       }
     });

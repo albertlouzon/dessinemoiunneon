@@ -365,11 +365,15 @@ onSelectColor(color) {
 
       }
     }
-    if (choice && step === 5) {
-      if (choice !== this.projectType) {
-          this.userInfoPerso = {};
+    if (step === 4) {
+      if (choice === 'standard') {
+        this.imageSupportSelected = 'standard'
+      } else {
+        this.userChoices[step] = choice;
+        this.imageSupportSelected = 'détouré'
+
       }
-      this.projectType = choice;
+
       if (localStorage.getItem('email')) {
         this.loading = true;
         const commandPayload = {
@@ -416,6 +420,13 @@ onSelectColor(color) {
         //   })
         // })
       }
+
+    }
+    if (choice && step === 5) {
+      if (choice !== this.projectType) {
+          this.userInfoPerso = {};
+      }
+      this.projectType = choice;
 
 
     }

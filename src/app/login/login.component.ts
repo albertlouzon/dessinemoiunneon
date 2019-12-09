@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit {
   }
   onLogin() {
     if(!this.loading) {
-      console.log('email = ', this.email, ' ... pass = ', this.password);
+      console.log('email = ', this.email);
       this.loading = true;
       this.login().subscribe((res) => {
         console.log('success ', res);
@@ -122,7 +122,11 @@ export class LoginComponent implements OnInit {
         this.saveToStorage();
         const name = userData.find(x => x.email === this.email)['name']
         // this.openSnackbar('Rebonjour ' + name + ' !!!');
-        currentView.caca = 'client';
+        if((this.email === 'thomas@dessinemoiunneon.fr') || this.email === 'gavin@dessinemoiunneon.fr') {
+          currentView.caca = 'admin';
+        }  else {
+          currentView.caca = 'client';
+        }
 
         
       }, err => {

@@ -268,7 +268,7 @@ export class NeonListComponent implements OnInit {
     this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'payé';
     this.user['commands'].find(c => c.id === this.neonSelected.id)['cardToken'] = token;
 
-    this.user['changeCommand'] = {text: 'Votre facture', newState: 'payé'};
+    this.user['changeCommand'] = {id: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
       this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
@@ -338,6 +338,7 @@ export class NeonListComponent implements OnInit {
     console.log('the command is valid :', this.commandInfos);
     this.commandFailed = false;
     this.payMode = true;
+        this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
 
     setTimeout(() => {
       this.card = elements.create('card');

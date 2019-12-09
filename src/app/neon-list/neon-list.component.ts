@@ -291,7 +291,7 @@ export class NeonListComponent implements OnInit {
     this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'payé';
     this.user['commands'].find(c => c.id === this.neonSelected.id)['cardToken'] = token;
 
-    this.user['changeCommand'] = {id: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé'};
+    this.user['changeCommand'] = {command: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
       this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');

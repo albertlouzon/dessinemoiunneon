@@ -184,11 +184,11 @@
           </tr>
           <tr>
             <td>
-                <input *ngIf="commandMode" (click)="onCheckTelecommande();" style="margin-right: 10px; align-self: center;" type="checkbox" />
+                <input  (click)="onCheckTelecommande();" style="margin-right: 10px; align-self: center;" type="checkbox" />
             </td>
             <td>
                 <div class="livraisonDom">Télécommande: 25 €</div>
-
+              
             </td>
               <!-- <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
               <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
@@ -196,7 +196,7 @@
 
             <tr>
                 <td>
-                    <input  *ngIf="commandMode" (click)="onCheckResEau();" style="margin-right: 10px; align-self: center;" type="checkbox" />
+                    <input   (click)="onCheckResEau();" style="margin-right: 10px; align-self: center;" type="checkbox" />
                 </td>
                 <td>
                     <div class="livraisonDom">Utilisation extérieure (résistant à l'eau): 70 €</div>

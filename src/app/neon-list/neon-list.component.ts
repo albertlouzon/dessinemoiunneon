@@ -141,17 +141,17 @@ export class NeonListComponent implements OnInit {
   onCheckTelecommande() {
     this.checkTelecommande = !this.checkTelecommande;
     if(this.checkTelecommande) {
-      this.neonSelected.price =  this.neonSelected.price + 25;
+      this.neonSelected.price =  parseInt(this.neonSelected.price) + 25;
     } else  {
-      this.neonSelected.price =  this.neonSelected.price - 25;
+      this.neonSelected.price =  parseInt(this.neonSelected.price) - 25;
     }
   }
   onCheckResEau() {
     this.checkEau = !this.checkEau;
     if(this.checkEau) {
-      this.neonSelected.price =  this.neonSelected.price + 70;
+      this.neonSelected.price = parseInt(this.neonSelected.price) + 70;
     } else  {
-      this.neonSelected.price =  this.neonSelected.price - 70;
+      this.neonSelected.price = parseInt(this.neonSelected.price) - 70;
     }
   }
   onChange({ error }) {

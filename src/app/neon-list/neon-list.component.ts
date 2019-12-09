@@ -142,16 +142,21 @@ export class NeonListComponent implements OnInit {
     this.checkTelecommande = !this.checkTelecommande;
     if(this.checkTelecommande) {
       this.neonSelected.price =  parseInt(this.neonSelected.price) + 25;
+      this.neonSelected['telecommande'] = true;
     } else  {
       this.neonSelected.price =  parseInt(this.neonSelected.price) - 25;
+      this.neonSelected['telecommande'] = false;
     }
   }
   onCheckResEau() {
     this.checkEau = !this.checkEau;
     if(this.checkEau) {
       this.neonSelected.price = parseInt(this.neonSelected.price) + 70;
+      this.neonSelected['waterproof'] = true;
     } else  {
       this.neonSelected.price = parseInt(this.neonSelected.price) - 70;
+      this.neonSelected['waterproof'] = false;
+
     }
   }
   onChange({ error }) {
@@ -190,6 +195,7 @@ export class NeonListComponent implements OnInit {
   }
 
   async onSubmitPay() {
+
     const { token, error } = await stripe.createToken(this.card);
     this.loading = true;
     if (error) {
@@ -356,8 +362,11 @@ export class NeonListComponent implements OnInit {
     this.commandFailed = false;
     this.payMode = true;
         this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
-
+        if(this.card){
+          this.card.destroy();
+        }
     setTimeout(() => {
+
       this.card = elements.create('card');
       this.card.mount(this.cardInfo.nativeElement);
       this.card.addEventListener('change', this.cardHandler);

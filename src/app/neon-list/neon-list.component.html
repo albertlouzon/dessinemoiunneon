@@ -182,13 +182,35 @@
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
             <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td>
           </tr>
+          <tr>
+            <td>
+                <input *ngIf="commandMode" (click)="onCheckTelecommande();" style="margin-right: 10px; align-self: center;" type="checkbox" />
+            </td>
+            <td>
+                <div class="livraisonDom">Télécommande: 25 €</div>
 
+            </td>
+              <!-- <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
+              <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
+            </tr>
+
+            <tr>
+                <td>
+                    <input  *ngIf="commandMode" (click)="onCheckResEau();" style="margin-right: 10px; align-self: center;" type="checkbox" />
+                </td>
+                <td>
+                    <div class="livraisonDom">Utilisation extérieure (résistant à l'eau): 70 €</div>
+    
+                </td>
+                  <!-- <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
+                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
+                </tr>
         </tbody>
       </table>
 
       <div class="neon-tarif-cont">
         <div class="neon-tarif">
-          <span class="neon-tarif-price">Tarif: {{neonSelected?.price}}$</span>
+          <span class="neon-tarif-price">Tarif: {{neonSelected?.price}} €</span>
           <span class="neon-tarif-blabla">Livraison incluse </span>
 
         </div>
@@ -375,7 +397,7 @@
             <div style='margin-left: 20px !important;' class="row">
               <div class="col-5">Néon LED "{{neonSelected?.text}}"</div>
               <div class="col-md-2"></div>
-              <div class="col-5">{{neonSelected?.price}}$</div>
+              <div class="col-5">{{neonSelected?.price}} €</div>
 
             </div>
 
@@ -390,7 +412,7 @@
 
           <div class=" ttcList">
             <div class="col-4 ttc">Total TTC</div>
-            <div class="col-4 ttc">{{neonSelected?.price}}$</div>
+            <div class="col-4 ttc">{{neonSelected?.price}} €</div>
 
           </div>
         </div>
@@ -495,7 +517,7 @@
             <div style='margin-left: 20px !important;' class="row">
               <div class="col-5">Néon LED "{{neonSelected?.text}}"</div>
               <div class="col-2"></div>
-              <div class="col-5">{{neonSelected?.price}}$</div>
+              <div class="col-5">{{neonSelected?.price}} €</div>
 
             </div>
 

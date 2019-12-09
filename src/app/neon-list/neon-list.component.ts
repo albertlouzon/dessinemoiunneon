@@ -89,6 +89,8 @@ export class NeonListComponent implements OnInit {
   errorMessage = 'Des champs sont incomplets...';
   commandFailed = false;
   payInfos = {};
+  checkTelecommande = false;
+  checkEau = false;
   payMode = false;
   // colorsList = {
   //   blancFroid:'#ffffff',
@@ -136,7 +138,22 @@ export class NeonListComponent implements OnInit {
     }
 
   }
-
+  onCheckTelecommande() {
+    this.checkTelecommande = !this.checkTelecommande;
+    if(this.checkTelecommande) {
+      this.neonSelected.price =  this.neonSelected.price + 25;
+    } else  {
+      this.neonSelected.price =  this.neonSelected.price - 25;
+    }
+  }
+  onCheckResEau() {
+    this.checkEau = !this.checkEau;
+    if(this.checkEau) {
+      this.neonSelected.price =  this.neonSelected.price + 70;
+    } else  {
+      this.neonSelected.price =  this.neonSelected.price - 70;
+    }
+  }
   onChange({ error }) {
     if (error) {
       this.error = error.message;

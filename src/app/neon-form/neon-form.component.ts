@@ -374,7 +374,7 @@ onSelectColor(color) {
 
       }
 
-      if (localStorage.getItem('email')) {
+            if (localStorage.getItem('email')) {
         this.loading = true;
         const commandPayload = {
           text: this.textInput,

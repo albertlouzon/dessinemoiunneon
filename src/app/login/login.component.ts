@@ -23,6 +23,12 @@ export class LoginComponent implements OnInit {
   loading = false;
   signUpError = 'Vous devez fournir un email et un mot de passe...';
   ngOnInit() {
+    if(localStorage.getItem('email')) {
+      this.email = localStorage.getItem('email');
+      this.email = localStorage.getItem('pw');
+
+      this.login();
+    }
   }
 
   onSwitchLoginType(){

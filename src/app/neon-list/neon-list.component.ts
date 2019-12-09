@@ -252,7 +252,7 @@ export class NeonListComponent implements OnInit {
     this.neonSelected = null;
   }
   goToForm() {
-    currentView.caca = 'form';
+    window.location.replace("https://dessinemoiunneon.fr/neon-sur-mesure-personnalise");
   }
 
   getConfig() {

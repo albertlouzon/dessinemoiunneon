@@ -296,7 +296,7 @@
 
           <div class='user-info-row-cont'>
             <span class="user-info-row-title">Mot de passe</span>
-            <input type="password" (change)="onChangeUserInfo('password', $event.target.value)"
+            <input type="hidden" (change)="onChangeUserInfo('password', $event.target.value)"
               [value]="userInfoPerso['password'] || ''" class="basic-input smallHeight mb3 " />
             <span class='user-info-row-title textcenter'>En cliquant sur "envoyer" vous acceptez les <a
                 href="#">Conditions générales d'utilisation</a></span>

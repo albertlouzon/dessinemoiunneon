@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { currentView } from '../app.component';
 
 @Component({
   selector: 'app-admin',
@@ -56,6 +57,10 @@ this.pollInterval = setInterval(() => {
     }
   }
 
+  logout(){
+    localStorage.clear();
+    currentView.caca = 'login'
+  }
 
 fromCreatedToDT(command) {
   console.log('COMANNNANZAFJAEJOF ', this.currentFile, this.commandPrice);
@@ -72,26 +77,6 @@ fromCreatedToDT(command) {
         this.loading = false;
         this.neonSelected = 'none';
       }, 1000);
-    //       this.http.get('https://neon-server.herokuapp.com/users/' + command['userId']).subscribe((user) => {
-    //   console.log('user:' , user)
-    //   let updatedUser = user[0];
-    //   updatedUser['dtFile'] = formData;
-    //   updatedUser['changeCommand'] = {text: command.text, newState: 'DT disponible'};
-    //   if(updatedUser['commands'].find(x => x.id === command['id'])) {
-    //     updatedUser['commands'].find(x => x.id === command['id']).state = 'DT disponible';
-    //     this.http.put('https://neon-server.herokuapp.com/users/' + command['userId'], updatedUser).subscribe((res) => {
-    //       alert('DT uploaded. Email sent')
-
-    //     }, err => {
-    //       if(err.status === 200) {
-
-    //         this.fetchCommands();
-    //       }
-    //     });
-    //   } else {
-    //     console.log('cant find this command in user: ', updatedUser)
-    //   }
-    // })
 
     }, err => console.log('err' , err));
   } else {

@@ -246,13 +246,19 @@ export class NeonListComponent implements OnInit {
     }
 
   }
+  logout(){
+    localStorage.clear();
+    currentView.caca = 'login'
+  }
   resetView() {
     this.payMode = false;
     this.commandMode = false;
     this.neonSelected = null;
   }
   goToForm() {
-    window.location.replace("https://dessinemoiunneon.fr/neon-sur-mesure-personnalise");
+    // window.location.replace("https://dessinemoiunneon.fr/neon-sur-mesure-personnalise");
+    window.top.location.href = "https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/";
+
   }
 
   getConfig() {

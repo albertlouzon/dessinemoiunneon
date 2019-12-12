@@ -24,10 +24,11 @@ export class LoginComponent implements OnInit {
   signUpError = 'Vous devez fournir un email et un mot de passe...';
   ngOnInit() {
     if(localStorage.getItem('email')) {
+      console.log('ok')
       this.email = localStorage.getItem('email');
-      this.email = localStorage.getItem('pw');
+      this.password = localStorage.getItem('pw');
 
-      this.login();
+      this.login().subscribe((res) => { currentView.caca = 'client'}, err => console.log('err', err))
     }
   }
 

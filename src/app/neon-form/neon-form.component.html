@@ -159,7 +159,7 @@
 
             
         <div  class="mt5 mb5 row colorCont">
-            <div class='col-md-2 col-sm-3 colorIcon'   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color)" 
+            <div  [ngClass]=" selectedColorUI=== i? 'size yellow-selected col-md-2 col-sm-3 colorIcon' : 'size  col-md-2 col-sm-3 colorIcon'"   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color)" 
               *ngFor="let color of colorList;  let i = index">
   
   
@@ -296,7 +296,7 @@
 
           <div class='user-info-row-cont'>
             <span class="user-info-row-title">Mot de passe</span>
-            <input type="hidden" (change)="onChangeUserInfo('password', $event.target.value)"
+            <input type="password" (change)="onChangeUserInfo('password', $event.target.value)"
               [value]="userInfoPerso['password'] || ''" class="basic-input smallHeight mb3 " />
             <span class='user-info-row-title textcenter'>En cliquant sur "envoyer" vous acceptez les <a
                 href="#">Conditions générales d'utilisation</a></span>

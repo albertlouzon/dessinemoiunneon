@@ -5,6 +5,8 @@
     </div>
 
     <div *ngIf="neonSelected === 'none'" class="admin-list-cont col-12 row">
+        <button (click)="logout()"  style="padding-right: 30px; padding-left: 30px;" class="next-btn">Se déconnecter</button>
+
       <table class="col-12">
         <thead>
           <tr>
@@ -115,6 +117,10 @@
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
                 <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
+              </tr>
+              <tr >
+                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
+                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.userFull?.clientImageUrl}}cm</td>
               </tr>
               <tr >
                   <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>

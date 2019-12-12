@@ -103,6 +103,7 @@ export class NeonFormComponent implements OnInit {
       font: 'Perrie'
     },
   ];
+  selectedColorUI = 0;
 
   colorList = [
     {name: 'blancFroid' , color: '#ffffff', url: '../.././assets/blanc.png' },

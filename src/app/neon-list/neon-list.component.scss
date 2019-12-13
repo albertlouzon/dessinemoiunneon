@@ -1,3 +1,5 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 .ec-bigbox {
   height: 800px;
   padding: 1.5rem;
@@ -141,8 +143,8 @@ h2 {
 .card .card_image {
   width: inherit;
   // background-color: lightgray;
-  height: inherit;
-  flex:1;
+  height: 35%;
+  align-self: center;
   background-repeat:no-repeat;
   background-position:center;
   background-size: contain;
@@ -234,7 +236,7 @@ th {
 }
 
 td {
-  font-size: 14px;
+  font-size: 17px;
 }
 /* 
 Max width before this PARTICULAR table gets nasty
@@ -286,6 +288,15 @@ td:before {
 }
 
 }
+}
+
+.card-logo {
+  width: inherit;
+  height: 25%;
+  margin-bottom: 5%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .ec-title {
@@ -395,11 +406,12 @@ box-shadow: 5pxs 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.
 }
 .no-dt {
   color: #000B31;
-  font-size: 3vw;
+  font-size: 2vw;
   align-self: center;
   text-align: center;
   font-family: Nunito-Black, sans-serif;
   width: 100%;
+  margin-top: 10%;
 }
 .blancFroid {
   color: #ffffff !important;
@@ -446,7 +458,7 @@ form.checkout {
   width: 100%;
   font-family: Nunito-Regular, sans-serif;
 
-  font-size: 1.1rem;
+  font-size: 17px;
 }
 
 
@@ -575,9 +587,18 @@ margin-bottom: 15px;
   background-size: contain;
 }
 .neon-bar {
-  background-color: rgba(0,0,0,0.10);
+  background-color: #F4F4F4 ;
     display: flex;
-    height: 15%;
+    height: 17%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.prev-btn a {
+  color: black !important;
+  text-decoration: none !important;
+  list-style: none !important;
+  font-family: Mukta-Bold, sans-serif;
 }
 
 .bar-btn-cont {
@@ -591,7 +612,8 @@ margin-bottom: 15px;
   flex-direction: column;
   flex: 1;
   height: 100%;
-  padding: 1em;
+  padding: 9px;
+  
   margin-top: 5px;
 }
 
@@ -605,8 +627,11 @@ margin-bottom: 15px;
     font-family: Mukta-Regular, sans-serif;
     font-size: 11px;
     flex: 1;
+    min-height: 20px;
     height: 80%;
     text-align: center;
+    min-height: 20px;
+    margin-bottom: 3px;
     color: #000b31; 
     background-position: center;
     background-repeat: no-repeat;
@@ -628,8 +653,9 @@ margin-bottom: 15px;
 }
 
 .ec-bigbox-detail th, .ec-bigbox-detail td {
-  padding-bottom: 10% ;
-  padding-top: 3%;
+  padding-bottom: 4% ;
+  padding-top: 4%;
+  font-size: 17px;
 }
 
 .ec-bigbox-detail tr {
@@ -851,6 +877,15 @@ margin-bottom: 15px;
 .card {
   width: 100%;
 }
+.next-btn {
+  margin-bottom: 10px;
+}
+.prev-btn {
+  margin-bottom: 10px;
+}
+.card .card_image {
+  width: 30%;
+}
   .little-card {
     width: 100%;
   }
@@ -862,7 +897,9 @@ margin-bottom: 15px;
     margin-bottom: 30px;
 
   }
-
+  .ec-top-row {
+    height: 85%;
+  }
   .ec-title {
     text-align: center;
   }
@@ -882,8 +919,29 @@ margin-bottom: 15px;
     text-align: center;
     margin-top: 5%;
   }
+  .neon-bar-item-cont {
+    display: none;
+  }
+  .no-dt {
+    margin-top: 10%;
+    font-size: 17px;
+  }
 }
+
+@media screen and (max-width: 1324px) {
+  .neon-bar-item-cont span {
+    font-size: 14px;
+  }
+  .neon-bar-item-cont {
+    height: 22%;
+  }
+ }
+
 @media screen and (max-width: 1024px) {
+  .neon-bar-item-cont span {
+    font-size: 12px;
+  }
+  
   .ec-petit-prince{
     display: none;
   };
@@ -896,9 +954,7 @@ margin-bottom: 15px;
   .little-card {
     width: 45%;
   }
-  .neon-bar-item-cont {
-    display: none;
-  }
+
   .checkout {
     padding: 0 !important;
     margin-bottom: 10%;
@@ -913,3 +969,151 @@ margin-bottom: 15px;
   }
 
 }
+
+
+svg {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.gradient {
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  fill: url('#gradient-fill');
+}
+.square {
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+.s1 {
+  animation-name: slide-1;
+}
+
+.s2 {
+  animation-name: slide-2;
+}
+
+.s3 {
+  animation-name: slide-3;
+}
+
+.s4 {
+  animation-name: slide-4;
+}
+
+.s5 {
+  animation-name: slide-5;
+}
+
+.s6 {
+  animation-name: slide-6;
+}
+
+.s7 {
+  animation-name: slide-7;
+}
+
+@keyframes slide-1 {
+  37.5% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes slide-2 {
+  25% {
+    transform: translateX(0px);
+  }
+  37.5% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes slide-3 {
+  12.5% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
+
+@keyframes slide-4 {
+  50% {
+    transform: translateY(0px);
+  }
+  62.5% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes slide-5 {
+  12.5% {
+    transform: translate(-100px, 0px);
+  }
+  87.5% {
+    transform: translate(-100px, 0px);
+  }
+  100% {
+    transform: translate(-100px, 100px);
+  }
+}
+
+@keyframes slide-6 {
+  62.5% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes slide-7 {
+  75%  {
+    transform: translateX(0px);
+  }
+  87.5% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(-100px);
+  }
+}
+
+label { font-size: 24px; }
+
+
+/*** custom checkboxes ***/
+
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:before {
+  display: inline-block;
+  font-family: FontAwesome;
+
+}
+
+input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
+input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
+input[type=checkbox]:checked + label:before { letter-spacing: 5px; color: #F4CC20; } /* allow space for check mark */

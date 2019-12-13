@@ -6,10 +6,11 @@
     <div class="col-lg-4  ec-petit-prince"></div>
     <div class="col-lg-1 forBigPussy"></div>
     <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
-      <div class='ec-list-title'>
+      <div class='ec-list-title row'>
         <h2 class="ec-title">Tous vos néons</h2>
-        <button class="prev-btn" (click)="goToForm();">Créer un nouveau néon !</button>
-        <button style='margin-left: 15px' class="next-btn" (click)="logout()">Se déconnecter</button>
+        <button class="prev-btn col-md-3 col-sm-12" (click)="goToForm();">Créer un nouveau néon</button>
+        <div class='forBigPussy col-1'></div>
+        <button  class="next-btn  col-md-3 col-sm-12" (click)="logout()">Se déconnecter</button>
       </div>
 
       <div class="ec-list-cont">
@@ -109,7 +110,31 @@
       <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"
         class="neon-canvas"></div>
       <div *ngIf="neonSelected.state === 'created'" class="neon-canvas">
-        <div class='no-dt'>Dessin technique en cours de design</div>
+
+<svg width="100" height="100" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="gradient-fill" gradientUnits="userSpaceOnUse" 
+   x1="0" y1="300" x2="300" y2="0">
+      <stop offset="0%">
+        <animate attributeName="stop-color" values="#00E06B;#CB0255;#00E06B" dur="5s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%">
+        <animate attributeName="stop-color" values="#04AFC8;#8904C5;#04AFC8" dur="8s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <clipPath id="clip">
+      <rect class="square s1" x="0" y="0" rx="12" ry="12" height="90" width="90"></rect>
+      <rect class="square s2" x="100" y="0" rx="12" ry="12" height="90" width="90"></rect>
+      <rect class="square s3" x="200" y="0" rx="12" ry="12" height="90" width="90"></rect>
+      <rect class="square s4" x="0" y="100" rx="12" ry="12" height="90" width="90"></rect>
+      <rect class="square s5" x="200" y="100" rx="12" ry="12" height="90" width="90"></rect>
+      <rect class="square s6" x="0" y="200" rx="12" ry="12" height="90" width="90"></rect>
+      <rect class="square s7" x="100" y="200" rx="12" ry="12" height="90" width="90"></rect>
+    </clipPath>
+  </defs>
+  <rect class="gradient" clip-path="url('#clip')" height="300" width="300"></rect>
+</svg>
+        <div class='no-dt'>Nous designons votre dessin technique !</div>
       </div>
 
       <div class="neon-bar">
@@ -137,8 +162,7 @@
         <div class="bar-btn-cont">
           <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
 
-          <button *ngIf="neonSelected?.state === 'created'" click class="prev-btn"><a href="#open-modal">Modifier ma
-              commande</a></button>
+          <button *ngIf="neonSelected?.state === 'created'" click class="prev-btn"><a href="#open-modal">Demander une modification</a></button>
           <button *ngIf="neonSelected?.state !== 'created'" click class="prev-btn"><a target="_blank"
               class='customHyperlink' [href]="neonSelected?.filePath">Télécharger mon dessin</a></button>
           <!-- <button   class="prev-btn" >Demander une notification</button> -->
@@ -162,29 +186,34 @@
         <tbody>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Texte</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.text}}</td>
+            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.text}}</td>
 
             <!-- <td  [className]="neonSelected.typo + ' dynamicNeonTitle ' + colorsList[neonSelected.colors] " style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td> -->
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Typographie</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.typo}}</td>
+            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.typo}}</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Couleurs</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.colors}}</td>
+            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.colors}}</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.height}}cm</td>
+            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.height}}cm</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td>
+            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.state}}</td>
           </tr>
           <tr>
             <td>
-                <input  (click)="onCheckTelecommande();" style="margin-right: 10px; align-self: center;" type="checkbox" />
+              <div>
+                <input  (click)="onCheckTelecommande();" id="box1" type="checkbox" />
+                <label for="box1"></label>
+              </div>
+              
+                <!-- <input  (click)="onCheckTelecommande();" style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
             </td>
             <td>
                 <div class="livraisonDom">Télécommande: 25 €</div>
@@ -196,7 +225,11 @@
 
             <tr>
                 <td>
-                    <input     (click)="onCheckResEau();" style="margin-right: 10px; align-self: center;" type="checkbox" />
+                  <div>
+                    <input  (click)="onCheckResEau();" id="box2" type="checkbox" />
+                    <label for="box2"></label>
+                  </div>
+                    <!-- <input     (click)="onCheckResEau();" style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
                 </td>
                 <td>
                     <div class="livraisonDom">Utilisation extérieure (résistant à l'eau): 70 €</div>
@@ -208,7 +241,7 @@
         </tbody>
       </table>
 
-      <div class="neon-tarif-cont">
+      <div  *ngIf="neonSelected.state !== 'created' || neonSelected.state === 'payé'"  class="neon-tarif-cont">
         <div class="neon-tarif">
           <span class="neon-tarif-price">Tarif: {{neonSelected?.price}} €</span>
           <span class="neon-tarif-blabla">Livraison incluse </span>
@@ -231,6 +264,7 @@
     
            </div> -->
         <div class="card_content">
+          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'" class="card-logo"></div>
           <span class="ec-card-title">
             Paiement sécurisé
           </span>
@@ -247,6 +281,8 @@
     
            </div> -->
         <div class="card_content">
+          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'" class="card-logo"></div>
+
           <span class="ec-card-title">
             Garantie un an
 
@@ -265,6 +301,8 @@
        
               </div> -->
         <div class="card_content">
+          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livraison-07.png' +')'" class="card-logo"></div>
+
           <span class="ec-card-title">
             Livraison offerte
 
@@ -282,6 +320,8 @@
        
               </div> -->
         <div class="card_content">
+          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'" class="card-logo"></div>
+
           <span class="ec-card-title">
             Livré sous 15 jours
 

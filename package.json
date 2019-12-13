@@ -36,6 +36,7 @@
     "express": "^4.17.1",
     "file-saver": "^2.0.2",
     "ngx-bootstrap": "^5.2.0",
+    "node-sass": "^4.13.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

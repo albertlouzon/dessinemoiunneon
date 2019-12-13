@@ -157,7 +157,6 @@
           <div [style.backgroundImage]="'url('+ '../.././assets/LED.png' +')'" class="neon-bar-item"></div>
           <span>LED</span>
         </div>
-        <div style="flex: 0.6"></div>
 
         <div class="bar-btn-cont">
           <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
@@ -355,14 +354,13 @@
       <div class="command-form-card row">
 
         <div class="row livraisonRow">
-          <div class='user-info-row-cont nestedInput col-5'>
+          <div class='user-info-row-cont nestedInput col-6'>
             <span class="user-info-row-title">Prénom</span>
             <input [value]="commandInfos['prénom']" (change)="onChangeCommandInfo('prénom', $event.target.value)"
               class="basic-input  " />
           </div>
 
-          <div class=" col-2"></div>
-          <div class='user-info-row-cont nestedInput col-5'>
+          <div class='user-info-row-cont nestedInput col-6'>
             <span class="user-info-row-title">Nom</span>
             <input [value]="commandInfos['nom']" (change)="onChangeCommandInfo('nom', $event.target.value)"
               class="basic-input " />
@@ -384,14 +382,13 @@
         </div>
 
         <div class="row livraisonRow">
-          <div class='user-info-row-cont nestedInput col-5'>
+          <div class='user-info-row-cont nestedInput col-6'>
             <span class="user-info-row-title">Ville</span>
             <input [value]="commandInfos['ville']" (change)="onChangeCommandInfo('ville', $event.target.value)"
               class="basic-input  " />
           </div>
 
-          <div class="col-2"></div>
-          <div class='user-info-row-cont nestedInput col-5'>
+          <div class='user-info-row-cont nestedInput col-6'>
             <span class="user-info-row-title">Code postal</span>
             <input [value]="commandInfos['code-postal']"
               (change)="onChangeCommandInfo('code-postal', $event.target.value)" class="basic-input " />
@@ -401,14 +398,13 @@
 
 
         <div class="row livraisonRow">
-          <div class='user-info-row-cont nestedInput col-5'>
+          <div class='user-info-row-cont nestedInput col-6'>
             <span class="user-info-row-title">Pays</span>
             <input [value]="commandInfos['pays']" (change)="onChangeCommandInfo('pays', $event.target.value)"
               class="basic-input  " />
           </div>
 
-          <div class="col-2"></div>
-          <div class='user-info-row-cont nestedInput col-5'>
+          <div class='user-info-row-cont nestedInput col-6'>
             <span class="user-info-row-title">Téléphone</span>
             <input [value]="commandInfos['téléphone']" (change)="onChangeCommandInfo('téléphone', $event.target.value)"
               class="basic-input " />
@@ -529,7 +525,7 @@
           <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
           <!-- </div> -->
 
-          <button class='next-btn mt5 ' type="submit">Payer {{neonSelected?.price}} Euros</button>
+          <button class='next-btn mt5 ' type="submit">Payer</button>
         </form>
 
 
@@ -572,7 +568,7 @@
 
           <div class=" ttcList">
             <div class="col-4 ttc">Total TTC</div>
-            <div class="col-4 ttc">{{neonSelected?.price}}$</div>
+            <div class="col-4 ttc">{{neonSelected?.price}} €</div>
 
           </div>
         </div>
@@ -626,8 +622,9 @@
         <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"
         class="neon-canvas2"></div>
         <button  (click)="resetView();"
-        class="next-btn">Revenir à mon espace</button>
-        <h2 class='remerciements'>Merci pour votre commande ! Votre néon arrivera à l'adresse indiquée dans un délai de 15 à 20 jours. Notre équipe est joignable sur contact@dessinemoiunneon.fr</h2>
+        class="next-btn revenir">Revenir à mon espace</button>
+        <h2  class='remerciements'>Commande envoyée !</h2>
+        <span class='merci-descr'>Merci pour votre commande, un email de confirmation vous à été envoyée. Pour toute demande, notre équipe est joignable à l'adresse dessinemoiunneon@contact.fr</span>
     </div>
     <div class=col-2></div>
 

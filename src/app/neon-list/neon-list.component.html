@@ -7,28 +7,26 @@
     <div class="col-lg-1 forBigPussy"></div>
     <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
       <div class='ec-list-title row'>
-        <h2 class="ec-title">Tous vos néons</h2>
-        <button class="prev-btn col-md-3 col-sm-12" (click)="goToForm();">Créer un nouveau néon</button>
+        <h2 class="ec-title col-lg-4 col-md-12">Tous vos néons</h2>
+        <button class="prev-btn col-lg-3 col-md-12" (click)="goToForm();">Créer un nouveau néon</button>
         <div class='forBigPussy col-1'></div>
-        <button  class="next-btn  col-md-3 col-sm-12" (click)="logout()">Se déconnecter</button>
+        <button  class="next-btn  col-lg-3 col-sm-12" (click)="logout()">Se déconnecter</button>
       </div>
 
       <div class="ec-list-cont">
-          <h4 style="font-family: Mukta-Regular, sans-serif;">Vos dessins techniques</h4>
-
         <table>
 
           <thead>
 
             <tr>
-
-              <th>Etat</th>
+              <th class="list-dessins-th">Vos dessins techniques</th>
+              <th class="list-dessins-th">Etat</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)">
               <!--              [className]="command.typo + ' dynamicNeonTitle ' + getColor(command.colors) "-->
-              <td class="pb3 pt3" data-column="">{{command.text}}</td>
+              <td class="pb3 pt3" data-column="Texte">{{command.text}}</td>
               <td data-column="Etat">{{command.state}}</td>
             </tr>
 
@@ -107,9 +105,9 @@
 
   <div class="ec-top-row-detail row">
     <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
-      <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"
+      <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"  
         class="neon-canvas"></div>
-      <div *ngIf="neonSelected.state === 'created'" class="neon-canvas">
+      <div *ngIf="neonSelected.state === 'created'" class="neon-canvas"  [style.background-color]="neonSelected.state === 'created' ? '#000b31' : 'white'">
 
 <svg width="100" height="100" viewBox="0 0 300 300">
   <defs>
@@ -173,7 +171,7 @@
 
 
 
-    <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="col-md-4 col-sm-6 col-xs-12  neon-detail-config">
       <table>
         <thead>
           <tr>
@@ -205,9 +203,9 @@
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
             <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.state}}</td>
           </tr>
-          <tr>
-            <td>
-              <div>
+          <tr *ngIf="neonSelected.state !== 'created'" >
+            <td  >
+              <div >
                 <input  (click)="onCheckTelecommande();" id="box1" type="checkbox" />
                 <label for="box1"></label>
               </div>
@@ -222,8 +220,8 @@
               <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
             </tr>
 
-            <tr>
-                <td>
+            <tr *ngIf="neonSelected.state !== 'created'">
+                <td  >
                   <div>
                     <input  (click)="onCheckResEau();" id="box2" type="checkbox" />
                     <label for="box2"></label>
@@ -620,6 +618,7 @@
   <div class="col-2 forBigPussy"></div>
     <div class = 'col-md-8 col-sm-12'>
         <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"
+      
         class="neon-canvas2"></div>
         <button  (click)="resetView();"
         class="next-btn revenir">Revenir à mon espace</button>

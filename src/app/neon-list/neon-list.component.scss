@@ -583,6 +583,8 @@ form.checkout {
     height: 100%;
   min-height: 350px;
     width: 100%;
+      // background-color: #000b31;
+
     // background-image: url('../../assets/outer-space-neon.jpg');
     background-repeat:no-repeat;
     display: flex;
@@ -604,6 +606,7 @@ margin-bottom: 15px;
   background-color: #F4F4F4 ;
     display: flex;
     height: 17%;
+    max-height: 70px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
@@ -683,10 +686,10 @@ margin-bottom: 15px;
 }
 
 .neon-tarif-cont {
-  border: 1px solid #D5D5D5;
+  border-bottom: 1px solid #D5D5D5;
   border-radius: 15px;
   padding-top: 5%;
-  margin-top: 5%;
+  // margin-top: 5%;
   margin-left: -5%;
   padding-bottom: 5%;
   display: flex;
@@ -762,7 +765,11 @@ margin-bottom: 15px;
   
 }
 
-
+.big-btn {
+  padding-left: 35px;
+        padding-right: 35px;
+        height: 85px;
+}
 .recapList2 {
   display: block;
   /* flex-direction: column; */
@@ -770,7 +777,7 @@ margin-bottom: 15px;
 }
 .recapList div {
   padding-bottom: 5px;
-  font-family: Mukta-Bold, sans-serif;
+  font-family: Mukta-Regular, sans-serif;
   font-size: 17px;
 }
 .ttc {
@@ -782,7 +789,8 @@ margin-bottom: 15px;
   background-color: #000b31;
   height: 100%;
   color: #F4CC20;
-  font-family: Nunito-Black;
+  font-size: 25px;
+  font-family: Mukta-Bold, sans-serif;
   display: flex;
   justify-content: space-between;
     border-bottom-right-radius: 10px;
@@ -927,7 +935,7 @@ left: 0;
   }
 
   .neon-canvas {
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
 
   }
   .ec-top-row {

@@ -50,8 +50,7 @@
 
           </span>
           <span class="ec-card-descr">
-            Les paiements sur notre site sont sécurisés via le module Stripe. Nous acceptons tous les paiements dont Visa, Master Card, Amex,
-            Paypal et Maestro.
+            Les paiements sur notre site sont sécurisés. Nous acceptons tous les paiements dont Visa, Master Card.
           </span>
 
         </div>
@@ -412,7 +411,7 @@
 
         </div>
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-        <button (click)="command();" style="margin-right: 5%;;" class="next-btn">Passer ma commande</button>
+        <button (click)="command();" style="margin-right: 5%;" class="next-btn big-btn">Passer au paiement</button>
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
 
       </div>
@@ -525,15 +524,14 @@
           <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
           <!-- </div> -->
 
-          <button class='next-btn mt5 ' type="submit">Payer</button>
+          <button class='next-btn mt5 big-btn' type="submit">Valider et payer</button>
         </form>
 
 
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
         <!-- <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button> -->
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
-        <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Conditions légales d'utilisation du
-          module de paiement Stripe</a>
+        <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Voir nos condition générales d'utilisation</a>
 
       </div>
 

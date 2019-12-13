@@ -133,8 +133,8 @@ export class NeonListComponent implements OnInit {
     // this.card.removeEventListener('change', this.cardHandler);
     // this.card.destroy();
     if (this.payMode) {
-      this.card.removeEventListener('change', this.cardHandler);
-      this.card.destroy();
+      // this.card.removeEventListener('change', this.cardHandler);
+      // this.card.destroy();
     }
 
   }
@@ -283,8 +283,8 @@ export class NeonListComponent implements OnInit {
   }
 
   fromPayToCommand() {
-    this.card.removeEventListener('change', this.cardHandler);
-    this.card.destroy();
+    // this.card.removeEventListener('change', this.cardHandler);
+    // this.card.destroy();
     this.payMode = false;
     this.commandMode = true;
   }
@@ -300,15 +300,19 @@ export class NeonListComponent implements OnInit {
     this.user['changeCommand'] = {command: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé'};
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
+      // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
       // this.fetchCommands();
       this.loading = false;
-      this.resetView();
+      this.neonSelected.state = 'payé'
+      this.commandMode = false;
+      this.payMode = false;
     }, err => {
       if (err.status === 200) {
-        this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
+        // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
         this.loading = false;
-        this.resetView();
+        this.neonSelected.state = 'payé'
+        this.commandMode = false;
+        this.payMode = false;
 
 
         // this.fetchCommands();

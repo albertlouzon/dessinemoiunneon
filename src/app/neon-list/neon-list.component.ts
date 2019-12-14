@@ -219,7 +219,7 @@ export class NeonListComponent implements OnInit {
         this.loading = false;
         console.log('ok ', res, localStorage.getItem('email'));
         if (!res.find(x => x['email'] === localStorage.getItem('email')) || !localStorage.getItem('email')) {
-          this.openSnackbar('Vous n êtes pas connecté à votre compte. Veuillez vous connecter ou créer un compte.');
+          // this.openSnackbar('Vous n êtes pas connecté à votre compte. Veuillez vous connecter ou créer un compte.');
           currentView['caca'] = 'login';
         } else {
           console.log(localStorage.getItem('email'));

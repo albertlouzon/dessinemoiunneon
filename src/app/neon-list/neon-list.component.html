@@ -1,7 +1,7 @@
 <div *ngIf="!neonSelected && !commandMode" class="ec-top-layer"></div>
 
 
-<div *ngIf="!neonSelected && !commandMode" class="ec-bigbox">
+<div *ngIf="!neonSelected && !commandMode" style="height: 800px;" class="ec-bigbox">
   <div class="row ec-top-row">
     <div class="col-lg-4  ec-petit-prince"></div>
     <div class="col-lg-1 forBigPussy"></div>
@@ -531,7 +531,7 @@
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
         <!-- <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button> -->
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
-        <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Voir nos condition générales d'utilisation</a>
+        <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Voir nos condition générales d'utilisations</a>
 
       </div>
 
@@ -614,17 +614,105 @@
 
 </div>
 
-<div *ngIf="neonSelected?.state === 'payé'" class="ec-bigbox-detail row"> 
+<div  *ngIf="commandMode || payMode" class="ec-bottom-row-blue row">
+
+  <div class="cards-list">
+
+    <div class="little-card-blue  card-tarace 1">
+      <!-- <div class="card_image">
+  
+         </div> -->
+      <div class="card_content">
+        <div  [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'" class="card-logo"></div>
+        <span class="ec-title-blue">
+          Paiement sécurisé
+        </span>
+        <span class="ec-card-descr-blue">
+          Les paiements sur notre site sont sécurisés  via le module Stripe. Nous acceptons tous les paiements dont Visa, Master Card, Amex,
+          Paypal et Maestro.
+        </span>
+
+      </div>
+    </div>
+
+    <div class="little-card-blue  card-tarace 2">
+      <!-- <div class="card_image">
+  
+         </div> -->
+      <div class="card_content">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'" class="card-logo"></div>
+
+        <span class="ec-title-blue">
+          Garantie un an
+
+        </span>
+        <span class="ec-card-descr-blue">
+          Tous nos néons posèdent une garantie d'un an à compter de la data d'achat. Vous devez retourner un article
+          défectueux ? Contactez-nous avec le numéro de commande !
+        </span>
+
+      </div>
+    </div>
+
+
+    <div class="little-card-blue  card-tarace 3">
+      <!-- <div class="card_image">
+     
+            </div> -->
+      <div class="card_content">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livraison-07.png' +')'" class="card-logo"></div>
+
+        <span class="ec-title-blue">
+          Livraison offerte
+
+        </span>
+        <span class="ec-card-descr-blue">
+          Nous vous offrons la livraison pour chaque néon commandé.
+        </span>
+
+      </div>
+    </div>
+
+
+    <div class="little-card-blue  card-tarace 4">
+      <!-- <div class="card_image">
+     
+            </div> -->
+      <div class="card_content">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'" class="card-logo"></div>
+
+        <span style="font-size: 17px;" class="ec-title-blue">
+          Livré sous 15 jours
+
+        </span>
+        <span class="ec-card-descr-blue">
+          Nous livrons dans un délai de 15 à 20 jours selon la production et la destination. En cas de demande urgente
+          merci de nous contacter directement
+          afin de procéder à une "Livraison express"
+        </span>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<div *ngIf="neonSelected?.state === 'payé'" style=" padding-left: 0 !important;" class="ec-bigbox-detail row"> 
   <div class="col-2 forBigPussy"></div>
     <div class = 'col-md-8 col-sm-12'>
-        <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"
+        <div *ngIf="neonSelected.state !== 'created'"  [style.backgroundImage]="'url('+ '../.././assets/Mercipage-03.png' +')'" 
       
         class="neon-canvas2"></div>
-        <button  (click)="resetView();"
-        class="next-btn revenir">Revenir à mon espace</button>
-        <h2  class='remerciements'>Commande envoyée !</h2>
-        <span class='merci-descr'>Merci pour votre commande, un email de confirmation vous à été envoyée. Pour toute demande, notre équipe est joignable à l'adresse dessinemoiunneon@contact.fr</span>
-    </div>
+        <div class="merci-cont">
+          <h1  class='remerciements'>Commande validée !</h1>
+          <span class='merci-descr'>Merci pour votre commande, un email de confirmation vous à été envoyée. Vous recevrez votre néon à l'adresse indiqué dans les 20 prochains jours. Envoyez nous une photo</span>
+          <button  (click)="resetView();"
+          class="next-btn revenir">Retour à mon espace</button>
+        </div>
+      </div>
     <div class="col-2 forBigPussy"></div>
 
 </div>

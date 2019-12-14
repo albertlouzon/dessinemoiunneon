@@ -1,7 +1,7 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 .ec-bigbox {
-  height: 800px;
+  // height: 800px;
   padding: 1.5rem;
   padding-left: 7%;
   padding-right: 7%;
@@ -40,6 +40,11 @@
 .ec-bottom-row {
   margin-top: 5%;
   padding-right: 7%;
+}
+.ec-bottom-row-blue {
+  margin-top: 5%;
+  padding-right: 7%;
+  background-color: #000b31;
 }
 
 .ec-petit-prince {
@@ -144,6 +149,18 @@ h2 {
   min-height: 275px;
   border-radius: 10px;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.14);
+  transition: 0.4s;
+  flex-direction: row;
+}
+
+.little-card-blue {
+  margin: 30px auto;
+  margin-left: 0;
+  margin-right: 0;
+  width: 20%;
+  display: flex;
+  min-height: 275px;
+  border-radius: 10px;
   transition: 0.4s;
   flex-direction: row;
 }
@@ -318,7 +335,12 @@ td:before {
   color: #000b31;
   align-self: center;
 }
-
+.ec-title-blue {
+  font-family: Nunito-Black, sans-serif;
+font-size: 1.5rem;
+color: white;
+align-self: center;
+}
 .ec-card-title {
   font-family: Nunito-Black, sans-serif;
   font-size: 1.5rem;
@@ -326,7 +348,14 @@ td:before {
   margin-bottom: 5%;
 
 }
-  
+.ec-card-descr-blue {
+  font-family: Mukta-Regular, sans-serif;
+  font-size: 14px;
+  // overflow-y: scroll;
+
+  color: white;
+
+}
 .ec-card-descr {
   font-family: Mukta-Regular, sans-serif;
   font-size: 14px;
@@ -736,7 +765,6 @@ margin-bottom: 15px;
   justify-content: flex-start   ;
   border-radius: 7px;
   overflow-y: scroll;
-  height: 87%;
     padding: 2em;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.14);
 }
@@ -899,14 +927,22 @@ margin-bottom: 15px;
   //animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+.merci-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+}
+
 .remerciements {
   text-align: center;
+  font-size: 34px;
+
+  font-family: Nunito-Black, sans-serif;
 }
 .revenir {
   align-self: center; 
-  position: relative;
-  left: 39%;
-  margin-bottom: 5%;
+
  }
 .merci-descr {
   font-family: Mukta-Regular, sans-serif;
@@ -956,7 +992,7 @@ left: 0;
   }
 
   .remerciements {
-    font-size: 14px;
+    font-size: 22px;
     text-align: center;
     margin-top: 5%;
   }
@@ -1012,7 +1048,10 @@ left: 0;
   .little-card {
     width: 45%;
   }
-
+  .little-card-blue {
+    width: 106%;
+    margin: 0;
+  }
   .checkout {
     padding: 0 !important;
     margin-bottom: 10%;

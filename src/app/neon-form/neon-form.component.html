@@ -1,5 +1,5 @@
 <div class='form-container'>
-  <textarea onlyGrow='true'  autosize   autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
+  <textarea onlyGrow='true' maxRows="2"  autosize   autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
    style="align-self: center; text-align: center; letter-spacing: 2px;  height: 100px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " ></textarea>
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 

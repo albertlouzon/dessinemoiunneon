@@ -200,6 +200,8 @@ export class NeonListComponent implements OnInit {
     this.loading = true;
     if (error) {
       console.log('Something is wrong:', error);
+      this.loading = false;
+      alert('La tentative de paiement a échoué...')
     } else {
       console.log('Success!', token);
       this.changeCommandToPaid(token);

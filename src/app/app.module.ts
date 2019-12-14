@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
+import {AutosizeModule} from 'ngx-autosize';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     ArchwizardModule,
-    FormsModule
+    FormsModule,
+    AutosizeModule
 
   ],
   entryComponents: [NeonFormComponent],

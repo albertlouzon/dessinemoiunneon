@@ -13,30 +13,30 @@
 }
 
 
-.Jerry {
-  font-family: Jerry, sans-serif !important;
+.Tommy {
+  font-family: Tommy, sans-serif !important;
   font-size: 4vw ;
+}
+.Freddy {
+  font-family: Freddy, sans-serif !important;
+  font-size: 3vw ;
 }
 .Jackie {
   font-family: Jackie, sans-serif !important;
   font-size: 3vw ;
+
 }
 .Cobby {
   font-family: Cobby, sans-serif !important;
   font-size: 3vw ;
 
 }
-.Johnny {
-  font-family: Johnny, sans-serif !important;
-  font-size: 3vw ;
+.Dannie {
+  font-family: Dannie, sans-serif !important;    font-size: 3vw !important;
 
 }
-.Perrie {
-  font-family: Perrie, sans-serif !important;    font-size: 3vw !important;
-
-}
-.Billie {
-  font-family: Billie, sans-serif !important;
+.Billy {
+  font-family: Billy, sans-serif !important;
   font-size: 3vw ;
 
 }
@@ -44,6 +44,38 @@
   font-family: Jimmy, sans-serif !important;
   font-size: 3vw ;
 
+}
+.Lilly {
+  font-family: Lilly, sans-serif !important;
+  font-size: 3vw ;
+
+}
+.Polly {
+  font-family: Polly, sans-serif !important;
+  font-size: 3vw ;
+
+}
+.Galsy {
+  font-family: Galsy, sans-serif !important;
+  font-size: 3vw ;
+}
+.neon-wizard-descr-merci {
+margin-top: 5%;
+margin-bottom: 5%;
+font-family: Mukta-Regular, sans-serif;
+text-align: center;
+font-size: 17px;
+}
+.neon-canvas2 {
+  // height: 85%;
+min-height: 200px;
+  width: 100%;
+margin-bottom: 15px;
+  // background-image: url('../../assets/outer-space-neon.jpg');
+  background-repeat:no-repeat;
+  display: flex;
+  background-position:center;
+  background-size: contain;
 }
 
 .basic-input-form {
@@ -498,11 +530,21 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
-
-
+aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li.done .step-indicator {
+background-color: #F4CC20 !important;
+}
+aw-wizard.horizontal {
+flex-direction: column-reverse !important;
+}
+aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li.current .step-indicator {
+background-color: #000B31;
+}
+aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li .step-indicator {
+background-color: #000B31;
+}
 .steps-indicator {
-position: absolute !important;
-top: 60% !important;
+// position: absolute !important;
+// top: 60% !important;
 // display: none !important;
 }
 
@@ -513,7 +555,7 @@ text-align: center;
 padding-top: 0.5%;
 background-color: white;
 margin-right: 1%;
-  width: 49%;
+  // width: 49%;
 outline: none !important;
 /* height: 168px; */
 font-size: 3vw;
@@ -523,7 +565,7 @@ display: -webkit-box;
 display: flex;
 /* top: 10%; */
 border-radius: 15px;
-height: 100px;
+// height: 100px;
 padding-top: 10px;
 padding-bottom: 10px;
 }
@@ -535,7 +577,6 @@ padding-bottom: 10px;
 min-height: 100vh;
 // padding-top: 7%;
 display: flex;
-background-color: blue !important;
 flex-direction: column;
 justify-content: flex-start;
 }
@@ -1089,9 +1130,9 @@ margin-bottom: 15px;
   font-size: 20px;
 }
 .dynamicNeonTitle {
-  height: 75px;
+  // height: 75px;
   font-size: 20px !important;
-  width: 90%;
+  // width: 90%;
   position: fixed;
   z-index: 99;
   top: 5px;
@@ -1105,9 +1146,6 @@ margin-bottom: 15px;
 
 .colorCont {
   height: 500px;
-}
-button:disabled {
-  cursor: auto !important;
 }
 
 .colorIcon {  

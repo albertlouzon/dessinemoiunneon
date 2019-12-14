@@ -1,10 +1,10 @@
 <div class='form-container'>
-  <input autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput"  maxlength="35" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
-   style="align-self: center; text-align: center; letter-spacing: 2px;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " >
+  <textarea onlyGrow='true'  autosize   autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
+   style="align-self: center; text-align: center; letter-spacing: 2px;  height: 100px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " ></textarea>
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
 
-  <aw-wizard style="width: 100%;">
+  <aw-wizard    style="width: 100%;">
     <div class="neon-wizard-container row">
       <div class="forBigPussy col-3"></div>
       <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10 step-container">
@@ -19,12 +19,12 @@
 
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
         <div *ngIf="userChoices[0] === 'text'">
           <div class="neon-wizard-header">
             <h5>Ecrivez votre texte</h5>
           </div>
-          <input autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" maxlength="35" [(value)]="textInput"
+          <input    #mainInput  autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" [(value)]="textInput"
             class="basic-input-text mb5  mt5" />
 
         </div>
@@ -56,7 +56,7 @@
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step *ngIf="userChoices[0] === 'text'" stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step  *ngIf="userChoices[0] === 'text' && !finalStep" stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div class="neon-wizard-header">
           <h5>Choisissez la typographie</h5>
@@ -92,7 +92,7 @@
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div    class="neon-wizard-header">
           <h4>Choisissez une couleur </h4>
@@ -103,12 +103,12 @@
 
             
         <div  class="mt5 mb5 row colorCont">
-          <div  [ngClass]=" selectedColorUI=== i? ' yellow-selected col-md-4  col-sm-6 colorIcon' : '  col-md-4 col-sm-6 colorIcon'"   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color, i)" 
+          <div  [ngClass]=" selectedColorUI=== i? ' yellow-selected col-md-3  col-sm-6 colorIcon' : '  col-md-3 col-sm-6 colorIcon'"   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color, i)" 
           *ngFor="let color of colorList;  let i = index">
 
 
           <!-- <div class=format-subtitle>{{format.width}}</div>  -->
-        </div>
+        </div>  
   
           </div>
             <!-- <ul id="flexible">
@@ -127,7 +127,7 @@
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step  *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div class="neon-wizard-header">
           <h5>Choisissez votre format</h5>
@@ -158,15 +158,15 @@
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h5 class="neon-wizard-header flex1 mb5">Choisissez votre support</h5>
         
         <div class="neon-wizard-btn-container row flex3 ">
-          <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected-detoure col-md-6 col-sm-12' : 'col-md-6 col-sm-12 caca'"
+          <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected-detoure col-md-5 col-sm-12' : 'col-md-5 col-sm-12 caca'"
            (click)="imageSupportSelected = 'détouré'" >
             </div>
 
-            <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-standard-18.png' +')'"   id='supportImg'   [ngClass]=" imageSupportSelected==='standard'? 'yellow-selected-standard col-md-6 col-sm-12 ' : 'col-md-6 col-sm-12'"
+            <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-standard-18.png' +')'"   id='supportImg'   [ngClass]=" imageSupportSelected==='standard'? 'yellow-selected-standard col-md-5 col-sm-12 ' : 'col-md-5 col-sm-12'"
             (click)="imageSupportSelected = 'standard'" >
           </div>
   
@@ -183,7 +183,7 @@
 
       </aw-wizard-step>
 
-      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h5 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h5>
 
         <div class="neon-wizard-btn-container row flex3 mt5 mb5">
@@ -205,9 +205,9 @@
 
 
 
-      <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
-        <div *ngIf="projectType === 'consumer'" class="col-md-12 col-sm-12">
+        <div *ngIf="projectType === 'consumer'  && !finalStep " class="col-md-12 col-sm-12">
           <h5 class="neon-wizard-header ">Obtenez votre dessin technique en {{suceMaBite}}</h5>
 
 
@@ -266,7 +266,7 @@
         </div>
 
 
-        <div *ngIf="projectType === 'business'" class=" col-md-12 col-sm-12 ">
+        <div *ngIf="projectType === 'business' && !finalStep " class=" col-md-12 col-sm-12 ">
           <h5 class="neon-wizard-header ">Obtenez votre devis gratuit</h5>
           <div class='user-info-row-cont'>
             <span class="user-info-row-title">Société</span>
@@ -317,6 +317,44 @@
 
 
       </aw-wizard-step>
+
+      <div *ngIf="finalStep && projectType !== 'business'" class="col-md-6 col-sm-10  step-container">
+        <div class="neon-canvas2" [style.backgroundImage]="'url('+ '../.././assets/Mercipage-03.png' +')'" ></div>
+
+        <div    class="neon-wizard-header">
+          <h4>Demande envoyée</h4>
+        </div>
+        
+        <span    class="neon-wizard-descr-merci">
+          Merci pour votre demande. Vous recevrez un email demain pour vous notifier de l'ajout du dessin technique à votre espace.
+        </span>
+
+
+        <div class="neon-wizard-btn-container row flex0">
+          <button class='next-btn col-md-3 col-sm-12' type="button" (click)="goToEC();">Accéder à mon espace</button>
+
+        </div>
+
+      </div>
+      
+      <div *ngIf="finalStep && projectType === 'business'" class="col-md-6 col-sm-10  step-container">
+        <div class="neon-canvas2" [style.backgroundImage]="'url('+ '../.././assets/Mercipage-03.png' +')'" ></div>
+
+        <div    class="neon-wizard-header">
+          <h4>Demande envoyée</h4>
+        </div>
+        
+        <span    class="neon-wizard-descr-merci">
+          Merci pour votre demande. Vous recevrez un email demain avec le devis de votre néon.
+        </span>
+
+
+        <div class="neon-wizard-btn-container row flex0">
+          <button class='next-btn col-md-3 col-sm-12' type="button" (click)="goToAcceuil();">Retourner à l'acceuil</button>
+
+        </div>
+
+      </div>
       <div class="forBigPussy col-2"></div>
     </div>
 

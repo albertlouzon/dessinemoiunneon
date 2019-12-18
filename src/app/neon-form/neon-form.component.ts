@@ -23,6 +23,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 import {MatDialog} from '@angular/material';
 import {ModalRecapComponent} from '../modal-recap/modal-recap.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export enum Direction {
   Next,
@@ -59,7 +60,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   set activeSlides(activeSlides: ActiveSlides) {
     this._activeSlides = activeSlides;
   }
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document, public dialog: MatDialog) { }
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private _snackBar: MatSnackBar,
+     private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document, public dialog: MatDialog) { }
   formatSizes: Array<{ size: string, width: number, url: string }> = [{
     size: 'S', width: 20, url: '../.././assets/Fichier-S.png'
   },
@@ -187,7 +189,11 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     window.top.location.href = 'https://www.dessinemoiunneon.fr/espace-personnel';
 
   }
-
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
   goToAcceuil() {
     window.top.location.href = 'https://www.dessinemoiunneon.fr';
 
@@ -320,7 +326,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                     }
                   });
                 } else {
-                  alert('vous devez choisir une image');
+                  // alert('vous devez choisir une image');
+                  this.openSnackBar('vous devez choisir une image', 'OK');
+
                 }
                 this.sleep(1000);
 
@@ -366,7 +374,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                         return url;
                       }, err => console.log('err', err));
                     } else {
-                      alert('vous devez choisir une image');
+                      // alert('vous devez choisir une image');
+                      this.openSnackBar('vous devez choisir une image', 'OK');
+
                     }
                     this.sleep(1000);
 
@@ -417,7 +427,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                           return url;
                         }, err => console.log('err', err));
                       } else {
-                        alert('vous devez choisir une image');
+                        // alert('vous devez choisir une image');
+                        this.openSnackBar('vous devez choisir une image', 'OK');
+
                       }
                       this.sleep(1000);
 
@@ -443,7 +455,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                     });
                   });
                 } else {
-                  alert('Signup failed'); console.log('signup failed', err);
+                   console.log('signup failed', err);
+                   this.openSnackBar('La tentative de connection a échoué', 'OK');
+
                   this.loading = false;
                 }
               });
@@ -451,7 +465,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
           }
         });
       } else {
-        alert('Vous devez fournir un email et un mot de passe');
+        // alert('Vous devez fournir un email et un mot de passe');
+        this.openSnackBar('Vous devez fournir un email et un mot de passe', 'OK');
       }
     } else {
       console.log('debu 8', localStorage.getItem('email'));
@@ -471,7 +486,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
             return url;
           }, err => console.log('err', err));
         } else {
-          alert('vous devez choisir une image');
+          // alert('vous devez choisir une image');
+          this.openSnackBar('Vous devez fournir une image', 'OK');
+
         }
         this.sleep(1000);
 
@@ -567,7 +584,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
               return url;
             }, err => console.log('err', err));
           } else {
-            alert('vous devez choisir une image');
+            // alert('vous devez choisir une image');
+            this.openSnackBar('vous devez choisir une image', 'OK');
+
           }
           this.sleep(1000);
 

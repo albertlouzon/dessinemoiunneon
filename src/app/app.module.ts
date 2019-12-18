@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { NeonFormComponent } from './neon-form/neon-form.component';
@@ -53,7 +54,8 @@ import {AutowidthDirective} from './autowidth.directive';
     MatListModule,
     MatIconModule,
     MatProgressBarModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   entryComponents: [NeonFormComponent, ModalComponent, ModalRecapComponent],
   providers: [ArchwizardModule, ExcelService],

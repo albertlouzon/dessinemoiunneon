@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { currentView } from '../app.component';
+import {ExcelService} from '../services/excel.service';
+import {MatDialog} from '@angular/material';
+import {ModalComponent} from '../modal/modal.component';
 
 @Component({
   selector: 'app-admin',
@@ -11,7 +14,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   neonSelected = 'none';
   neonList = [];
   cachedList = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private excelService: ExcelService, public dialog: MatDialog) { }
   loading = false;
   commandPrice = 0;
   currentFile;
@@ -20,7 +23,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   numOfCreated = 0;
   numOfDT = 0;
   numOfPayes = 0;
-
+  currentFilter = 'tous-les-neons';
+  excelData: Array<{nom: string, prenom: string, type: 'business' | 'consumer', email: string, couleur: string, etat: string, prix: string, typo: string }> = [];
   ngOnInit() {
 this.fetchCommands();
 this.pollInterval = setInterval(() => {
@@ -36,30 +40,48 @@ this.pollInterval = setInterval(() => {
     this.commandPrice = 0;
     console.log('command selected by admin : ', command);
   }
+  openStats() {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '250px',
+      data: {name: 'Mowgli', animal: 'Baloo'}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
   filterCommand(type) {
     console.log(type);
     if (type === 'Created') {
       this.neonList = this.cachedList.filter(c => c.state === 'created');
+      this.currentFilter = type;
     } else  if (type === 'DT disponible') {
       this.neonList = this.cachedList.filter(c => c.state === 'DT disponible');
+      this.currentFilter = type;
     } else  if (type === 'Payé') {
       this.neonList = this.cachedList.filter(c => c.state === 'payé');
+      this.currentFilter = type;
     } else  if (type === 'Consumer') {
       this.neonList = this.cachedList.filter(c => c.type === 'consumer');
+      this.currentFilter = type;
+
     } else  if (type === 'Business') {
       this.neonList = this.cachedList.filter(c => c.type === 'business');
+      this.currentFilter = type;
+
     } else if (type === 'all') {
       this.neonList = this.cachedList;
+      this.currentFilter = 'tous-les-neons';
+
     } else {
       this.neonList = this.cachedList.filter(c => c.typo === type);
 
     }
   }
 
-  logout(){
+  logout() {
     localStorage.clear();
-    currentView.caca = 'login'
+    currentView.caca = 'login';
   }
 
 fromCreatedToDT(command) {
@@ -83,6 +105,16 @@ fromCreatedToDT(command) {
     alert('Pour importer le DT il faut importer le fichier et entrer le prix du néon');
   }
 }
+
+  exportAsXLSX() {
+    this.excelData = [];
+    this.neonList.forEach((neon) => {
+      this.excelData.push({nom: neon['userFull']['name'], prenom:  neon['userFull']['nickname'], type: neon['type'], email: neon['email'],
+        prix: neon['price'], typo: neon['typo'], couleur: neon['colors'], etat: neon['state']  });
+    });
+    console.log('the data for excel file  ', this.excelData);
+    this.excelService.exportAsExcelFile(this.excelData, 'liste-' + this.currentFilter);
+  }
 deleteCommand(command) {
   const del = confirm('Confirmer vouloir effacer ' + command.text);
   if (del) {

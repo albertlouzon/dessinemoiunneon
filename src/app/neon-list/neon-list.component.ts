@@ -21,7 +21,7 @@ declare var elements: any;
   styleUrls: ['./neon-list.component.scss']
 })
 export class NeonListComponent implements OnInit {
-  @ViewChild('cardInfo') cardInfo: ElementRef;
+  @ViewChild('cardInfo', {static: false}) cardInfo: ElementRef;
 
   loading = false;
   constructor(private http: HttpClient,     private cd: ChangeDetectorRef,

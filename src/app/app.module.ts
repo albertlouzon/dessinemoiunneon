@@ -11,6 +11,10 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import {AutosizeModule} from 'ngx-autosize';
+import {ExcelService} from './services/excel.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule, MatDialogModule, MatFormFieldModule} from '@angular/material';
+import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
@@ -20,18 +24,23 @@ import {AutosizeModule} from 'ngx-autosize';
     FormHeaderComponent,
     NeonListComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    ModalComponent,
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ArchwizardModule,
     FormsModule,
-    AutosizeModule
-
+    AutosizeModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
-  entryComponents: [NeonFormComponent],
-  providers: [ArchwizardModule],
+  entryComponents: [NeonFormComponent, ModalComponent],
+  providers: [ArchwizardModule, ExcelService],
   bootstrap: [AppComponent]
-})  
+})
 export class AppModule { }

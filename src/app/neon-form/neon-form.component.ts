@@ -45,6 +45,19 @@ export interface ActiveSlides {
   encapsulation: ViewEncapsulation.None
 })
 export class NeonFormComponent implements OnInit, AfterViewChecked {
+  get direction() {
+    return this._direction;
+  }
+  set direction(direction: Direction) {
+    this._direction = direction;
+  }
+  get activeSlides() {
+    return this._activeSlides;
+  }
+  set activeSlides(activeSlides: ActiveSlides) {
+    this._activeSlides = activeSlides;
+  }
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document) { }
   formatSizes: Array<{ size: string, width: number, url: string }> = [{
     size: 'S', width: 20, url: '../.././assets/Fichier-S.png'
   },
@@ -143,26 +156,13 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   thumbnailTemplateRef: TemplateRef<any>;
   currentInterval;
   differ: KeyValueDiffer<ActiveSlides, any>;
-  @ViewChild("mainInput",  {read: false}) mainInp: ElementRef;
+  @ViewChild('mainInput',  {read: false, static: false}) mainInp: ElementRef;
+  private _direction: Direction = Direction.Next;
+
+  private _activeSlides: ActiveSlides;
   editName() {
       // this.mainInp.nativeElement.focus();
   }
-  private _direction: Direction = Direction.Next;
-  get direction() {
-    return this._direction;
-  }
-  set direction(direction: Direction) {
-    this._direction = direction;
-  }
-
-  private _activeSlides: ActiveSlides;
-  get activeSlides() {
-    return this._activeSlides;
-  }
-  set activeSlides(activeSlides: ActiveSlides) {
-    this._activeSlides = activeSlides;
-  }
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
     this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
@@ -180,12 +180,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
 
   goToEC() {
-    window.top.location.href = "https://www.dessinemoiunneon.fr/espace-personnel";
+    window.top.location.href = 'https://www.dessinemoiunneon.fr/espace-personnel';
 
   }
 
   goToAcceuil() {
-    window.top.location.href = "https://www.dessinemoiunneon.fr";
+    window.top.location.href = 'https://www.dessinemoiunneon.fr';
 
   }
   signuptrue() {
@@ -227,7 +227,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
 
   manageFinalStep() {
-    this.finalStep = true
+    this.finalStep = true;
     // if(this.projectType === null) {
     //   this.projectType === 'consumer'
     // }
@@ -284,7 +284,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                   commandPayload['clientImageUrl'] = '';
                   console.log('sending image CaaaaaaC', userId);
 
-                  const params = new HttpParams().set('userId', userId)// Create new HttpParams
+                  const params = new HttpParams().set('userId', userId); // Create new HttpParams
                   const formData: FormData = new FormData();
                   formData.append('file', this.imageFile);
                   this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
@@ -297,12 +297,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                     }
                   });
                 } else {
-                  alert('vous devez choisir une image')
+                  alert('vous devez choisir une image');
                 }
                 this.sleep(1000);
 
               }
-              console.log('upload file finished', commandPayload['clientImageUrl'])
+              console.log('upload file finished', commandPayload['clientImageUrl']);
 
               this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                 console.log('updated list after post :', newNeonList);
@@ -334,7 +334,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       commandPayload['clientImageUrl'] = '';
                       console.log('sending image CaaaaaaC', userId);
 
-                      const params = new HttpParams().set('userId', userId)// Create new HttpParams
+                      const params = new HttpParams().set('userId', userId); // Create new HttpParams
                       const formData: FormData = new FormData();
                       formData.append('file', this.imageFile);
                       this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
@@ -343,12 +343,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                         return url;
                       }, err => console.log('err', err));
                     } else {
-                      alert('vous devez choisir une image')
+                      alert('vous devez choisir une image');
                     }
                     this.sleep(1000);
 
                   }
-                  console.log('upload file finished', commandPayload['clientImageUrl'])
+                  console.log('upload file finished', commandPayload['clientImageUrl']);
                   this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                     console.log('updated list after post :', newNeonList);
 
@@ -385,7 +385,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                         commandPayload['clientImageUrl'] = '';
                         console.log('sending image CaaaaaaC', userId);
 
-                        const params = new HttpParams().set('userId', userId)// Create new HttpParams
+                        const params = new HttpParams().set('userId', userId); // Create new HttpParams
                         const formData: FormData = new FormData();
                         formData.append('file', this.imageFile);
                         this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
@@ -394,12 +394,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                           return url;
                         }, err => console.log('err', err));
                       } else {
-                        alert('vous devez choisir une image')
+                        alert('vous devez choisir une image');
                       }
                       this.sleep(1000);
 
                     }
-                    console.log('upload file finished', commandPayload['clientImageUrl'])
+                    console.log('upload file finished', commandPayload['clientImageUrl']);
                     this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                       console.log('updated list after post :', newNeonList);
 
@@ -439,7 +439,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
           commandPayload['clientImageUrl'] = '';
           console.log('sending image CaaaaaaC', userId);
 
-          const params = new HttpParams().set('userId', userId)// Create new HttpParams
+          const params = new HttpParams().set('userId', userId); // Create new HttpParams
           const formData: FormData = new FormData();
           formData.append('file', this.imageFile);
           this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
@@ -448,12 +448,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
             return url;
           }, err => console.log('err', err));
         } else {
-          alert('vous devez choisir une image')
+          alert('vous devez choisir une image');
         }
         this.sleep(1000);
 
       }
-      console.log('upload file finished', commandPayload['clientImageUrl'])
+      console.log('upload file finished', commandPayload['clientImageUrl']);
       this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
         console.log('updated list after post :', newNeonList);
 
@@ -474,8 +474,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
 
   sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
+    let start = new Date().getTime();
+    for (let i = 0; i < 1e7; i++) {
       if ((new Date().getTime() - start) > milliseconds) {
         break;
       }
@@ -486,17 +486,17 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       if (choice !== this.mainChoice) {
         this.textInput = '';
       }
-      if(choice === 'text') {
+      if (choice === 'text') {
         setTimeout(() => {
           this.mainInp.nativeElement.focus();
-  
+
         }, 200);
-  
+
       }
       this.mainChoice = choice;
       this.userChoices[step] = choice;
     }
-  
+
     if (step === 3) {
       if (choice === 'erase') {
         this.userChoices[step] = null;
@@ -507,10 +507,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
     if (step === 4) {
       if (choice === 'standard') {
-        this.imageSupportSelected = 'standard'
+        this.imageSupportSelected = 'standard';
       } else {
         this.userChoices[step] = choice;
-        this.imageSupportSelected = 'détouré'
+        this.imageSupportSelected = 'détouré';
 
       }
 
@@ -528,14 +528,14 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
           type: this.projectType
         };
 
-        console.log('upload file finished', commandPayload['clientImageUrl'])
+        console.log('upload file finished', commandPayload['clientImageUrl']);
         const userId = this.allUsers.find(x => x.email === localStorage.getItem('email')).id;
         if (this.mainChoice === 'image') {
           if (this.imageFile) {
             commandPayload['clientImageUrl'] = '';
             console.log('sending image CaaaaaaC', userId);
 
-            const params = new HttpParams().set('userId', userId)// Create new HttpParams
+            const params = new HttpParams().set('userId', userId); // Create new HttpParams
             const formData: FormData = new FormData();
             formData.append('file', this.imageFile);
             this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
@@ -544,12 +544,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
               return url;
             }, err => console.log('err', err));
           } else {
-            alert('vous devez choisir une image')
+            alert('vous devez choisir une image');
           }
           this.sleep(1000);
 
         }
-        console.log('upload file finished', commandPayload['clientImageUrl'])
+        console.log('upload file finished', commandPayload['clientImageUrl']);
         this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
           console.log('updated list after post :', newNeonList);
           this.manageFinalStep();
@@ -602,11 +602,11 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
 
   saveToStorage() {
-    if(this.userInfoPerso['email'] && this.userInfoPerso['email'].trim() !== '') {
+    if (this.userInfoPerso['email'] && this.userInfoPerso['email'].trim() !== '') {
       localStorage.setItem('email', this.userInfoPerso['email']);
 
     }
-    if(this.userInfoPerso['password'] && this.userInfoPerso['password'].trim() !== '') {
+    if (this.userInfoPerso['password'] && this.userInfoPerso['password'].trim() !== '') {
       localStorage.setItem('pw', this.userInfoPerso['password']);
     }
   }

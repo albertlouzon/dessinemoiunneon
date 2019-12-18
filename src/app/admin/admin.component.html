@@ -1,12 +1,13 @@
 <div *ngIf="neonSelected === 'none'" class="row   ">
-
     <div class='admin-list-title col-12'>
-      <h2 class="admin-title">Vue Globale: {{numOfCommands}} demandes dont {{numOfCreated}} en attente , {{numOfDT}} traitées, {{numOfPayes}} payées</h2>
+      <h3 class="admin-title">Vue Globale: {{numOfCommands}} demandes dont {{numOfCreated}} en attente , {{numOfDT}} traitées, {{numOfPayes}} payées</h3>
+      <a (click)="exportAsXLSX()" href="#" class="buttonDownload">Generer fichier excel</a>
+      <button (click)="openStats()"  style="padding-right: 30px; padding-left: 30px;" class="next-btn">Statistiques</button>
+
     </div>
 
     <div *ngIf="neonSelected === 'none'" class="admin-list-cont col-12 row">
-        <button (click)="logout()"  style="padding-right: 30px; padding-left: 30px;" class="next-btn">Se déconnecter</button>
-
+      <button (click)="logout()"  style="padding-right: 30px; padding-left: 30px;" class="next-btn">Se déconnecter</button>
       <table class="col-12">
         <thead>
           <tr>

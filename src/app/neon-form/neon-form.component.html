@@ -134,21 +134,13 @@
         </div>
 
         <div  class=" row flex3">
-          <div  [ngClass]=" selectedFormatSize=== i? 'size yellow-selected  col-3' : 'size  col-3'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="selectedFormatSize = i"
-            *ngFor="let format of formatSizes;  let i = index">
-
-
-            <!-- <div class=format-subtitle>{{format.width}}</div>  -->
+          <div   *ngFor="let format of formatSizes;  let i = index" class="col-md-3 midwidthsm" style="display: flex; flex-direction: column">
+            <div  [ngClass]=" selectedFormatSize=== i? 'size yellow-selected ' : 'size'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="selectedFormatSize = i">
           </div>
 
-        </div>
-        <div class="row ">
-            <div  class='sizeName  col-3'
-            *ngFor="let format of formatSizes;  let i = index">
-           {{format?.width}} cm
-  
-  
-            <!-- <div class=format-subtitle>{{format.width}}</div>  -->
+            <div  class='sizeName'>
+              {{format?.width}} cm
+            </div>
           </div>
 
         </div>
@@ -371,7 +363,7 @@
     <div id="open-modal" class="modal-window">
       <div>
         <a href="#" title="Close" class="modal-close">Close</a>
-        <h1>Récapitulatif de votre demande: </h1>
+        <h1 class="recap-title">Récapitulatif de votre demande</h1>
         <div style="height: 300px;">
 
           <table>

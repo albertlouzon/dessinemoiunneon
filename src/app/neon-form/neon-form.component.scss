@@ -88,7 +88,10 @@ margin-bottom: 15px;
   color: #000b31;
   font-family: Mukta-Bold, sans-serif;
 }
-
+.recap-title {
+  font-family: Nunito-Black, sans-serif;
+  text-align: center;
+}
 .basic-input-form:before {
   height: auto;
 
@@ -444,6 +447,8 @@ td:before {
 
 }
 
+
+
 .modal-window {
 position: fixed;
 background-color: rgba(255, 255, 255, 0.6);
@@ -453,6 +458,7 @@ bottom: 0;
 left: 0;
 z-index: 999;
 visibility: hidden;
+  overflow-y: scroll;
 opacity: 0;
 pointer-events: none;
 transition: all 0.3s;
@@ -857,6 +863,8 @@ input[type="checkbox"] {
 .toggleCont {
 align-self: center;
 margin-top: -4%;
+  justify-content:  center;
+  display: flex;
 }
 input[type="checkbox"].ios-switch + div {
   vertical-align: middle;
@@ -1109,6 +1117,9 @@ a {
 
 
 @media screen and (max-width: 700px) {
+  .midwidthsm {
+    width: 50% !important;
+  }
 .modal-window > div {
   width: 100%;
 }

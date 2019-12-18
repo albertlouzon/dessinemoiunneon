@@ -1031,6 +1031,9 @@ left: 0;
   .neon-bar-item-cont span {
     font-size: 12px;
   }
+  .neon-canvas-cont {
+    margin-bottom: 10%;
+  }
   .next-btn {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -1051,7 +1054,8 @@ left: 0;
     display: none;
   }
   .little-card {
-    width: 45%;
+    //width: 45%;
+    min-height: 200px;
   }
   .little-card-blue {
     width: 106%;

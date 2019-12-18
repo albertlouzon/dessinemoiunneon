@@ -27,10 +27,8 @@
             <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)">
               <!--              [className]="command.typo + ' dynamicNeonTitle ' + getColor(command.colors) "-->
               <td class="pb3 pt3" data-column="Texte">{{command.text | titlecase}}</td>
-              <td data-column="Etat">{{command.state | titlecase}}</td>
+              <td data-column="">{{command.state | titlecase}}</td>
             </tr>
-
-
           </tbody>
         </table>
       </div>
@@ -403,7 +401,7 @@
 
         </div>
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-        <button (click)="command();"  class="next-btn big-btn">Passer au paiement</button>
+        <button (click)="command();"  style="align-self: center;" class="next-btn big-btn">Passer au paiement</button>
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
 
       </div>

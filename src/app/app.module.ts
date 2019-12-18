@@ -13,8 +13,18 @@ import {FormsModule} from '@angular/forms';
 import {AutosizeModule} from 'ngx-autosize';
 import {ExcelService} from './services/excel.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatDialogModule, MatFormFieldModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatProgressBarModule
+} from '@angular/material';
 import { ModalComponent } from './modal/modal.component';
+import { ModalRecapComponent } from './modal-recap/modal-recap.component';
+import {AutowidthDirective} from './autowidth.directive';
 
 
 @NgModule({
@@ -26,6 +36,8 @@ import { ModalComponent } from './modal/modal.component';
     AdminComponent,
     LoginComponent,
     ModalComponent,
+    ModalRecapComponent,
+    AutowidthDirective
 
   ],
   imports: [
@@ -37,9 +49,13 @@ import { ModalComponent } from './modal/modal.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatProgressBarModule,
+    MatInputModule
   ],
-  entryComponents: [NeonFormComponent, ModalComponent],
+  entryComponents: [NeonFormComponent, ModalComponent, ModalRecapComponent],
   providers: [ArchwizardModule, ExcelService],
   bootstrap: [AppComponent]
 })

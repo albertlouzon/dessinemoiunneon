@@ -1,10 +1,8 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<h1 mat-dialog-title>La grosse moula</h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <p>{{data.animal}}</p>
-
+  <h3 mat-dialog-title>Le taux de conversion est de {{data?.conversionRate}} %</h3>
+  <mat-progress-bar mode="determinate" [value]="data?.conversionRate"></mat-progress-bar>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
 </div>

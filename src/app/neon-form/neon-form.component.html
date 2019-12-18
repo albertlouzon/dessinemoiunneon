@@ -1,6 +1,10 @@
+
 <div class='form-container'>
-  <textarea onlyGrow='true' maxRows="2"  autosize   autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
-   style="align-self: center; text-align: center; letter-spacing: 2px;  height: 100px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " ></textarea>
+
+
+
+  <input  appAutowidth   autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
+   style="align-self: center; text-align: center; letter-spacing: 2px;  height: 100px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " />
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
 
@@ -239,7 +243,7 @@
           </div>
           <div class="neon-wizard-btn-container row">
             <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
-            <button class="next-btn  col-md-3 col-sm-12" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
+            <button class="next-btn  col-md-3 col-sm-12" (click)="openRecap()"  type="button" awNextStep>Envoyer</button>
 
           </div>
 
@@ -299,7 +303,7 @@
 
           <div class="neon-wizard-btn-container row">
             <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
-            <button class="next-btn col-md-3 col-sm-12" type="button" awNextStep><a href="#open-modal">Envoyer</a></button>
+            <button class="next-btn col-md-3 col-sm-12" type="button" (click)="openRecap()" awNextStep>Envoyer</button>
 
           </div>
         </div>
@@ -352,63 +356,6 @@
 
 
   </aw-wizard>
-
-  <!-- <div *ngIf="signUp">
-        CACAC
-          <app-login ></app-login>
-
-      </div> -->
-  <div class="container">
-
-    <div id="open-modal" class="modal-window">
-      <div>
-        <a href="#" title="Close" class="modal-close">Close</a>
-        <h1 class="recap-title">Récapitulatif de votre demande</h1>
-        <div style="height: 300px;">
-
-          <table>
-            <thead>
-
-            </thead>
-            <tbody>
-              <tr>
-                <td style="font-family: Mukta-Bold;" data-column="">
-                  {{mainChoice === 'text' ? 'Texte' :' Fichier img'}}</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{textInput  | titlecase}}</td>
-              </tr>
-              <tr>
-                <td style="font-family: Mukta-Bold;" data-column="">Typographie</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{selectedTypo  | titlecase}}</td>
-              </tr>
-              <tr >
-                  <td  style="font-family: Mukta-Bold;" data-column="">Couleurs</td>
-                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{selectedColor  | titlecase}}</td>
-                </tr>
-              <tr *ngIf="formatSizes[selectedFormatSize]">
-                <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{formatSizes[selectedFormatSize].width }} cm
-                </td>
-              </tr>
-              <tr >
-                  <td  style="font-family: Mukta-Bold;" data-column="
-                  ">Support</td>
-                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{imageSupportSelected  | titlecase}}</td>
-                </tr>
-              <tr>
-  
-
-            </tbody>
-          </table>
-
-        </div>
-        <div *ngIf="loginFailed" class="errorMessage">{{signUpError}}</div>
-        <button (click)="onSubmitForm()" style="float: right;" class="next-btn" type="button"> <a href="#">Valider</a></button>
-
-      </div>
-
-
-    </div>
-    </div>
 
     <div *ngIf="loading" class="blendContainer">
       <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">

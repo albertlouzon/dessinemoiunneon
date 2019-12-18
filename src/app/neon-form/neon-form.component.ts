@@ -21,6 +21,8 @@ import {
   transition
 } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
+import {MatDialog} from '@angular/material';
+import {ModalRecapComponent} from '../modal-recap/modal-recap.component';
 
 export enum Direction {
   Next,
@@ -57,7 +59,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   set activeSlides(activeSlides: ActiveSlides) {
     this._activeSlides = activeSlides;
   }
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document, public dialog: MatDialog) { }
   formatSizes: Array<{ size: string, width: number, url: string }> = [{
     size: 'S', width: 20, url: '../.././assets/Fichier-S.png'
   },
@@ -156,7 +158,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   thumbnailTemplateRef: TemplateRef<any>;
   currentInterval;
   differ: KeyValueDiffer<ActiveSlides, any>;
-  @ViewChild('mainInput',  {read: false, static: false}) mainInp: ElementRef;
+  @ViewChild('mainInput',  {static: false}) mainInp: ElementRef;
+
+
   private _direction: Direction = Direction.Next;
 
   private _activeSlides: ActiveSlides;
@@ -201,6 +205,25 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
 
     this.signUp = !this.signUp;
+  }
+
+  openRecap() {
+    const dialogRef = this.dialog.open(ModalRecapComponent, {
+      data: {
+        text: this.textInput,
+        typo: this.selectedTypo,
+        colors: this.selectedColor,
+        size: this.formatSizes[this.selectedFormatSize].width,
+        support: this.imageSupportSelected
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result) {
+        this.onSubmitForm();
+      }
+    });
   }
   onSelectColor(color, index) {
     this.neonColorClass = color['name'];
@@ -660,6 +683,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       clearInterval(this.currentInterval);
     }
   }
+
 
 
 }

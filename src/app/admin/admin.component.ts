@@ -4,6 +4,7 @@ import { currentView } from '../app.component';
 import {ExcelService} from '../services/excel.service';
 import {MatDialog} from '@angular/material';
 import {ModalComponent} from '../modal/modal.component';
+import {ModalRecapComponent} from '../modal-recap/modal-recap.component';
 
 @Component({
   selector: 'app-admin',
@@ -40,10 +41,29 @@ this.pollInterval = setInterval(() => {
     this.commandPrice = 0;
     console.log('command selected by admin : ', command);
   }
+  getConversionRate() {
+    let treated = 0;
+    let payed = 0;
+    let total = 0;
+    this.cachedList.forEach((neon) => {
+      if (neon['state'] === 'payé') {
+        payed++;
+        total++;
+      } else if (neon['state'] === 'DT disponible') {
+        treated++;
+        total++;
+      }
+    });
+    if (total === 0) {
+      total = 1;
+    }
+    console.log('hahaha', payed, total );
+    return payed / total * 100;
+
+  }
   openStats() {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '250px',
-      data: {name: 'Mowgli', animal: 'Baloo'}
+      data: {conversionRate: this.getConversionRate()}
     });
 
     dialogRef.afterClosed().subscribe(result => {

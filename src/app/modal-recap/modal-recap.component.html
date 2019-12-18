@@ -1,0 +1,45 @@
+<h1 class="recap-title" mat-dialog-title>Recapitulatif de votre demande</h1>
+<div mat-dialog-content>
+  <mat-list>
+    <mat-list-item >
+      <mat-icon mat-list-icon>title</mat-icon>
+      <h4 mat-line>Texte</h4>
+      <p mat-line> {{data?.text}} </p>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <mat-list-item >
+      <mat-icon mat-list-icon>text_fields</mat-icon>
+      <h4 mat-line>Typographie</h4>
+      <p mat-line> {{data?.typo}} </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-list-item >
+      <mat-icon mat-list-icon>color_lens</mat-icon>
+      <h4 mat-line>Couleur</h4>
+      <p mat-line> {{data?.colors}} </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-list-item >
+      <mat-icon mat-list-icon>settings_overscan</mat-icon>
+      <h4 mat-line>Hauteur</h4>
+      <p mat-line> {{data?.size}} cm </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-list-item >
+      <mat-icon mat-list-icon>photo_size_select_large</mat-icon>
+      <h4 mat-line>Support</h4>
+      <p mat-line> {{data?.support}} </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+  </mat-list>
+</div>
+<div class="v-mat-dialog-actions row" mat-dialog-actions>
+  <button class="prev-btn col-5" (click)="onNoClick()">Retour</button>
+  <button  [mat-dialog-close]="true" class="next-btn col-5" type="button">Valider</button>
+</div>

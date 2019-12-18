@@ -245,9 +245,9 @@
 
         </div>
         <button *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'" (click)="openCommand();"
-          style="margin-right: 5%;" class="next-btn">Commander</button>
+          style="margin-right: 5%;" class="next-btn big-btn">Commander</button>
           <button *ngIf="neonSelected.state === 'created'" disabled
-          style="margin-right: 5%;" class="grey-btn">Commander</button>
+          style="margin-right: 5%;" class="grey-btn big-btn">Commander</button>
       </div>
     </div>
 
@@ -289,7 +289,6 @@
 
       <div class="little-card  card-tarace 3">
         <!-- <div class="card_image">
-       
               </div> -->
         <div class="card_content">
           <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livraison-07.png' +')'" class="card-logo"></div>
@@ -315,7 +314,6 @@
 
           <span style="font-size: 17px;" class="ec-card-title">
             Livré sous 15 jours
-
           </span>
           <span class="ec-card-descr">
             Nous livrons dans un délai de 15 à 20 jours selon la production et la destination. En cas de demande urgente
@@ -701,9 +699,9 @@
         class="neon-canvas2"></div>
         <div class="merci-cont">
           <h1  class='remerciements'>Commande validée !</h1>
-          <span class='merci-descr'>Merci pour votre commande, un email de confirmation vous à été envoyée. Vous recevrez votre néon à l'adresse indiqué dans les 20 prochains jours. Envoyez nous une photo !</span>
+          <span class='merci-descr'>Merci pour votre commande, un email de confirmation vous à été envoyée. Vous recevrez votre néon à l'adresse indiquée <br/> dans les 20 prochains jours. Envoyez nous une photo !</span>
           <button  (click)="resetView();"
-          class="next-btn revenir">Retour à mon espace</button>
+          class="next-btn revenir big-btn">Retour à mon espace</button>
         </div>
       </div>
     <div class="col-2 forBigPussy"></div>

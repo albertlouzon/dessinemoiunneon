@@ -109,12 +109,12 @@
         outline: none !important;
         border: none;
         font-size: 13px;
-                font-family: Mukta-Bold, sans-serif;
+        font-family: Mukta-Bold, sans-serif;
         cursor: pointer;
         align-self: flex-end;
         padding: 10px;
         padding-left: 25px;
-        padding-right: 25px;  
+        padding-right: 25px;
         letter-spacing: 0.4px;
         border: none;
         border-radius: 45px;
@@ -142,7 +142,11 @@
   transition: all 0.3s ease 0s;
   max-height: 50px;
 }
-
+.big-btn {
+  padding-left: 35px;
+  padding-right: 35px;
+  height: 85px;
+}
 .prev-btn {
     // min-width: 140px;
     border-radius: 25px;

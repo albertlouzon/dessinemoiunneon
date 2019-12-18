@@ -230,7 +230,7 @@
           </div>
 
 
-          <div class='user-info-row-cont'>
+          <div class='user-info-row-cont mb3'>
             <span class="user-info-row-title">Adresse mail</span>
             <input autocomplete="off" (change)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"
               class="basic-input smallHeight " />
@@ -238,7 +238,7 @@
           </div>
 
 
-          <div class='user-info-row-cont'>
+          <div class='user-info-row-cont mb3'>
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)"
               [value]="userInfoPerso['password'] || ''" class="basic-input smallHeight mb3 " />
@@ -268,7 +268,7 @@
 
         <div *ngIf="projectType === 'business' && !finalStep " class=" col-md-12 col-sm-12 ">
           <h5 class="neon-wizard-header ">Obtenez votre devis gratuit</h5>
-          <div class='user-info-row-cont'>
+          <div class='user-info-row-cont mb3'>
             <span class="user-info-row-title">Société</span>
             <input  autocomplete="off" type="text" (change)="onChangeUserInfo('société', $event.target.value)" [value]="userInfoPerso['société'] || ''"
               class="basic-input smallHeight mb3 " />
@@ -291,14 +291,14 @@
 
           </div>
 
-          <div class='user-info-row-cont'>
+          <div class='user-info-row-cont mb3'>
             <span class="user-info-row-title">Adresse mail</span>
             <input autocomplete="off" type="email" (change)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"
               class="basic-input smallHeight " />
 
           </div>
 
-          <div class='user-info-row-cont'>
+          <div class='user-info-row-cont mb3'>
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"
               class="basic-input smallHeight " />
@@ -427,4 +427,3 @@
       </svg>
     </div>
 
-   

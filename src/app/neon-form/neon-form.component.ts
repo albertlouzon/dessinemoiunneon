@@ -57,7 +57,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   userChoices = {};
   userInfoPerso = {};
   trim = String.prototype.trim;
-  suceMaBite = ' créant votre espace !';
+  suceMaBite = '  créant votre espace !';
   finalStep = false;
   signUp = true;
   styleSelected = null;
@@ -193,10 +193,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     this.userInfoPerso['name'] = '';
     this.userInfoPerso['nickname'] = '';
     if (this.signUp) {
-      this.suceMaBite = ' créant votre espace !';
+      this.suceMaBite = ' vous connectant !';
 
     } else {
-      this.suceMaBite = ' vous connectant !';
+      this.suceMaBite = ' créant votre espace !';
 
     }
 

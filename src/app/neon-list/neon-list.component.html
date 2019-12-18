@@ -171,11 +171,12 @@
 
 
     <div class="col-md-4 col-sm-6 col-xs-12  neon-detail-config">
+      <h2>Configuration</h2>
       <table>
         <thead>
           <tr>
-            <th class='detail-configu-title'>Configuration</th>
-            <th class='detail-configu-title'></th>
+<!--            <th class='detail-configu-title'></th>-->
+<!--            <th class='detail-configu-title'></th>-->
 
           </tr>
         </thead>
@@ -245,9 +246,9 @@
 
         </div>
         <button *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'" (click)="openCommand();"
-          style="margin-right: 5%;" class="next-btn big-btn">Commander</button>
+          style="margin-right: 10%;" class="next-btn big-btn">Commander</button>
           <button *ngIf="neonSelected.state === 'created'" disabled
-          style="margin-right: 5%;" class="grey-btn big-btn">Commander</button>
+          style="margin-right: 10%;" class="grey-btn big-btn">Commander</button>
       </div>
     </div>
 
@@ -402,7 +403,7 @@
 
         </div>
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-        <button (click)="command();" style="margin-right: 5%;" class="next-btn big-btn">Passer au paiement</button>
+        <button (click)="command();"  class="next-btn big-btn">Passer au paiement</button>
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
 
       </div>

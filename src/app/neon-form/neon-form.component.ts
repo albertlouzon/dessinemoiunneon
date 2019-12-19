@@ -104,10 +104,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       font: 'Dannie'
     },
     {
-      url: '../.././assets/Galsy.png',
-      font: 'Galsy'
-    },
-    {
       url: '../.././assets/Billy.png',
       font: 'Billy'
     },

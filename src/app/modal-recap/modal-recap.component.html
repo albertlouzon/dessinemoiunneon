@@ -4,7 +4,7 @@
     <mat-list-item >
       <mat-icon mat-list-icon>title</mat-icon>
       <h4 mat-line>Texte</h4>
-      <p mat-line> {{data?.text}} </p>
+      <p mat-line> {{data?.text  | titlecase}} </p>
     </mat-list-item>
 
     <mat-divider></mat-divider>
@@ -12,14 +12,14 @@
     <mat-list-item >
       <mat-icon mat-list-icon>text_fields</mat-icon>
       <h4 mat-line>Typographie</h4>
-      <p mat-line> {{data?.typo}} </p>
+      <p mat-line> {{data?.typo  | titlecase}} </p>
     </mat-list-item>
     <mat-divider></mat-divider>
 
     <mat-list-item >
       <mat-icon mat-list-icon>color_lens</mat-icon>
       <h4 mat-line>Couleur</h4>
-      <p mat-line> {{data?.colors}} </p>
+      <p mat-line> {{data?.colors  | titlecase}} </p>
     </mat-list-item>
     <mat-divider></mat-divider>
 
@@ -33,9 +33,8 @@
     <mat-list-item >
       <mat-icon mat-list-icon>photo_size_select_large</mat-icon>
       <h4 mat-line>Support</h4>
-      <p mat-line> {{data?.support}} </p>
+      <p mat-line> {{data?.support  | titlecase}} </p>
     </mat-list-item>
-    <mat-divider></mat-divider>
 
   </mat-list>
 </div>

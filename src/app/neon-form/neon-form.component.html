@@ -4,7 +4,7 @@
 
 
   <input  appAutowidth   autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
-   style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' " />
+   style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " />
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
 
@@ -25,17 +25,17 @@
       </aw-wizard-step>
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
         <div *ngIf="userChoices[0] === 'text'">
-          <div class="neon-wizard-header">
-            <h5>Ecrivez votre texte</h5>
-          </div>
+          <h4 class="neon-wizard-header">
+            Ecrivez votre texte
+          </h4>
           <input    #mainInput  autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" [(value)]="textInput"
             class="basic-input-text mb5  mt5" />
 
         </div>
         <div *ngIf="userChoices[0] === 'image'">
-          <div class="neon-wizard-header">
-            <h5>Importer votre image</h5>
-          </div>
+          <h4 class="neon-wizard-header">
+            Importer votre image
+          </h4>
           <input autocomplete="off" (change)="onSelectFile($event)"  type="file"   class="basic-input-form"/>
 <!-- 
           <div   class="money">
@@ -61,10 +61,10 @@
 
       </aw-wizard-step>
       <aw-wizard-step  *ngIf="userChoices[0] === 'text' && !finalStep" stepTitle="" class="col-md-6 col-sm-10  step-container">
-
-        <div class="neon-wizard-header">
-          <h5>Choisissez la typographie</h5>
-        </div>
+        <h4 class="neon-wizard-header">
+          Choisissez la typographie
+        </h4>
+    
         <div class="form-style-container pb5">
           <!-- <div (click)="styleSelected = 0" [ngClass]="{'style-item yellow-selected': styleSelected===0, 'style-item':styleSelected!=='0' }" ></div>
                             <div (click)="styleSelected = 1" [ngClass]="{'style-item yellow-selected': styleSelected===1, 'style-item':styleSelected!=='1' }" ></div>
@@ -97,10 +97,10 @@
 
       </aw-wizard-step>
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
+        <h4 class="neon-wizard-header">
+          Choisissez une couleur
+        </h4>
 
-        <div    class="neon-wizard-header">
-          <h4>Choisissez une couleur </h4>
-        </div>
 
         <!-- <div class="wrapper"> -->
           <!-- <div class="item float-item"> -->
@@ -133,10 +133,9 @@
       </aw-wizard-step>
       <aw-wizard-step  *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
-        <div class="neon-wizard-header">
-          <h5>Choisissez votre format</h5>
-        </div>
-
+        <h4 class="neon-wizard-header">
+          Choisissez votre format
+        </h4>
         <div  class=" row flex3">
           <div   *ngFor="let format of formatSizes;  let i = index" class="col-md-3 midwidthsm" style="display: flex; flex-direction: column">
             <div  [ngClass]=" selectedFormatSize=== i? 'size yellow-selected ' : 'size'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="selectedFormatSize = i">

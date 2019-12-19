@@ -160,7 +160,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   @ViewChild('mainInput',  {static: false}) mainInp: ElementRef;
   @ViewChild(WizardComponent,  {static: false})
   public wizard: WizardComponent;
-
+  enculeunponey = true;
   private _direction: Direction = Direction.Next;
 
   private _activeSlides: ActiveSlides;
@@ -520,6 +520,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
   }
   async onCompleteStep(step: number, choice: string, data: any) {
+    this.enculeunponey = true;
     if (choice && step === 0) {
       if (choice !== this.mainChoice) {
         this.textInput = '';
@@ -578,6 +579,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
     }
     if (choice && step === 5) {
+      this.userChoices[6] = choice;
+      this.enculeunponey = false;
       if (choice !== this.projectType) {
         this.userInfoPerso = {};
       }
@@ -585,6 +588,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
 
     }
+
     console.log('step ', step, ' completed. The user chose ', choice, '... data to save: ', this.projectType);
 
   }

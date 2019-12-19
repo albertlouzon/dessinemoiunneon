@@ -105,39 +105,47 @@
             <tbody>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Texte</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td>
+                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.text}}</td>
               </tr>
               <tr >
                 <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.typo}}</td>
+                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.typo}}</td>
               </tr>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleurs</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.colors}}</td>
+                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.colors}}</td>
               </tr>
               <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
-                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.height}}cm</td>
+                <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.height}}cm</td>
               </tr>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
-                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.userFull?.clientImageUrl}}cm</td>
-              </tr>
+<!--              <tr >-->
+<!--                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>-->
+<!--                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.userFull?.clientImageUrl}}cm</td>-->
+<!--              </tr>-->
               <tr >
                   <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
-                  <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.state}}</td>
+                  <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.state}}</td>
                 </tr>
                 <tr >
                     <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typo</td>
-                    <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.typo}}</td>
+                    <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.typo}}</td>
                   </tr>
                   <tr >
                       <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleur</td>
-                      <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.colors}}</td>
+                      <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.colors}}</td>
                     </tr>
           <tr >
                 <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Prix</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.price}} Euros</td>
+                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.price}} Euros</td>
+              </tr>
+              <tr >
+                <td *ngIf=" neonSelected?.state === 'payé' && neonSelected?.telecommande"  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Telecommande</td>
+                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.telecommande}}</td>
+              </tr>
+              <tr >
+                <td *ngIf=" neonSelected?.state === 'payé' && neonSelected?.waterproof"  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Waterproof</td>
+                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.waterproof}}</td>
               </tr>
             </tbody>
           </table>

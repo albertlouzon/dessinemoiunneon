@@ -23,6 +23,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 import {MatDialog} from '@angular/material';
 import {ModalRecapComponent} from '../modal-recap/modal-recap.component';
+import {WizardComponent} from 'angular-archwizard';
 
 export enum Direction {
   Next,
@@ -133,7 +134,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
   colorList = [
     { name: 'blancFroid', color: '#ffffff', url: '../.././assets/blanc.png' },
-    { name: 'blanchaud', color: '#ddcaaf', url: '../.././assets/blanchaud.png' },
+    { name: 'blanchaud', color: '#ede3c5', url: '../.././assets/blanchaud.png' },
     { name: 'orange', color: '#ffa42c', url: '../.././assets/orange.png' },
     { name: 'jaune', color: '#ffe600', url: '../.././assets/jaune.png' },
     { name: 'rouge', color: '#ff0000', url: '../.././assets/rouge.png' },
@@ -159,7 +160,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   currentInterval;
   differ: KeyValueDiffer<ActiveSlides, any>;
   @ViewChild('mainInput',  {static: false}) mainInp: ElementRef;
-
+  @ViewChild(WizardComponent,  {static: false})
+  public wizard: WizardComponent;
 
   private _direction: Direction = Direction.Next;
 
@@ -538,50 +540,25 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       }
 
       if (localStorage.getItem('email')) {
-        this.loading = true;
-        const commandPayload = {
-          text: this.textInput,
-          typo: this.selectedTypo,
-          colors: this.selectedColor,
-          support: this.imageSupportSelected,
-          imageAdditionalInfo: this.imageAdditionalInfo,
-          height: this.formatSizes[this.selectedFormatSize].width,
-          // price: Math.floor(Math.random() * 2000) + 1 ,
-          state: 'created',
-          type: this.projectType
-        };
 
-        console.log('upload file finished', commandPayload['clientImageUrl']);
-        const userId = this.allUsers.find(x => x.email === localStorage.getItem('email')).id;
-        if (this.mainChoice === 'image') {
-          if (this.imageFile) {
-            commandPayload['clientImageUrl'] = '';
-            console.log('sending image CaaaaaaC', userId);
 
-            const params = new HttpParams().set('userId', userId); // Create new HttpParams
-            const formData: FormData = new FormData();
-            formData.append('file', this.imageFile);
-            this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
-              console.log('sucess URL:', url);
-              commandPayload['clientImageUrl'] = url;
-              return url;
-            }, err => console.log('err', err));
-          } else {
-            alert('vous devez choisir une image');
+        const dialogRef = this.dialog.open(ModalRecapComponent, {
+          data: {
+            text: this.textInput,
+            typo: this.selectedTypo,
+            colors: this.selectedColor,
+            size: this.formatSizes[this.selectedFormatSize].width,
+            support: this.imageSupportSelected
           }
-          this.sleep(1000);
+        });
 
-        }
-        console.log('upload file finished', commandPayload['clientImageUrl']);
-        this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
-          console.log('updated list after post :', newNeonList);
-          this.manageFinalStep();
-          this.saveToStorage();
-        }, err => {
-          if (err.status === 201 || err.status === 200) {
-            console.log('debu 9   ');
-            this.manageFinalStep();
-            this.saveToStorage();
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed', result);
+          if(result) {
+            this.loading = true;
+            this.onSubmitForm();
+          } else {
+            this.wizard.goToStep(5);
           }
         });
       }

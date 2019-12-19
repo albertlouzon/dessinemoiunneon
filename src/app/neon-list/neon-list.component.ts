@@ -59,7 +59,7 @@ export class NeonListComponent implements OnInit {
 
   colorList = [
     {name: 'blancFroid' , color: '#ffffff', url: '../.././assets/blanc.png' },
-    {name: 'blancChaud' , color: '#ddcaaf', url: '../.././assets/blancChaud.png' },
+    {name: 'blancchaud' , color: '#ede3c5', url: '../.././assets/blancchaud.png' },
     {name: 'orange' , color: '#ffa42c', url: '../.././assets/orange.png' },
     {name: 'jaune' , color: '#ffe600', url: '../.././assets/jaune.png' },
     {name: 'rouge' , color: '#ff0000', url: '../.././assets/rouge.png' },
@@ -81,6 +81,7 @@ export class NeonListComponent implements OnInit {
   commandMode = false;
   user = {};
   customMail = '';
+  showLastPage = false;
   handler: any;
   snackbarClass = '';
   snackMsg = 'Oops';
@@ -140,7 +141,7 @@ export class NeonListComponent implements OnInit {
   }
   onCheckTelecommande() {
     this.checkTelecommande = !this.checkTelecommande;
-    if(this.checkTelecommande) {
+    if (this.checkTelecommande) {
       this.neonSelected.price =  parseInt(this.neonSelected.price) + 25;
       this.neonSelected['telecommande'] = true;
     } else  {
@@ -150,7 +151,7 @@ export class NeonListComponent implements OnInit {
   }
   onCheckResEau() {
     this.checkEau = !this.checkEau;
-    if(this.checkEau) {
+    if (this.checkEau) {
       this.neonSelected.price = parseInt(this.neonSelected.price) + 70;
       this.neonSelected['waterproof'] = true;
     } else  {
@@ -201,7 +202,7 @@ export class NeonListComponent implements OnInit {
     if (error) {
       console.log('Something is wrong:', error);
       this.loading = false;
-      alert('La tentative de paiement a échoué...')
+      alert('La tentative de paiement a échoué...');
     } else {
       console.log('Success!', token);
       this.changeCommandToPaid(token);
@@ -248,18 +249,19 @@ export class NeonListComponent implements OnInit {
     }
 
   }
-  logout(){
+  logout() {
     localStorage.clear();
-    currentView.caca = 'login'
+    currentView.caca = 'login';
   }
   resetView() {
     this.payMode = false;
+    this.showLastPage = false;
     this.commandMode = false;
     this.neonSelected = null;
   }
   goToForm() {
     // window.location.replace("https://dessinemoiunneon.fr/neon-sur-mesure-personnalise");
-    window.top.location.href = "https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/";
+    window.top.location.href = 'https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/';
 
   }
 
@@ -305,14 +307,16 @@ export class NeonListComponent implements OnInit {
       // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
       // this.fetchCommands();
       this.loading = false;
-      this.neonSelected.state = 'payé'
+      this.neonSelected.state = 'payé';
+      this.showLastPage = true;
       this.commandMode = false;
       this.payMode = false;
     }, err => {
       if (err.status === 200) {
         // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
         this.loading = false;
-        this.neonSelected.state = 'payé'
+        this.neonSelected.state = 'payé';
+        this.showLastPage = true;
         this.commandMode = false;
         this.payMode = false;
 
@@ -374,7 +378,7 @@ export class NeonListComponent implements OnInit {
     this.commandFailed = false;
     this.payMode = true;
         this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
-        if(this.card){
+        if (this.card) {
           this.card.destroy();
         }
     setTimeout(() => {

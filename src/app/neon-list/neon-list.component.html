@@ -95,10 +95,10 @@
 </div>
 
 
-<div *ngIf="neonSelected  && !commandMode && !payMode && neonSelected.state !== 'payé'" class='ec-bigbox-detail'>
-  <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = null">Précédent</button>
+<div *ngIf="neonSelected  && !commandMode && !payMode" class='ec-bigbox-detail'>
+  <button style="margin-bottom: 1.5%;" class="prev-btn mt3" (click)="neonSelected = null">Précédent</button>
 
-  <h2 style="margin-bottom: 3%;">Néon LED "{{neonSelected?.text}}"</h2>
+  <h1 style="margin-bottom: 3%;">Néon LED "{{neonSelected?.text}}"</h1>
 
   <div class="ec-top-row-detail row">
     <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
@@ -169,7 +169,7 @@
 
 
     <div class="col-md-4 col-sm-6 col-xs-12  neon-detail-config">
-      <h2>Configuration</h2>
+      <h2 style="padding-left: 5%">Configuration</h2>
       <table>
         <thead>
           <tr>
@@ -181,57 +181,60 @@
         <tbody>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Texte</td>
-            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.text | titlecase}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.text | titlecase}}</td>
 
             <!-- <td  [className]="neonSelected.typo + ' dynamicNeonTitle ' + colorsList[neonSelected.colors] " style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td> -->
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Typographie</td>
-            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.typo | titlecase}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.typo | titlecase}}</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Couleurs</td>
-            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.colors | titlecase}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.colors | titlecase}}</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
-            <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.height}}cm</td>
+            <td style="font-family: Mukta-Regular; " data-column="Etat">{{neonSelected?.height}}cm</td>
           </tr>
           <!-- <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
             <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.state | titlecase}}</td>
           </tr> -->
-          <tr *ngIf="neonSelected.state !== 'created'" >
+          <tr  *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'" >
             <td  >
-              <div >
+              <div class="checkboxCont">
                 <input  (click)="onCheckTelecommande();" id="box1" type="checkbox" />
-                <label for="box1"></label>
+                <label for="box1">
+                </label> <div class="livraisonDom">Télécommande</div>
               </div>
               
                 <!-- <input  (click)="onCheckTelecommande();" style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
             </td>
             <td>
-                <div class="livraisonDom">Télécommande: 25 €</div>
-              
+              <div class="livraisonDom">25 €</div>
             </td>
               <!-- <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
               <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
             </tr>
 
-            <tr *ngIf="neonSelected.state !== 'created'">
+            <tr *ngIf="neonSelected.state !== 'created'  && neonSelected.state !== 'payé'">
                 <td  >
-                  <div>
+                  <div class="checkboxCont">
                     <input  (click)="onCheckResEau();" id="box2" type="checkbox" />
-                    <label for="box2"></label>
+                    <label for="box2">
+                    </label>        <div class="livraisonDom">Résistant à l'eau</div>
+
                   </div>
                     <!-- <input     (click)="onCheckResEau();" style="margin-right: 10px; align-self: center;" type="checkbox" /> -->
                 </td>
                 <td>
-                    <div class="livraisonDom">Utilisation extérieure (résistant à l'eau): 70 €</div>
-    
+                  <div class="livraisonDom">70 €</div>
+
+
                 </td>
-                  <!-- <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
-                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
+              <!-- <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
+              <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
                 </tr>
         </tbody>
       </table>
@@ -247,6 +250,7 @@
           style="margin-right: 10%;" class="next-btn big-btn">Commander</button>
           <button *ngIf="neonSelected.state === 'created'" disabled
           style="margin-right: 10%;" class="grey-btn big-btn">Commander</button>
+
       </div>
     </div>
 
@@ -437,7 +441,7 @@
 
           <div class=" ttcList">
             <div class="col-4 ttc">Total TTC</div>
-            <div class="col-4 ttc">{{neonSelected?.price}} €</div>
+            <div style="padding: 0; margin-right: 10px;" class="col-4 ttc">{{neonSelected?.price}} €</div>
 
           </div>
         </div>
@@ -556,7 +560,7 @@
 
           <div class=" ttcList">
             <div class="col-4 ttc">Total TTC</div>
-            <div class="col-4 ttc">{{neonSelected?.price}} €</div>
+            <div style="padding: 0; margin-right: 10px;" class="col-4 ttc">{{neonSelected?.price}} €</div>
 
           </div>
         </div>
@@ -614,9 +618,9 @@
          </div> -->
       <div class="card_content">
         <div  [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'" class="card-logo"></div>
-        <span class="ec-title-blue">
+        <h2 class="ec-title-blue">
           Paiement sécurisé
-        </span>
+        </h2>
         <span class="ec-card-descr-blue">
           Les paiements sur notre site sont sécurisés  via le module Stripe. Nous acceptons tous les paiements dont Visa, Master Card, Amex,
           Paypal et Maestro.
@@ -632,10 +636,10 @@
       <div class="card_content">
         <div [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'" class="card-logo"></div>
 
-        <span class="ec-title-blue">
+        <h2 class="ec-title-blue">
           Garantie un an
 
-        </span>
+        </h2>
         <span class="ec-card-descr-blue">
           Tous nos néons posèdent une garantie d'un an à compter de la data d'achat. Vous devez retourner un article
           défectueux ? Contactez-nous avec le numéro de commande !
@@ -652,10 +656,10 @@
       <div class="card_content">
         <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livraison-07.png' +')'" class="card-logo"></div>
 
-        <span class="ec-title-blue">
+        <h2 class="ec-title-blue">
           Livraison offerte
 
-        </span>
+        </h2>
         <span class="ec-card-descr-blue">
           Nous vous offrons la livraison pour chaque néon commandé.
         </span>
@@ -671,10 +675,10 @@
       <div class="card_content">
         <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'" class="card-logo"></div>
 
-        <span style="font-size: 17px;" class="ec-title-blue">
+        <h2 style="font-size: 17px;" class="ec-title-blue">
           Livré sous 15 jours
 
-        </span>
+        </h2>
         <span class="ec-card-descr-blue">
           Nous livrons dans un délai de 15 à 20 jours selon la production et la destination. En cas de demande urgente
           merci de nous contacter directement
@@ -690,7 +694,7 @@
   </div>
 </div>
 
-<div *ngIf="neonSelected?.state === 'payé'" style=" padding-left: 0 !important;" class="ec-bigbox-detail row"> 
+<div *ngIf="showLastPage" style=" padding-left: 0 !important;" class="ec-bigbox-detail row">
   <div class="col-2 forBigPussy"></div>
     <div class = 'col-md-8 col-sm-12'>
         <div *ngIf="neonSelected.state !== 'created'"  [style.backgroundImage]="'url('+ '../.././assets/Mercipage-03.png' +')'" 

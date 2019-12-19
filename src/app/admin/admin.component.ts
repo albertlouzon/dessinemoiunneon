@@ -189,7 +189,7 @@ changePrice(price) {
            user['commands'].forEach((command) => {
              this.neonList.push({email: user['email'], type: user['type'], text: command['text'], state: command['state'], price: command['price'], userId: user['id'], id: command['id'],
              commandInfo: command['commandInfo'], filePath: command['filePath'], userFull: user , typo: command['typo'],
-              colors: command['colors'], height: command['height'], support: command['support']});
+              colors: command['colors'], height: command['height'], support: command['support'], telecommande: command['telecommande'] , waterproof: command['waterproof']});
               this.numOfCommands++;
               if (command['state'] === 'created') {
                   this.numOfCreated++;

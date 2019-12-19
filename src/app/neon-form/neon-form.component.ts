@@ -520,7 +520,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
   }
   async onCompleteStep(step: number, choice: string, data: any) {
-    this.enculeunponey = true;
+    this.enculeunponey = true;  
     if (choice && step === 0) {
       if (choice !== this.mainChoice) {
         this.textInput = '';

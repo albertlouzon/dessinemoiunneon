@@ -72,6 +72,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   selectedFormatSize = null;
   imageSupportSelected = null;
   projectType = null;
+  lesserSign = '<'
   userChoices = {};
   userInfoPerso = {};
   trim = String.prototype.trim;

@@ -36,9 +36,11 @@
       <p mat-line> {{data?.support  | titlecase}} </p>
     </mat-list-item>
 
+
   </mat-list>
 </div>
 <div class="v-mat-dialog-actions row" mat-dialog-actions>
+
   <button class="prev-btn col-5" (click)="onNoClick()">Retour</button>
-  <button  [mat-dialog-close]="true" class="next-btn col-5" type="button">Valider</button>
+  <button  [mat-dialog-close]="true" class="next-btn-no-margin col-5" type="button">Valider</button>
 </div>

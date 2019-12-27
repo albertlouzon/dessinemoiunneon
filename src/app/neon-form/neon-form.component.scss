@@ -82,7 +82,6 @@ margin-bottom: 15px;
 .basic-input-form {
   overflow: hidden;
   cursor: pointer;
-  padding: 3%;
   width: 100%;
   outline: none !important;
   background-color: #F4F4F4;
@@ -300,12 +299,16 @@ display: none;
 // padding: 5%;
 
 }
+
+h4 {
+  margin-bottom: 50px;
+}
 #supportImg {
 background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
   // align-self: flex-end;
-  min-height: 90px;
+  height: 85%;
 cursor: pointer;
 outline: none !important;
 }
@@ -584,16 +587,18 @@ background-color: #000B31;
 align-self: center;
 text-align: center;
   border-radius: 50px;
+  width: 100%;
 outline: none !important;
 font-size: 3vw;
 /* padding-bottom: 1%; */
 display: -webkit-box;
 display: flex;
 /* top: 10%; */
+border: none;
   padding-left: 5%;
   padding-right: 5%;
-  box-shadow: inset 2000px 0 0 0 rgba(0, 11, 49, 0.70);
-  border-color: rgba(0, 125, 255, 1);
+  // box-shadow: inset 2000px 0 0 0 rgba(0, 11, 49, 0.70);
+  background-color: rgba(0, 11, 49, 0.70);
   color: white;
 }
 
@@ -688,6 +693,7 @@ background-blend-mode: multiply;
   color: #000B31;
 
 }
+
 .flex1 {
   flex:1 !important;
 }
@@ -706,6 +712,11 @@ background-blend-mode: multiply;
   display: flex;
       justify-content: space-around;
       flex: 2;
+}
+.neon-wizard-btn-container2 {
+  display: flex;
+  justify-content: flex-start;
+  flex: 2;
 }
 .flex3 {
   flex:3 !important;
@@ -736,9 +747,9 @@ width: 100%;
 
 }
 
-.form-btn:hover {
-  transform: scale(1.1);
-}
+// .form-btn:hover {
+//   transform: scale(1.1);
+// }
 
 .neon-wizard-btn-container > button {
 margin: 10px;
@@ -907,6 +918,7 @@ input[type="checkbox"].ios-switch + div > div {
   float: left;
   width: 18px; height: 18px;
   border-radius: inherit;
+  border: solid 1px lightgray;
   background: #ffffff;
   -webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
   -webkit-transition-duration: 0.4s;
@@ -1135,8 +1147,15 @@ a {
   //.steps-indicator {
   //
   //}
+  .newPrev-btn {
+    margin: auto;
+    margin-bottom: 15px;
+  }
   .midwidthsm {
     width: 50% !important;
+  }
+  #supportImg {
+    height: auto;
   }
 .modal-window > div {
   width: 100%;

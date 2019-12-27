@@ -3,7 +3,7 @@
 
 
 
-  <input  appAutowidth   autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
+  <input     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
    style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " />
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
@@ -53,8 +53,9 @@
 
         </div>
         <!-- ||  -->
-        <div class="neon-wizard-btn-container row pb5">
-          <button  class="prev-btn col-md-3 col-sm-10" type="button" awPreviousStep>Précedent</button>
+        <div class="neon-wizard-btn-container2 row">
+
+          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button [ngClass]="textInput.trim() === ''? 'next-btn col-md-3 col-sm-10 disabled' : 'next-btn col-md-3 col-sm-10'" type="button" (click)="onCompleteStep(3, 'typo', null)"
             [disabled]="textInput.trim() === '' " awNextStep>Suivant</button>
         </div>
@@ -89,9 +90,11 @@
 
 
         </div>
+
      
-        <div class="neon-wizard-btn-container row ">
-          <button class="prev-btn col-md-3 col-sm-12" type="button" (click)="onCompleteStep(3, 'erase', null)"  awPreviousStep>Précedent</button>
+        <div class="neon-wizard-btn-container2 row ">
+          <button  class="newPrev-btn " type="button" (click)="onCompleteStep(3, 'erase', null)" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+
           <button [ngClass]="!selectedTypo? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button"  [disabled]="!selectedTypo"  awNextStep>Suivant</button>
         </div>
 
@@ -124,8 +127,9 @@
         <!-- </div> -->
 
 
-        <div class="neon-wizard-btn-container row flex0">
-          <button  class="prev-btn col-md-3 col-sm-12"  type="button" awPreviousStep>Précedent</button>
+
+        <div class="neon-wizard-btn-container2 row flex0">
+          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button [ngClass]="!selectedColor? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button" [disabled]="!selectedColor" awNextStep>Suivant</button>
 
         </div>
@@ -147,14 +151,14 @@
           </div>
 
         </div>
-        <div class="neon-wizard-btn-container mt5 row flex1 pb5">
-          <button class="prev-btn col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+        <div class="neon-wizard-btn-container2 mt5 row flex1">
+          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button  [ngClass]="!selectedFormatSize? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button" [disabled]="!selectedFormatSize"  awNextStep>Suivant</button>
         </div>
 
       </aw-wizard-step>
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
-        <h5 class="neon-wizard-header flex1 mb5">Choisissez votre support</h5>
+        <h4 class="neon-wizard-header flex1 mb5">Choisissez votre support</h4>
         
         <div class="neon-wizard-btn-container row flex3 ">
           <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected-detoure col-md-5 col-sm-12' : 'col-md-5 col-sm-12 caca'"
@@ -170,8 +174,8 @@
 
           
         </div>
-        <div class="neon-wizard-btn-container mt5 row">
-          <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+        <div class="neon-wizard-btn-container2 mt5 row">
+          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button [ngClass]="!imageSupportSelected? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'" type="button" [disabled]="!imageSupportSelected" (click)="onCompleteStep(4, imageSupportSelected, null)"  awNextStep>Suivant</button>
 
         </div>
@@ -179,7 +183,7 @@
       </aw-wizard-step>
 
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
-        <h5 class="neon-wizard-header flex1">Vous souhaitez faire briller un projet</h5>
+        <h4 class="neon-wizard-header flex1">Pour faire briller un projet</h4>
 
         <div class="neon-wizard-btn-container row flex3 mt5 mb5">
           <div style="display: flex;" [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-md-5 col-sm-12' : 'form-btn  col-md-5 col-sm-12'" (click)="onCompleteStep(5, 'business', null)"
@@ -190,8 +194,8 @@
 
         </div>
 
-        <div class="neon-wizard-btn-container row">
-          <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+        <div class="neon-wizard-btn-container2 row">
+          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button  [ngClass]="!projectType? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  [disabled]="!projectType"  class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
       </aw-wizard-step>
@@ -203,7 +207,7 @@
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div *ngIf="projectType === 'consumer'  && !finalStep " class="col-md-12 col-sm-12">
-          <h5 class="neon-wizard-header mb5">Obtenez votre dessin technique en {{suceMaBite}}</h5>
+          <h4 class="neon-wizard-header mb5">Obtenez votre dessin technique en {{suceMaBite}}</h4>
 
 
 
@@ -240,8 +244,8 @@
             <span class='user-info-row-title textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
                 href="#">Conditions générales d'utilisation</a></span>
           </div>
-          <div class="neon-wizard-btn-container row">
-            <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+          <div class="neon-wizard-btn-container2 row">
+            <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
             <button class="next-btn  col-md-3 col-sm-12" (click)="openRecap()"  type="button" awNextStep>Envoyer</button>
 
           </div>
@@ -260,14 +264,14 @@
 
 
         <div *ngIf="projectType === 'business' && !finalStep " class=" col-md-12 col-sm-12 ">
-          <h5 class="neon-wizard-header mb5 ">Obtenez votre devis gratuit</h5>
+          <h4 class="neon-wizard-header mb5 ">Obtenez votre devis gratuit</h4>
           <div class='user-info-row-cont mb5'>
             <span class="user-info-row-title">Société</span>
             <input  autocomplete="off" type="text" (change)="onChangeUserInfo('société', $event.target.value)" [value]="userInfoPerso['société'] || ''"
               class="basic-input smallHeight mb3 " />
           </div>
 
-          <div class="neon-wizard-input-cont mb3">
+          <div class="neon-wizard-input-cont mb5">
 
             <div class='user-info-row-cont nestedInput'>
               <span class="user-info-row-title">Prénom</span>
@@ -295,13 +299,13 @@
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"
               class="basic-input smallHeight " />
-
+              <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
+                href="#">Conditions générales d'utilisation</a></span>
           </div>
-          <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
-              href="#">Conditions générales d'utilisation</a></span>
 
-          <div class="neon-wizard-btn-container row">
-            <button class="prev-btn  col-md-3 col-sm-12" type="button" awPreviousStep>Précedent</button>
+
+          <div class="neon-wizard-btn-container2 row">
+            <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
             <button class="next-btn col-md-3 col-sm-12" type="button" (click)="openRecap()" awNextStep>Envoyer</button>
 
           </div>

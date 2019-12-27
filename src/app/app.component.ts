@@ -1,7 +1,7 @@
 import { Component, Injector } from '@angular/core';
 import  {createCustomElement, NgElement, WithProperties} from '@angular/elements';
 import { NeonFormComponent } from './neon-form/neon-form.component';
-export let currentView =  {caca :'form', signUp: false}
+export let currentView =  {caca :'client', signUp: false}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

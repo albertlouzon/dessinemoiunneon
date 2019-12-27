@@ -10,7 +10,7 @@
         <h2 class="ec-title col-lg-5 col-md-12">Tous vos néons</h2>
         <button class="prev-btn col-lg-3 col-md-12" (click)="goToForm();">Créer un nouveau néon</button>
         <div class='forBigPussy col-1'></div>
-        <button  class="next-btn  col-lg-3 col-sm-12" (click)="logout()">Se déconnecter</button>
+        <button  class="next-btn-no-margin  col-lg-3 col-sm-12" (click)="logout()">Se déconnecter</button>
       </div>
 
       <div class="ec-list-cont">
@@ -247,7 +247,7 @@
 
         </div>
         <button *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'" (click)="openCommand();"
-          style="margin-right: 10%;" class="next-btn big-btn">Commander</button>
+          style="margin-right: 10%;" class="next-btn-no-margin big-btn">Commander</button>
           <button *ngIf="neonSelected.state === 'created'" disabled
           style="margin-right: 10%;" class="grey-btn big-btn">Commander</button>
 
@@ -405,7 +405,7 @@
 
         </div>
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-        <button (click)="command();"  style="align-self: center;" class="next-btn big-btn">Passer au paiement</button>
+        <button (click)="command();"  style="align-self: center;" class="next-btn-no-margin big-btn">Passer au paiement</button>
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
 
       </div>
@@ -518,7 +518,7 @@
           <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
           <!-- </div> -->
 
-          <button class='next-btn mt5 big-btn' type="submit">Valider et payer</button>
+          <button class='next-btn-no-margin mt5 big-btn' type="submit">Valider et payer</button>
         </form>
 
 
@@ -704,7 +704,7 @@
           <h1  class='remerciements'>Commande validée !</h1>
           <span class='merci-descr'>Merci pour votre commande, un email de confirmation vous à été envoyée. Vous recevrez votre néon à l'adresse indiquée <br/> dans les 20 prochains jours. Envoyez nous une photo !</span>
           <button  (click)="resetView();"
-          class="next-btn revenir big-btn">Retour à mon espace</button>
+          class="next-btn-no-margin revenir big-btn">Retour à mon espace</button>
         </div>
       </div>
     <div class="col-2 forBigPussy"></div>
@@ -721,7 +721,7 @@
 
                             </textarea>
     </div>
-    <button (click)="sendCustomEmail()" style="float: right;" class="next-btn" type="button">Envoyer</button>
+    <button (click)="sendCustomEmail()" style="float: right;" class="next-btn-no-margin" type="button">Envoyer</button>
 
   </div>
 

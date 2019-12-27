@@ -69,6 +69,18 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   { size: 'M', width: 25, url: '../.././assets/Fichier-M.png' },
   { size: 'L', width: 30, url: '../.././assets/Fichier-L.png' },
   { size: 'XL', width: 40, url: '../.././assets/Fichier-XL.png' }];
+  formatCache = [
+    '../.././assets/Fichier-S.png',
+    '../.././assets/Fichier-M.png',
+    '../.././assets/Fichier-L.png',
+    '../.././assets/Fichier-XL.png'
+  ]
+  formatUrl = [
+    '../.././assets/S_selec.png',
+    '../.././assets/M_selec.png',
+    '../.././assets/L_selec.png',
+    '../.././assets/XL_selec.png'
+  ]
   selectedFormatSize = null;
   imageSupportSelected = null;
   projectType = null;
@@ -131,6 +143,34 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     },
   ];
 
+  cacheColorUrl = [
+    '../.././assets/blanc.png',
+    '../.././assets/blanchaud.png',
+    '../.././assets/orange.png',
+    '../.././assets/jaune.png',
+    '../.././assets/rouge.png',
+    '../.././assets/rose.png',
+    '../.././assets/fuschia.png',
+    '../.././assets/violet.png',
+    '../.././assets/bleu.png',
+    '../.././assets/vert.png',
+    '../.././assets/turquoise.png'
+  ]
+  
+  selectedColorUrl = [
+    '../.././assets/Blanc_froid_selec.png',
+    '../.././assets/Blanc_chaud_selec.png',
+    '../.././assets/Orange_selec.png',
+    '../.././assets/Jaune_selec.png',
+    '../.././assets/Rouge_selec.png',
+    '../.././assets/Rose_selec.png',
+    '../.././assets/Fuschia_selec.png',
+    '../.././assets/Violet_selec.png',
+    '../.././assets/Bleu_selec.png',
+    '../.././assets/Vert_selec.png',
+    '../.././assets/Turquoise_selec.png'
+  ]
+
   colorList = [
     { name: 'blancFroid', color: '#ffffff', url: '../.././assets/blanc.png' },
     { name: 'blanchaud', color: '#ede3c5', url: '../.././assets/blanchaud.png' },
@@ -184,6 +224,16 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     // this.mainInp.nativeElement.focus();
   }
 
+  resetColorsUrl() {
+    this.colorList.forEach((color, i) => {
+      color.url = this.cacheColorUrl[i];
+    })
+  }
+  resetFormatsUrl() {
+    this.formatSizes.forEach((f, i) => {
+      f.url = this.formatCache[i];
+    })
+  }
   goToEC() {
     window.top.location.href = 'https://www.dessinemoiunneon.fr/espace-personnel';
 
@@ -235,7 +285,16 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     this.neonColorCode = color['color'];
     this.selectedColorUI = index;
     this.selectedColor = color['name'];
+    this.resetColorsUrl()
+    this.colorList.find(x => x.name === color.name).url = this.selectedColorUrl[index]
     this.colorTitle = 'Couleur selectionnée:  ';
+  }
+
+  onSelectFormatSize(format, index) {
+    this.selectedFormatSize = index;
+    this.resetFormatsUrl()
+    this.formatSizes.find(x => x.size === format.size).url = this.formatUrl[index]
+
   }
   onChangeTextTitle(value: string) {
     this.textInput = value;

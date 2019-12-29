@@ -10,7 +10,10 @@
         <h2 class="ec-title col-lg-5 col-md-12">Tous vos néons</h2>
         <button class="prev-btn col-lg-3 col-md-12" (click)="goToForm();">Créer un nouveau néon</button>
         <div class='forBigPussy col-1'></div>
-        <button  class="next-btn-no-margin  col-lg-3 col-sm-12" (click)="logout()">Se déconnecter</button>
+        <button  class="grey-btn col-lg-3 col-sm-12"  style="display: flex; align-items: center; justify-content: space-around" (click)="logout()">
+          <mat-icon mat-list-icon>exit_to_app</mat-icon>
+          Deconnexion
+          </button>
       </div>
 
       <div class="ec-list-cont">
@@ -95,7 +98,7 @@
 </div>
 
 
-<div *ngIf="neonSelected  && !commandMode && !payMode" class='ec-bigbox-detail'>
+<div *ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" class='ec-bigbox-detail'>
   <button style="margin-bottom: 1.5%;" class="prev-btn mt3" (click)="neonSelected = null">Précédent</button>
 
   <h1 style="margin-bottom: 3%;">Néon LED "{{neonSelected?.text}}"</h1>
@@ -255,9 +258,9 @@
     </div>
 
   </div>
-  <div class="ec-bottom-row row pd7">
+  <div class="ec-bottom-row row pd7" >
     <h1 class="ec-title">Un service sûr et complet</h1>
-    <div class="cards-list">
+    <div class="cards-list" style="  width: 97.2%;">
       <div class="little-card  card-tarace 1">
         <div class="card_content">
           <div [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'" class="card-logo"></div>
@@ -290,7 +293,7 @@
       </div>
 
 
-      <div class="little-card  card-tarace 3">
+      <div class="little-card  card-tarace 3" >
         <!-- <div class="card_image">
               </div> -->
         <div class="card_content">
@@ -405,7 +408,7 @@
 
         </div>
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-        <button (click)="command();"  style="align-self: center;" class="next-btn-no-margin big-btn">Passer au paiement</button>
+        <button (click)="command();"  style="align-self: center;margin-top: 60px;" class="next-btn-no-margin mukta big-btn">Passer au paiement</button>
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
 
       </div>
@@ -518,14 +521,14 @@
           <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
           <!-- </div> -->
 
-          <button class='next-btn-no-margin mt5 big-btn' type="submit">Valider et payer</button>
+          <button class='next-btn-no-margin mt5 big-btn mukta' type="submit">Valider et payer</button>
         </form>
 
 
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
         <!-- <button  (click)="command();" style="margin-right: 5%;;" class="next-btn">Valider et payer</button> -->
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
-        <a target="_blank" class="hyperlink" href='https://stripe.com/fr/legal'>Voir nos conditions générales d'utilisation</a>
+        <a target="_blank" class="hyperlink mukta" href='https://stripe.com/fr/legal'>Voir nos conditions générales d'utilisation</a>
 
       </div>
 

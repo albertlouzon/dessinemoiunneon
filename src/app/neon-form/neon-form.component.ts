@@ -74,17 +74,17 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     '../.././assets/Fichier-M.png',
     '../.././assets/Fichier-L.png',
     '../.././assets/Fichier-XL.png'
-  ]
+  ];
   formatUrl = [
     '../.././assets/S_selec.png',
     '../.././assets/M_selec.png',
     '../.././assets/L_selec.png',
     '../.././assets/XL_selec.png'
-  ]
+  ];
   selectedFormatSize = null;
   imageSupportSelected = null;
   projectType = null;
-  lesserSign = '<'
+  lesserSign = '<';
   userChoices = {};
   userInfoPerso = {};
   trim = String.prototype.trim;
@@ -95,6 +95,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   signUpError = 'Il existe déjà un compte avec cet email...';
   loginFailed = false;
   textInput = '';
+  neonFontSizeClass = 'fs-medium';
   neonColorCode = '';
   neonTypoClass = 'Lilly';
   neonColorClass = '';
@@ -155,8 +156,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     '../.././assets/bleu.png',
     '../.././assets/vert.png',
     '../.././assets/turquoise.png'
-  ]
-  
+  ];
+
   selectedColorUrl = [
     '../.././assets/Blanc_froid_selec.png',
     '../.././assets/Blanc_chaud_selec.png',
@@ -169,7 +170,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     '../.././assets/Bleu_selec.png',
     '../.././assets/Vert_selec.png',
     '../.././assets/Turquoise_selec.png'
-  ]
+  ];
 
   colorList = [
     { name: 'blancFroid', color: '#ffffff', url: '../.././assets/blanc.png' },
@@ -227,12 +228,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   resetColorsUrl() {
     this.colorList.forEach((color, i) => {
       color.url = this.cacheColorUrl[i];
-    })
+    });
   }
   resetFormatsUrl() {
     this.formatSizes.forEach((f, i) => {
       f.url = this.formatCache[i];
-    })
+    });
   }
   goToEC() {
     window.top.location.href = 'https://www.dessinemoiunneon.fr/espace-personnel';
@@ -275,7 +276,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      if(result) {
+      if (result) {
         this.onSubmitForm();
       }
     });
@@ -285,19 +286,27 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     this.neonColorCode = color['color'];
     this.selectedColorUI = index;
     this.selectedColor = color['name'];
-    this.resetColorsUrl()
-    this.colorList.find(x => x.name === color.name).url = this.selectedColorUrl[index]
+    this.resetColorsUrl();
+    this.colorList.find(x => x.name === color.name).url = this.selectedColorUrl[index];
     this.colorTitle = 'Couleur selectionnée:  ';
   }
 
   onSelectFormatSize(format, index) {
     this.selectedFormatSize = index;
-    this.resetFormatsUrl()
-    this.formatSizes.find(x => x.size === format.size).url = this.formatUrl[index]
+    this.resetFormatsUrl();
+    this.formatSizes.find(x => x.size === format.size).url = this.formatUrl[index];
 
   }
   onChangeTextTitle(value: string) {
     this.textInput = value;
+    if (value.length > 40) {
+      this.neonFontSizeClass = 'fs-very-small';
+    } else if (value.length > 25) {
+      this.neonFontSizeClass = 'fs-small';
+
+    } else {
+      this.neonFontSizeClass = 'fs-medium';
+    }
   }
   onSelectFile(event) {
     console.log('file selected', event);
@@ -572,7 +581,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
 
   sleep(milliseconds) {
-    let start = new Date().getTime();
+    const start = new Date().getTime();
     for (let i = 0; i < 1e7; i++) {
       if ((new Date().getTime() - start) > milliseconds) {
         break;
@@ -580,7 +589,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
   }
   async onCompleteStep(step: number, choice: string, data: any) {
-    this.enculeunponey = true;  
+    this.enculeunponey = true;
     if (choice && step === 0) {
       if (choice !== this.mainChoice) {
         this.textInput = '';
@@ -628,7 +637,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed', result);
-          if(result) {
+          if (result) {
             this.loading = true;
             this.onSubmitForm();
           } else {

@@ -3,7 +3,7 @@
 
 
 
-  <input     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass "
+  <input  maxlength="55"     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
    style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " />
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
@@ -28,7 +28,7 @@
           <h4 class="neon-wizard-header">
             Ecrivez votre texte
           </h4>
-          <input    #mainInput  autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" [(value)]="textInput"
+          <input  maxlength="55"       #mainInput  autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" [(value)]="textInput"
             class="basic-input-text mb5  mt5" />
 
         </div>

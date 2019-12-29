@@ -587,17 +587,14 @@ background-color: #000B31;
 align-self: center;
 text-align: center;
   border-radius: 50px;
-  width: 100%;
-outline: none !important;
-font-size: 3vw;
-/* padding-bottom: 1%; */
+  width: 52%;
+  margin-right: 15px;
+  outline: none !important;
 display: -webkit-box;
 display: flex;
-/* top: 10%; */
 border: none;
   padding-left: 5%;
   padding-right: 5%;
-  // box-shadow: inset 2000px 0 0 0 rgba(0, 11, 49, 0.70);
   background-color: rgba(0, 11, 49, 0.70);
   color: white;
 }
@@ -1222,3 +1219,14 @@ float: left;
 
 
 
+.fs-medium {
+  font-size: 3vw !important;
+}
+
+.fs-small {
+  font-size: 2vw !important;
+}
+
+.fs-very-small {
+  font-size: 1.4vw !important;
+}

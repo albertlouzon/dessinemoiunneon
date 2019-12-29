@@ -762,6 +762,8 @@ margin-bottom: 15px;
 .commandBotCont {
   height: 30%;
   margin-top: 5%;
+  margin-left: -31px !important;
+  margin-right: -31px !important;
 }
 
 .command-form-cont {
@@ -829,6 +831,8 @@ margin-bottom: 15px;
   background-color: #000b31;
   height: 100%;
   color: #F4CC20;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 25px;
   font-family: Mukta-Bold, sans-serif;
   display: flex;
@@ -840,7 +844,6 @@ margin-bottom: 15px;
 
 .livraisonDom{
   align-self: center;
-  margin-bottom: 10px;
   font-family: Mukta-Bold, sans-serif;
   font-size: 17px;}
 

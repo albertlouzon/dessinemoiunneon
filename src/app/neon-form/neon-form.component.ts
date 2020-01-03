@@ -324,6 +324,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
   manageFinalStep() {
     this.finalStep = true;
+    let elmt = document.getElementsByClassName('steps-indicator')[0];
+    elmt.className = 'steps-indicator hidden'
+    console.log('HELLO :', document.getElementsByClassName('steps-indicator'))
     // if(this.projectType === null) {
     //   this.projectType === 'consumer'
     // }

@@ -12,7 +12,9 @@
   src:  url('../.././assets/fonts/Nunito-Black.ttf')  format('truetype');
 }
 
-
+.hidden {
+  display: none !important;
+}
 .Tommy {
   font-family: Tommy, sans-serif !important;
   font-size: 4vw ;

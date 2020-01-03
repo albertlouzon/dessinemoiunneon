@@ -216,30 +216,30 @@ export class NeonListComponent implements OnInit {
   }
   fetchCommands() {
     const hardcodedData = [
-        {
-          id: "aeaze4161631",
-          text: "Neon premier",
-          type: "consumer",
-          typo: "Billy",
-          state: "created",
-          colors: "orange",
-          height: 25,
-          support: "détouré",
-          creationDate: "27/12/2019",
-          imageAdditionalInfo: ""
-        },
-        {
-          id: "aeaze4161631",
-          text: "Neon deuxieme",
-          type: "consumer",
-          typo: "Billy",
-          state: "DT disponible",
-          colors: "orange",
-          height: 25,
-          support: "détouré",
-          creationDate: "27/12/2019",
-          imageAdditionalInfo: ""
-        }
+        // {
+        //   id: "aeaze4161631",
+        //   text: "Neon premier",
+        //   type: "consumer",
+        //   typo: "Billy",
+        //   state: "created",
+        //   colors: "orange",
+        //   height: 25,
+        //   support: "détouré",
+        //   creationDate: "27/12/2019",
+        //   imageAdditionalInfo: ""
+        // },
+        // {
+        //   id: "aeaze4161631",
+        //   text: "Neon deuxieme",
+        //   type: "consumer",
+        //   typo: "Billy",
+        //   state: "DT disponible",
+        //   colors: "orange",
+        //   height: 25,
+        //   support: "détouré",
+        //   creationDate: "27/12/2019",
+        //   imageAdditionalInfo: ""
+        // }
       ]
     
     this.neonList = [];

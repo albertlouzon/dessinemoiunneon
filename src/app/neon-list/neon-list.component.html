@@ -518,83 +518,158 @@
 
 </div>
 
-<div class="ec-bottom-row row pd7" >
-    <h1 class="ec-title">Un service sûr et complet</h1>
-    <div class="cards-list" style="  width: 97.2%;">
-      <div class="little-card  card-tarace 1">
-        <div class="card_content">
-          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'" class="card-logo"></div>
-          <span class="ec-card-title">
-            Paiement sécurisé
-          </span>
-          <span class="ec-card-descr">
-            Les paiements sur notre site sont sécurisés  via le module Stripe. Nous acceptons tous les paiements dont Visa, Master Card, Amex,
-            Paypal et Maestro.
-          </span>
+  <div class="ec-bottom-row row pd7" >
+      <h1 class="ec-title">Un service sûr et complet</h1>
+      <div class="cards-list" style="  width: 97.2%;">
+        <div class="little-card  card-tarace 1">
+          <div class="card_content">
+            <div [style.backgroundImage]="'url('+ '../.././assets/Icon-paiement-securise-12.png' +')'" class="card-logo"></div>
+            <span class="ec-card-title">
+              Paiement sécurisé
+            </span>
+            <span class="ec-card-descr">
+              Les paiements sur notre site sont sécurisés  via le module Stripe. Nous acceptons tous les paiements dont Visa, Master Card, Amex,
+              Paypal et Maestro.
+            </span>
 
+          </div>
         </div>
-      </div>
 
-      <div class="little-card  card-tarace 2">
-        <!-- <div class="card_image">
-    
-           </div> -->
-        <div class="card_content">
-          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'" class="card-logo"></div>
-          <span class="ec-card-title">
-            Garantie un an
-          </span>
-          <span class="ec-card-descr">
-            Tous nos néons posèdent une garantie d'un an à compter de la data d'achat. Vous devez retourner un article
-            défectueux ? Contactez-nous avec le numéro de commande !
-          </span>
+        <div class="little-card  card-tarace 2">
+          <!-- <div class="card_image">
+      
+            </div> -->
+          <div class="card_content">
+            <div [style.backgroundImage]="'url('+ '../.././assets/Icon-garantie-13.png' +')'" class="card-logo"></div>
+            <span class="ec-card-title">
+              Garantie un an
+            </span>
+            <span class="ec-card-descr">
+              Tous nos néons posèdent une garantie d'un an à compter de la data d'achat. Vous devez retourner un article
+              défectueux ? Contactez-nous avec le numéro de commande !
+            </span>
 
+          </div>
         </div>
-      </div>
 
 
-      <div class="little-card  card-tarace 3" >
-        <!-- <div class="card_image">
-              </div> -->
-        <div class="card_content">
-          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livraison-07.png' +')'" class="card-logo"></div>
+        <div class="little-card  card-tarace 3" >
+          <!-- <div class="card_image">
+                </div> -->
+          <div class="card_content">
+            <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livraison-07.png' +')'" class="card-logo"></div>
 
-          <span class="ec-card-title">
-            Livraison offerte
+            <span class="ec-card-title">
+              Livraison offerte
 
-          </span>
-          <span class="ec-card-descr">
-            Nous vous offrons la livraison pour chaque néon commandé.
-          </span>
+            </span>
+            <span class="ec-card-descr">
+              Nous vous offrons la livraison pour chaque néon commandé.
+            </span>
 
+          </div>
         </div>
-      </div>
 
 
-      <div class="little-card  card-tarace 4">
-        <!-- <div class="card_image">
-       
-              </div> -->
-        <div class="card_content">
-          <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'" class="card-logo"></div>
+        <div class="little-card  card-tarace 4">
+          <!-- <div class="card_image">
+        
+                </div> -->
+          <div class="card_content">
+            <div [style.backgroundImage]="'url('+ '../.././assets/Icon-livre-sous-quinze-jours-10.png' +')'" class="card-logo"></div>
 
-          <span style="font-size: 17px;" class="ec-card-title">
-            Livré sous 15 jours
-          </span>
-          <span class="ec-card-descr">
-            Nous livrons dans un délai de 15 à 20 jours selon la production et la destination. En cas de demande urgente
-            merci de nous contacter directement
-            afin de procéder à une "Livraison express"
-          </span>
+            <span style="font-size: 17px;" class="ec-card-title">
+              Livré sous 15 jours
+            </span>
+            <span class="ec-card-descr">
+              Nous livrons dans un délai de 15 à 20 jours selon la production et la destination. En cas de demande urgente
+              merci de nous contacter directement
+              afin de procéder à une "Livraison express"
+            </span>
 
+          </div>
         </div>
+
+
+
+
       </div>
-
-
-
-
     </div>
+
+    
+<div class="ec-bottom-row row pd7"*ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" >
+  <h1 class="ec-title">Nous avons dessiné leur néon</h1>
+  <div class="cards-list" style="  width: 97.2%;">
+    <div class="little-card  card-tarace 1">
+      <div class="card_content">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
+        <span class="ec-card-title">
+          Mélanie K.
+        </span>
+        <span class="ec-card-descr">
+         "J'ai bien reçu mon néon dans les délais, il est accroché dans mon salon !!! Ambiance au top !"
+        </span>
+
+      </div>
+    </div>
+
+    <div class="little-card  card-tarace 2">
+      <!-- <div class="card_image">
+  
+         </div> -->
+      <div class="card_content">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
+        <span class="ec-card-title">
+          Georges S.
+        </span>
+        <span class="ec-card-descr">
+         "Service au top ! J'ai été super bien conseillé par l'équipe pour la création de mon néon. Mon salon d'esthétique vit sa deuxième jeunesse. Merci !"
+        </span>
+
+      </div>
+    </div>
+
+
+    <div class="little-card  card-tarace 3" >
+      <!-- <div class="card_image">
+            </div> -->
+      <div class="card_content">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
+
+        <span class="ec-card-title">
+          Matthieu C.
+
+        </span>
+        <span class="ec-card-descr">
+          En tant que chef de projet évènementiel, j'ai toujours besoin de nouvelles idées mais surtout de réactivité de la part de mes prestataires. Mission accomplie !
+        </span>
+
+      </div>
+    </div>
+
+
+    <div class="little-card  card-tarace 4">
+      <!-- <div class="card_image">
+     
+            </div> -->
+      <div class="card_content">
+        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
+
+        <span style="font-size: 17px;" class="ec-card-title">
+          Delphine M.
+        </span>
+        <span class="ec-card-descr">
+         Je suis trop contente de mon néon !! Merci, mes invités n'ont plus d'yeux que pour lui.    
+        </span>
+
+      </div>
+    </div>
+
+
+
+
   </div>
+</div>
 
 
 <div *ngIf="loading" class="blendContainer">

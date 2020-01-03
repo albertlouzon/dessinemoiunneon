@@ -21,10 +21,10 @@ declare var elements: any;
   styleUrls: ['./neon-list.component.scss']
 })
 export class NeonListComponent implements OnInit {
-  @ViewChild('cardInfo', {static: false}) cardInfo: ElementRef;
+  @ViewChild('cardInfo', { static: false }) cardInfo: ElementRef;
 
   loading = false;
-  constructor(private http: HttpClient,     private cd: ChangeDetectorRef,
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef,
   ) { }
   slides = [
     {
@@ -58,17 +58,17 @@ export class NeonListComponent implements OnInit {
   ];
 
   colorList = [
-    {name: 'blancFroid' , color: '#ffffff', url: '../.././assets/blanc.png' },
-    {name: 'blancchaud' , color: '#ede3c5', url: '../.././assets/blancchaud.png' },
-    {name: 'orange' , color: '#ffa42c', url: '../.././assets/orange.png' },
-    {name: 'jaune' , color: '#ffe600', url: '../.././assets/jaune.png' },
-    {name: 'rouge' , color: '#ff0000', url: '../.././assets/rouge.png' },
-    {name: 'rose' , color: '#ff73ff', url: '../.././assets/rose.png' },
-    {name: 'fuschia' , color: '#df29ff', url: '../.././assets/fuschia.png' },
-    {name: 'violet' , color: '#9527ff', url: '../.././assets/violet.png' },
-    {name: 'bleu' , color: '#337dff', url: '../.././assets/bleu.png' },
-    {name: 'vert' , color: '#15e81f', url: '../.././assets/vert.png' },
-    {name: 'turquoise' , color: '#17fff9', url: '../.././assets/turquoise.png' },
+    { name: 'blancFroid', color: '#ffffff', url: '../.././assets/blanc.png' },
+    { name: 'blancchaud', color: '#ede3c5', url: '../.././assets/blancchaud.png' },
+    { name: 'orange', color: '#ffa42c', url: '../.././assets/orange.png' },
+    { name: 'jaune', color: '#ffe600', url: '../.././assets/jaune.png' },
+    { name: 'rouge', color: '#ff0000', url: '../.././assets/rouge.png' },
+    { name: 'rose', color: '#ff73ff', url: '../.././assets/rose.png' },
+    { name: 'fuschia', color: '#df29ff', url: '../.././assets/fuschia.png' },
+    { name: 'violet', color: '#9527ff', url: '../.././assets/violet.png' },
+    { name: 'bleu', color: '#337dff', url: '../.././assets/bleu.png' },
+    { name: 'vert', color: '#15e81f', url: '../.././assets/vert.png' },
+    { name: 'turquoise', color: '#17fff9', url: '../.././assets/turquoise.png' },
   ];
   neonTypoClass = 'Billie';
   neonColorClass = '';
@@ -123,7 +123,7 @@ export class NeonListComponent implements OnInit {
 
     // this.axiosClient.get('http://localhost:5555').then(((res) => {alert(res)}))
     this.fetchCommands();
-     // Your Stripe public key
+    // Your Stripe public key
 
   }
 
@@ -142,10 +142,10 @@ export class NeonListComponent implements OnInit {
   onCheckTelecommande() {
     this.checkTelecommande = !this.checkTelecommande;
     if (this.checkTelecommande) {
-      this.neonSelected.price =  parseInt(this.neonSelected.price) + 25;
+      this.neonSelected.price = parseInt(this.neonSelected.price) + 25;
       this.neonSelected['telecommande'] = true;
-    } else  {
-      this.neonSelected.price =  parseInt(this.neonSelected.price) - 25;
+    } else {
+      this.neonSelected.price = parseInt(this.neonSelected.price) - 25;
       this.neonSelected['telecommande'] = false;
     }
   }
@@ -154,7 +154,7 @@ export class NeonListComponent implements OnInit {
     if (this.checkEau) {
       this.neonSelected.price = parseInt(this.neonSelected.price) + 70;
       this.neonSelected['waterproof'] = true;
-    } else  {
+    } else {
       this.neonSelected.price = parseInt(this.neonSelected.price) - 70;
       this.neonSelected['waterproof'] = false;
 
@@ -175,7 +175,7 @@ export class NeonListComponent implements OnInit {
 
   sendCustomEmail() {
     if (this.customMail.trim() !== '') {
-      this.user['changeCommand'] = {text: '', newState: ''};
+      this.user['changeCommand'] = { text: '', newState: '' };
       this.user['changeCommand']['text'] = 'customEmail';
       this.user['changeCommand']['newState'] = this.customMail;
       this.loading = true;
@@ -215,6 +215,33 @@ export class NeonListComponent implements OnInit {
     setTimeout(() => { this.snackbarClass = ''; }, 3000);
   }
   fetchCommands() {
+    const hardcodedData = [
+        {
+          id: "aeaze4161631",
+          text: "Neon premier",
+          type: "consumer",
+          typo: "Billy",
+          state: "created",
+          colors: "orange",
+          height: 25,
+          support: "détouré",
+          creationDate: "27/12/2019",
+          imageAdditionalInfo: ""
+        },
+        {
+          id: "aeaze4161631",
+          text: "Neon deuxieme",
+          type: "consumer",
+          typo: "Billy",
+          state: "DT disponible",
+          colors: "orange",
+          height: 25,
+          support: "détouré",
+          creationDate: "27/12/2019",
+          imageAdditionalInfo: ""
+        }
+      ]
+    
     this.neonList = [];
     this.loading = true;
     this.getConfig().subscribe((res: Array<Object>) => {
@@ -236,9 +263,14 @@ export class NeonListComponent implements OnInit {
           });
         }
 
+      } else {
       }
       console.log('User data after fetch : ', this.neonList);
-    });
+    }, err =>       {
+      console.log('cannot fetch data', hardcodedData);
+      this.loading = false;
+      this.neonList = hardcodedData;
+    }  );
   }
 
   getColor(color) {
@@ -301,7 +333,7 @@ export class NeonListComponent implements OnInit {
     this.user['commands'].find(c => c.id === this.neonSelected.id)['state'] = 'payé';
     this.user['commands'].find(c => c.id === this.neonSelected.id)['cardToken'] = token;
 
-    this.user['changeCommand'] = {command: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé'};
+    this.user['changeCommand'] = { command: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé' };
 
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
       // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
@@ -377,10 +409,10 @@ export class NeonListComponent implements OnInit {
     console.log('the command is valid :', this.commandInfos);
     this.commandFailed = false;
     this.payMode = true;
-        this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
-        if (this.card) {
-          this.card.destroy();
-        }
+    this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
+    if (this.card) {
+      this.card.destroy();
+    }
     setTimeout(() => {
 
       this.card = elements.create('card');

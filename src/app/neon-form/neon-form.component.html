@@ -3,7 +3,7 @@
 
 
 
-  <input  maxlength="55"     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]="neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
+  <input  maxlength="55"     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]=" neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
    style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " />
       <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
 
@@ -112,7 +112,7 @@
         <div  class="mt5 mb5 row colorCont">
           <div  [ngClass]=" selectedColorUI=== i? '  col-md-3  col-sm-6 colorIcon' : '  col-md-3 col-sm-6 colorIcon'"   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color, i)" 
           *ngFor="let color of colorList;  let i = index">
-
+          
 
           <!-- <div class=format-subtitle>{{format.width}}</div>  -->
         </div>  

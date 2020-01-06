@@ -98,7 +98,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   neonFontSizeClass = 'fs-medium';
   neonColorCode = '';
   neonTypoClass = 'Lilly';
-  neonColorClass = '';
+  neonColorClass = 'blancFroid';
   selectedColor;
   selectedTypo = 'Lilly';
   imageFile = '';

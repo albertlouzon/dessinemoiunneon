@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { currentView } from './../app.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { currentView } from './../app.component';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
   isSignIn = false;
   loginFailed = false;
   email = '';
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit {
   snackbarClass = '';
   snackMsg = 'Oops'
   society: '';
+  resetPass = false;
+  resetEmail = '';
   loading = false;
   signUpError = 'Vous devez fournir un email et un mot de passe...';
   ngOnInit() {
@@ -53,6 +56,14 @@ export class LoginComponent implements OnInit {
 
   }
 
+  onCheckPassword(type, value) {
+    if(type === 'oldPassword') {
+          
+    } else if(type === 'newPassword') {
+
+    }
+  }
+
   signUp() {
     let headers = new HttpHeaders({ "content-type": "application/json", "Accept": "application/json" });
 
@@ -60,8 +71,8 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password,
       name: this.name,
-      nickname: this.nickname,
-      type: this.projectType
+      nickname: this.nickname,    
+      type: this.projectType, 
      }
      console.log('payload', payload)
     return this.http.post('https://neon-server.herokuapp.com/users', payload, {headers: headers});
@@ -145,9 +156,41 @@ export class LoginComponent implements OnInit {
     
   }
   openSnackbar(msg) {
-    this.snackbarClass = 'show ';
-    this.snackMsg = msg;
-    setTimeout(() => { this.snackbarClass = ''; }, 3000);
+    this._snackBar.open(msg, 'Ok', {
+      duration: 2000,
+    });
+  }
+
+  onChangeResetEmail(val) {
+    this.resetEmail = val;
+  }
+
+  fromResetToSignin() {
+    this.resetPass = false;
+    this.isSignIn = true;
+    this.resetEmail = '';
+  }
+  
+  sendResetEmail() {
+    if(this.resetEmail.trim() !== '') {
+      this.loading = true;
+      this.getUser().subscribe((allUsers: Array<any>) => {
+        this.loading = false;
+
+        if(allUsers.find(x => x.email === this.resetEmail)) {
+          this.http.get('https://neon-server.herokuapp.com/resetPassword/' + allUsers.find(x => x.email === this.resetEmail)['id']).subscribe((res) => {
+            console.log('res from reset password. Check box mail')
+          })
+        } else {
+          alert('nope')
+          this.openSnackbar('Cet email ne semble pas être dans notre base de donnée...');
+          this.loading = false;
+        }
+      }, err => {          this.openSnackbar('Erreur du serveur... veuillez réessayer dans quelques instants') ;        this.loading = false;
+    })
+    } else {
+      this.openSnackbar('Veuillez entrer un email')
+    }
   }
 
   onChangeUserInfoSignUp(target, value) {

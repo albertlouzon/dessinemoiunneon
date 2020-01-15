@@ -1,4 +1,4 @@
-<h1 class="recap-title" mat-dialog-title>Recapitulatif de votre demande</h1>
+<h3 class="recap-title" >Recapitulatif de votre demande</h3>
 <div mat-dialog-content>
   <mat-list>
     <mat-list-item >
@@ -39,8 +39,16 @@
 
   </mat-list>
 </div>
-<div class="v-mat-dialog-actions row" mat-dialog-actions>
 
-  <button class="prev-btn col-5" (click)="onNoClick()">Retour</button>
-  <button  [mat-dialog-close]="true" class="next-btn-no-margin col-5" type="button">Valider</button>
+<div class="neon-wizard-btn-container2 v-mat-dialog-actions  row" style="margin-bottom: 10Px;
+margin-top: 50px;" mat-dialog-actions>
+
+  <button  class="newPrev-btn " type="button" (click)="onNoClick()"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+  <button [mat-dialog-close]="true" class=" next-btn col-md-3 col-sm-10" type="button" (click)="onCompleteStep(3, 'typo', null)" style="width: 500px;"
+     >Valider</button>
 </div>
+<!--
+   <div class="v-mat-dialog-actions row" mat-dialog-actions>
+
+  <button class="newPrev-btn" (click)="onNoClick()">Retour</button> 
+   <button  [mat-dialog-close]="true" class="next-btn-no-margin col-5" type="button">Valider</button></div> -->

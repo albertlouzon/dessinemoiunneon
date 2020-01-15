@@ -21,7 +21,12 @@
 }
 .Tommy {
   font-family: Tommy, sans-serif !important;
-  font-size: 4vw ;
+  font-size: 6vw  !important;
+}
+
+.Tommy span{
+  position: absolute;
+    top: 5%;
 }
 .Freddy {
   font-family: Freddy, sans-serif !important;
@@ -66,8 +71,7 @@
   font-size: 3vw ;
 }
 .neon-wizard-descr-merci {
-margin-top: 5%;
-margin-bottom: 5%;
+margin-bottom: 25px;
 font-family: Mukta-Regular, sans-serif;
 text-align: center;
 font-size: 17px;
@@ -105,13 +109,12 @@ margin-bottom: 15px;
   border-radius: 25px;
   outline: none !important;
   border: none;
-  font-size: 13px;
   font-family: Mukta-Bold, sans-serif;
   cursor: pointer;
   align-self: flex-end;
   padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
   letter-spacing: 0.4px;
   transition: all 0.3s ease 0s;
   max-height: 50px;
@@ -301,11 +304,11 @@ button:disabled {
 .thumbnails li {
 cursor: pointer;
 /* padding: 6%; */
-padding-right: 10%;
-padding-left: 10%;
-border: 2px solid transparent;
 width: 25%;
+border: 2px solid transparent;
+// width: 25%;
 height: 90px;
+margin-bottom: 15px;
 opacity: 0.2;
 background-repeat: no-repeat;
 background-position: center;
@@ -317,15 +320,12 @@ display: none;
 
 }
 
-h4 {
-  margin-bottom: 50px;
-}
 #supportImg {
 background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
   // align-self: flex-end;
-  height: 85%;
+  height: 75px;
 cursor: pointer;
 outline: none !important;
 }
@@ -601,8 +601,10 @@ background-color: #000B31;
 }
 
 .dynamicNeonTitle {
-align-self: center;
-text-align: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // border-radius: 50px;
   width: 52%;
   margin-right: 15px;
@@ -614,7 +616,9 @@ border: none;
   padding-right: 5%;
   padding-top: 5%;
   padding-bottom: 5%;
-  background-color: rgba(0, 11, 49, 0.70);
+  background-color: transparent ;
+  border-radius: 75px;
+  border: 1px solid white;
   color: white;
 }
 
@@ -641,10 +645,15 @@ justify-content: flex-start;
   flex-direction: column;
   background-color: white;
   justify-content: flex-start   ;
-  border-radius: 7px;
+  // border-top-left-radius: 0px;
+  // border-top-right-radius: 0px;
+  // border-bottom-right-radius: 15px;
+  // border-bottom-left-radius: 15px;
+  border-radius: 15px;
   min-height: 300px;
   padding: 2em;
   height: auto;
+  
 }
 
 
@@ -707,7 +716,6 @@ background-blend-mode: multiply;
   // margin-top: 20px;
   font-family: Nunito-Black, sans-serif;
   color: #000B31;
-
 }
 
 .flex1 {
@@ -776,6 +784,8 @@ margin: 10px;
 
 .form-style-container {
   width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
   display: flex;
   justify-content: space-around;
   padding-top: 15px;
@@ -794,6 +804,10 @@ margin: 10px;
   padding-top: 15px;
   align-self: center;
 }
+
+.formatContainer {
+  padding-left: 10%;
+  padding-right: 10%;}
 
 .style-item-small {
   width: 45%;
@@ -830,15 +844,15 @@ padding: 1rem;
 }
 
 .colorCont {
-padding-right: 2.5em;
-  padding-left: 2.5em;
+padding-right: 10%;
+  padding-left: 10%;
 }
 .colorIcon {
 background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
-padding: 2rem;
-margin-bottom: 5px;
+padding: 3rem;
+margin-bottom: 5%;
 margin-top: 5px;
 cursor: pointer;
 }
@@ -850,14 +864,13 @@ text-align: center;
 font-size: 17px;
 }
 .size {
-height: 60%;
 margin-top: 5%;
 margin-bottom: 5%;
   min-height: 75px;
 background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
-padding: 1rem;
+padding: 3rem;
 cursor: pointer;}
 .circle-cont {
   align-self: center;
@@ -1032,8 +1045,13 @@ li {
     flex-direction: column;
 }
 
+.importer-img-step {
+  display: flex;
+  flex-direction: column;
+}
+
 .user-info-row-title {
- font-size: 0.8em;
+ font-size: 17px;
  font-family: Mukta-Regular, sans-serif;
  padding-left: 20px;
  padding-right: 20px;
@@ -1165,7 +1183,9 @@ a {
   //}
   .newPrev-btn {
     margin: auto;
-    margin-bottom: 15px;
+    position: absolute;
+    top: 1em;
+    left: 1em;    
   }
   .midwidthsm {
     width: 50% !important;
@@ -1236,16 +1256,23 @@ float: left;
 }
 
 
-
-
 .fs-medium {
-  font-size: 4vw !important;
+  font-size: 4vw ;
 }
 
 .fs-small {
-  font-size: 2.5vw !important;
+  font-size: 2.5vw ;
 }
 
 .fs-very-small {
-  font-size: 2vw !important;
+  font-size: 2vw ;
+}
+
+.class-subtitle {
+  font-size: 17px;
+  font-family: Mukta-Regular, sans-serif;
+  color: #343434;
+  text-align: center;
+  margin-bottom: 25px;
+
 }

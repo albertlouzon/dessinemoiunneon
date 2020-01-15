@@ -1,24 +1,26 @@
 
 <div class='form-container'>
 
+  <!-- <input  maxlength="55"     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]=" neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
+   style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " /> -->
 
-
-  <input  maxlength="55"     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]=" neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
-   style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " />
-      <!-- <h2   [className]="neonColorClass + ' ' + neonTypoClass " style="align-self: center; text-align: center; letter-spacing: 2px; width: 100%;" >{{textInput}}</h2> -->
+  <div  maxlength="55"   [className]=" neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
+   style="align-self: center; text-align: center; letter-spacing: 2px;  height: 150px !important;"
+     *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " ><span>{{textInput}}</span></div>
 
 
   <aw-wizard    style="width: 100%;">
     <div class="neon-wizard-container row">
-      <div class="forBigPussy col-3"></div>
+      <div class="forBigPussy col-3"></div> 
       <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10 step-container">
-        <h4 class="neon-wizard-header flex1">Faîtes votre choix</h4>
-
+        <h4 class="neon-wizard-header">Faîtes votre choix</h4>
+        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        </span>
         <div class="neon-wizard-btn-container  row flex3 ">  
           <button type="button" class="form-btn col-md-4 col-sm-12" (click)="onCompleteStep(0, 'text', null)"
-            awNextStep>LOGO</button>
+            awNextStep>TEXTE</button>
           <button type="button" class="form-btn col-md-4 col-sm-12" (click)="onCompleteStep(0, 'image', null)"
-            awNextStep>IMAGE</button>
+            awNextStep>LOGO/IMAGE</button>
         </div>
 
 
@@ -28,15 +30,18 @@
           <h4 class="neon-wizard-header">
             Ecrivez votre texte
           </h4>
+          
           <input  maxlength="55"       #mainInput  autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" [(value)]="textInput"
             class="basic-input-text mb5  mt5" />
 
         </div>
-        <div *ngIf="userChoices[0] === 'image'">
-          <h4 class="neon-wizard-header">
+        <div class="importer-img-step" *ngIf="userChoices[0] === 'image'">
+          <h4 class="neon-wizard-header" >
             Importer votre image
           </h4>
-          <input autocomplete="off" (change)="onSelectFile($event)"  type="file"   class="basic-input-form"/>
+          <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+          </span>
+          <input autocomplete="off" (change)="onSelectFile($event)"  type="file" style="margin-bottom: 50px;"  class="basic-input-form"/>
 <!-- 
           <div   class="money">
               <input (change)="onSelectFile($event)" type="text" class="numberOnly" autocomplete="off" maxlength="8" /><div>$</div>                      
@@ -44,9 +49,11 @@
 
 
           <div class="neon-wizard-header">
-            <h4>Une info en particulier à nous donner ?</h4>
+            <h4 >Une info en particulier à nous donner ?</h4>
+            <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+            </span>
           </div>
-          <textarea (change)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder=""
+          <textarea  style="margin-bottom: 50px; height: 150px; margin-top: 25px;" (change)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder=""
             class="large-input">
 
                               </textarea>
@@ -65,8 +72,9 @@
         <h4 class="neon-wizard-header">
           Choisissez la typographie
         </h4>
-    
-        <div class="form-style-container pb5">
+        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        </span>
+        <div class="form-style-container " style="margin-bottom: 50px;">
           <!-- <div (click)="styleSelected = 0" [ngClass]="{'style-item yellow-selected': styleSelected===0, 'style-item':styleSelected!=='0' }" ></div>
                             <div (click)="styleSelected = 1" [ngClass]="{'style-item yellow-selected': styleSelected===1, 'style-item':styleSelected!=='1' }" ></div>
                             <div (click)="styleSelected = 2" [ngClass]="{'style-item yellow-selected': styleSelected===2, 'style-item':styleSelected  !=='2' }"  ></div> -->
@@ -103,14 +111,15 @@
         <h4 class="neon-wizard-header">
           Choisissez une couleur
         </h4>
-
+        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        </span>
 
         <!-- <div class="wrapper"> -->
           <!-- <div class="item float-item"> -->
 
             
-        <div  class="mt5 mb5 row colorCont">
-          <div  [ngClass]=" selectedColorUI=== i? '  col-md-3  col-sm-6 colorIcon' : '  col-md-3 col-sm-6 colorIcon'"   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color, i)" 
+        <div  class=" mb5 row colorCont">
+          <div  [ngClass]=" selectedColorUI=== i? '   col-md-3  col-sm-6 colorIcon' : '   col-md-3 col-sm-6 colorIcon'"   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color, i)" 
           *ngFor="let color of colorList;  let i = index">
           
 
@@ -140,9 +149,11 @@
         <h4 class="neon-wizard-header">
           Choisissez votre format
         </h4>
-        <div  class=" row flex3">
+        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        </span>
+        <div  class=" row flex3 formatContainer">
           <div   *ngFor="let format of formatSizes;  let i = index" class="col-md-3 midwidthsm" style="display: flex; flex-direction: column">
-            <div  [ngClass]=" selectedFormatSize=== i? 'size ' : 'size'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="onSelectFormatSize(format, i)">
+            <div  [ngClass]=" selectedFormatSize=== i? 'size ' : 'size'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="onSelectFormatSize(format, i  )">
           </div>
 
             <div  class='sizeName'>
@@ -153,14 +164,15 @@
         </div>
         <div class="neon-wizard-btn-container2 mt5 row flex1">
           <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
-          <button  [ngClass]="!selectedFormatSize? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button" [disabled]="!selectedFormatSize"  awNextStep>Suivant</button>
+          <button  [ngClass]="!selectedFormatSize? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button" [disabled]="selectedFormatSize === null"  awNextStep>Suivant</button>
         </div>  
 
       </aw-wizard-step>
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
-        <h4 class="neon-wizard-header flex1 mb5">Choisissez votre support</h4>
-        
-        <div class="neon-wizard-btn-container row flex3 ">
+        <h4 class="neon-wizard-header flex1">Choisissez votre support</h4>
+        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+          </span>
+          <div class="neon-wizard-btn-container  row flex3" >
           <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected-detoure col-md-5 col-sm-12' : 'col-md-5 col-sm-12 caca'"
            (click)="imageSupportSelected = 'détouré'" >
             </div>
@@ -184,7 +196,8 @@
 
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h4 class="neon-wizard-header flex1">Pour faire briller un projet</h4>
-
+        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        </span>
         <div class="neon-wizard-btn-container row flex3 mt5 mb5">
           <div style="display: flex;" [ngClass]=" projectType==='business'? 'yellow-selected form-btn  col-md-5 col-sm-12' : 'form-btn  col-md-5 col-sm-12'" (click)="onCompleteStep(5, 'business', null)"
             ><span>Professionnel</span></div>
@@ -206,12 +219,29 @@
 
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
-        <div *ngIf="projectType === 'consumer'  && !finalStep " class="col-md-12 col-sm-12">
-          <h4 class="neon-wizard-header mb5">Obtenez votre dessin technique en {{suceMaBite}}</h4>
+        <div *ngIf="projectType === 'consumer' && !finalStep " class="col-md-12 col-sm-12">
+          <h4 class="neon-wizard-header mb5">Obtenez votre Dessin Technique en {{suceMaBite}}</h4>
+          <!-- <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier -->
 
 
 
-          <div class="neon-wizard-input-cont mb5">
+          
+          <div *ngIf="signUp" class='user-info-row-cont mb5'>
+            <span class="user-info-row-title ++">Prénom</span>
+            <input autocomplete="off" (change)="onChangeUserInfo('nickname', $event.target.value)"
+            [value]="userInfoPerso['nickname'] || ''" class="basic-input  " />
+
+          </div>
+
+          <div *ngIf="signUp" class='user-info-row-cont mb5'>
+            <span class="user-info-row-title">Nom</span>
+            <input autocomplete="off" (change)="onChangeUserInfo('name', $event.target.value)"
+              [value]="userInfoPerso['name'] || ''" class="basic-input  " />
+
+          </div>
+
+
+          <!-- <div class="neon-wizard-input-cont mb5">
 
             <div *ngIf="signUp" class='user-info-row-cont nestedInput'>
               <span class="user-info-row-title">Prénom</span>
@@ -226,13 +256,13 @@
                 class="basic-input smallHeight " />
             </div>
 
-          </div>
+          </div> -->
 
 
           <div class='user-info-row-cont mb5'>
             <span class="user-info-row-title">Adresse mail</span>
             <input autocomplete="off" (change)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"
-              class="basic-input smallHeight " />
+              class="basic-input  " />
 
           </div>
 
@@ -240,7 +270,7 @@
           <div class='user-info-row-cont mb5'>
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)"
-              [value]="userInfoPerso['password'] || ''" class="basic-input smallHeight mb3 " />
+              [value]="userInfoPerso['password'] || ''" class="basic-input  mb3 " />
             <span class='user-info-row-title textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
                 href="#">Conditions générales d'utilisation</a></span>
           </div>
@@ -265,40 +295,40 @@
 
         <div *ngIf="projectType === 'business' && !finalStep " class=" col-md-12 col-sm-12 ">
           <h4 class="neon-wizard-header mb5 ">Obtenez votre devis gratuit</h4>
+          <!-- <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+          </span> -->
           <div class='user-info-row-cont mb5'>
             <span class="user-info-row-title">Société</span>
             <input  autocomplete="off" type="text" (change)="onChangeUserInfo('société', $event.target.value)" [value]="userInfoPerso['société'] || ''"
-              class="basic-input smallHeight mb3 " />
+              class="basic-input  mb3 " />
           </div>
 
-          <div class="neon-wizard-input-cont mb5">
 
-            <div class='user-info-row-cont nestedInput'>
-              <span class="user-info-row-title">Prénom</span>
-              <input autocomplete="off" type="text" (change)="onChangeUserInfo('nickname', $event.target.value)"
-                [value]="userInfoPerso['nickname'] || ''" class="basic-input smallHeight " />
-            </div>
-
-
-            <div class='user-info-row-cont nestedInput'>
-              <span class="user-info-row-title">Nom</span>
-              <input autocomplete="off"  type="text" (change)="onChangeUserInfo('name', $event.target.value)" [value]="userInfoPerso['name'] || ''"
-                class="basic-input smallHeight " />
-            </div>
+          <div class='user-info-row-cont mb5'>
+            <span class="user-info-row-title">Prénom</span>
+            <input autocomplete="off" (change)="onChangeUserInfo('nickname', $event.target.value)"
+              [value]="userInfoPerso['nickname'] || ''" class="basic-input  " />
 
           </div>
+
+          <div class='user-info-row-cont mb5'>
+            <span class="user-info-row-title">Nom</span>
+            <input autocomplete="off" (change)="onChangeUserInfo('nom', $event.target.value)"
+              [value]="userInfoPerso['name'] || ''" class="basic-input" />
+          </div>
+
 
           <div class='user-info-row-cont mb5'>
             <span class="user-info-row-title">Adresse mail</span>
             <input autocomplete="off" type="email" (change)="onChangeUserInfo('email', $event.target.value)" [value]="userInfoPerso['email'] || ''"
-              class="basic-input smallHeight " />
+              class="basic-input  " />
 
           </div>
 
           <div class='user-info-row-cont mb5'>
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"
-              class="basic-input smallHeight " />
+              class="basic-input  " />
               <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
                 href="#">Conditions générales d'utilisation</a></span>
           </div>
@@ -327,8 +357,8 @@
         </span>
 
 
-        <div class="neon-wizard-btn-container2 row flex0">
-          <button class='next-btn col-md-3 col-sm-12' type="button" (click)="goToEC();">Accéder à mon espace</button>
+        <div class="neon-wizard-btn-container row flex0">
+          <button class='next-btn-no-margin col-md-4 col-sm-12' type="button" (click)="goToEC();">Accéder à mon espace</button>
 
         </div>
 
@@ -344,7 +374,6 @@
         <span    class="neon-wizard-descr-merci">
           Merci pour votre demande. Vous recevrez un email demain avec le devis de votre néon.
         </span>
-
 
         <div class="neon-wizard-btn-container2 row flex0">
           <button class='next-btn col-md-3 col-sm-12' type="button" (click)="goToAcceuil();">Retourner à l'acceuil</button>

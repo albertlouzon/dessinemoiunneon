@@ -26,6 +26,7 @@ import {
 import { ModalComponent } from './modal/modal.component';
 import { ModalRecapComponent } from './modal-recap/modal-recap.component';
 import {AutowidthDirective} from './autowidth.directive';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {AutowidthDirective} from './autowidth.directive';
     LoginComponent,
     ModalComponent,
     ModalRecapComponent,
-    AutowidthDirective
+    AutowidthDirective,
+    ResetPasswordComponent
 
   ],
   imports: [

@@ -1,74 +1,96 @@
 <div class='login-container row'>
-    <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2"></div>
+  <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2"></div>
 
-    <div class="step-container-inner col-lg-4 col-md-8 col-sm-8 col-xs-10">
-            <h1 class='login-header row'>{{isSignIn ? 'Connectez-vous à votre espace' : 'Créez votre compte'}}</h1>
-            <div *ngIf="isSignIn" class="login-step-container">
+  <div class="step-container-inner col-lg-4 col-md-8 col-sm-8 col-xs-10">
+    <h1 class='login-header row'>{{isSignIn ? 'Connectez-vous à votre espace' : 'Créez votre compte'}}</h1>
+    <div *ngIf="isSignIn && !resetPass" class="login-step-container">
 
-                    <h2 class="login-title">Connectez vous à votre compte</h2>
+      <h2 class="login-title">Connectez vous à votre compte</h2>
 
-                    <div class='user-info-row-cont login-row'>
-                            <span class="user-info-row-title">Adresse mail</span>
-                              <input type='email' (change)="onChangeUserInfo('email', $event.target.value)" [value]="email"  class="basic-input "/>
-                
-                     </div>
+      <div class='user-info-row-cont login-row'>
+        <span class="user-info-row-title">Adresse mail</span>
+        <input type='email' (change)="onChangeUserInfo('email', $event.target.value)" [value]="email"
+          class="basic-input " />
 
-                     <div class='user-info-row-cont login-row'>
-                            <span class="user-info-row-title">Mot de passe</span>
-                        <form>
-                          <input type='password' (change)="onChangeUserInfo('password', $event.target.value)" [value]=""  class="basic-input "/>
-                        </form>
-                              <!-- <a style="text-align: center; text-decoration: underline; margin-top: 3%;" href="#">J'ai oublié mon mot de passe</a> -->
+      </div>
 
-                     </div>
-                        <div *ngIf="loginFailed" class="errorMessage">Oops! Le mot de passe est incorrect...</div>
-                            <button class="next-btn-no-margin login-btn " (click)="onLogin()" type="button" >Connexion</button> 
-                            <button  class="prev-btn login-btn" (click)="onSwitchLoginType()" type="button" >Retour</button>
-            </div>
+      <div class='user-info-row-cont login-row'>
+        <span class="user-info-row-title">Mot de passe</span>
+        <form>
+          <input type='password' (change)="onChangeUserInfo('password', $event.target.value)" [value]=""
+            class="basic-input " />
+        </form>
+          <a (click)="resetPass = true" style="text-align: center; text-decoration: underline; margin-top: 3%;" href="#">J'ai oublié mon mot de passe</a>
 
-
-
-            <div *ngIf="!isSignIn" class="login-step-container">
-                    <h2 class="login-title">Créez votre espace</h2>
-
-                     <div class='user-info-row-cont login-row'>
-                            <span class="user-info-row-title">Prénom</span>
-                              <input type='text' (change)="onChangeUserInfoSignUp('nickname', $event.target.value)" [value]="nickname || ''"  class="basic-input "/>
-                
-                     </div>
-                    <div class='user-info-row-cont login-row'>
-                            <span class="user-info-row-title">Nom</span>
-                              <input type='text' (change)="onChangeUserInfoSignUp('name', $event.target.value)" [value]="name || ''"  class="basic-input "/>
-                
-                     </div>
-                    <div class='user-info-row-cont login-row'>
-                            <span class="user-info-row-title">Adresse mail</span>
-                              <input type='email' (change)="onChangeUserInfoSignUp('email', $event.target.value)" [value]="email"  class="basic-input "/>
-                     </div>
-
-                     <div class='user-info-row-cont login-row'>
-                            <span class="user-info-row-title">Mot de passe</span>
-                       <form>
-                         <input type='password' (change)="onChangeUserInfoSignUp('password', $event.target.value)" [value]=""  class="basic-input "/>
-                       </form>
-                              <!-- <a style="text-align: center; text-decoration: underline; margin-top: 3%;" href="#">J'ai oublié mon mot de passe</a> -->
-                              <div *ngIf="loginFailed" class="errorMessage">{{signUpError}}</div>
-                     </div>
-                            <button class="next-btn-no-margin signup-btn " (click)="onSignUp()" type="button" >C'est parti</button> 
-                            <button  class="prev-btn signup-btn" (click)="onSwitchLoginType()" type="button" >J'ai déjà un compte</button>
-            </div>  
-</div>
-   
-    <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2"></div>
-
-</div>
-
-<div *ngIf="loading" class="blendContainer">
-        <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">
-                <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->
-                <circle stroke="#f4cc20" class="path" cx="25" cy="25" r="20" fill="none" stroke-width="8.3"></circle>
-              </svg>
+      </div>
+      <div *ngIf="loginFailed" class="errorMessage">Oops! Le mot de passe est incorrect...</div>
+      <button class="next-btn-no-margin login-btn " (click)="onLogin()" type="button">Connexion</button>
+      <button class="prev-btn login-btn" (click)="onSwitchLoginType()" type="button">Retour</button>
     </div>
 
 
 
+    <div *ngIf="!isSignIn && !resetPass" class="login-step-container">
+      <h2 class="login-title">Créez votre espace</h2>
+
+      <div class='user-info-row-cont login-row'>
+        <span class="user-info-row-title">Prénom</span>
+        <input type='text' (change)="onChangeUserInfoSignUp('nickname', $event.target.value)" [value]="nickname || ''"
+          class="basic-input " />
+
+      </div>
+      <div class='user-info-row-cont login-row'>
+        <span class="user-info-row-title">Nom</span>
+        <input type='text' (change)="onChangeUserInfoSignUp('name', $event.target.value)" [value]="name || ''"
+          class="basic-input " />
+
+      </div>
+      <div class='user-info-row-cont login-row'>
+        <span class="user-info-row-title">Adresse mail</span>
+        <input type='email' (change)="onChangeUserInfoSignUp('email', $event.target.value)" [value]="email"
+          class="basic-input " />
+      </div>
+
+      <div class='user-info-row-cont login-row'>
+        <span class="user-info-row-title">Mot de passe</span>
+        <form>
+          <input type='password' (change)="onChangeUserInfoSignUp('password', $event.target.value)" [value]=""
+            class="basic-input " />
+        </form>
+        <div *ngIf="loginFailed" class="errorMessage">{{signUpError}}</div>
+      </div>
+      <button class="next-btn-no-margin signup-btn " (click)="onSignUp()" type="button">C'est parti</button>
+      <button class="prev-btn signup-btn" (click)="onSwitchLoginType()" type="button">J'ai déjà un compte</button>
+    </div>
+
+
+
+
+    <div *ngIf="resetPass" class="login-step-container">
+      <h2 class="login-title">Veuillez saisir l'email associé à votre compte</h2>
+
+      <div class='user-info-row-cont login-row'>
+        <span class="user-info-row-title">Email</span>
+        <form>
+          <input type='email' (change)="onChangeResetEmail( $event.target.value)" [value]=""
+            class="basic-input " />
+        </form>
+      </div>
+
+      <button class="next-btn-no-margin signup-btn " (click)="sendResetEmail()" type="button">Réinitialisez le mot de passe</button>
+      <button class="prev-btn login-btn" (click)="fromResetToSignin()" type="button">Retour</button>
+
+    </div>
+
+  </div>
+
+  <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2"></div>
+
+</div>
+
+<div *ngIf="loading" class="blendContainer">
+  <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">
+    <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->
+    <circle stroke="#f4cc20" class="path" cx="25" cy="25" r="20" fill="none" stroke-width="8.3"></circle>
+  </svg>
+</div>

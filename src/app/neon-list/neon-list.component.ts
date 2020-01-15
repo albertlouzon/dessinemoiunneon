@@ -22,7 +22,7 @@ declare var elements: any;
 })
 export class NeonListComponent implements OnInit {
   @ViewChild('cardInfo', { static: false }) cardInfo: ElementRef;
-
+  resetPass = false;
   loading = false;
   constructor(private http: HttpClient, private cd: ChangeDetectorRef,
   ) { }

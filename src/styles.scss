@@ -118,6 +118,24 @@
   top: 3px;
 }
 
+.next-btn-alt {
+  border-radius: 25px;
+  color: black;
+  background-color: #f4cc20;
+  outline: none !important;
+  border: none;
+  font-family: Mukta-Bold, sans-serif;
+  cursor: pointer;
+  align-self: center;
+  margin-left: auto;
+  letter-spacing: 0.4px;
+  padding-left: 35px;
+  padding-right: 35px;
+  font-size: 17px !important;
+    transition: all 0.3s ease 0s;
+    height: 53px;
+  }
+
 .next-btn {
         // min-width: 140px;
         border-radius: 25px;
@@ -139,7 +157,7 @@
         font-size: 17px !important;
         border-radius: 45px;
         transition: all 0.3s ease 0s;
-        max-height: 85px;
+        height: 53px;
 }
 
 .next-btn-no-margin {
@@ -149,7 +167,7 @@
           background-color: #f4cc20;
           outline: none !important;
           border: none;
-          font-size: 13px;
+          font-size: 17px;
           font-family: Mukta-Bold, sans-serif;
           cursor: pointer;
           align-self: center;
@@ -160,7 +178,15 @@
   
           border-radius: 45px;
           transition: all 0.3s ease 0s;
-          max-height: 50px;
+          height: 53px;
+        }
+
+.big-btn-no-margin {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 17px !important;
+  max-height: 70px !important;
+  height: 53px;
 }
 
 .grey-btn {
@@ -181,12 +207,12 @@
   border: none;
   border-radius: 45px;
   transition: all 0.3s ease 0s;
-  max-height: 50px;
+  height: 53px;
 }
 .big-btn {
   padding-left: 35px;
   padding-right: 35px;
-  height: 85px;
+  height: 53px;
   font-size: 17px !important;
 }
 .mukta {
@@ -201,7 +227,7 @@
     padding: 9.5px;
     padding-left: 15px;
     padding-right: 15px;
-    max-height: 49px;
+    height: 52px;
 
     border: 2px solid  #f4cc20;
     font-size: 13px;

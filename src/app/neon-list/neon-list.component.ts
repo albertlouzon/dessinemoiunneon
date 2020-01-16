@@ -27,6 +27,18 @@ export class NeonListComponent implements OnInit {
   loading = false;
   constructor(private http: HttpClient, private cd: ChangeDetectorRef, private googleAnalyticsService: GoogleAnalyticsService
   ) { }
+
+  creditCardList = [
+    '../.././assets/neoncadenas.png',
+    '../.././assets/neonvisa.png',
+    '../.././assets/neonelectron.png',
+    '../.././assets/neonmaster.png',
+    '../.././assets/neonamericanexpress.png',
+    '../.././assets/neondiscover.png',
+    '../.././assets/neonjcb.png',
+    '../.././assets/neondinnersclub.png',
+
+  ]
   slides = [
     {
       url: '../.././assets/Billie-16.png',

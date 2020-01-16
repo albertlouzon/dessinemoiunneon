@@ -7,7 +7,7 @@
     <div class="col-lg-1 forBigPussy"></div>
     <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
       <div class='ec-list-title row'>
-        <h2 class="ec-title col-lg-5 col-md-12">Tous vos néons</h2>
+        <h1 class="ec-title col-lg-5 col-md-12">Tous vos néons</h1>
         <button class="prev-btn col-lg-3 col-md-12" (click)="goToForm();">Créer un nouveau néon</button>
         <div class='forBigPussy col-1'></div>
         <button  class="grey-btn col-lg-3 col-sm-12"  style="display: flex; align-items: center; justify-content: space-around" (click)="logout()">
@@ -21,17 +21,19 @@
 
           <thead>
 
-            <tr>
+            <tr >
               <th class="list-dessins-th">Vos dessins techniques</th>
               <th class="list-dessins-th">Etat</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)" [ngClass]="i === neonList.length - 1 ? 'no-border-bot' : ''"  >
-              <td class="pb3 pt3" data-column="Texte">{{command.text | titlecase}}</td>
-              <td data-column="">{{command.state | titlecase}}</td>
-            </tr>
-          </tbody>
+          </thead>  
+
+            <tbody>
+              <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)" [ngClass]="i === neonList.length - 1 ? 'no-border-bot' : ''"  >
+                <td class="pb3 pt3" data-column="Texte">{{command.text | titlecase}}</td>
+                <td data-column="">{{command.state | titlecase}}</td>
+              </tr>
+            </tbody>
+         
         </table>
       </div>
     </div>
@@ -42,13 +44,15 @@
 
 
 <div *ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" class='ec-bigbox-detail'>
-  <button style="margin-bottom: 1.5%;" class="prev-btn mt3" (click)="neonSelected = null">Précédent</button>
 
-  <h1 style="margin-bottom: 3%;">Néon LED "{{neonSelected?.text}}"</h1>
+  <div class="neonDetailTitleCont ">
+    <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn mt3" (click)="neonSelected = null"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
+    <h1 style="margin-top: 17px;">Néon LED "{{neonSelected?.text}}"</h1>
+  </div>
 
   <div class="ec-top-row-detail row">
     <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
-      <div *ngIf="neonSelected.state !== 'created'" [style.backgroundImage]="'url('+ neonSelected.filePath +')'"  
+      <div *ngIf="neonSelected.state !== 'created'"  [style.backgroundImage]="'url('+ neonSelected.filePath +')'"  
         class="neon-canvas"></div>
       <div *ngIf="neonSelected.state === 'created'" class="neon-canvas"   [style.background-color]="neonSelected.state === 'created' ? '#000b31' : 'white'">
             
@@ -139,7 +143,7 @@
             <td style="font-family: Mukta-Bold;" data-column="">Couleurs</td>
             <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.colors | titlecase}}</td>
           </tr>
-          <tr>
+          <tr  [ngClass]="neonSelected.state === 'created' ? 'no-border-bot' : ''"  >
             <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
             <td style="font-family: Mukta-Regular; " data-column="Etat">{{neonSelected?.height}}cm</td>
           </tr>
@@ -164,7 +168,7 @@
               <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
             </tr>
 
-            <tr *ngIf="neonSelected.state !== 'created'  && neonSelected.state !== 'payé'">
+            <tr style="border-bottom: none !important" *ngIf="neonSelected.state !== 'created'  && neonSelected.state !== 'payé'">
                 <td  >
                   <div class="checkboxCont">
                     <input  (click)="onCheckResEau();" id="box2" type="checkbox" />
@@ -185,7 +189,8 @@
         </tbody>
       </table>
 
-      <div    class="neon-tarif-cont">
+    <div class="neon-tarif-bigbox">
+      <div class="neon-tarif-cont">
         <div class="neon-tarif">
           <span *ngIf="neonSelected.state !== 'created' || neonSelected.state === 'payé'" class="neon-tarif-price">Tarif: {{neonSelected?.price}} €</span>
           <span *ngIf="neonSelected.state === 'created'" style="font-size: 17px;" class="neon-tarif-price">Tarif en cours de calcul</span>
@@ -200,6 +205,9 @@
       </div>
     </div>
 
+
+    </div>
+
   </div>
   
 
@@ -209,12 +217,17 @@
 
 
 <div class="ec-bigbox" *ngIf="commandMode && neonSelected && !payMode">
-  <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="previous();">Précédent</button>
 
   <div class="row commandMainCont">
     <div class="col-lg-6 col-sm-12 command-form-cont">
-      <h2>Informations de livraison</h2>
+      <div class="commandeTitleCont">
+        <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn mt3" (click)="goToNeonDetail(neonSelected);"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
+        <h2>Informations de livraison</h2>
+      </div>
+
       <div class="command-form-card row">
+
+
 
         <div class="row livraisonRow">
           <div class='user-info-row-cont nestedInput col-6'>
@@ -275,7 +288,7 @@
 
         </div>
         <span *ngIf="commandFailed" class='errorMessage'>{{errorMessage}}</span>
-        <button (click)="command();"  style="align-self: center;margin-top: 60px;" class="next-btn-no-margin mukta big-btn">Passer au paiement</button>
+        <button (click)="command();"  style="align-self: center;margin-top: 60px;" class="next-btn-no-margin muktaBold big-btn">Passer au paiement</button>
         <!-- <button *ngIf="neonSelected.state === 'commandé'"  (click)="openCommand();" style="margin-right: 5%;" class="next-btn">Payer</button> -->
 
       </div>
@@ -384,11 +397,15 @@
         <form #checkout="ngForm" (ngSubmit)="onSubmitPay()" class="checkout">
           <!-- <div class="form-row"> -->
           <div id="card-info livraisonRow" #cardInfo></div>
+            <div class="creditCardsContainer" >
+                <div *ngFor="let card of creditCardList; let i = index"  [style.backgroundImage]="'url('+ card +')'"  class="creditCard" >
 
+                </div>
+            </div>
           <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
           <!-- </div> -->
 
-          <button (click)="onClickValiderEtPayer()" class='next-btn-no-margin mt5 big-btn mukta' type="submit">Valider et payer</button>
+          <button (click)="onClickValiderEtPayer()" class='next-btn-no-margin mt5 big-btn muktaBold' type="submit">Valider et payer</button>
         </form>
 
 
@@ -593,83 +610,7 @@
 
 
       </div>
-    </div>
-
-    
-<div class="ec-bottom-row row pd7"*ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" >
-  <h1 class="ec-title">Nous avons dessiné leur néon</h1>
-  <div class="cards-list" style="  width: 97.2%;">
-    <div class="little-card  card-tarace 1">
-      <div class="card_content">
-        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
-        <span class="ec-card-title">
-          Mélanie K.
-        </span>
-        <span class="ec-card-descr">
-         "J'ai bien reçu mon néon dans les délais, il est accroché dans mon salon !!! Ambiance au top !"
-        </span>
-
-      </div>
-    </div>
-
-    <div class="little-card  card-tarace 2">
-      <!-- <div class="card_image">
-  
-         </div> -->
-      <div class="card_content">
-        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
-        <span class="ec-card-title">
-          Georges S.
-        </span>
-        <span class="ec-card-descr">
-         "Service au top ! J'ai été super bien conseillé par l'équipe pour la création de mon néon. Mon salon d'esthétique vit sa deuxième jeunesse. Merci !"
-        </span>
-
-      </div>
-    </div>
-
-
-    <div class="little-card  card-tarace 3" >
-      <!-- <div class="card_image">
-            </div> -->
-      <div class="card_content">
-        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
-
-        <span class="ec-card-title">
-          Matthieu C.
-
-        </span>
-        <span class="ec-card-descr">
-          En tant que chef de projet évènementiel, j'ai toujours besoin de nouvelles idées mais surtout de réactivité de la part de mes prestataires. Mission accomplie !
-        </span>
-
-      </div>
-    </div>
-
-
-    <div class="little-card  card-tarace 4">
-      <!-- <div class="card_image">
-     
-            </div> -->
-      <div class="card_content">
-        <div [style.backgroundImage]="'url('+ '../.././assets/Cinq-etoile-15.png' +')'" class="card-logo-note"></div>
-
-        <span style="font-size: 1.5em;" class="ec-card-title">
-          Delphine M.
-        </span>
-        <span class="ec-card-descr">
-         Je suis trop contente de mon néon !! Merci, mes invités n'ont plus d'yeux que pour lui.    
-        </span>
-
-      </div>
-    </div>
-
-
-
-
-  </div>
-</div>
-
+    </div>  
 
 
 

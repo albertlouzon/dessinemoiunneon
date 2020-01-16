@@ -106,8 +106,8 @@ export class LoginComponent implements OnInit {
               // alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
               setTimeout(() => {
                 this.saveToStorage();
-              this.loading = false;
-              currentView.caca = 'client'
+                this.loading = false;
+                currentView.caca = 'client'
               }, 2000);
             }, err => {
               if(err.status === 201)  {

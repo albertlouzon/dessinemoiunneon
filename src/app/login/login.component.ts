@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { currentView } from './../app.component';
 import { MatSnackBar } from '@angular/material';
+import { GoogleAnalyticsService } from '../google-analytics-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar, private googleAnalyticsService: GoogleAnalyticsService) { }
   isSignIn = false;
   loginFailed = false;
   email = '';
@@ -85,7 +86,9 @@ export class LoginComponent implements OnInit {
 
 
   onSignUp(){
+  
     if(this.email.trim() !== '' && this.password.trim() !== '') {
+      this.googleAnalyticsService.eventEmitter("login", "signUp", this.resetEmail, 1);
       this.loginFailed = false;
       this.loading = true;
       this.getUser().subscribe((allUsers: Array<any>) => {
@@ -176,13 +179,14 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       this.getUser().subscribe((allUsers: Array<any>) => {
         this.loading = false;
+        this.googleAnalyticsService.eventEmitter("reset password", "", this.resetEmail, 1);
 
         if(allUsers.find(x => x.email === this.resetEmail)) {
           this.http.get('https://neon-server.herokuapp.com/resetPassword/' + allUsers.find(x => x.email === this.resetEmail)['id']).subscribe((res) => {
-            console.log('res from reset password. Check box mail')
+            console.log('res from reset password. Check box mail');
+
           })
         } else {
-          alert('nope')
           this.openSnackbar('Cet email ne semble pas être dans notre base de donnée...');
           this.loading = false;
         }

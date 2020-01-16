@@ -25,6 +25,7 @@ import {MatDialog} from '@angular/material';
 import {ModalRecapComponent} from '../modal-recap/modal-recap.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {WizardComponent} from 'angular-archwizard';
+import { GoogleAnalyticsService } from '../google-analytics-service.service';
 
 export enum Direction {
   Next,
@@ -61,7 +62,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   set activeSlides(activeSlides: ActiveSlides) {
     this._activeSlides = activeSlides;
   }
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private _snackBar: MatSnackBar,
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private _snackBar: MatSnackBar, private googleAnalyticsService: GoogleAnalyticsService,
      private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document, public dialog: MatDialog) { }
   formatSizes: Array<{ size: string, width: number, url: string }> = [{
     size: 'S', width: 20, url: '../.././assets/Fichier-S.png'
@@ -246,6 +247,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
   goToAcceuil() {
     window.top.location.href = 'https://www.dessinemoiunneon.fr';
+    this.googleAnalyticsService.eventEmitter("redirect", 'acceuil' , '', 0);
 
   }
   signuptrue() {
@@ -600,10 +602,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       if (choice === 'text') {
         setTimeout(() => {
           this.mainInp.nativeElement.focus();
-
         }, 200);
-
+        
       }
+      this.googleAnalyticsService.eventEmitter("form", "text/image", choice, 1);
       this.mainChoice = choice;
       this.userChoices[step] = choice;
     }
@@ -611,9 +613,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     if (step === 3) {
       if (choice === 'erase') {
         this.userChoices[step] = null;
+        this.googleAnalyticsService.eventEmitter("form", "précédent", 'typo', 1);
       } else {
         this.userChoices[step] = choice;
-
+        this.googleAnalyticsService.eventEmitter("form", "typo", choice, 3);
       }
     }
     if (step === 4) {
@@ -624,6 +627,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
         this.imageSupportSelected = 'détouré';
 
       }
+      this.googleAnalyticsService.eventEmitter("form", 'format', choice, 1);
+
 
       if (localStorage.getItem('email')) {
 
@@ -657,18 +662,23 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
         this.userInfoPerso = {};
       }
       this.projectType = choice;
-
-
+      this.googleAnalyticsService.eventEmitter("form", 'type', choice, 1);
     }
-
     console.log('step ', step, ' completed. The user chose ', choice, '... data to save: ', this.projectType);
-
   }
 
   onChangeUserInfo(target: string, value: string) {
     if (value.trim() !== '') {
       this.userInfoPerso[target] = value;
     }
+  }
+
+  onPressPrevBtn(stepNumber) {
+    this.googleAnalyticsService.eventEmitter("form", 'précédent' , stepNumber, 0);
+  }
+
+  onPressNextBtn(eventName, choice) {
+    this.googleAnalyticsService.eventEmitter("form",eventName , choice, 4);
   }
 
   signUpObs() {

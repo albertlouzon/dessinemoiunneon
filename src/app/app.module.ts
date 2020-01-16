@@ -27,6 +27,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ModalRecapComponent } from './modal-recap/modal-recap.component';
 import {AutowidthDirective} from './autowidth.directive';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { GoogleAnalyticsService } from './google-analytics-service.service';
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     MatSnackBarModule
   ],
   entryComponents: [NeonFormComponent, ModalComponent, ModalRecapComponent],
-  providers: [ArchwizardModule, ExcelService],
+  providers: [ArchwizardModule, ExcelService, GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

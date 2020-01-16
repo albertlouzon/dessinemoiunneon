@@ -11,13 +11,14 @@
 
 .ec-bigbox-detail {
   padding-left: 7%;
-  max-height: 700px;  // padding-right: 7%;
+  // padding-right: 7%;
 }
 .neon-detail-config {
   padding: 0 !important;
+  position: relative;
 }
 .ec-top-row-detail {
-  height: 45%;
+  height: 600px;
 }
 .list-dessins-th {
   font-family: Mukta-Bold, sans-serif !important;
@@ -203,6 +204,7 @@ h2, h1 {
     height: 100%;
   //   width: 80%;
     padding: 1em;
+    padding-top: 2em;
 } 
 ::-webkit-scrollbar {
   width: 0px;  /* Remove scrollbar space */
@@ -335,8 +337,7 @@ td:before {
 
 .card-logo {
   width: inherit;
-  height: 75px;
-  margin-bottom: 5%;
+  height: 65px;   margin-bottom: 5%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -671,7 +672,7 @@ margin-bottom: 15px;
 }
 
 .bar-btn-cont {
-    flex: 3;
+    flex: 5;
     display: flex;
     justify-content: flex-end;
     margin-right: 15px;
@@ -692,10 +693,13 @@ margin-bottom: 15px;
   color: #000b31;
   font-family: Mukta-Regular, sans-serif;
 }
+.neon-bar-item-cont span {
+  font-size: 11px;
+}
 
 .neon-bar-item {
     font-family: Mukta-Regular, sans-serif;
-    font-size: 11px;
+    font-size: 9px;
     flex: 1;
     min-height: 20px;
     height: 80%;
@@ -723,9 +727,9 @@ margin-bottom: 15px;
 }
 
 .ec-bigbox-detail th, .ec-bigbox-detail td {
-  padding-bottom: 4% ;
-  padding-top: 4%;
-  padding-left: 5%;
+  padding-bottom: 3% ;
+  padding-top: 3%;
+  padding-left: 5%; 
   padding-right: 5%;  
   font-size: 17px;
 }
@@ -742,8 +746,16 @@ margin-bottom: 15px;
   border-bottom: 1px solid #D5D5D5;
   border-radius: 15px;
   padding-top: 5%;
+
   // margin-top: 5%;
-  margin-left: -5%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+
+  bottom: 5%;
+  border: 1px solid lightgray;
   padding-bottom: 5%;
   display: flex;
   justify-content: space-between;

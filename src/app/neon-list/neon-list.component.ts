@@ -13,6 +13,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { currentView } from './../app.component';
 import { saveAs } from 'file-saver';
+import { GoogleAnalyticsService } from '../google-analytics-service.service';
 declare var stripe: any;
 declare var elements: any;
 @Component({
@@ -24,7 +25,7 @@ export class NeonListComponent implements OnInit {
   @ViewChild('cardInfo', { static: false }) cardInfo: ElementRef;
   resetPass = false;
   loading = false;
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef,
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private googleAnalyticsService: GoogleAnalyticsService
   ) { }
   slides = [
     {
@@ -179,6 +180,7 @@ export class NeonListComponent implements OnInit {
       this.user['changeCommand']['text'] = 'customEmail';
       this.user['changeCommand']['newState'] = this.customMail;
       this.loading = true;
+      this.googleAnalyticsService.eventEmitter("Demande de modification", this.customMail, this.user['email'], 1);
       this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
         this.fetchCommands();
         this.neonSelected = null;
@@ -281,9 +283,15 @@ export class NeonListComponent implements OnInit {
     }
 
   }
+
+  downloadDT() {
+    this.googleAnalyticsService.eventEmitter("téléchargement DT", this.neonSelected['text'], this.user['email'], 1);
+  }
+
   logout() {
     localStorage.clear();
     currentView.caca = 'login';
+    this.googleAnalyticsService.eventEmitter("déconnexion", "", this.user['email'], 1);
   }
   resetView() {
     this.payMode = false;
@@ -294,6 +302,8 @@ export class NeonListComponent implements OnInit {
   goToForm() {
     // window.location.replace("https://dessinemoiunneon.fr/neon-sur-mesure-personnalise");
     window.top.location.href = 'https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/';
+    this.googleAnalyticsService.eventEmitter("redirect", "Créer un nouveau néon", this.user['email'], 1);
+
 
   }
 
@@ -312,7 +322,7 @@ export class NeonListComponent implements OnInit {
     if (neonPayload) {
       this.neonSelected = neonPayload;
     }
-
+    this.googleAnalyticsService.eventEmitter("Néon page détaillé", neonPayload['text'], this.user['email'], 1);
   }
   onChangeCommandInfo(field, value: string) {
     this.commandInfos[field] = value;
@@ -327,6 +337,7 @@ export class NeonListComponent implements OnInit {
 
   previous() {
     this.commandMode = false;
+    this.googleAnalyticsService.eventEmitter("précédent", 'Go from Commande to Néon détaillé', this.user['email'], 1);
   }
 
   changeCommandToPaid(token) {
@@ -393,9 +404,15 @@ export class NeonListComponent implements OnInit {
       this.commandFailed = false;
       // this.commandInfos = { nom: '', prénom: '',  adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
       this.commandMode = !this.commandMode;
+      this.googleAnalyticsService.eventEmitter("commandButton", "commander", this.user['email'], 1);
+
 
     }
 
+  }
+
+  onClickValiderEtPayer() {
+    this.googleAnalyticsService.eventEmitter("Paiement button", "payer", this.user['email'], 1);
   }
 
   command() {
@@ -403,12 +420,15 @@ export class NeonListComponent implements OnInit {
       if (this.commandInfos[field].trim() === '') {
         this.commandFailed = true;
         this.errorMessage = 'Oops ! Le champ ' + field.toUpperCase() + ' est manquant...';
+        this.googleAnalyticsService.eventEmitter("paymentButton", "formulaire mal rempli", this.user['email'], 2);
         return;
       }
     }
     console.log('the command is valid :', this.commandInfos);
     this.commandFailed = false;
     this.payMode = true;
+    this.googleAnalyticsService.eventEmitter("paymentButton", "passer au paiement", this.user['email'], 2);
+
     this.user['commands'].find(c => c.id === this.neonSelected.id)['commandInfo'] = this.commandInfos;
     if (this.card) {
       this.card.destroy();

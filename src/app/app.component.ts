@@ -1,7 +1,9 @@
 import { Component, Injector } from '@angular/core';
 import  {createCustomElement, NgElement, WithProperties} from '@angular/elements';
 import { NeonFormComponent } from './neon-form/neon-form.component';
-export let currentView =  {caca :'form', signUp: false}
+export let currentView =  {caca :'client', signUp: false};
+declare let ga: Function;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +11,9 @@ export let currentView =  {caca :'form', signUp: false}
 })
 export class AppComponent {
   constructor(injector: Injector) {
+    ga('set', 'page', 'Un yencli s est connecté dans l espace client');
+    ga('send', 'pageview');
+  
       // const FormElement = createCustomElement(NeonFormComponent,  {injector});
       // customElements.define('suce-mes-boules', FormElement);
 

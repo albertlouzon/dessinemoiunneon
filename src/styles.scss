@@ -113,6 +113,10 @@
 
 
 }
+
+.no-border-bot {
+  border-bottom: none !important;
+}
 .newPrev-btn > mat-icon {
   position: relative;
   top: 3px;
@@ -193,7 +197,7 @@
   border-radius: 25px;
   color: rgba(0, 0, 0, 0.6);
   // opacity: .7;;
-  background-color: #b1b1b1;
+  // background-color: #b1b1b1;
   outline: none !important;
   border: none;
   font-size: 13px;

@@ -17,7 +17,7 @@
         <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
         </span>
         <div class="neon-wizard-btn-container  row flex3 ">  
-          <button type="button" class="form-btn col-md-4 col-sm-12" (click)="onCompleteStep(0, 'text', null)"
+          <button type="button" class="form-btn col-md-4 col-sm-12" (click)="onCompleteStep(0, 'text', null)" 
             awNextStep>TEXTE</button>
           <button type="button" class="form-btn col-md-4 col-sm-12" (click)="onCompleteStep(0, 'image', null)"
             awNextStep>LOGO/IMAGE</button>
@@ -62,8 +62,8 @@
         <!-- ||  -->
         <div class="neon-wizard-btn-container2 row">
 
-          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
-          <button [ngClass]="textInput.trim() === ''? 'next-btn col-md-3 col-sm-10 disabled' : 'next-btn col-md-3 col-sm-10'" type="button" (click)="onCompleteStep(3, 'typo', null)"
+          <button  class="newPrev-btn " type="button"  (click)="onPressPrevBtn('texte/image')" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+          <button [ngClass]="textInput.trim() === ''? 'next-btn col-md-3 col-sm-10 disabled' : 'next-btn col-md-3 col-sm-10'" type="button" 
             [disabled]="textInput.trim() === '' " awNextStep>Suivant</button>
         </div>
 
@@ -138,7 +138,7 @@
 
 
         <div class="neon-wizard-btn-container2 row flex0">
-          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+          <button (click)= "onPressPrevBtn('couleur')" class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button [ngClass]="!selectedColor? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button" [disabled]="!selectedColor" awNextStep>Suivant</button>
 
         </div>
@@ -153,7 +153,7 @@
         </span>
         <div  class=" row flex3 formatContainer">
           <div   *ngFor="let format of formatSizes;  let i = index" class="col-md-3 midwidthsm" style="display: flex; flex-direction: column">
-            <div  [ngClass]=" selectedFormatSize=== i? 'size ' : 'size'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="onSelectFormatSize(format, i  )">
+            <div  [ngClass]=" selectedFormatSize=== i? 'size ' : 'size'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="onSelectFormatSize(format, i)">
           </div>
 
             <div  class='sizeName'>
@@ -163,8 +163,9 @@
 
         </div>
         <div class="neon-wizard-btn-container2 mt5 row flex1">
-          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
-          <button  [ngClass]="!selectedFormatSize? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  type="button" [disabled]="selectedFormatSize === null"  awNextStep>Suivant</button>
+          <button (click)= "onPressPrevBtn('size')" class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+          <button  [ngClass]="!selectedFormatSize? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'" (click)="onPressNextBtn('size', selectedFormatSize)"
+            type="button" [disabled]="selectedFormatSize === null"  awNextStep>Suivant</button>
         </div>  
 
       </aw-wizard-step>
@@ -187,7 +188,7 @@
           
         </div>
         <div class="neon-wizard-btn-container2 mt5 row">
-          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+          <button  class="newPrev-btn " type="button" (click)="onPressPrevBtn('support' )"  awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button [ngClass]="!imageSupportSelected? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'" type="button" [disabled]="!imageSupportSelected" (click)="onCompleteStep(4, imageSupportSelected, null)"  awNextStep>Suivant</button>
 
         </div>
@@ -208,7 +209,7 @@
         </div>
 
         <div class="neon-wizard-btn-container2 row">
-          <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+          <button  class="newPrev-btn " type="button" (click)="onPressPrevBtn('type' )" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
           <button  [ngClass]="!projectType? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  [disabled]="!projectType"  class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
       </aw-wizard-step>
@@ -271,11 +272,11 @@
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)"
               [value]="userInfoPerso['password'] || ''" class="basic-input  mb3 " />
-            <span class='user-info-row-title textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
-                href="#">Conditions générales d'utilisation</a></span>
+            <span class='user-info-row-title textcenter'>En cliquant sur "Envoyer" vous acceptez les <a  target="_blank"
+                href="https://dessinemoiunneon.fr/politique-de-confidentialite-2/">Conditions générales d'utilisation</a></span>
           </div>
           <div class="neon-wizard-btn-container2 row">
-            <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+            <button   class="newPrev-btn " type="button" (click)="onPressPrevBtn('création de compte' )" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
             <button class="next-btn  col-md-3 col-sm-12" (click)="openRecap()"  type="button" >Envoyer</button>
 
           </div>
@@ -329,13 +330,13 @@
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"
               class="basic-input  " />
-              <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a
-                href="#">Conditions générales d'utilisation</a></span>
+              <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a  target="_blank"
+                href="https://dessinemoiunneon.fr/politique-de-confidentialite-2/">Conditions générales d'utilisation</a></span>
           </div>
 
 
           <div class="neon-wizard-btn-container2 row">
-            <button  class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
+            <button  class="newPrev-btn " type="button" (click)="onPressPrevBtn('création de compte' )"  awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
             <button class="next-btn col-md-3 col-sm-12" type="button" (click)="openRecap()" >Envoyer</button>
 
           </div>

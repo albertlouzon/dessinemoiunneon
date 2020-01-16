@@ -26,7 +26,7 @@
 
 .Tommy span{
   position: absolute;
-    top: 5%;
+    top: -5px;
 }
 .Freddy {
   font-family: Freddy, sans-serif !important;
@@ -264,6 +264,7 @@ button:disabled {
   }
   .orange {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffa42c, 0 0 35px #ffa42c, 0 0 40px #ffa42c, 0 0 50px #ffa42c, 0 0 75px #ffa42c;
+    // text-shadow: 0 0 5px #fff, 0 0 5px rgba(158, 195, 198 , 0.14);
 
   }
   .jaune {
@@ -275,7 +276,7 @@ button:disabled {
 
   }
   .rose {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff73ff, 0 0 35px #ff73ff, 0 0 40px #ff73ff, 0 0 50px #ff73ff, 0 0 75px #ff73ff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff73ff, 0 0 35px #ff73ff, 0 0 40px #ff73ff, 0 0 50px #ff73ff, 0 0 75px #ff73ff;
 
   }
   .fuschia {
@@ -680,7 +681,7 @@ background-blend-mode: multiply;
 .basic-input {
   background-color: #F4F4F4;
   color:  #000B31;
-  height: 35px;
+  height: 40px;
   border-radius: 25px;
   padding-left: 15px;
   padding-right: 15px;

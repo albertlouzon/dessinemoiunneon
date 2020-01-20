@@ -1182,11 +1182,17 @@ a {
   //.steps-indicator {
   //
   //}
+
+
+
+  .neon-wizard-container {
+    margin-left: -3%;
+  }
   .newPrev-btn {
     margin: auto;
     position: absolute;
     top: 1em;
-    left: 1em;    
+    left: 1em;
   }
   .midwidthsm {
     width: 50% !important;
@@ -1202,6 +1208,8 @@ a {
 }
 .neon-wizard-header, h4 {
   font-size: 25px;
+  margin-top: 60px;
+
 }
 .caca {
   margin-bottom: 15px;
@@ -1237,7 +1245,7 @@ margin-bottom: 15px;
 }
 
 .colorCont {
-  height: 500px;
+  // height: 500px;
 }
 
 .colorIcon {  

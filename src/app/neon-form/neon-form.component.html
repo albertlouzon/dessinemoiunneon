@@ -156,7 +156,7 @@
             <div  [ngClass]=" selectedFormatSize=== i? 'size ' : 'size'"  [style.backgroundImage]="'url('+ format.url +')'"  (click)="onSelectFormatSize(format, i)">
           </div>
 
-            <div  class='sizeName'>
+            <div class='sizeName'>
               {{format?.width}} cm
             </div>
           </div>
@@ -164,7 +164,7 @@
         </div>
         <div class="neon-wizard-btn-container2 mt5 row flex1">
           <button (click)= "onPressPrevBtn('size')" class="newPrev-btn " type="button" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
-          <button  [ngClass]="!selectedFormatSize? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'" (click)="onPressNextBtn('size', selectedFormatSize)"
+          <button  [ngClass]="selectedFormatSize === null? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'" (click)="onPressNextBtn('size', selectedFormatSize)"
             type="button" [disabled]="selectedFormatSize === null"  awNextStep>Suivant</button>
         </div>  
 

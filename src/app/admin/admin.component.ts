@@ -164,6 +164,45 @@ deleteCommand(command) {
 
 }
 
+updateField(currentNeon, type){
+  console.log('update field requested, ', currentNeon, type);
+  const val = prompt('Entrer nouvelle valeur: ');
+  const upd = confirm('Confirmer vouloir changer par  ' + val);
+  if(upd) {
+    if (this.neonSelected['userId']) {
+      if( this.neonSelected['userFull']['commands'].find(c => c.id === this.neonSelected['id'])[type]) {
+        console.log('found : ',  this.neonSelected['userFull']['commands'].find(c => c.id === this.neonSelected['id'])[type])
+        // this.neonSelected['userFull']['commands'] =  this.neonSelected['userFull']['commands'].find(c => c.id === this.neonSelected['id'])[type] = val;
+        
+        this.neonSelected['userFull']['commands'].find(c => c.id === this.neonSelected['id'])[type] = val;
+
+      } else {
+        console.log('unfound command')
+      }
+
+      this.http.put('https://neon-server.herokuapp.com/users/' + this.neonSelected['userId'],  this.neonSelected['userFull']).subscribe((res) => {
+        // this.fetchCommands();
+        alert('Commande modifiée');
+        setTimeout(() => {
+          this.fetchCommands();
+        }, 1000);
+
+      }, err => {
+        if (err.status === 200) {
+          alert('Commande modifiée');
+          setTimeout(() => {
+            this.fetchCommands();
+          }, 500);
+          // this.fetchCommands();
+        }
+      });
+    } else {
+      alert('cant modifier');
+    }
+  }
+  
+}
+
 changePrice(price) {
   if ( price > 0) {
     this.commandPrice = price;
@@ -185,6 +224,7 @@ changePrice(price) {
       this.loading = false;
       if (res) {
         res.forEach((user) => {
+          console.log(user)
           if (user['commands'].length > 0) {
            user['commands'].forEach((command) => {
              this.neonList.push({email: user['email'], type: user['type'], text: command['text'], state: command['state'], price: command['price'], userId: user['id'], id: command['id'],
@@ -217,6 +257,10 @@ changePrice(price) {
 
   getConfig() {
     return this.http.get('https://neon-server.herokuapp.com/users');
+  }
+
+  getUserById(id) {
+    return this.http.get('https://neon-server.herokuapp.com/users/' + id);
   }
 
 

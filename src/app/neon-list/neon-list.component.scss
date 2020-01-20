@@ -19,8 +19,7 @@
   position: relative;
 }
 .ec-top-row-detail {
-  height: 600px;
-}
+  min-height: 600px;}
 .list-dessins-th {
   font-family: Mukta-Bold, sans-serif !important;
   font-size: 17px !important;
@@ -311,6 +310,11 @@ only screen and (max-width: 760px) {
 table { 
     width: 100%; 
 }
+
+.modif-btn {
+  margin-bottom: 0 !important;
+}
+
 
 /* Force table to not be like tables anymore */
 table, thead, tbody, th, td, tr { 
@@ -1021,6 +1025,9 @@ margin-bottom: 15px;
 left: 0;
  }
 
+ .neonDetailTitleCont {
+    width: auto;
+ }
 
 .card .card_image {
   width: 30%;
@@ -1078,7 +1085,7 @@ left: 0;
 
     font-size: 11px;
   }
-  .prev-btn {
+  .prev-btn, .grey-btn  {
     font-size: 11px;
   
   }
@@ -1096,10 +1103,15 @@ left: 0;
     margin-top: 10px;
     font-size: 11px;
   }
+  .grey-btn, .next-btn, .newPrev-btn, .prev-btn {
+    height: auto !important;
+  }
+  .newPrev-btn {
+    width: auto !important;
+  }
   .prev-btn {
     margin-bottom: 10px;
     font-size: 11px;
-  
   }
   .ec-petit-prince{
     display: none;
@@ -1289,21 +1301,24 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; color: #F4CC2
 }
 
 .creditCard {
-  height: 50px;
+     height: 50px;
     width: 50px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: contain; 
 }
 
 .neonDetailTitleCont {
   display: flex;
-  justify-content: space-between;
-  width: 33%;
+  justify-content: flex-start;
   margin-top: 3%;
   margin-bottom: 3%;
 }
 
+
+.neonDetailTitleCont h1 {
+  margin-left: 15px;
+}
 
 .commandeTitleCont {
   display: flex;

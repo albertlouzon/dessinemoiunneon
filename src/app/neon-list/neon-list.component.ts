@@ -203,7 +203,6 @@ export class NeonListComponent implements OnInit {
           this.fetchCommands();
           this.neonSelected = null;
           location.reload();
-
         }
       });
     }
@@ -313,7 +312,7 @@ export class NeonListComponent implements OnInit {
   }
   goToForm() {
     // window.location.replace("https://dessinemoiunneon.fr/neon-sur-mesure-personnalise");
-    window.top.location.href = 'https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/';
+      window.top.location.href = 'https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/';
     this.googleAnalyticsService.eventEmitter("redirect", "Créer un nouveau néon", this.user['email'], 1);
 
 
@@ -374,8 +373,6 @@ export class NeonListComponent implements OnInit {
         this.showLastPage = true;
         this.commandMode = false;
         this.payMode = false;
-
-
         // this.fetchCommands();
       }
     });

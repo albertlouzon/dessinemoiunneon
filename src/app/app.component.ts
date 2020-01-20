@@ -13,6 +13,7 @@ export class AppComponent {
   constructor(injector: Injector) {
     ga('set', 'page', 'Un yencli s est connecté dans l espace client');
     ga('send', 'pageview');
+
   
       // const FormElement = createCustomElement(NeonFormComponent,  {injector});
       // customElements.define('suce-mes-boules', FormElement);

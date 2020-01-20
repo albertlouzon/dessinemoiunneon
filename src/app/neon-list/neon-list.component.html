@@ -1,14 +1,14 @@
 <div *ngIf="!neonSelected && !commandMode" class="ec-top-layer"></div>
 
 
-<div *ngIf="!neonSelected && !commandMode" style="height: 500px;" class="ec-bigbox">
+<div *ngIf="!neonSelected && !commandMode" style="min-height: 500px;" class="ec-bigbox">
   <div class="row ec-top-row">
     <div class="col-lg-4  ec-petit-prince"></div>
     <div class="col-lg-1 forBigPussy"></div>
     <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
       <div class='ec-list-title row'>
-        <h1 class="ec-title col-lg-5 col-md-12">Tous vos néons</h1>
-        <button class="prev-btn col-lg-3 col-md-12" (click)="goToForm();">Créer un nouveau néon</button>
+        <h1 class="ec-title col-lg-5 col-md-12">Tous vos néons</h1> 
+        <button class="prev-btn col-lg-3 col-md-12" (click)="goToForm();">Nouveau néon</button>
         <div class='forBigPussy col-1'></div>
         <button  class="grey-btn col-lg-3 col-sm-12"  style="display: flex; align-items: center; justify-content: space-around" (click)="logout()">
           <mat-icon mat-list-icon>exit_to_app</mat-icon>
@@ -29,7 +29,7 @@
 
             <tbody>
               <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)" [ngClass]="i === neonList.length - 1 ? 'no-border-bot' : ''"  >
-                <td class="pb3 pt3" data-column="Texte">{{command.text | titlecase}}</td>
+                <td class="pb3 pt3" data-column="Titre du néon">{{command.text | titlecase}}</td>
                 <td data-column="">{{command.state | titlecase}}</td>
               </tr>
             </tbody>
@@ -46,10 +46,10 @@
 <div *ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" class='ec-bigbox-detail'>
 
   <div class="neonDetailTitleCont ">
-    <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn mt3" (click)="neonSelected = null"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
+    <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="neonSelected = null"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
     <h1 style="margin-top: 17px;">Néon LED "{{neonSelected?.text}}"</h1>
   </div>
-
+  
   <div class="ec-top-row-detail row">
     <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
       <div *ngIf="neonSelected.state !== 'created'"  [style.backgroundImage]="'url('+ neonSelected.filePath +')'"  
@@ -106,7 +106,7 @@
         <div class="bar-btn-cont">
           <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
 
-          <button *ngIf="neonSelected?.state === 'created'"  class="prev-btn"><a href="#open-modal">Demander une modification</a></button>
+          <button *ngIf="neonSelected?.state === 'created'"  class="prev-btn modif-btn"><a href="#open-modal">Demander une modification</a></button>
           <button *ngIf="neonSelected?.state !== 'created'" (click)="downloadDT()" class="prev-btn"><a target="_blank"
               class='customHyperlink' [href]="neonSelected?.filePath">Télécharger mon dessin</a></button>
           <!-- <button   class="prev-btn" >Demander une notification</button> -->
@@ -131,21 +131,21 @@
         <tbody>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Texte</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.text | titlecase}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.text | titlecase}}</td>
 
             <!-- <td  [className]="neonSelected.typo + ' dynamicNeonTitle ' + colorsList[neonSelected.colors] " style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.text}}</td> -->
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Typographie</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.typo | titlecase}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.typo | titlecase}}</td>
           </tr>
           <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Couleurs</td>
-            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.colors | titlecase}}</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.colors | titlecase}}</td>
           </tr>
           <tr  [ngClass]="neonSelected.state === 'created' ? 'no-border-bot' : ''"  >
             <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
-            <td style="font-family: Mukta-Regular; " data-column="Etat">{{neonSelected?.height}}cm</td>
+            <td style="font-family: Mukta-Regular; " data-column="">{{neonSelected?.height}}cm</td>
           </tr>
           <!-- <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
@@ -221,8 +221,8 @@
   <div class="row commandMainCont">
     <div class="col-lg-6 col-sm-12 command-form-cont">
       <div class="commandeTitleCont">
-        <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn mt3" (click)="goToNeonDetail(neonSelected);"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
-        <h2>Informations de livraison</h2>
+        <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="goToNeonDetail(neonSelected);"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
+        <h2 style = "align-self: center;">Informations de livraison</h2>
       </div>
 
       <div class="command-form-card row">

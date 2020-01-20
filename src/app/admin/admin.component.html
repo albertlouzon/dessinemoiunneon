@@ -1,244 +1,281 @@
 <div *ngIf="neonSelected === 'none'" class="row   ">
-    <div class='admin-list-title col-12'>
-      <h3 class="admin-title">Vue Globale: {{numOfCommands}} demandes dont {{numOfCreated}} en attente , {{numOfDT}} traitées, {{numOfPayes}} payées</h3>
-      <a (click)="exportAsXLSX()" href="#" class="buttonDownload">Bicrave Excel</a>
-      <button (click)="openStats()"  style="padding-right: 30px; padding-left: 30px;" class="next-btn">Stats et biff</button>
+  <div class='admin-list-title col-12'>
+    <h3 class="admin-title">Vue Globale: {{numOfCommands}} demandes dont {{numOfCreated}} en attente , {{numOfDT}}
+      traitées, {{numOfPayes}} payées</h3>
+    <a (click)="exportAsXLSX()" href="#" class="buttonDownload">Bicrave Excel</a>
+    <button (click)="openStats()" style="padding-right: 30px; padding-left: 30px;" class="next-btn">Stats et
+      biff</button>
 
-    </div>
-
-    <div *ngIf="neonSelected === 'none'" class="admin-list-cont col-12 row">
-      <button (click)="logout()"  style="padding-right: 30px; padding-left: 30px;" class="next-btn">Se déconnecter</button>
-      <table class="col-12">
-        <thead>
-          <tr>
-            <th >Yencli</th>
-            <th >Type</th>
-            <th >Dessin technique</th>
-            <th >Recu le</th>
-            <th >Etat</th>
-            <th >Prix</th>
-            <th >Typo</th>  
-
-            <th >Couleur</th>  
-
-            <th >Filtrer
-                <div class="select">
-                    <select (change)="filterCommand($event.target.value)"  name="slct" id="slct"> 
-                      <option value="all">Tout voir</option>
-                      <option selected disabled>Choisit un filtre</option>
-                      <option value="Created">Created</option>
-                      <option value="DT disponible">DT disponible</option>
-                      <option value="Payé">Payé</option>
-                      <option disabled>------------------------</option>
-                      <option value="Consumer">Consumer</option>
-                      <option value="Business">Business</option>
-                      <option disabled>------------------------</option>
-                      <option value="Lilly">Lilly</option>
-                      <option value="Dannie">Dannie</option>
-                      <option value="Billy">Billy</option>
-                      <option value="Polly">Polly</option>
-                      <option value="Jimmy">Jimmy</option>
-                      <option value="Cobby">Cobby</option>
-                      <option value="Tommy">Tommy</option>
-                      <option value="Freddy">Freddy</option>
-
-                    </select>
-                  </div>
-            </th>
-
-          </tr>
-        </thead>
-        <tbody>   
-          <tr  *ngFor="let command of neonList; let i = index" >
-            <td (click)="goToDetail(command)" data-column="Yencli">{{command.email}}</td>
-            <td (click)="goToDetail(command)" data-column="Type">{{command.type}}</td>
-            <td (click)="goToDetail(command)" data-column="Dessin technique">{{command.text}}</td>
-            <td (click)="goToDetail(command)" data-column="Recu le">{{command.creationDate}}</td>
-
-            <td (click)="goToDetail(command)" data-column="Etat">{{command.state}}</td>
-            <td (click)="goToDetail(command)" data-column="Prix">{{command.price}}</td>
-            <td (click)="goToDetail(command)" data-column="Typo">{{command.typo}}</td>
-            <td (click)="goToDetail(command)" data-column="Couleur">{{command.colors}}</td>
-
-            <div class="row" >
-      
-
-              <div class="col-2">
-                  <button (click)="deleteCommand(command)"  style="padding-right: 30px; padding-left: 30px;" class="next-btn">Supprimer</button>
-
-  
-              </div>
-            </div>
-
-
-          </tr>
-
-
-        </tbody>
-      </table>
-    </div>
   </div>
 
+  <div *ngIf="neonSelected === 'none'" class="admin-list-cont col-12 row">
+    <button (click)="logout()" style="padding-right: 30px; padding-left: 30px;" class="next-btn">Se déconnecter</button>
+    <table class="col-12">
+      <thead>
+        <tr>
+          <th>Yencli</th>
+          <th>Type</th>
+          <th>Dessin technique</th>
+          <th>Recu le</th>
+          <th>Etat</th>
+          <th>Prix</th>
+          <th>Typo</th>
+
+          <th>Couleur</th>
+
+          <th>Filtrer
+            <div class="select">
+              <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
+                <option value="all">Tout voir</option>
+                <option selected disabled>Choisit un filtre</option>
+                <option value="Created">Created</option>
+                <option value="DT disponible">DT disponible</option>
+                <option value="Payé">Payé</option>
+                <option disabled>------------------------</option>
+                <option value="Consumer">Consumer</option>
+                <option value="Business">Business</option>
+                <option disabled>------------------------</option>
+                <option value="Lilly">Lilly</option>
+                <option value="Dannie">Dannie</option>
+                <option value="Billy">Billy</option>
+                <option value="Polly">Polly</option>
+                <option value="Jimmy">Jimmy</option>
+                <option value="Cobby">Cobby</option>
+                <option value="Tommy">Tommy</option>
+                <option value="Freddy">Freddy</option>
+
+              </select>
+            </div>
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let command of neonList; let i = index">
+          <td (click)="goToDetail(command)" data-column="Yencli">{{command.email}}</td>
+          <td (click)="goToDetail(command)" data-column="Type">{{command.type}}</td>
+          <td (click)="goToDetail(command)" data-column="Dessin technique">{{command.text}}</td>
+          <td (click)="goToDetail(command)" data-column="Recu le">{{command.creationDate}}</td>
+
+          <td (click)="goToDetail(command)" data-column="Etat">{{command.state}}</td>
+          <td (click)="goToDetail(command)" data-column="Prix">{{command.price}}</td>
+          <td (click)="goToDetail(command)" data-column="Typo">{{command.typo}}</td>
+          <td (click)="goToDetail(command)" data-column="Couleur">{{command.colors}}</td>
+
+          <div class="row">
+
+
+            <div class="col-2">
+              <button (click)="deleteCommand(command)" style="padding-right: 30px; padding-left: 30px;"
+                class="next-btn">Supprimer</button>
+
+
+            </div>
+          </div>
+
+
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
 
-  
+
+
 <div *ngIf="neonSelected !== 'none'" class='ec-bigbox-detail'>
-    <button  style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = 'none'">Précédent</button>
+  <button style="margin-bottom: 1.5%;" class="prev-btn" (click)="neonSelected = 'none'">Précédent</button>
 
-  <h2  style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
+  <h2 style="margin-bottom: 3%;">Néon LED "{{neonSelected.text}}"</h2>
 
   <div class="ec-top-row-detail row">
     <div class="col-6 neon-canvas-cont">
       <div [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
-     
+
 
     </div>
     <div class="col-6 neon-detail-container">
-        <table>
-            <thead>
-              <tr>
-                <th class='detail-configu-title'>Configuration</th>
-                <th class='detail-configu-title'></th>
+      <table>
+        <thead>
+          <tr>
+            <th class='detail-configu-title'>Configuration</th>
+            <th class='detail-configu-title'></th>
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Texte</td>
-                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.text}}</td>
-              </tr>
-              <tr >
-                <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
-                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.typo}}</td>
-              </tr>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleurs</td>
-                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.colors}}</td>
-              </tr>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
-                <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.height}}cm</td>
-              </tr>
-<!--              <tr >-->
-<!--                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>-->
-<!--                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.userFull?.clientImageUrl}}cm</td>-->
-<!--              </tr>-->
-              <tr >
-                  <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
-                  <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.state}}</td>
-                </tr>
-                <tr >
-                    <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typo</td>
-                    <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.typo}}</td>
-                  </tr>
-                  <tr >
-                      <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleur</td>
-                      <td  style="font-family: Mukta-Regular;" data-column="">{{neonSelected.colors}}</td>
-                    </tr>
-          <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Prix</td>
-                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.price}} Euros</td>
-              </tr>
-              <tr >
-                <td *ngIf=" neonSelected?.state === 'payé' && neonSelected?.telecommande"  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Telecommande</td>
-                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.telecommande}}</td>
-              </tr>
-              <tr >
-                <td *ngIf=" neonSelected?.state === 'payé' && neonSelected?.waterproof"  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Waterproof</td>
-                <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.waterproof}}</td>
-              </tr>
-            </tbody>
-          </table>
-            <div class="row">
-                <div *ngIf="neonSelected.state === 'created'"   class="col-12">
-                    <button  (click)="fromCreatedToDT(neonSelected);"  style="padding-right: 30px; padding-left: 30px; margin-top: 5px;" class="next-btn">Envoyer DT et prix</button>
-                    <div  class="money">
-                        <input (change)="changePrice($event.target.value)" type="text" class="numberOnly" autocomplete="off" maxlength="8" /><div>$</div>                      
-                    </div>                  
-                    
-                    <input (change)="importDT($event, command)" type="file"   class="basic-input-admin"/>
-                    <!-- <span *ngIf="currentFile && command.state === 'created'" style="text-align: center;">{{currentFile?.fileName}}</span> -->
-  
-                </div>
-            </div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Texte</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.text}}</td>
+
+            <td (click)="updateField(neonSelected, 'text')" style="font-family: Mukta-Regular; cursor: pointer;"
+              data-column="">
+              <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            </td>
+
+
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Typographie</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.typo}}</td>
+            <td (click)="updateField(neonSelected, 'typo')" style="font-family: Mukta-Regular; cursor: pointer;"
+              data-column="">
+              <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            </td>
+
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Couleurs</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.colors}}</td>
+            <td (click)="updateField(neonSelected, 'color')" style="font-family: Mukta-Regular; cursor: pointer;"
+              data-column="">
+              <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            </td>
+
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.height}}cm</td>
+            <td (click)="updateField(neonSelected, 'size')" style="font-family: Mukta-Regular; cursor: pointer;"
+              data-column="">
+              <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            </td>
+
+          </tr>
+          <!--              <tr >-->
+          <!--                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Hauteur</td>-->
+          <!--                <td  style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.userFull?.clientImageUrl}}cm</td>-->
+          <!--              </tr>-->
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Etat</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.state}}</td>
+            <td (click)="updateField(neonSelected, 'state')" style="font-family: Mukta-Regular; cursor: pointer;"
+              data-column="">
+              <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            </td>
+
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Prix</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected.price}} Euros</td>
+            <td (click)="updateField(neonSelected, 'price')" style="font-family: Mukta-Regular; cursor: pointer;"
+              data-column="">
+              <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            </td>
+
+          </tr>
+          <tr>
+            <td *ngIf=" neonSelected?.state === 'payé' && neonSelected?.telecommande" style="font-family: Mukta-Bold;"
+              data-column="Vos dessins techniques">Telecommande</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.telecommande}}</td>
+          </tr>
+          <tr>
+            <td *ngIf=" neonSelected?.state === 'payé' && neonSelected?.waterproof" style="font-family: Mukta-Bold;"
+              data-column="Vos dessins techniques">Waterproof</td>
+            <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.waterproof}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div *ngIf="neonSelected.state === 'created'" class="col-12">
+          <button (click)="fromCreatedToDT(neonSelected);"
+            style="padding-right: 30px; padding-left: 30px; margin-top: 5px;" class="next-btn">Envoyer DT et
+            prix</button>
+          <div class="money">
+            <input (change)="changePrice($event.target.value)" type="text" class="numberOnly" autocomplete="off"
+              maxlength="8" />
+            <div>$</div>
+          </div>
+
+          <input (change)="importDT($event, command)" type="file" class="basic-input-admin" />
+          <!-- <span *ngIf="currentFile && command.state === 'created'" style="text-align: center;">{{currentFile?.fileName}}</span> -->
+
+        </div>
+      </div>
 
     </div>
 
   </div>
   <div class="bottom-row-cont row">
     <div class="col-5">
-        <h2  style="margin-bottom: 3%;">Infos persos du client</h2>
-        <table>
-            <thead>
-              <tr>
-                <!-- <th class='detail-configu-title'>Info</th>
+      <h2 style="margin-bottom: 3%;">Infos persos du client</h2>
+      <table>
+        <thead>
+          <tr>
+            <!-- <th class='detail-configu-title'>Info</th>
                 <th class='detail-configu-title'></th> -->
-  
-              </tr>
-            </thead>
-            <tbody>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Nom et prénom</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.userFull.name}} {{neonSelected.userFull.nickname}} </td>
-              </tr>
-              <tr > 
-                <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Email</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.userFull.email}}</td>
-              </tr>
-             
-              <tr *ngIf="neonSelected.userFull['type'] === 'business'" > 
-                  <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Société</td>
-                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.userFull['password']}}</td>
-                </tr>
-               
-            </tbody>
-          </table>
-  
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Nom et prénom</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.userFull.name}}
+              {{neonSelected.userFull.nickname}} </td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Email</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.userFull.email}}</td>
+          </tr>
+
+          <tr *ngIf="neonSelected.userFull['type'] === 'business'">
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Société</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected.userFull['password']}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
     </div>
     <div class="col-1"></div>
     <div *ngIf="neonSelected.state === 'commandé' || neonSelected.state === 'payé'" class="col-6">
-        <h2  style="margin-bottom: 3%;">Coordonnées / Commande</h2>
-        <table *ngIf="neonSelected?.commandInfo">
-            <thead>
-              <tr>
-                <!-- <th class='detail-configu-title'>Info</th>
+      <h2 style="margin-bottom: 3%;">Coordonnées / Commande</h2>
+      <table *ngIf="neonSelected?.commandInfo">
+        <thead>
+          <tr>
+            <!-- <th class='detail-configu-title'>Info</th>
                 <th class='detail-configu-title'></th> -->
-  
-              </tr>
-            </thead>
-            <tbody>
-              <tr >
-                <td  style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Nom et prénom</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.nom}} {{neonSelected?.commandInfo['prénom']}}</td>
-              </tr>
-              <tr > 
-                <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Pays</td>
-                <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.pays}}</td>
-              </tr>
-              <tr > 
-                  <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Ville</td>
-                  <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.ville}}</td>
-                </tr>
-                <tr > 
-                    <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Pays</td>
-                    <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.pays}}</td>
-                  </tr>
-                  <tr > 
-                      <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Adresse</td>
-                      <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.adresse}}</td>
-                    </tr>
-                    <tr > 
-                        <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Code Postal</td>
-                        <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo  ['code-postal']}}</td>
-                      </tr>
-                      <tr > 
-                          <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Société (optionnel)</td>
-                          <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo['société']}}</td>
-                        </tr>
-            </tbody>
-          </table>
-  
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Nom et prénom</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.nom}}
+              {{neonSelected?.commandInfo['prénom']}}</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Pays</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.pays}}</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Ville</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.ville}}</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Pays</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.pays}}</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Adresse</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo?.adresse}}</td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Code Postal</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo  ['code-postal']}}
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family: Mukta-Bold;" data-column="Vos dessins techniques">Société (optionnel)</td>
+            <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.commandInfo['société']}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 
@@ -246,7 +283,7 @@
 <div class='smFilter'>
   Filtrer
   <div class="select">
-    <select (change)="filterCommand($event.target.value)"  name="slct" id="slct">
+    <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
       <option value="all">Tout voir</option>
       <option selected disabled>Choisit un filtre</option>
       <option value="Created">Created</option>
@@ -269,7 +306,7 @@
 
   <div *ngIf="loading" class="blendContainer">
     <svg id="progress-circle" class="animation-circle" viewBox="0 0 50 50">
-            <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->
-            <circle stroke="#f4cc20" class="path" cx="25" cy="25" r="20" fill="none" stroke-width="8.3"></circle>
-          </svg>
-</div>
+      <!--<circle cx="25" cy="25" r="20" fill="none" stroke="#e2ecf8" stroke-width="7" />-->
+      <circle stroke="#f4cc20" class="path" cx="25" cy="25" r="20" fill="none" stroke-width="8.3"></circle>
+    </svg>
+  </div>

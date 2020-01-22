@@ -16,11 +16,18 @@
         <h4 class="neon-wizard-header">Faîtes votre choix</h4>
         <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
         </span>
-        <div class="neon-wizard-btn-container  row flex3 ">  
-          <button type="button" class="form-btn col-md-4 col-sm-12" (click)="onCompleteStep(0, 'text', null)" 
-            awNextStep>TEXTE</button>
-          <button type="button" class="form-btn col-md-4 col-sm-12" (click)="onCompleteStep(0, 'image', null)"
-            awNextStep>LOGO/IMAGE</button>
+        <div class="neon-wizard-btn-container  row flex3 mb3 ">  
+          <button type="button" [ngClass]="userChoices[0]==='text'? 'yellow-selected form-btn  col-md-4 col-sm-12' : 'form-btn  col-md-4 col-sm-12'"  (click)="onCompleteStep(0, 'text', null)" 
+            >TEXTE</button>
+          <button type="button" [ngClass]="userChoices[0]==='image'? 'yellow-selected form-btn  col-md-4 col-sm-12' : 'form-btn  col-md-4 col-sm-12'" (click)="onCompleteStep(0, 'image', null)"
+            >LOGO/IMAGE</button>
+        </div>
+
+
+      
+
+        <div class="neon-wizard-btn-container2 row">
+          <button  [ngClass]="!userChoices[0]? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  [disabled]="!userChoices[0]"  class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
 
 

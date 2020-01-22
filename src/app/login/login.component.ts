@@ -50,13 +50,12 @@ export class LoginComponent implements OnInit {
     return this.http.post('https://neon-server.herokuapp.com/login', {email: this.email, password: this.password});
   }
 
-   pressEnter(event, type) {
-     console.log('enter pressed', event)
+   pressEnter(event) {
     //See notes about 'which' and 'key'
-    if (event.which == 13 || event.keyCode == 13) {
-      if(type === "signIn") {
+    if (event.charCode === 13 || event.key === 'Enter') {
+      if(this.isSignIn) {
           this.onLogin()
-      } else {
+      } else if(!this.isSignIn) {
         this.onSignUp();
       }
         return false;

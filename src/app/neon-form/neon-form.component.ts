@@ -99,12 +99,13 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   neonFontSizeClass = 'fs-medium';
   neonColorCode = '';
   neonTypoClass = 'Lilly';
-  neonColorClass = 'blancFroid';
+  neonColorClass = 'blanc';
   selectedColor;
   selectedTypo = 'Lilly';
   imageFile = '';
   loading = false;
   mainChoice = '';
+  hideWizard = false;
   imageAdditionalInfo = '';
   selectedColorUI = null;
   allUsers = [];
@@ -174,8 +175,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   ];
 
   colorList = [
-    { name: 'blancFroid', color: '#ffffff', url: '../.././assets/blanc.png' },
-    { name: 'blanchaud', color: '#ede3c5', url: '../.././assets/blanchaud.png' },
+    { name: 'blanc', color: '#ffffff', url: '../.././assets/blanc.png' },
+    { name: 'blanc-chaud', color: '#ede3c5', url: '../.././assets/blanchaud.png' },
     { name: 'orange', color: '#ffa42c', url: '../.././assets/orange.png' },
     { name: 'jaune', color: '#ffe600', url: '../.././assets/jaune.png' },
     { name: 'rouge', color: '#ff0000', url: '../.././assets/rouge.png' },
@@ -212,6 +213,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
+    this.hideWizard = false;
     this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
       this.allUsers = users;
     });
@@ -266,6 +268,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
 
   openRecap() {
+    this.hideWizard = true;
     const dialogRef = this.dialog.open(ModalRecapComponent, {
       data: {
         text: this.textInput,
@@ -278,6 +281,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      this.hideWizard = false;
       if (result) {
         this.onSubmitForm();
       }
@@ -364,7 +368,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       imageAdditionalInfo: this.imageAdditionalInfo,
       height: this.formatSizes[this.selectedFormatSize].width,
       // price: Math.floor(Math.random() * 2000) + 1 ,
-      state: 'created',
+      state: 'En cours de design',
       type: this.projectType
     };
 
@@ -642,10 +646,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
             support: this.imageSupportSelected
           }
         });
+        this.hideWizard = true;
 
         dialogRef.afterClosed().subscribe(result => {
+          this.hideWizard = false;
           console.log('The dialog was closed', result);
-          if (result) {
+          if (result !== undefined) {
             this.loading = true;
             this.onSubmitForm();
           } else {

@@ -52,9 +52,9 @@
   
   <div class="ec-top-row-detail row">
     <div class="col-md-8 col-sm-6 col-xs-12 neon-canvas-cont">
-      <div *ngIf="neonSelected.state !== 'created'"  [style.backgroundImage]="'url('+ neonSelected.filePath +')'"  
+      <div *ngIf="neonSelected.state !== 'En cours de design'"  [style.backgroundImage]="'url('+ neonSelected.filePath +')'"  
         class="neon-canvas"></div>
-      <div *ngIf="neonSelected.state === 'created'" class="neon-canvas"   [style.background-color]="neonSelected.state === 'created' ? '#000b31' : 'white'">
+      <div *ngIf="neonSelected.state === 'En cours de design'" class="neon-canvas"   [style.background-color]="neonSelected.state === 'En cours de design' ? '#000b31' : 'white'">
             
 <svg width="100" height="100" viewBox="0 0 300 300">
   <defs>
@@ -106,8 +106,8 @@
         <div class="bar-btn-cont">
           <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
 
-          <button *ngIf="neonSelected?.state === 'created'"  class="prev-btn modif-btn"><a href="#open-modal">Demander une modification</a></button>
-          <button *ngIf="neonSelected?.state !== 'created'" (click)="downloadDT()" class="prev-btn"><a target="_blank"
+          <button *ngIf="neonSelected?.state === 'En cours de design'"  class="prev-btn modif-btn"><a href="#open-modal">Demander une modification</a></button>
+          <button *ngIf="neonSelected?.state !== 'En cours de design'" (click)="downloadDT()" class="prev-btn"><a target="_blank"
               class='customHyperlink' [href]="neonSelected?.filePath">Télécharger mon dessin</a></button>
           <!-- <button   class="prev-btn" >Demander une notification</button> -->
 
@@ -143,7 +143,7 @@
             <td style="font-family: Mukta-Bold;" data-column="">Couleurs</td>
             <td style="font-family: Mukta-Regular;" data-column="">{{neonSelected?.colors | titlecase}}</td>
           </tr>
-          <tr  [ngClass]="neonSelected.state === 'created' ? 'no-border-bot' : ''"  >
+          <tr  [ngClass]="neonSelected.state === 'En cours de design' ? 'no-border-bot' : ''"  >
             <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
             <td style="font-family: Mukta-Regular; " data-column="">{{neonSelected?.height}}cm</td>
           </tr>
@@ -151,7 +151,7 @@
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>
             <td style="font-family: Mukta-Regular; text-align: center;" data-column="Etat">{{neonSelected?.state | titlecase}}</td>
           </tr> -->
-          <tr  *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'" >
+          <tr  *ngIf="neonSelected.state !== 'En cours de design' && neonSelected.state !== 'payé'" >
             <td  >
               <div class="checkboxCont">
                 <input  (click)="onCheckTelecommande();" id="box1" type="checkbox" />
@@ -168,7 +168,7 @@
               <td style="font-family: Mukta-Regular;" data-column="Etat">{{neonSelected?.state}}</td> -->
             </tr>
 
-            <tr style="border-bottom: none !important" *ngIf="neonSelected.state !== 'created'  && neonSelected.state !== 'payé'">
+            <tr style="border-bottom: none !important" *ngIf="neonSelected.state !== 'En cours de design'  && neonSelected.state !== 'payé'">
                 <td  >
                   <div class="checkboxCont">
                     <input  (click)="onCheckResEau();" id="box2" type="checkbox" />
@@ -192,14 +192,14 @@
     <div class="neon-tarif-bigbox">
       <div class="neon-tarif-cont">
         <div class="neon-tarif">
-          <span *ngIf="neonSelected.state !== 'created' || neonSelected.state === 'payé'" class="neon-tarif-price">Tarif: {{neonSelected?.price}} €</span>
-          <span *ngIf="neonSelected.state === 'created'" style="font-size: 17px;" class="neon-tarif-price">Tarif en cours de calcul</span>
+          <span *ngIf="neonSelected.state !== 'En cours de design' || neonSelected.state === 'payé'" class="neon-tarif-price">Tarif: {{neonSelected?.price}} €</span>
+          <span *ngIf="neonSelected.state === 'En cours de design'" style="font-size: 17px;" class="neon-tarif-price">Tarif en cours de calcul</span>
           <span  class="neon-tarif-blabla">Livraison incluse </span>
 
         </div>
-        <button *ngIf="neonSelected.state !== 'created' && neonSelected.state !== 'payé'" (click)="openCommand();"
+        <button *ngIf="neonSelected.state !== 'En cours de design' && neonSelected.state !== 'payé'" (click)="openCommand();"
           style="margin-right: 10%;" class="next-btn-no-margin big-btn">Commander</button>
-          <button *ngIf="neonSelected.state === 'created'" disabled
+          <button *ngIf="neonSelected.state === 'En cours de design'" disabled
           style="margin-right: 10%;" class="grey-btn big-btn">Commander</button>
 
       </div>
@@ -221,7 +221,7 @@
   <div class="row commandMainCont">
     <div class="col-lg-6 col-sm-12 command-form-cont">
       <div class="commandeTitleCont">
-        <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="goToNeonDetail(neonSelected);"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
+        <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="commandMode = false"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
         <h2 style = "align-self: center;">Informations de livraison</h2>
       </div>
 
@@ -230,7 +230,7 @@
 
 
         <div class="row livraisonRow">
-          <div class='user-info-row-cont nestedInput col-6'>
+          <div class='user-info-row-cont nestedInput col-6'>  
             <span class="user-info-row-title">Prénom</span>
             <input [value]="commandInfos['prénom']" (change)="onChangeCommandInfo('prénom', $event.target.value)"
               class="basic-input  " />
@@ -247,7 +247,6 @@
         <!-- <div class=' livraisonRow user-info-row-cont'>
             <span class="user-info-row-title">Société (facultatif)</span>
               <input (change)="onChangeCommandInfo('société', $event.target.value)"   class="basic-input "/>
-
           </div> -->
 
         <div class=' livraisonRow user-info-row-cont'>
@@ -503,7 +502,7 @@
 <div *ngIf="showLastPage" style=" padding-left: 0 !important;" class="ec-bigbox-detail row">
   <div class="col-2 forBigPussy"></div>
     <div class = 'col-md-8 col-sm-12'>
-        <div *ngIf="neonSelected.state !== 'created'"  [style.backgroundImage]="'url('+ '../.././assets/Mercipage-03.png' +')'" 
+        <div *ngIf="neonSelected.state !== 'En cours de design'"  [style.backgroundImage]="'url('+ '../.././assets/Mercipage-03.png' +')'" 
       
         class="neon-canvas2"></div>
         <div class="merci-cont">

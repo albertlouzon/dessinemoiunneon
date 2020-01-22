@@ -313,6 +313,7 @@ table {
 
 .modif-btn {
   margin-bottom: 0 !important;
+  font-size: 17px;
 }
 
 
@@ -500,10 +501,10 @@ box-shadow: 5pxs 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.
   width: 100%;
   margin-top: 10%;
 }
-.blancFroid {
+.blanc {
   color: #ffffff !important;
 }
-.blancChaud {
+.blanc-chaud {
   color: #ddcaaf !important;
 }
 .orange {
@@ -737,7 +738,7 @@ margin-bottom: 15px;
 }
 
 .neon-bar .prev-btn {
-  font-size: 11px !important  ;
+  font-size: 17px;
   align-self: center !important;
 
 }

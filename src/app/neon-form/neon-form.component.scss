@@ -250,15 +250,21 @@ background-repeat: no-repeat;
 height: 100%
 }
 
+// .colorCont {
+//   display: flex;
+//   justify-content: space-between;
+//   flex-direction: column;
+// }
+
 button:disabled {
   cursor: default !important;
   pointer-events: all !important;
 }
-  .blancFroid {
+  .blanc {
     
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 75px #fff;
   }
-  .blanchaud {
+  .blanc-chaud {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ede3c5, 0 0 35px #ede3c5, 0 0 40px #ede3c5, 0 0 50px #ede3c5, 0 0 75px #ede3c5;
 
   }
@@ -842,6 +848,12 @@ background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
 padding: 1rem;
+}
+
+.colorText {
+  text-align: center;
+  font-family: Mukta-Regular, sans-serif;
+  font-size: 17px;
 }
 
 .colorCont {

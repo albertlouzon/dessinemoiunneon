@@ -72,8 +72,8 @@ this.pollInterval = setInterval(() => {
   }
   filterCommand(type) {
     console.log(type);
-    if (type === 'Created') {
-      this.neonList = this.cachedList.filter(c => c.state === 'created');
+    if (type === 'En cours de design') {
+      this.neonList = this.cachedList.filter(c => c.state === 'En cours de design');
       this.currentFilter = type;
     } else  if (type === 'DT disponible') {
       this.neonList = this.cachedList.filter(c => c.state === 'DT disponible');
@@ -231,7 +231,7 @@ changePrice(price) {
              commandInfo: command['commandInfo'], filePath: command['filePath'], userFull: user , typo: command['typo'],
               colors: command['colors'], height: command['height'], support: command['support'], telecommande: command['telecommande'] , waterproof: command['waterproof']});
               this.numOfCommands++;
-              if (command['state'] === 'created') {
+              if (command['state'] === 'En cours de design') {
                   this.numOfCreated++;
               }
               if (command['state'] === 'DT disponible') {

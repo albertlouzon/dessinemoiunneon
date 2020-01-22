@@ -16,7 +16,7 @@
 
       <div class='user-info-row-cont login-row'>
         <span class="user-info-row-title">Mot de passe</span>
-        <form>
+        <form (keydown.enter)="$event.preventDefault()">
           <input type='password' (change)="onChangeUserInfo('password', $event.target.value)" [value]=""
             class="basic-input " />
         </form>
@@ -24,7 +24,7 @@
 
       </div>
       <div *ngIf="loginFailed" class="errorMessage">Oops! Le mot de passe est incorrect...</div>
-      <button class="next-btn-no-margin login-btn " (click)="onLogin()" type="button">Connexion</button>
+      <button class="next-btn-no-margin login-btn " (keypress)="pressEnter($event, 'signin')" (click)="onLogin()" type="button">Connexion</button>
       <button class="prev-btn login-btn" (click)="onSwitchLoginType()" type="button">Retour</button>
     </div>
 

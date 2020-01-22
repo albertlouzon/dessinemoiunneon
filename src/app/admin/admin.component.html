@@ -28,7 +28,7 @@
               <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
                 <option value="all">Tout voir</option>
                 <option selected disabled>Choisit un filtre</option>
-                <option value="Created">Created</option>
+                <option value="En cours de design">En cours de design</option>
                 <option value="DT disponible">DT disponible</option>
                 <option value="Payé">Payé</option>
                 <option disabled>------------------------</option>
@@ -181,7 +181,7 @@
         </tbody>
       </table>
       <div class="row">
-        <div *ngIf="neonSelected.state === 'created'" class="col-12">
+        <div *ngIf="neonSelected.state === 'En cours de design'" class="col-12">
           <button (click)="fromCreatedToDT(neonSelected);"
             style="padding-right: 30px; padding-left: 30px; margin-top: 5px;" class="next-btn">Envoyer DT et
             prix</button>
@@ -286,7 +286,7 @@
     <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
       <option value="all">Tout voir</option>
       <option selected disabled>Choisit un filtre</option>
-      <option value="Created">Created</option>
+      <option value="En cours de design">En cours de design</option>
       <option value="DT disponible">DT disponible</option>
       <option value="Payé">Payé</option>
       <option disabled>------------------------</option>

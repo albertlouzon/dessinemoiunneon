@@ -9,7 +9,7 @@
      *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " ><span>{{textInput}}</span></div>
 
 
-  <aw-wizard    style="width: 100%;">
+  <aw-wizard   *ngIf="!hideWizard"  style="width: 100%;">
     <div class="neon-wizard-container row">
       <div class="forBigPussy col-3"></div> 
       <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10 step-container">
@@ -39,7 +39,7 @@
           <h4 class="neon-wizard-header" >
             Importer votre image
           </h4>
-          <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+          <span class="class-subtitle">
           </span>
           <input autocomplete="off" (change)="onSelectFile($event)"  type="file" style="margin-bottom: 50px;"  class="basic-input-form"/>
 <!-- 
@@ -50,7 +50,7 @@
 
           <div class="neon-wizard-header">
             <h4 >Une info en particulier à nous donner ?</h4>
-            <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+            <span class="class-subtitle">
             </span>
           </div>
           <textarea  style="margin-bottom: 50px; height: 150px; margin-top: 25px;" (change)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder=""
@@ -63,8 +63,8 @@
         <div class="neon-wizard-btn-container2 row">
 
           <button  class="newPrev-btn " type="button"  (click)="onPressPrevBtn('texte/image')" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
-          <button [ngClass]="textInput.trim() === ''? 'next-btn col-md-3 col-sm-10 disabled' : 'next-btn col-md-3 col-sm-10'" type="button" 
-            [disabled]="textInput.trim() === '' " awNextStep>Suivant</button>
+          <button  (click)="onCompleteStep(3, 'typo', 'typo')" [ngClass]="textInput.trim() === ''? 'next-btn col-md-3 col-sm-10 disabled' : 'next-btn col-md-3 col-sm-10'" type="button" 
+            [disabled]="textInput.trim() === '' "  awNextStep>Suivant</button>
         </div>
 
       </aw-wizard-step>
@@ -72,7 +72,7 @@
         <h4 class="neon-wizard-header">
           Choisissez la typographie
         </h4>
-        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        <span class="class-subtitle">Choisissez la typographie qui vous correspond le mieux
         </span>
         <div class="form-style-container " style="margin-bottom: 50px;">
           <!-- <div (click)="styleSelected = 0" [ngClass]="{'style-item yellow-selected': styleSelected===0, 'style-item':styleSelected!=='0' }" ></div>
@@ -111,7 +111,7 @@
         <h4 class="neon-wizard-header">
           Choisissez une couleur
         </h4>
-        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        <span class="class-subtitle">
         </span>
 
         <!-- <div class="wrapper"> -->
@@ -119,11 +119,15 @@
 
             
         <div  class=" mb5 row colorCont">
-          <div  [ngClass]=" selectedColorUI=== i? '   col-md-3  col-sm-6 colorIcon' : '   col-md-3 col-sm-6 colorIcon'"   [style.backgroundImage]="'url('+ color.url +')'"   (click)="onSelectColor(color, i)" 
+          <div  class= "col-md-3  col-sm-6 colorSubCont"
+           (click)="onSelectColor(color, i)" 
           *ngFor="let color of colorList;  let i = index">
-          
 
-          <!-- <div class=format-subtitle>{{format.width}}</div>  -->
+          <div   [style.backgroundImage]="'url('+ color.url +')'"    class="colorIcon"></div>
+          <div class="colorText">
+            {{color.name}}
+          </div>
+
         </div>  
   
           </div>
@@ -149,7 +153,7 @@
         <h4 class="neon-wizard-header">
           Choisissez votre format
         </h4>
-        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        <span class="class-subtitle">Les tailles indiquées sont basées sur la HAUTEUR de votre néon
         </span>
         <div  class=" row flex3 formatContainer">
           <div   *ngFor="let format of formatSizes;  let i = index" class="col-md-3 midwidthsm" style="display: flex; flex-direction: column">
@@ -171,7 +175,7 @@
       </aw-wizard-step>
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h4 class="neon-wizard-header flex1">Choisissez votre support</h4>
-        <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
+        <span class="class-subtitle">Détouré: Le support sera découpé à la forme / Standard: le support sera rectangulaire.
           </span>
           <div class="neon-wizard-btn-container  row flex3" >
           <div  [style.backgroundImage]="'url('+ '../.././assets/img-support-detoure-19.png' +')'"   id='supportImg' [ngClass]=" imageSupportSelected==='détouré'? 'yellow-selected-detoure col-md-5 col-sm-12' : 'col-md-5 col-sm-12 caca'"
@@ -223,10 +227,6 @@
         <div *ngIf="projectType === 'consumer' && !finalStep " class="col-md-12 col-sm-12">
           <h4 class="neon-wizard-header mb5">Obtenez votre Dessin Technique en {{suceMaBite}}</h4>
           <!-- <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier -->
-
-
-
-          
           <div *ngIf="signUp" class='user-info-row-cont mb5'>
             <span class="user-info-row-title ++">Prénom</span>
             <input autocomplete="off" (change)="onChangeUserInfo('nickname', $event.target.value)"

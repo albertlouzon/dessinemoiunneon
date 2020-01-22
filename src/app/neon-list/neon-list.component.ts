@@ -71,8 +71,8 @@ export class NeonListComponent implements OnInit {
   ];
 
   colorList = [
-    { name: 'blancFroid', color: '#ffffff', url: '../.././assets/blanc.png' },
-    { name: 'blancchaud', color: '#ede3c5', url: '../.././assets/blancchaud.png' },
+    { name: 'blanc', color: '#ffffff', url: '../.././assets/blanc.png' },
+    { name: 'blanc-chaud', color: '#ede3c5', url: '../.././assets/blancchaud.png' },
     { name: 'orange', color: '#ffa42c', url: '../.././assets/orange.png' },
     { name: 'jaune', color: '#ffe600', url: '../.././assets/jaune.png' },
     { name: 'rouge', color: '#ff0000', url: '../.././assets/rouge.png' },

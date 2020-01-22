@@ -50,7 +50,18 @@ export class LoginComponent implements OnInit {
     return this.http.post('https://neon-server.herokuapp.com/login', {email: this.email, password: this.password});
   }
 
-  
+   pressEnter(event, type) {
+     console.log('enter pressed', event)
+    //See notes about 'which' and 'key'
+    if (event.which == 13 || event.keyCode == 13) {
+      if(type === "signIn") {
+          this.onLogin()
+      } else {
+        this.onSignUp();
+      }
+        return false;
+    }
+}
 
   getUser() {
     return this.http.get('https://neon-server.herokuapp.com/users');
@@ -102,7 +113,7 @@ export class LoginComponent implements OnInit {
             this.loginFailed = false;
             this.signUpError = 'Vous devez fournir un email et un mot de passe...'
             this.signUp().subscribe(() => {
-              this.openSnackbar('Votre utilisateur à été crée !!!')
+              this.openSnackbar('Votre espace personnel à été crée !!!')
               // alert('User sucessfully created !!! On va te faire visiter ton espace ma gueule');
               setTimeout(() => {
                 this.saveToStorage();

@@ -31,12 +31,8 @@ export class NeonListComponent implements OnInit {
   creditCardList = [
     '../.././assets/neoncadenas.png',
     '../.././assets/neonvisa.png',
-    '../.././assets/neonelectron.png',
     '../.././assets/neonmaster.png',
     '../.././assets/neonamericanexpress.png',
-    '../.././assets/neondiscover.png',
-    '../.././assets/neonjcb.png',
-    '../.././assets/neondinnersclub.png',
 
   ]
   slides = [
@@ -299,7 +295,7 @@ export class NeonListComponent implements OnInit {
     this.googleAnalyticsService.eventEmitter("téléchargement DT", this.neonSelected['text'], this.user['email'], 1);
   }
 
-  logout() {
+  logout() {  
     localStorage.clear();
     currentView.caca = 'login';
     this.googleAnalyticsService.eventEmitter("déconnexion", "", this.user['email'], 1);
@@ -356,11 +352,8 @@ export class NeonListComponent implements OnInit {
     this.user['commands'].find(c => c.id === this.neonSelected.id)['cardToken'] = token;
 
     this.user['changeCommand'] = { command: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé' };
-
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      // this.openSnackbar('Nous avons bien reçu votre commande. La facture vous a été envoyé par mail. Merci !');
-      // this.fetchCommands();
-      this.loading = false;
+      this.loading = false; 
       this.neonSelected.state = 'payé';
       this.showLastPage = true;
       this.commandMode = false;
@@ -414,8 +407,6 @@ export class NeonListComponent implements OnInit {
       // this.commandInfos = { nom: '', prénom: '',  adresse: '', ville: '', ['code-postal']: '', pays: '', téléphone: '' };
       this.commandMode = !this.commandMode;
       this.googleAnalyticsService.eventEmitter("commandButton", "commander", this.user['email'], 1);
-
-
     }
 
   }

@@ -23,9 +23,6 @@
             >LOGO/IMAGE</button>
         </div>
 
-
-      
-
         <div class="neon-wizard-btn-container2 row">
           <button  [ngClass]="!userChoices[0]? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  [disabled]="!userChoices[0]"  class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
@@ -62,8 +59,7 @@
           </div>
           <textarea  style="margin-bottom: 50px; height: 150px; margin-top: 25px;" (change)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder=""
             class="large-input">
-
-                              </textarea>
+          </textarea>
 
         </div>
         <!-- ||  -->

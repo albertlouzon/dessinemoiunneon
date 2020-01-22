@@ -1,6 +1,4 @@
 <div *ngIf="!neonSelected && !commandMode" class="ec-top-layer"></div>
-
-
 <div *ngIf="!neonSelected && !commandMode" style="min-height: 500px;" class="ec-bigbox">
   <div class="row ec-top-row">
     <div class="col-lg-4  ec-petit-prince"></div>
@@ -28,8 +26,8 @@
           </thead>  
 
             <tbody>
-              <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)" [ngClass]="i === neonList.length - 1 ? 'no-border-bot' : ''"  >
-                <td class="pb3 pt3" data-column="Titre du néon">{{command.text | titlecase}}</td>
+              <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)" [ngClass]="i === neonList.length - 1 ? 'no-border-bot pb3 pt3' : 'pb3 pt3'"  >
+                <td  data-column="">{{command.text | titlecase}}</td>
                 <td data-column="">{{command.state | titlecase}}</td>
               </tr>
             </tbody>
@@ -44,7 +42,6 @@
 
 
 <div *ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" class='ec-bigbox-detail'>
-
   <div class="neonDetailTitleCont ">
     <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="neonSelected = null"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
     <h1 style="margin-top: 17px;">Néon LED "{{neonSelected?.text}}"</h1>
@@ -230,13 +227,13 @@
 
 
         <div class="row livraisonRow">
-          <div class='user-info-row-cont nestedInput col-6'>  
+          <div class='user-info-row-cont nestedInput col-lg-6 col-md-12'>  
             <span class="user-info-row-title">Prénom</span>
             <input [value]="commandInfos['prénom']" (change)="onChangeCommandInfo('prénom', $event.target.value)"
               class="basic-input  " />
           </div>
 
-          <div class='user-info-row-cont nestedInput col-6'>
+          <div class='user-info-row-cont nestedInput  col-lg-6 col-md-12'>
             <span class="user-info-row-title">Nom</span>
             <input [value]="commandInfos['nom']" (change)="onChangeCommandInfo('nom', $event.target.value)"
               class="basic-input " />
@@ -257,13 +254,13 @@
         </div>
 
         <div class="row livraisonRow">
-          <div class='user-info-row-cont nestedInput col-6'>
+          <div class='user-info-row-cont nestedInput  col-lg-6 col-md-12'>
             <span class="user-info-row-title">Ville</span>
             <input [value]="commandInfos['ville']" (change)="onChangeCommandInfo('ville', $event.target.value)"
               class="basic-input  " />
           </div>
 
-          <div class='user-info-row-cont nestedInput col-6'>
+          <div class='user-info-row-cont nestedInput  col-lg-6 col-md-12'>
             <span class="user-info-row-title">Code postal</span>
             <input [value]="commandInfos['code-postal']"
               (change)="onChangeCommandInfo('code-postal', $event.target.value)" class="basic-input " />
@@ -273,13 +270,13 @@
 
 
         <div class="row livraisonRow">
-          <div class='user-info-row-cont nestedInput col-6'>
+          <div class='user-info-row-cont nestedInput  col-lg-6 col-md-12'>
             <span class="user-info-row-title">Pays</span>
             <input [value]="commandInfos['pays']" (change)="onChangeCommandInfo('pays', $event.target.value)"
               class="basic-input  " />
           </div>
 
-          <div class='user-info-row-cont nestedInput col-6'>
+          <div class='user-info-row-cont nestedInput  col-lg-6 col-md-12'>
             <span class="user-info-row-title">Téléphone</span>
             <input [value]="commandInfos['téléphone']" (change)="onChangeCommandInfo('téléphone', $event.target.value)"
               class="basic-input " />

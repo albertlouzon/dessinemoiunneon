@@ -311,6 +311,7 @@ table {
     width: 100%; 
 }
 
+
 .modif-btn {
   margin-bottom: 0 !important;
   font-size: 17px;
@@ -319,14 +320,14 @@ table {
 
 /* Force table to not be like tables anymore */
 table, thead, tbody, th, td, tr { 
-  display: block; 
+  // display: block; 
 }
-
+.ec-bigbox-detail
 /* Hide table headers (but not display: none;, for accessibility) */
 thead tr { 
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
+  // position: absolute;
+  // top: -9999px;
+  // left: -9999px;
 }
 
 
@@ -334,8 +335,8 @@ td {
   /* Behave  like a "row" */
   border: none;
   border-bottom: 1px solid #eee; 
-  position: relative;
-  padding-left: 50%; 
+  // position: relative;
+  // padding-left: 50%; 
 }
 
 td:before { 
@@ -1022,6 +1023,10 @@ margin-bottom: 15px;
 .card {
   width: 100%;
 }
+
+.bar-btn-cont .prev-btn {
+  margin-bottom: 0 !important;
+}
 .revenir {
 left: 0;
  }
@@ -1076,6 +1081,23 @@ left: 0;
 }
 
 @media screen and (max-width: 1324px) {
+  .ec-bigbox-detail {
+    padding-left: 10px ;
+    padding-right: 10px;
+}
+
+.neon-tarif-cont .big-btn {
+  margin-right: 10px !important;
+}
+
+.nestedInput {
+  width: 100%;
+  padding-bottom: 3.5%;
+}
+
+.livraisonRow {
+  padding-bottom: 0 !important;
+}
   .neon-bar-item-cont span {
     font-size: 14px;
   }
@@ -1297,7 +1319,7 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; color: #F4CC2
 
 .creditCardsContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100px;
 }
 

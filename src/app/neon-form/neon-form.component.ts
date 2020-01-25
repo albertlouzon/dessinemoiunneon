@@ -85,6 +85,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   selectedFormatSize = null;
   imageSupportSelected = null;
   projectType = null;
+  userFirstChoice;
   lesserSign = '<';
   userChoices = {};
   userInfoPerso = {};
@@ -175,17 +176,17 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   ];
 
   colorList = [
-    { name: 'blanc', color: '#ffffff', url: '../.././assets/blanc.png' },
-    { name: 'blanc-chaud', color: '#ede3c5', url: '../.././assets/blanchaud.png' },
-    { name: 'orange', color: '#ffa42c', url: '../.././assets/orange.png' },
-    { name: 'jaune', color: '#ffe600', url: '../.././assets/jaune.png' },
-    { name: 'rouge', color: '#ff0000', url: '../.././assets/rouge.png' },
-    { name: 'rose', color: '#ff73ff', url: '../.././assets/rose.png' },
-    { name: 'fuschia', color: '#df29ff', url: '../.././assets/fuschia.png' },
-    { name: 'violet', color: '#9527ff', url: '../.././assets/violet.png' },
-    { name: 'bleu', color: '#337dff', url: '../.././assets/bleu.png' },
-    { name: 'vert', color: '#15e81f', url: '../.././assets/vert.png' },
-    { name: 'turquoise', color: '#17fff9', url: '../.././assets/turquoise.png' },
+    { name: 'Blanc', color: '#ffffff', url: '../.././assets/blanc.png' },
+    { name: 'Blanc chaud', color: '#ede3c5', url: '../.././assets/blanchaud.png' },
+    { name: 'Orange', color: '#ffa42c', url: '../.././assets/orange.png' },
+    { name: 'Jaune', color: '#ffe600', url: '../.././assets/jaune.png' },
+    { name: 'Rouge', color: '#ff0000', url: '../.././assets/rouge.png' },
+    { name: 'Rose', color: '#ff73ff', url: '../.././assets/rose.png' },
+    { name: 'Fuschia', color: '#df29ff', url: '../.././assets/fuschia.png' },
+    { name: 'Violet', color: '#9527ff', url: '../.././assets/violet.png' },
+    { name: 'Bleu', color: '#337dff', url: '../.././assets/bleu.png' },
+    { name: 'Vert', color: '#15e81f', url: '../.././assets/vert.png' },
+    { name: 'Turquoise', color: '#17fff9', url: '../.././assets/turquoise.png' },
   ];
   @Input()
   isNavigationVisible = true;
@@ -679,6 +680,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  onClickFirstStep(choice) {
+    this.userFirstChoice = choice;
+  }
   onPressPrevBtn(stepNumber) {
     this.googleAnalyticsService.eventEmitter("form", 'précédent' , stepNumber, 0);
   }

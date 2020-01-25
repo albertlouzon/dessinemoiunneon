@@ -7,9 +7,10 @@
   <div  maxlength="55"   [className]=" neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
    style="align-self: center; text-align: center; letter-spacing: 2px;  height: 150px !important;"
      *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " ><span>{{textInput}}</span></div>
+     <!-- <span class="row" style="text-align: center; font-size: 17px; font-family: Mukta-Regular, sans-serif;">Ceci est un petit plus pour les yeux mais c pas le vré bail ok ??</span> -->
 
 
-  <aw-wizard   *ngIf="!hideWizard"  style="width: 100%;">
+  <aw-wizard   style="width: 100%;">
     <div class="neon-wizard-container row">
       <div class="forBigPussy col-3"></div> 
       <aw-wizard-step stepTitle="" class="col-md-6 col-sm-10 step-container">
@@ -17,14 +18,14 @@
         <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
         </span>
         <div class="neon-wizard-btn-container  row flex3 mb3 ">  
-          <button type="button" [ngClass]="userChoices[0]==='text'? 'yellow-selected form-btn  col-md-4 col-sm-12' : 'form-btn  col-md-4 col-sm-12'"  (click)="onCompleteStep(0, 'text', null)" 
+          <button type="button" [ngClass]="userFirstChoice==='text'? 'yellow-selected form-btn  col-md-4 col-sm-12' : 'form-btn  col-md-4 col-sm-12'"  (click)="onClickFirstStep('text')" 
             >TEXTE</button>
-          <button type="button" [ngClass]="userChoices[0]==='image'? 'yellow-selected form-btn  col-md-4 col-sm-12' : 'form-btn  col-md-4 col-sm-12'" (click)="onCompleteStep(0, 'image', null)"
+          <button type="button" [ngClass]="userFirstChoice==='image'? 'yellow-selected form-btn  col-md-4 col-sm-12' : 'form-btn  col-md-4 col-sm-12'" (click)="onClickFirstStep('image')" 
             >LOGO/IMAGE</button>
         </div>
 
         <div class="neon-wizard-btn-container2 row">
-          <button  [ngClass]="!userChoices[0]? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  [disabled]="!userChoices[0]"  class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
+          <button  [ngClass]="!userFirstChoice? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'" (click)="onCompleteStep(0, userFirstChoice, null)"  [disabled]="!userFirstChoice"  class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
         </div>
 
 

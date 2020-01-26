@@ -1245,9 +1245,11 @@ margin-bottom: 15px;
   // height: 75px;
   font-size: 20px !important;
   // width: 90%;
+  background-color: #000b31;
   position: fixed;
   z-index: 99;
   top: 5px;
+  display: none !important;
 }
 .basic-input-form {
   font-size: 14px;

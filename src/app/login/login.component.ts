@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   signUpError = 'Vous devez fournir un email et un mot de passe...';
   ngOnInit() {
     if(localStorage.getItem('email')) {
-      console.log('ok')
+      console.log('ok')   
       this.email = localStorage.getItem('email');
       this.password = localStorage.getItem('pw');
 
@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
     this.name = '';
     this.nickname = '';
     this.society = '';
-
   }
   login() {
     return this.http.post('https://neon-server.herokuapp.com/login', {email: this.email, password: this.password});
@@ -128,7 +127,15 @@ export class LoginComponent implements OnInit {
                 this.loading = false;
                 currentView.caca = 'client'
                 }, 2000);
-              } else {
+              } else if(err.status === 403) {
+                this.openSnackbar('Veuillez entrer un email valide')
+                this.loading = false;
+              } else if(err.status === 404) {
+                this.openSnackbar('Cet email semble introuvable')
+                this.loading = false;
+              }
+              
+              else {
                 this.openSnackbar('Le mot de passe est incorrect')
                 this.loading = false;
               }

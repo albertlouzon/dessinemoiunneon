@@ -29,7 +29,7 @@
                 <option value="all">Tout voir</option>
                 <option selected disabled>Choisit un filtre</option>
                 <option value="En cours de design">En cours de design</option>
-                <option value="DT disponible">DT disponible</option>
+                <option value="Prêt">Prêt</option>
                 <option value="Payé">Payé</option>
                 <option disabled>------------------------</option>
                 <option value="Consumer">Consumer</option>
@@ -54,22 +54,26 @@
         <tr *ngFor="let command of neonList; let i = index">
           <td (click)="goToDetail(command)" data-column="Yencli">{{command.email}}</td>
           <td (click)="goToDetail(command)" data-column="Type">{{command.type}}</td>
-          <td (click)="goToDetail(command)" data-column="Dessin technique">{{command.text}}</td>
-          <td (click)="goToDetail(command)" data-column="Recu le">{{command.creationDate}}</td>
+          <td  data-column="Dessin technique">{{command.text}}</td>
+          <td (click)="goToDetail(command)" data-column="Recu le">{{command.date}}</td>
 
           <td (click)="goToDetail(command)" data-column="Etat">{{command.state}}</td>
           <td (click)="goToDetail(command)" data-column="Prix">{{command.price}}</td>
           <td (click)="goToDetail(command)" data-column="Typo">{{command.typo}}</td>
           <td (click)="goToDetail(command)" data-column="Couleur">{{command.colors}}</td>
 
-          <div class="row">
+          <div  style="display: flex; flex-direction: column; justify-content: flex-start;">
 
 
-            <div class="col-2">
-              <button (click)="deleteCommand(command)" style="padding-right: 30px; padding-left: 30px;"
-                class="next-btn">Supprimer</button>
+            <div >
+              <button  *ngIf="command?.state === 'Prêt' " (click)="relancer(command)" 
+                class="next-btn-no-margin">Relancer</button>
 
 
+            </div>
+            <div class="">
+              <button (click)="deleteCommand(command)" style="margin-left: 15px;"
+                class="next-btn-no-margin">Supprimer</button>
             </div>
           </div>
 
@@ -287,7 +291,7 @@
       <option value="all">Tout voir</option>
       <option selected disabled>Choisit un filtre</option>
       <option value="En cours de design">En cours de design</option>
-      <option value="DT disponible">DT disponible</option>
+      <option value="Prête">Prêt</option>
       <option value="Payé">Payé</option>
       <option disabled>------------------------</option>
       <option value="Consumer">Consumer</option>

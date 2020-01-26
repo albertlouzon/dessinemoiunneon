@@ -12,7 +12,6 @@
 
 .ec-bigbox-detail {
   padding-left: 7%;
-  // padding-right: 7%;
 }
 .neon-detail-config {
   padding: 0 !important;
@@ -146,8 +145,8 @@ h2, h1 {
   flex-direction: row;
 }
 .big-card  {
-  margin-top: 12%;
-  width: 100%;
+  margin-top: 125px;
+      width: 100%;
   display: flex;
   padding: 0 !important;
   height: auto;
@@ -683,7 +682,7 @@ margin-bottom: 15px;
 .neon-bar {
   background-color: #F4F4F4 ;
     display: flex;
-    height: 17%;
+    height: auto;
     max-height: 70px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -906,7 +905,7 @@ margin-bottom: 15px;
 }
 
 .user-info-row-title {
- font-size: 0.8em;
+ font-size: 17px;
  font-family: Mukta-Regular, sans-serif;
  padding-left: 20px;
  padding-right: 20px;
@@ -1023,14 +1022,21 @@ margin-bottom: 15px;
 .card {
   width: 100%;
 }
-
+.dl-dt {
+  display: none;
+}
+.ec-bottom-row {
+  padding-right: 0% ;
+}
 .bar-btn-cont .prev-btn {
   margin-bottom: 0 !important;
 }
 .revenir {
 left: 0;
  }
-
+h2 {
+  text-align: center;
+}
  .neonDetailTitleCont {
     width: auto;
  }
@@ -1072,6 +1078,9 @@ left: 0;
     margin-top: 5%;
   }
   .neon-bar-item-cont {
+    // display: none;
+  }
+  .bar-btn-cont {
     display: none;
   }
   .no-dt {
@@ -1082,8 +1091,10 @@ left: 0;
 
 @media screen and (max-width: 1324px) {
   .ec-bigbox-detail {
-    padding-left: 10px ;
-    padding-right: 10px;
+    // padding-left: 10px ;
+    // padding-right: 10px;
+    padding-right: 3%;
+
 }
 
 .neon-tarif-cont .big-btn {
@@ -1319,7 +1330,7 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; color: #F4CC2
 
 .creditCardsContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   height: 100px;
 }
 

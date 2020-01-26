@@ -49,7 +49,7 @@ this.pollInterval = setInterval(() => {
       if (neon['state'] === 'payé') {
         payed++;
         total++;
-      } else if (neon['state'] === 'DT disponible') {
+      } else if (neon['state'] === 'Prêt') {
         treated++;
         total++;
       }
@@ -60,6 +60,19 @@ this.pollInterval = setInterval(() => {
     console.log('hahaha', payed, total );
     return payed / total * 100;
 
+  }
+
+  relancer(command)  {
+    console.log('envoyer api avec payload : ', command);
+    this.http.post('https://neon-server.herokuapp.com/relance', command, ).subscribe((url) => {
+      console.log('sucess URL:', url);
+      return url;
+    }, err => {
+      if (err['status'] === 200) {
+        console.log('sucess but 200 error :', err);
+
+      }
+    });
   }
   openStats() {
     const dialogRef = this.dialog.open(ModalComponent, {
@@ -75,8 +88,8 @@ this.pollInterval = setInterval(() => {
     if (type === 'En cours de design') {
       this.neonList = this.cachedList.filter(c => c.state === 'En cours de design');
       this.currentFilter = type;
-    } else  if (type === 'DT disponible') {
-      this.neonList = this.cachedList.filter(c => c.state === 'DT disponible');
+    } else  if (type === 'Prêt') {
+      this.neonList = this.cachedList.filter(c => c.state === 'Prêt');
       this.currentFilter = type;
     } else  if (type === 'Payé') {
       this.neonList = this.cachedList.filter(c => c.state === 'payé');
@@ -210,7 +223,7 @@ changePrice(price) {
     alert('entre un prix valide petit coquin');
   }
 }
-  fetchCommands() {
+  fetchCommands() { 
     this.loading = true;
     this.neonList = [];
     this.currentFile = null,
@@ -229,12 +242,12 @@ changePrice(price) {
            user['commands'].forEach((command) => {
              this.neonList.push({email: user['email'], type: user['type'], text: command['text'], state: command['state'], price: command['price'], userId: user['id'], id: command['id'],
              commandInfo: command['commandInfo'], filePath: command['filePath'], userFull: user , typo: command['typo'],
-              colors: command['colors'], height: command['height'], support: command['support'], telecommande: command['telecommande'] , waterproof: command['waterproof']});
+              colors: command['colors'], height: command['height'], support: command['support'], telecommande: command['telecommande'] , waterproof: command['waterproof'], date: command['date']});
               this.numOfCommands++;
               if (command['state'] === 'En cours de design') {
                   this.numOfCreated++;
               }
-              if (command['state'] === 'DT disponible') {
+              if (command['state'] === 'Prêt') {
                 this.numOfDT++;
             }
             if (command['state'] === 'payé') {

@@ -270,12 +270,17 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
   openRecap() {
     this.hideWizard = true;
+    let width: any;
+     width = this.imageAdditionalInfo;
+    if(this.formatSizes[this.selectedFormatSize]) {
+      width =  this.formatSizes[this.selectedFormatSize].width
+    }
     const dialogRef = this.dialog.open(ModalRecapComponent, {
       data: {
         text: this.textInput,
         typo: this.selectedTypo,
         colors: this.selectedColor,
-        size: this.formatSizes[this.selectedFormatSize].width,
+        size: width,
         support: this.imageSupportSelected
       }
     });
@@ -333,29 +338,46 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     this.finalStep = true;
     let elmt = document.getElementsByClassName('steps-indicator')[0];
     elmt.className = 'steps-indicator hidden'
-    console.log('HELLO :', document.getElementsByClassName('steps-indicator'))
-    // if(this.projectType === null) {
-    //   this.projectType === 'consumer'
-    // }
+    console.log('HELLO :', document.getElementsByClassName('steps-indicator'));
     this.loading = false;
   }
 
   exitForm() {
 
   }
+
+  getTime() {
+    let date_ob = new Date();
+
+    // current date
+    // adjust 0 before single digit date
+    let date = ("0" + date_ob.getDate()).slice(-2);
+    
+    // current month
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    
+    // current year
+    let year = date_ob.getFullYear();
+    
+    // current hours
+    let hours = date_ob.getHours();
+    
+    // current minutes
+    let minutes = date_ob.getMinutes();
+    
+    // current seconds
+    let seconds = date_ob.getSeconds();
+    return year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+  }
   async onSubmitForm() {
     const payload: Array<{ title: string, data: {} }> = [];
     if (this.mainChoice === 'text') {
       payload.push({ title: this.mainChoice, data: { value: this.textInput, style: this.styleSelected } });
       payload.push({ title: 'format', data: { size: this.formatSizes[this.selectedFormatSize], imageSupport: this.imageSupportSelected } });
-
-
     } else {
       payload.push({ title: this.mainChoice, data: { file: this.imageFile, info: this.imageAdditionalInfo } });
       payload.push({ title: 'format', data: { size: this.formatSizes[this.selectedFormatSize], imageSupport: this.imageSupportSelected } });
-
     }
-
     const data = {};
     for (const field in this.userInfoPerso) {
       data[field] = this.userInfoPerso[field];
@@ -370,7 +392,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       height: this.formatSizes[this.selectedFormatSize].width,
       // price: Math.floor(Math.random() * 2000) + 1 ,
       state: 'En cours de design',
-      type: this.projectType
+      type: this.projectType,
+      date: this.getTime()
     };
 
 
@@ -389,7 +412,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                 if (this.imageFile) {
                   commandPayload['clientImageUrl'] = '';
                   console.log('sending image CaaaaaaC', userId);
-
                   const params = new HttpParams().set('userId', userId); // Create new HttpParams
                   const formData: FormData = new FormData();
                   formData.append('file', this.imageFile);
@@ -532,9 +554,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                     });
                   });
                 } else {
-                   console.log('signup failed', err);
-                   this.openSnackBar('La tentative de connection a échoué', 'OK');
-
+                  console.log('signup failed', err);
+                  this.openSnackBar('La tentative de connection a échoué', 'OK');
                   this.loading = false;
                 }
               });
@@ -664,7 +685,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
     if (choice && step === 5) {
       this.userChoices[6] = choice;
-      this.enculeunponey = false;
       if (choice !== this.projectType) {
         this.userInfoPerso = {};
       }
@@ -680,11 +700,17 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  goToSignupStep() {
+    this.enculeunponey = false;
+
+  }
+
   onClickFirstStep(choice) {
     this.userFirstChoice = choice;
   }
   onPressPrevBtn(stepNumber) {
     this.googleAnalyticsService.eventEmitter("form", 'précédent' , stepNumber, 0);
+    this.enculeunponey = true;
   }
 
   onPressNextBtn(eventName, choice) {

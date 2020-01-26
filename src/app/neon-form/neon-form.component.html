@@ -54,8 +54,9 @@
 
 
           <div class="neon-wizard-header">
-            <h4 >Une info en particulier à nous donner ?</h4>
+            <h4 >Indiquez nous le format souhaité</h4>
             <span class="class-subtitle">
+              N'hésitez pas à nous fournir plus de détails sur votre projet
             </span>
           </div>
           <textarea  style="margin-bottom: 50px; height: 150px; margin-top: 25px;" (change)="onChangeAdditionnalInfo($event.target.value)" [value]="imageAdditionalInfo" placeholder=""
@@ -111,7 +112,7 @@
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step *ngIf="userChoices[0] === 'text' && !finalStep" stepTitle="" class="col-md-6 col-sm-10  step-container">
         <h4 class="neon-wizard-header">
           Choisissez une couleur
         </h4>
@@ -152,7 +153,7 @@
         </div>
 
       </aw-wizard-step>
-      <aw-wizard-step  *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
+      <aw-wizard-step  *ngIf="userChoices[0] === 'text' && !finalStep"  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <h4 class="neon-wizard-header">
           Choisissez votre format
@@ -218,7 +219,7 @@
 
         <div class="neon-wizard-btn-container2 row">
           <button  class="newPrev-btn " type="button" (click)="onPressPrevBtn('type' )" awPreviousStep><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>          </button>
-          <button  [ngClass]="!projectType? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  [disabled]="!projectType"  class="next-btn  col-md-3 col-sm-12" type="button" awNextStep>Suivant</button>
+          <button  [ngClass]="!projectType? 'next-btn col-md-3 col-sm-12 disabled' : 'next-btn col-md-3 col-sm-12'"  [disabled]="!projectType"  class="next-btn  col-md-3 col-sm-12"  (click)="goToSignupStep()" type="button" awNextStep>Suivant</button>
         </div>
       </aw-wizard-step>
 
@@ -229,7 +230,7 @@
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div *ngIf="projectType === 'consumer' && !finalStep " class="col-md-12 col-sm-12">
-          <h4 class="neon-wizard-header mb5">Obtenez votre Dessin Technique en {{suceMaBite}}</h4>
+          <h4 class="neon-wizard-header mb5">Obtenez votre Dessin Technique <br/> en {{suceMaBite}}</h4>
           <!-- <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier -->
           <div *ngIf="signUp" class='user-info-row-cont mb5'>
             <span class="user-info-row-title ++">Prénom</span>
@@ -297,13 +298,13 @@
 
         </div>
 
-
+        
         <div *ngIf="projectType === 'business' && !finalStep " class=" col-md-12 col-sm-12 ">
           <h4 class="neon-wizard-header mb5 ">Obtenez votre devis gratuit</h4>
           <!-- <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
           </span> -->
           <div class='user-info-row-cont mb5'>
-            <span class="user-info-row-title">Société</span>
+            <span class="user-info-row-title">Société (facultatif)</span>
             <input  autocomplete="off" type="text" (change)="onChangeUserInfo('société', $event.target.value)" [value]="userInfoPerso['société'] || ''"
               class="basic-input  mb3 " />
           </div>
@@ -330,13 +331,13 @@
 
           </div>
 
-          <div class='user-info-row-cont mb5'>
+          <!-- <div class='user-info-row-cont mb5'>
             <span class="user-info-row-title">Mot de passe</span>
             <input autocomplete="off" type="password" (change)="onChangeUserInfo('password', $event.target.value)" [value]="userInfoPerso['password'] || ''"
               class="basic-input  " />
               <span class='user-info-row-title mt3 textcenter'>En cliquant sur "Envoyer" vous acceptez les <a  target="_blank"
                 href="https://dessinemoiunneon.fr/politique-de-confidentialite-2/">Conditions générales d'utilisation</a></span>
-          </div>
+          </div> -->
 
 
           <div class="neon-wizard-btn-container2 row">
@@ -357,7 +358,7 @@
           <h3>Demande envoyée</h3>
         </div>
         
-        <span    class="neon-wizard-descr-merci">
+        <span class="neon-wizard-descr-merci">
           Merci pour votre demande. Vous recevrez un email demain pour vous notifier de l'ajout du dessin technique à votre espace.
         </span>
 
@@ -377,11 +378,11 @@
         </div>
         
         <span    class="neon-wizard-descr-merci">
-          Merci pour votre demande. Vous recevrez un email demain avec le devis de votre néon.
+          Merci pour votre demande. Vous recevrez un email demain     avec le devis de votre néon.
         </span>
 
-        <div class="neon-wizard-btn-container2 row flex0">
-          <button class='next-btn col-md-3 col-sm-12' type="button" (click)="goToAcceuil();">Retourner à l'acceuil</button>
+        <div class="neon-wizard-btn-container row flex0">
+          <button class='next-btn-no-margin col-md-4 col-sm-12' type="button" (click)="goToEC();">Accéder à mon espace</button>
 
         </div>
 

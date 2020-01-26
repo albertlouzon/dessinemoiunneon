@@ -5,13 +5,16 @@
     <div class="col-lg-1 forBigPussy"></div>
     <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
       <div class='ec-list-title row'>
-        <h1 class="ec-title col-lg-5 col-md-12">Tous vos néons</h1> 
-        <button class="prev-btn col-lg-3 col-md-12" (click)="goToForm();">Nouveau néon</button>
-        <div class='forBigPussy col-1'></div>
-        <button  class="grey-btn col-lg-3 col-sm-12"  style="display: flex; align-items: center; justify-content: space-around" (click)="logout()">
-          <mat-icon mat-list-icon>exit_to_app</mat-icon>
-          Déconnexion
-          </button>
+        <h1 class="ec-title col-lg-6 col-md-12">Tous vos néons</h1> 
+
+        <div style="display: flex; justify-content: space-around;"  class="col-lg-6 col-md-12">
+          <button class="prev-btn " (click)="goToForm();">Nouveau néon</button>
+          <button   class="grey-btn  "  style="margin-left: 15px;" (click)="logout()">
+            <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            Déconnexion
+            </button>
+        </div>
+
       </div>
 
       <div class="ec-list-cont">
@@ -28,7 +31,7 @@
             <tbody>
               <tr *ngFor="let command of neonList; let i = index" (click)="goToNeonDetail(command)" [ngClass]="i === neonList.length - 1 ? 'no-border-bot pb3 pt3' : 'pb3 pt3'"  >
                 <td  data-column="">{{command.text | titlecase}}</td>
-                <td data-column="">{{command.state | titlecase}}</td>
+                <td data-column="">{{command.state}}</td>
               </tr>
             </tbody>
          
@@ -44,7 +47,7 @@
 <div *ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" class='ec-bigbox-detail'>
   <div class="neonDetailTitleCont ">
     <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="neonSelected = null"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
-    <h1 style="margin-top: 17px;">Néon LED "{{neonSelected?.text}}"</h1>
+    <h2  style="margin-top: 17px;">Néon LED "{{neonSelected?.text}}"</h2 >
   </div>
   
   <div class="ec-top-row-detail row">
@@ -103,8 +106,8 @@
         <div class="bar-btn-cont">
           <!-- <button (click)="dlFile(neonSelected.filePath)">link</button> -->
 
-          <button *ngIf="neonSelected?.state === 'En cours de design'"  class="prev-btn modif-btn"><a href="#open-modal">Demander une modification</a></button>
-          <button *ngIf="neonSelected?.state !== 'En cours de design'" (click)="downloadDT()" class="prev-btn"><a target="_blank"
+          <!-- <button *ngIf="neonSelected?.state === 'En cours de design'"  class="prev-btn modif-btn"><a href="#open-modal">Demander une modification</a></button> -->
+          <button  *ngIf="neonSelected?.state !== 'En cours de design'" (click)="downloadDT()" class="prev-btn dl-dt"><a target="_blank"
               class='customHyperlink' [href]="neonSelected?.filePath">Télécharger mon dessin</a></button>
           <!-- <button   class="prev-btn" >Demander une notification</button> -->
 
@@ -246,7 +249,7 @@
               <input (change)="onChangeCommandInfo('société', $event.target.value)"   class="basic-input "/>
           </div> -->
 
-        <div class=' livraisonRow user-info-row-cont'>
+        <div class=' nestedInput user-info-row-cont'>
           <span class="user-info-row-title">Adresse</span>
           <input [value]="commandInfos['adresse']" (change)="onChangeCommandInfo('adresse', $event.target.value)"
             class="basic-input " />
@@ -296,8 +299,8 @@
         <!-- <div class="card_image">
  
         </div> -->
-        <div style="padding: 0 !important" class="card_content ">
-          <span style='margin-left: 20px !important; margin-top: 3%;' class="ec-card-title">
+        <div style="padding: 0 ! " class="card_content ">
+          <span style='margin-left: 20px !important; margin-top: 3%; ' class="ec-card-title">
             Récapitulatif
           </span>
 

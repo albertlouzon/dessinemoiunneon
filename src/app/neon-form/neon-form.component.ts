@@ -243,11 +243,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     window.top.location.href = 'https://www.dessinemoiunneon.fr/espace-personnel';
 
   }
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
+
   goToAcceuil() {
     window.top.location.href = 'https://www.dessinemoiunneon.fr';
     this.googleAnalyticsService.eventEmitter("redirect", 'acceuil' , '', 0);
@@ -426,7 +422,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                   });
                 } else {
                   // alert('vous devez choisir une image');
-                  this.openSnackBar('vous devez choisir une image', 'OK');
+                  this.openSnackbar('vous devez choisir une image');
 
                 }
                 this.sleep(1000);
@@ -474,7 +470,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       }, err => console.log('err', err));
                     } else {
                       // alert('vous devez choisir une image');
-                      this.openSnackBar('vous devez choisir une image', 'OK');
+                      this.openSnackbar('vous devez choisir une image');
 
                     }
                     this.sleep(1000);
@@ -508,7 +504,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                   console.log('debu 6');
 
                   this.loading = false;
-                  this.saveToStorage();
                   this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
                     this.allUsers = users;
                     const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
@@ -527,7 +522,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                         }, err => console.log('err', err));
                       } else {
                         // alert('vous devez choisir une image');
-                        this.openSnackBar('vous devez choisir une image', 'OK');
+                        this.openSnackbar('vous devez choisir une image');
 
                       }
                       this.sleep(1000);
@@ -537,7 +532,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                     this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                       console.log('updated list after post :', newNeonList);
 
-                      this.saveToStorage();
                       this.manageFinalStep();
 
 
@@ -553,9 +547,15 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       }
                     });
                   });
-                } else {
+                } else if(err.status === 403) {
+                this.openSnackbar('Veuillez entrer un email valide')
+                this.loading = false;
+              } else if(err.status === 404) {
+                this.openSnackbar('Cet email semble introuvable')
+                this.loading = false;
+              } else {
                   console.log('signup failed', err);
-                  this.openSnackBar('La tentative de connection a échoué', 'OK');
+                  this.openSnackbar('La tentative de connection a échoué');
                   this.loading = false;
                 }
               });
@@ -564,7 +564,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
         });
       } else {
         // alert('Vous devez fournir un email et un mot de passe');
-        this.openSnackBar('Vous devez fournir un email et un mot de passe', 'OK');
+        this.openSnackbar('Vous devez fournir un email et un mot de passe');
       }
     } else {
       console.log('debu 8', localStorage.getItem('email'));
@@ -585,7 +585,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
           }, err => console.log('err', err));
         } else {
           // alert('vous devez choisir une image');
-          this.openSnackBar('Vous devez fournir une image', 'OK');
+          this.openSnackbar('Vous devez fournir une image');
 
         }
         this.sleep(1000);
@@ -594,8 +594,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       console.log('upload file finished', commandPayload['clientImageUrl']);
       this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
         console.log('updated list after post :', newNeonList);
-
-        this.saveToStorage();
         this.manageFinalStep();
 
       }, err => {
@@ -728,6 +726,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       type: this.projectType
     };
     return this.http.post('https://neon-server.herokuapp.com/users', payload, { headers: headers });
+  }
+
+  openSnackbar(msg) {
+    this._snackBar.open(msg, 'Ok', {
+      duration: 2000,
+    });
   }
 
   getUser() {

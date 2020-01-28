@@ -48,7 +48,7 @@
 
 <div *ngIf="neonSelected  && !commandMode && !payMode && !showLastPage" class='ec-bigbox-detail'>
   <div class="neonDetailTitleCont ">
-    <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="neonSelected = null"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
+    <button style="margin-left: 0 !important;" class="newPrev-btn " (click)="neonSelected = null"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
     <h2  style="margin-top: 17px;">Néon LED "{{neonSelected?.text}}"</h2 >
   </div>
   
@@ -222,9 +222,9 @@
 
   <div class="row commandMainCont">
     <div class="col-lg-6 col-sm-12 command-form-cont">
-      <div class="commandeTitleCont">
-        <button style="margin-left: 0 !important; height: 60px; width: 60px;" class="newPrev-btn " (click)="commandMode = false"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
-        <h2 style = "align-self: center;">Informations de livraison</h2>
+      <div class="neonDetailTitleCont">
+        <button style="margin-left: 0 !important;" class="newPrev-btn " (click)="commandMode = false"><mat-icon mat-list-icon>keyboard_arrow_left</mat-icon> </button>
+        <h2 >Informations de livraison</h2>
       </div>
 
       <div class="command-form-card row">
@@ -251,7 +251,7 @@
               <input (change)="onChangeCommandInfo('société', $event.target.value)"   class="basic-input "/>
           </div> -->
 
-        <div class=' nestedInput user-info-row-cont'>
+        <div class=' full-input user-info-row-cont'>
           <span class="user-info-row-title">Adresse</span>
           <input [value]="commandInfos['adresse']" (change)="onChangeCommandInfo('adresse', $event.target.value)"
             class="basic-input " />

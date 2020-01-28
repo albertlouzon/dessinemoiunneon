@@ -1102,8 +1102,10 @@ h2 {
 }
 
 .nestedInput {
-  width: 100%;
   padding-bottom: 3.5%;
+}
+.large-input {
+  width: 100%;
 }
 
 .livraisonRow {
@@ -1137,11 +1139,8 @@ h2 {
     margin-top: 10px;
     font-size: 11px;
   }
-  .grey-btn, .next-btn, .newPrev-btn, .prev-btn {
+  .grey-btn, .next-btn, .prev-btn {
     height: auto !important;
-  }
-  .newPrev-btn {
-    width: auto !important;
   }
   .prev-btn {
     margin-bottom: 10px;
@@ -1345,6 +1344,7 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; color: #F4CC2
 .neonDetailTitleCont {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   margin-top: 3%;
   margin-bottom: 3%;
 }

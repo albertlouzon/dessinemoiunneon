@@ -5,14 +5,16 @@
     <div class="col-lg-1 forBigPussy"></div>
     <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
       <div class='ec-list-title row'>
-        <h1 class="ec-title col-lg-6 col-md-12">Tous vos néons</h1> 
+        <h1 class="ec-title col-md-9  col-sm-12">Tous vos néons</h1> 
 
-        <div style="display: flex; justify-content: space-around;"  class="col-lg-6 col-md-12">
-          <button class="prev-btn " (click)="goToForm();">Nouveau néon</button>
-          <button   class="grey-btn  "  style="margin-left: 15px;" (click)="logout()">
-            <mat-icon mat-list-icon>exit_to_app</mat-icon>
-            Déconnexion
+        <div style="display: flex; justify-content: space-around; flex-direction: column;"  class="col-md-3 col-sm-12" >
+          <button   class="grey-btn  "  style="display:flex; align-self: center; min-width: 175px;  text-align: center;" (click)="logout()">
+            <span style="width: 100%;">Déconnexion</span>
+            <mat-icon class="forBigPussy" style="vertical-align: middle; margin-left: 3px;" mat-list-icon>exit_to_app</mat-icon>
+            
             </button>
+            <button style="margin-top: 15px;     min-width: 175px; align-self: center;" class="prev-btn " (click)="goToForm();">Nouveau néon</button>
+
         </div>
 
       </div>
@@ -145,7 +147,7 @@
           </tr>
           <tr  [ngClass]="neonSelected.state === 'En cours de design' ? 'no-border-bot' : ''"  >
             <td style="font-family: Mukta-Bold;" data-column="">Hauteur</td>
-            <td style="font-family: Mukta-Regular; " data-column="">{{neonSelected?.height}}cm</td>
+            <td style="font-family: Mukta-Regular; " data-column="">{{neonSelected?.height}}</td>
           </tr>
           <!-- <tr>
             <td style="font-family: Mukta-Bold;" data-column="">Etat</td>

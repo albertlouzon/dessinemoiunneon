@@ -52,7 +52,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let command of neonList; let i = index">
-          <td (click)="goToDetail(command)" data-column="Yencli">{{command.email}}</td>
+          <td  data-column="Yencli">{{command.email}}</td>
           <td (click)="goToDetail(command)" data-column="Type">{{command.type}}</td>
           <td  data-column="Dessin technique">{{command.text}}</td>
           <td (click)="goToDetail(command)" data-column="Recu le">{{command.date}}</td>

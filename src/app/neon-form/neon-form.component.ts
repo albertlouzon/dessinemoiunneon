@@ -241,7 +241,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   }
   goToEC() {
     window.top.location.href = 'https://www.dessinemoiunneon.fr/espace-personnel';
-
   }
 
   goToAcceuil() {
@@ -253,15 +252,15 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     this.userInfoPerso['password'] = '';
     this.userInfoPerso['name'] = '';
     this.userInfoPerso['nickname'] = '';
+    // localStorage.setItem('email', null);
+    // localStorage.setItem('pw', null);
     if (this.signUp) {
       this.suceMaBite = ' vous connectant !';
-
     } else {
       this.suceMaBite = ' créant votre espace !';
-
     }
-
     this.signUp = !this.signUp;
+    console.log('issignup:' , this.signUp)
   }
 
   openRecap() {
@@ -269,7 +268,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     let width: any;
      width = this.imageAdditionalInfo;
     if(this.formatSizes[this.selectedFormatSize]) {
-      width =  this.formatSizes[this.selectedFormatSize].width
+      width =  this.formatSizes[this.selectedFormatSize].width + " cm";
     }
     const dialogRef = this.dialog.open(ModalRecapComponent, {
       data: {
@@ -365,6 +364,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     let seconds = date_ob.getSeconds();
     return year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
   }
+
   async onSubmitForm() {
     const payload: Array<{ title: string, data: {} }> = [];
     if (this.mainChoice === 'text') {
@@ -378,6 +378,11 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     for (const field in this.userInfoPerso) {
       data[field] = this.userInfoPerso[field];
     }
+    let width: any;
+    width =  this.imageAdditionalInfo;
+    if(this.formatSizes[this.selectedFormatSize]) {
+      width = this.formatSizes[this.selectedFormatSize].width;
+    }
     payload.push({ title: this.projectType, data: { data } });
     const commandPayload = {
       text: this.textInput,
@@ -385,15 +390,13 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       colors: this.selectedColor,
       support: this.imageSupportSelected,
       imageAdditionalInfo: this.imageAdditionalInfo,
-      height: this.formatSizes[this.selectedFormatSize].width,
+      height: width,
       // price: Math.floor(Math.random() * 2000) + 1 ,
       state: 'En cours de design',
       type: this.projectType,
       date: this.getTime()
     };
-
-
-    if (localStorage.getItem('email') === null) {
+    if (localStorage.getItem('email') === null || !localStorage.getItem('email')) {
       if ((this.userInfoPerso['email'] || this.userInfoPerso['password']) && (this.userInfoPerso['email'].trim() !== '' || this.userInfoPerso['password'].trim() !== '')) {
         this.loginFailed = false;
         this.loading = true;
@@ -448,7 +451,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
               this.loginFailed = false;
               this.signUpError = 'Vous devez fournir un email et un mot de passe...';
               console.log('debu 2');
-
               this.signUpObs().subscribe(() => {
                 this.loading = false;
                 this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
@@ -568,13 +570,19 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       }
     } else {
       console.log('debu 8', localStorage.getItem('email'));
+      if( ! this.allUsers.find(x => x.email === localStorage.getItem('email')) && !this.signUp) {
+          this.openSnackbar('Cet email ne semble pas dans notre base de donnée');
+          localStorage.removeItem('email');
+          localStorage.removeItem('pw');
 
+          return;
+      }
       const userId = this.allUsers.find(x => x.email === localStorage.getItem('email')).id;
+    
       if (this.mainChoice === 'image') {
         if (this.imageFile) {
           commandPayload['clientImageUrl'] = '';
           console.log('sending image CaaaaaaC', userId);
-
           const params = new HttpParams().set('userId', userId); // Create new HttpParams
           const formData: FormData = new FormData();
           formData.append('file', this.imageFile);
@@ -655,14 +663,18 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
 
       if (localStorage.getItem('email')) {
-
+        let width: any;
+         width = this.imageAdditionalInfo;
+        if(this.formatSizes[this.selectedFormatSize]) {
+          width = this.formatSizes[this.selectedFormatSize].width;
+        }
 
         const dialogRef = this.dialog.open(ModalRecapComponent, {
           data: {
             text: this.textInput,
             typo: this.selectedTypo,
             colors: this.selectedColor,
-            size: this.formatSizes[this.selectedFormatSize].width,
+            size: width,
             support: this.imageSupportSelected
           }
         });
@@ -696,11 +708,13 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     if (value.trim() !== '') {
       this.userInfoPerso[target] = value;
     }
+    if(target === 'email') {
+      this.signUp ? localStorage.setItem('email', null) : localStorage.setItem('email', value);
+    }
   }
 
   goToSignupStep() {
     this.enculeunponey = false;
-
   }
 
   onClickFirstStep(choice) {

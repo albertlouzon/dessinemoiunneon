@@ -709,7 +709,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       this.userInfoPerso[target] = value;
     }
     if(target === 'email') {
-      this.signUp ? localStorage.setItem('email', null) : localStorage.setItem('email', value);
+      this.signUp ? localStorage.removeItem('email') : localStorage.setItem('email', value);
     }
   }
 

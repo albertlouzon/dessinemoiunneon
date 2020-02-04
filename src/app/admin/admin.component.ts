@@ -63,16 +63,25 @@ this.pollInterval = setInterval(() => {
   }
 
   relancer(command)  {
-    console.log('envoyer api avec payload : ', command);
-    this.http.post('https://neon-server.herokuapp.com/relance', command, ).subscribe((url) => {
-      console.log('sucess URL:', url);
-      return url;
-    }, err => {
-      if (err['status'] === 200) {
-        console.log('sucess but 200 error :', err);
+    let res = confirm('Confirmer vouloir relancer ' + command.email);
+    if(confirm) {
+      console.log('envoyer api avec payload : ', command);
+      this.http.post('https://neon-server.herokuapp.com/relance', command, ).subscribe((url) => {
+        console.log('sucess URL:', url);
+        alert('Sucess')
+        return url;
+      }, err => {
+        if (err['status'] === 200) {
+          console.log('sucess but 200 error :', err);
+          alert('Sucess')
 
-      }
-    });
+        } else {
+          // alert('Failed to send email ')
+
+        }
+      });
+    }
+
   }
   openStats() {
     const dialogRef = this.dialog.open(ModalComponent, {
@@ -235,13 +244,14 @@ changePrice(price) {
 
     this.getConfig().subscribe((res: Array<Object>) => {
       this.loading = false;
+      console.log('RES:' ,res)
+
       if (res) {
         res.forEach((user) => {
-          console.log(user)
           if (user['commands'].length > 0) {
            user['commands'].forEach((command) => {
              this.neonList.push({email: user['email'], type: user['type'], text: command['text'], state: command['state'], price: command['price'], userId: user['id'], id: command['id'],
-             commandInfo: command['commandInfo'], filePath: command['filePath'], userFull: user , typo: command['typo'],
+             commandInfo: command['commandInfo'], filePath: command['filePath'] || command['clientImageUrl'], userFull: user , typo: command['typo'],
               colors: command['colors'], height: command['height'], support: command['support'], telecommande: command['telecommande'] , waterproof: command['waterproof'], date: command['date']});
               this.numOfCommands++;
               if (command['state'] === 'En cours de design') {

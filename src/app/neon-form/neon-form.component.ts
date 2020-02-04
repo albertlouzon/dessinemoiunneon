@@ -396,11 +396,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       type: this.projectType,
       date: this.getTime()
     };
+
     if (localStorage.getItem('email') === null || !localStorage.getItem('email')) {
       if ((this.userInfoPerso['email'] || this.userInfoPerso['password']) && (this.userInfoPerso['email'].trim() !== '' || this.userInfoPerso['password'].trim() !== '')) {
         this.loginFailed = false;
         this.loading = true;
-        this.getUser().subscribe((allUsers: Array<any>) => {
+        this.getUser().subscribe( async (allUsers: Array<any>) => {
           console.log('all the users , ', allUsers);
           if (allUsers) {
             if (allUsers.find(x => x['email'] === this.userInfoPerso['email'])) {
@@ -410,18 +411,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
               if (this.mainChoice === 'image') {
                 if (this.imageFile) {
                   commandPayload['clientImageUrl'] = '';
-                  console.log('sending image CaaaaaaC', userId);
                   const params = new HttpParams().set('userId', userId); // Create new HttpParams
                   const formData: FormData = new FormData();
                   formData.append('file', this.imageFile);
-                  this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
-                    console.log('sucess URL:', url);
+                  await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+                    console.log('sucess URL current:', url);
                     commandPayload['clientImageUrl'] = url;
-                    return url;
-                  }, err => {
-                    if (err['status'] === 200) {
-
-                    }
                   });
                 } else {
                   // alert('vous devez choisir une image');
@@ -432,6 +427,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
               }
               console.log('upload file finished', commandPayload['clientImageUrl']);
+              
 
               this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                 console.log('updated list after post :', newNeonList);
@@ -453,7 +449,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
               console.log('debu 2');
               this.signUpObs().subscribe(() => {
                 this.loading = false;
-                this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
+                this.http.get('https://neon-server.herokuapp.com/users').subscribe( async (users: Array<any>) => {
                   this.allUsers = users;
                   this.saveToStorage();
                   const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
@@ -465,11 +461,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       const params = new HttpParams().set('userId', userId); // Create new HttpParams
                       const formData: FormData = new FormData();
                       formData.append('file', this.imageFile);
-                      this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
-                        console.log('sucess URL:', url);
+                      await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+                        console.log('sucess URL current:', url);
                         commandPayload['clientImageUrl'] = url;
-                        return url;
-                      }, err => console.log('err', err));
+                      });
                     } else {
                       // alert('vous devez choisir une image');
                       this.openSnackbar('vous devez choisir une image');
@@ -506,7 +501,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                   console.log('debu 6');
 
                   this.loading = false;
-                  this.http.get('https://neon-server.herokuapp.com/users').subscribe((users: Array<any>) => {
+                   this.http.get('https://neon-server.herokuapp.com/users').subscribe(async (users: Array<any>) => {
                     this.allUsers = users;
                     const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
                     if (this.mainChoice === 'image') {
@@ -517,11 +512,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                         const params = new HttpParams().set('userId', userId); // Create new HttpParams
                         const formData: FormData = new FormData();
                         formData.append('file', this.imageFile);
-                        this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
-                          console.log('sucess URL:', url);
+                        await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+                          console.log('sucess URL current:', url);
                           commandPayload['clientImageUrl'] = url;
-                          return url;
-                        }, err => console.log('err', err));
+                        });
                       } else {
                         // alert('vous devez choisir une image');
                         this.openSnackbar('vous devez choisir une image');
@@ -530,7 +524,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       this.sleep(1000);
 
                     }
-                    console.log('upload file finished', commandPayload['clientImageUrl']);
+            
+                    console.log('upload file finished AFTER RES URL ???', commandPayload['clientImageUrl']);
                     this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                       console.log('updated list after post :', newNeonList);
 
@@ -586,11 +581,12 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
           const params = new HttpParams().set('userId', userId); // Create new HttpParams
           const formData: FormData = new FormData();
           formData.append('file', this.imageFile);
-          this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).subscribe((url) => {
-            console.log('sucess URL:', url);
+          formData.append('commands', this.imageFile);
+
+          await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+            console.log('sucess URL current:', url);
             commandPayload['clientImageUrl'] = url;
-            return url;
-          }, err => console.log('err', err));
+          });
         } else {
           // alert('vous devez choisir une image');
           this.openSnackbar('Vous devez fournir une image');

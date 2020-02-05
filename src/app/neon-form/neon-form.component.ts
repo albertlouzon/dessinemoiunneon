@@ -414,9 +414,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                   const params = new HttpParams().set('userId', userId); // Create new HttpParams
                   const formData: FormData = new FormData();
                   formData.append('file', this.imageFile);
-                  await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+                  await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then((url: string) => {
                     console.log('sucess URL current:', url);
                     commandPayload['clientImageUrl'] = url;
+                    // commandPayload.text = url;
                   });
                 } else {
                   // alert('vous devez choisir une image');
@@ -459,9 +460,10 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       const params = new HttpParams().set('userId', userId); // Create new HttpParams
                       const formData: FormData = new FormData();
                       formData.append('file', this.imageFile);
-                      await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+                      await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then((url: string) => {
                         console.log('sucess URL current:', url);
                         commandPayload['clientImageUrl'] = url;
+                        // commandPayload.text = url;
                       });
                     } else {
                       // alert('vous devez choisir une image');
@@ -510,9 +512,11 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                         const params = new HttpParams().set('userId', userId); // Create new HttpParams
                         const formData: FormData = new FormData();
                         formData.append('file', this.imageFile);
-                        await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+                        await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then((url: string) => {
                           console.log('sucess URL current:', url);
                           commandPayload['clientImageUrl'] = url;
+                          // commandPayload.text = url;
+
                         });
                       } else {
                         // alert('vous devez choisir une image');
@@ -581,9 +585,11 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
           formData.append('file', this.imageFile);
           formData.append('commands', this.imageFile);
 
-          await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then(url => {
+          await this.http.post('https://neon-server.herokuapp.com/clientFileUpload', formData, { params: params }).toPromise().then((url: string) => {
             console.log('sucess URL current:', url);
             commandPayload['clientImageUrl'] = url;
+            // commandPayload.text = url;
+
           });
         } else {
           // alert('vous devez choisir une image');

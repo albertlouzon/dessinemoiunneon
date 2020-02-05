@@ -12,7 +12,7 @@
       <div class="select">
         <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
           <option value="all">Tout voir</option>
-          <option selected disabled>Choisit un filtre</option>
+          <option selected disabled>Choisis un filtre</option>
           <option value="En cours de design">En cours de design</option>
           <option value="Prêt">Prêt</option>
           <option value="Payé">Payé</option>
@@ -105,11 +105,11 @@
 
     <div *ngIf="neonList?.length > 0 && !isLoading" class="dm-dpls-titles-row mb-3">
       <div class ="dm-dpls-titles-inner">
-      <div class="dpl-list-section-4"> 
+      <div class="dpl-list-section-3"> 
         <span class="dm-sort-title-text">Type & Email</span>
         <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
       </div>
-      <div class="dpl-list-section">
+      <div class="dpl-list-section-2">
         <span class="dm-sort-title-text">Texte</span>
         <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
       </div>
@@ -125,11 +125,11 @@
       <div class="dpl-list-section">
         <span class="dm-sort-title-text">Etat</span>
       </div>
-      <div  style="min-width: 143px; max-width: 143px;"  class="dpl-list-section-labels">
+      <div   class="dpl-list-section">
         <span class="dm-sort-title-text">Typo</span>
         <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
       </div>
-      <div class="dpl-list-section-labels">
+      <div style = 'margin-left: 25px;' class="dpl-list-section">
         <span class="dm-sort-title-text">Couleurs</span>
         <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
       </div>
@@ -152,13 +152,17 @@
    <span  style="margin-left: 10px;">{{dpl.email}}</span>
 
  </div>
- <div  (click)="goToDetail(dpl)" class="dpl-list-section-2"><span>{{dpl?.text}}</span></div>
+ <div  (click)="goToDetail(dpl)" class="dpl-list-section-2">
+   <span *ngIf="!isLogo">{{dpl?.text}}</span>
+   <a [href]="dpl?.clientImageUrl" target="_blank" *ngIf="isLogo">{{dpl?.text}}</a>
+
+  </div>
  <div  (click)="goToDetail(dpl)" class="dpl-list-section-2"><span>{{dpl.date}}</span></div>
  <div   (click)="goToDetail(dpl)" class="dpl-list-section"><span>{{dpl?.state}}</span></div>
  <!-- <div class="dpl-list-section"><span>{{dpl?.price}}</span></div> -->
- <div  (click)="goToDetail(dpl)" class="dpl-list-section"><span>{{dpl?.typo}}</span></div>
+ <div  [style.backgroundImage]="'url('+ dpl.typoUrl +')'"    (click)="goToDetail(dpl)" class="dpl-list-section colorUrlCont"></div>
 
- <div  (click)="goToDetail(dpl)" class="dpl-list-section"><span>{{dpl?.colors}}</span></div>
+ <div  [style.backgroundImage]="'url('+ dpl.colorUrl +')'"  (click)="goToDetail(dpl)" class="dpl-list-section colorUrlCont"></div>
 
  <div  style="display: flex; flex-direction: column; justify-content: flex-start;">
 
@@ -196,7 +200,8 @@
 
   <div class="ec-top-row-detail row">
     <div class="col-6 neon-canvas-cont">
-      <div [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
+      <div *ngIf="neonSelected.filePath &&  neonSelected.filePath !== ''" [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
+      <div *ngIf="neonSelected.clientImageUrl &&  neonSelected.clientImageUrl !== ''"  [style.backgroundImage]="'url('+ neonSelected.clientImageUrl +')'" class="neon-canvas"></div>
 
 
     </div>
@@ -388,7 +393,7 @@
   <div class="select">
     <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
       <option value="all">Tout voir</option>
-      <option selected disabled>Choisit un filtre</option>
+      <option selected disabled>Choisis un filtre</option>
       <option value="En cours de design">En cours de design</option>
       <option value="Prête">Prêt</option>
       <option value="Payé">Payé</option>

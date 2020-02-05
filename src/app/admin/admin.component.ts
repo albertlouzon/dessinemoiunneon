@@ -16,6 +16,54 @@ export class AdminComponent implements OnInit, OnDestroy {
   neonList = [];
   cachedList = [];
   constructor(private http: HttpClient, private excelService: ExcelService, public dialog: MatDialog) { }
+  slides = [
+    {
+      url: '../.././assets/Lilly.png',
+      font: 'Lilly'
+    },
+    {
+      url: '../.././assets/Dannie.png',
+      font: 'Dannie'
+    },
+    {
+      url: '../.././assets/Billy.png',
+      font: 'Billy'
+    },
+    {
+      url: '../.././assets/Polly.png',
+      font: 'Polly'
+    },
+    {
+      url: '../.././assets/Jimmy.png',
+      font: 'Jimmy'
+    },
+    {
+      url: '../.././assets/Cobby.png',
+      font: 'Cobby'
+    },
+    {
+      url: '../.././assets/Tommy.png',
+      font: 'Tommy'
+    },
+    {
+      url: '../.././assets/Freddy.png',
+      font: 'Freddy'
+    },
+  ];
+  isLogo = false;
+  colorList = [
+    { name: 'Blanc', color: '#ffffff', url: '../.././assets/blanc.png' },
+    { name: 'Blanc chaud', color: '#ede3c5', url: '../.././assets/blanchaud.png' },
+    { name: 'Orange', color: '#ffa42c', url: '../.././assets/orange.png' },
+    { name: 'Jaune', color: '#ffe600', url: '../.././assets/jaune.png' },
+    { name: 'Rouge', color: '#ff0000', url: '../.././assets/rouge.png' },
+    { name: 'Rose', color: '#ff73ff', url: '../.././assets/rose.png' },
+    { name: 'Fuschia', color: '#df29ff', url: '../.././assets/fuschia.png' },
+    { name: 'Violet', color: '#9527ff', url: '../.././assets/violet.png' },
+    { name: 'Bleu', color: '#337dff', url: '../.././assets/bleu.png' },
+    { name: 'Vert', color: '#15e81f', url: '../.././assets/vert.png' },
+    { name: 'Turquoise', color: '#17fff9', url: '../.././assets/turquoise.png' },
+  ];
   loading = false;
   commandPrice = 0;
   currentFile;
@@ -142,7 +190,15 @@ fromCreatedToDT(command) {
         this.neonSelected = 'none';
       }, 1000);
 
-    }, err => console.log('err' , err));
+    }, err => {
+      if(err.status === 200) {
+        setTimeout(() => {
+          this.fetchCommands();
+          this.loading = false;
+          this.neonSelected = 'none';
+        }, 1000);
+      }
+    });
   } else {
     alert('Pour importer le DT il faut importer le fichier et entrer le prix du néon');
   }
@@ -250,9 +306,25 @@ changePrice(price) {
         res.forEach((user) => {
           if (user['commands'].length > 0) {
            user['commands'].forEach((command) => {
+            console.log('one command: ', command)
+            let currentColor = '';
+            let currentTypo = '';
+            this.isLogo = false;
+            if(command['clientImageUrl'] && command['clientImageUrl'].includes('http://') ){
+              this.isLogo = true;
+            }
+            console.log('isLogo check :', this.isLogo)
+            if(this.colorList.find(x => x.name === command.colors)) {
+              currentColor =  this.colorList.find(x => x.name === command.colors).url
+            }
+            if(this.slides.find(x => x.font === command.typo)) {
+              currentTypo =  this.slides.find(x => x.font === command.typo).url
+            }
              this.neonList.push({email: user['email'], type: user['type'], text: command['text'], state: command['state'], price: command['price'], userId: user['id'], id: command['id'],
-             commandInfo: command['commandInfo'], filePath: command['filePath'] || command['clientImageUrl'], userFull: user , typo: command['typo'],
-              colors: command['colors'], height: command['height'], support: command['support'], telecommande: command['telecommande'] , waterproof: command['waterproof'], date: command['date']});
+             commandInfo: command['commandInfo'], filePath: command['filePath'] , clientImageUrl:  command['clientImageUrl'], userFull: user , typo: command['typo'],
+              colors: command['colors'], height: command['height'], support: command['support'], telecommande: command['telecommande'] , waterproof: command['waterproof'],
+               date: command['date'], colorUrl: currentColor, typoUrl : currentTypo, isLogo: this.isLogo
+              });
               this.numOfCommands++;
               if (command['state'] === 'En cours de design') {
                   this.numOfCreated++;
@@ -267,7 +339,13 @@ changePrice(price) {
           }
         });
       }
-      console.log('User data after fetch : ', this.neonList);
+      this.neonList.sort(function(a, b) {
+        a = new Date(a.date);
+        b = new Date(b.date);
+        return a>b ? -1 : a<b ? 1 : 0;
+    });
+    console.log('User data after fetch : ', this.neonList);
+
       this.cachedList = this.neonList;
     });
   }

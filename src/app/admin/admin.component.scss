@@ -2702,6 +2702,14 @@ input:focus {
   min-width: 200px;
   overflow-x: hidden;
 }
+
+.colorUrlCont {
+  height: 60px;
+  width: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .dpl-list-section {
   display: flex;
   flex-direction: row;
@@ -2711,6 +2719,9 @@ input:focus {
   //position: relative;
   //display: inline-grid;
   //flex-direction: row;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: contain;
   flex: 1;
   position: relative;
   padding-right: 20px;

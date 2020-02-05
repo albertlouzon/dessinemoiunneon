@@ -427,8 +427,6 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
               }
               console.log('upload file finished', commandPayload['clientImageUrl']);
-              
-
               this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                 console.log('updated list after post :', newNeonList);
                 this.saveToStorage();
@@ -751,6 +749,9 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
 
   saveToStorage() {
+    if(this.projectType === 'business') {
+      return;
+    }
     if (this.userInfoPerso['email'] && this.userInfoPerso['email'].trim() !== '') {
       localStorage.setItem('email', this.userInfoPerso['email']);
 

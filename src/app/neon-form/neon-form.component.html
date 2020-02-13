@@ -2,11 +2,11 @@
 <div class='form-container'>
 
   <!-- <input  maxlength="55"     autocomplete="off" (keyup)="onChangeTextTitle($event.target.value)" [(value)]="textInput" [className]=" neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
-   style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " /> -->
+   style="align-self: center; text-align: center; letter-spacing: 2px;  min-height: 80px !important;"  *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && isStepComplete " /> -->
 
   <div  maxlength="55"   [className]=" neonColorClass + ' dynamicNeonTitle ' + neonTypoClass + ' ' + neonFontSizeClass"
    style="align-self: center; text-align: center; letter-spacing: 2px;  height: 150px !important;"
-     *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && enculeunponey " ><span>{{textInput}}</span></div>
+     *ngIf="userChoices[0] === 'text' && userChoices[3] === 'typo' && isStepComplete " ><span>{{textInput}}</span></div>
      <!-- <span class="row" style="text-align: center; font-size: 17px; font-family: Mukta-Regular, sans-serif;">Ceci est un petit plus pour les yeux mais c pas le vré bail ok ??</span> -->
 
 
@@ -36,13 +36,13 @@
             Ecrivez votre texte
           </h4>
           
-          <input  maxlength="55"       #mainInput  autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" [(value)]="textInput"
+          <input  maxlength="55" #mainInput  autocomplete="off" file='text' (keyup)="onChangeTextTitle($event.target.value)" placeholder="" [(value)]="textInput"
             class="basic-input-text mb5  mt5" />
 
         </div>
         <div class="importer-img-step" *ngIf="userChoices[0] === 'image'">
           <h4 class="neon-wizard-header" >
-            Importer votre image
+            Importez votre image
           </h4>
           <span class="class-subtitle">
           </span>
@@ -230,7 +230,7 @@
       <aw-wizard-step *ngIf="!finalStep "  stepTitle="" class="col-md-6 col-sm-10  step-container">
 
         <div *ngIf="projectType === 'consumer' && !finalStep " class="col-md-12 col-sm-12">
-          <h4 class="neon-wizard-header mb5">Obtenez votre Dessin Technique <br/> en {{suceMaBite}}</h4>
+          <h4 class="neon-wizard-header mb5">Obtenez votre Dessin Technique <br/> en {{dynamicLoginTitle}}</h4>
           <!-- <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier -->
           <div *ngIf="signUp" class='user-info-row-cont mb5'>
             <span class="user-info-row-title ++">Prénom</span>
@@ -300,7 +300,7 @@
 
         
         <div *ngIf="projectType === 'business' && !finalStep " class=" col-md-12 col-sm-12 ">
-          <h4 class="neon-wizard-header mb5 ">Obtenez votre devis gratuit</h4>
+          <h4 class="neon-wizard-header mb5 ">Obtenez votre devis gratuitement en 24h</h4>
           <!-- <span class="class-subtitle">Vous pouvez configurer votre texte ou directement nous soumettre un fichier
           </span> -->
           <div class='user-info-row-cont mb5'>

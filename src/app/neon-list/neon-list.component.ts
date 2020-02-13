@@ -225,32 +225,32 @@ export class NeonListComponent implements OnInit {
   }
   fetchCommands() {
     const hardcodedData = [
-        // {
-        //   id: "aeaze4161631",
-        //   text: "Neon premier",
-        //   type: "consumer",
-        //   typo: "Billy",
-        //   state: "created",
-        //   colors: "orange",
-        //   height: 25,
-        //   support: "détouré",
-        //   creationDate: "27/12/2019",
-        //   imageAdditionalInfo: ""
-        // },
-        // {
-        //   id: "aeaze4161631",
-        //   text: "Neon deuxieme",
-        //   type: "consumer",
-        //   typo: "Billy",
-        //   state: "DT disponible",
-        //   colors: "orange",
-        //   height: 25,
-        //   support: "détouré",
-        //   creationDate: "27/12/2019",
-        //   imageAdditionalInfo: ""
-        // }
-      ]
-    
+      // {
+      //   id: "aeaze4161631",
+      //   text: "Neon premier",
+      //   type: "consumer",
+      //   typo: "Billy",
+      //   state: "created",
+      //   colors: "orange",
+      //   height: 25,
+      //   support: "détouré",
+      //   creationDate: "27/12/2019",
+      //   imageAdditionalInfo: ""
+      // },
+      // {
+      //   id: "aeaze4161631",
+      //   text: "Neon deuxieme",
+      //   type: "consumer",
+      //   typo: "Billy",
+      //   state: "DT disponible",
+      //   colors: "orange",
+      //   height: 25,
+      //   support: "détouré",
+      //   creationDate: "27/12/2019",
+      //   imageAdditionalInfo: ""
+      // }
+    ]
+
     this.neonList = [];
     this.loading = true;
     this.getConfig().subscribe((res: Array<Object>) => {
@@ -275,11 +275,11 @@ export class NeonListComponent implements OnInit {
       } else {
       }
       console.log('User data after fetch : ', this.neonList);
-    }, err =>       {
+    }, err => {
       console.log('cannot fetch data', hardcodedData);
       this.loading = false;
       this.neonList = hardcodedData;
-    }  );
+    });
   }
 
   getColor(color) {
@@ -295,7 +295,7 @@ export class NeonListComponent implements OnInit {
     this.googleAnalyticsService.eventEmitter("téléchargement DT", this.neonSelected['text'], this.user['email'], 1);
   }
 
-  logout() {  
+  logout() {
     localStorage.clear();
     currentView.caca = 'login';
     this.googleAnalyticsService.eventEmitter("déconnexion", "", this.user['email'], 1);
@@ -308,7 +308,7 @@ export class NeonListComponent implements OnInit {
   }
   goToForm() {
     // window.location.replace("https://dessinemoiunneon.fr/neon-sur-mesure-personnalise");
-      window.top.location.href = 'https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/';
+    window.top.location.href = 'https://dessinemoiunneon.fr/neon-sur-mesure-personnalise/';
     this.googleAnalyticsService.eventEmitter("redirect", "Créer un nouveau néon", this.user['email'], 1);
 
 
@@ -353,7 +353,7 @@ export class NeonListComponent implements OnInit {
 
     this.user['changeCommand'] = { command: this.user['commands'].find(c => c.id === this.neonSelected.id), newState: 'payé' };
     this.http.put('https://neon-server.herokuapp.com/users/' + this.user['id'], this.user).subscribe((res) => {
-      this.loading = false; 
+      this.loading = false;
       this.neonSelected.state = 'payé';
       this.showLastPage = true;
       this.commandMode = false;

@@ -21,6 +21,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatCheckboxModule,
   MatProgressBarModule
 } from '@angular/material';
 import { ModalComponent } from './modal/modal.component';
@@ -58,7 +59,8 @@ import { GoogleAnalyticsService } from './google-analytics-service.service';
     MatIconModule,
     MatProgressBarModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   entryComponents: [NeonFormComponent, ModalComponent, ModalRecapComponent],
   providers: [ArchwizardModule, ExcelService, GoogleAnalyticsService],

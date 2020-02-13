@@ -2,34 +2,35 @@
   <div class='admin-list-title col-12'>
     <h3 class="admin-title">Vue Globale: {{numOfCommands}} demandes dont {{numOfCreated}} en attente , {{numOfDT}}
       traitées, {{numOfPayes}} payées</h3>
-    
+
   </div>
 
   <div style="display: flex; justify-content: space-around; margin-bottom: 15px;" class="col-12">
     <a (click)="exportAsXLSX()" href="#" class="buttonDownload">Bicrave Excel</a>
-    <button (click)="openStats()" style="padding-right: 30px; padding-left: 30px;" class="next-btn-no-margin">Conversion</button>
-      <button (click)="logout()" style="padding-right: 30px; padding-left: 30px;" class="next-btn-no-margin">Déco</button>
-      <div class="select">
-        <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
-          <option value="all">Tout voir</option>
-          <option selected disabled>Choisis un filtre</option>
-          <option value="En cours de design">En cours de design</option>
-          <option value="Prêt">Prêt</option>
-          <option value="Payé">Payé</option>
-          <option disabled>------------------------</option>
-          <option value="Consumer">Consumer</option>
-          <option value="Business">Business</option>
-          <option disabled>------------------------</option>
-          <option value="Lilly">Lilly</option>
-          <option value="Dannie">Dannie</option>
-          <option value="Billy">Billy</option>
-          <option value="Polly">Polly</option>
-          <option value="Jimmy">Jimmy</option>
-          <option value="Cobby">Cobby</option>
-          <option value="Tommy">Tommy</option>
-          <option value="Freddy">Freddy</option>
-        </select>
-      </div>
+    <button (click)="openStats()" style="padding-right: 30px; padding-left: 30px;"
+      class="next-btn-no-margin">Conversion</button>
+    <button (click)="logout()" style="padding-right: 30px; padding-left: 30px;" class="next-btn-no-margin">Déco</button>
+    <div class="select">
+      <select (change)="filterCommand($event.target.value)" name="slct" id="slct">
+        <option value="all">Tout voir</option>
+        <option selected disabled>Choisis un filtre</option>
+        <option value="En cours de design">En cours de design</option>
+        <option value="Prêt">Prêt</option>
+        <option value="Payé">Payé</option>
+        <option disabled>------------------------</option>
+        <option value="Consumer">Consumer</option>
+        <option value="Business">Business</option>
+        <option disabled>------------------------</option>
+        <option value="Lilly">Lilly</option>
+        <option value="Dannie">Dannie</option>
+        <option value="Billy">Billy</option>
+        <option value="Polly">Polly</option>
+        <option value="Jimmy">Jimmy</option>
+        <option value="Cobby">Cobby</option>
+        <option value="Tommy">Tommy</option>
+        <option value="Freddy">Freddy</option>
+      </select>
+    </div>
   </div>
 
   <div *ngIf="neonSelected === 'none'" class="admin-list-cont col-12 row">
@@ -100,87 +101,93 @@
 
       </tbody>
     </table> -->
-    
+
 
 
     <div *ngIf="neonList?.length > 0 && !isLoading" class="dm-dpls-titles-row mb-3">
-      <div class ="dm-dpls-titles-inner">
-      <div class="dpl-list-section-3"> 
-        <span class="dm-sort-title-text">Type & Email</span>
-        <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
-      </div>
-      <div class="dpl-list-section-2">
-        <span class="dm-sort-title-text">Texte</span>
-        <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
-      </div>
-      <div class="dpl-list-section-2">
-        <span class="dm-sort-title-text">Reçu le</span>
-        <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
-      </div>
+      <div class="dm-dpls-titles-inner">
+        <div class="dpl-list-section-3">
+          <span class="dm-sort-title-text">Type & Email</span>
+          <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
+        </div>
+        <div class="dpl-list-section-2">
+          <span class="dm-sort-title-text">Texte</span>
+          <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
+        </div>
+        <div class="dpl-list-section-2">
+          <span class="dm-sort-title-text">Reçu le</span>
+          <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
+        </div>
 
-      <!--<div class="dm-dpls-sort-title">-->
+        <!--<div class="dm-dpls-sort-title">-->
         <!--<span class="dm-sort-title-text">Modified by</span>-->
         <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
-      <!--</div>-->
-      <div class="dpl-list-section">
-        <span class="dm-sort-title-text">Etat</span>
+        <!--</div>-->
+        <div class="dpl-list-section">
+          <span class="dm-sort-title-text">Etat</span>
+        </div>
+        <div class="dpl-list-section">
+          <span class="dm-sort-title-text">Typo</span>
+          <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
+        </div>
+        <div style='margin-left: 25px;' class="dpl-list-section">
+          <span class="dm-sort-title-text">Couleurs</span>
+          <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
+        </div>
+        <!--<div class="dpl-list-section">-->
+        <!--</div>-->
       </div>
-      <div   class="dpl-list-section">
-        <span class="dm-sort-title-text">Typo</span>
-        <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
-      </div>
-      <div style = 'margin-left: 25px;' class="dpl-list-section">
-        <span class="dm-sort-title-text">Couleurs</span>
-        <!--<img src="../../../../assets/svg-assets/chevron-down.svg" class="ml-1 mt-1">-->
-      </div>
-      <!--<div class="dpl-list-section">-->
-      <!--</div>-->
     </div>
-    </div>
 
 
-    <div *ngFor="let dpl of neonList; let i=index" class="dm-list-row pointer"
-   >
- <div class="dm-list-row-inner">
- <div   (click)="goToDetail(dpl)" placement="top" container="body" tooltipClass="dm-status-tooltip" class="dpl-list-section-3">
+    <div *ngFor="let dpl of neonList; let i=index" class="dm-list-row pointer">
+      <div class="dm-list-row-inner">
+        <div (click)="goToDetail(dpl)" placement="top" container="body" tooltipClass="dm-status-tooltip"
+          class="dpl-list-section-3">
 
-  <mat-icon class="script-dpl-icon"  *ngIf="dpl.type === 'business'" style="vertical-align: middle; margin-left: 3px;" mat-list-icon>business_center</mat-icon>
-  <mat-icon class="script-dpl-icon" *ngIf="dpl.type === 'consumer'" style="vertical-align: middle; margin-left: 3px;" mat-list-icon>emoji_people</mat-icon>
-
-
-<!--            <span [ngbTooltip]="dpl.name.length > 35 ? dpl.name : ''" >{{getShortWord(dpl.name, 35)}}</span>-->
-   <span  style="margin-left: 10px;">{{dpl.email}}</span>
-
- </div>
- <div  (click)="goToDetail(dpl)" class="dpl-list-section-2">
-   <span *ngIf="!isLogo">{{dpl?.text}}</span>
-   <a [href]="dpl?.clientImageUrl" target="_blank" *ngIf="isLogo">{{dpl?.text}}</a>
-
-  </div>
- <div  (click)="goToDetail(dpl)" class="dpl-list-section-2"><span>{{dpl.date}}</span></div>
- <div   (click)="goToDetail(dpl)" class="dpl-list-section"><span>{{dpl?.state}}</span></div>
- <!-- <div class="dpl-list-section"><span>{{dpl?.price}}</span></div> -->
- <div  [style.backgroundImage]="'url('+ dpl.typoUrl +')'"    (click)="goToDetail(dpl)" class="dpl-list-section colorUrlCont"></div>
-
- <div  [style.backgroundImage]="'url('+ dpl.colorUrl +')'"  (click)="goToDetail(dpl)" class="dpl-list-section colorUrlCont"></div>
-
- <div  style="display: flex; flex-direction: column; justify-content: flex-start;">
+          <mat-icon class="script-dpl-icon" *ngIf="dpl.type === 'business'"
+            style="vertical-align: middle; margin-left: 3px;" mat-list-icon>business_center</mat-icon>
+          <mat-icon class="script-dpl-icon" *ngIf="dpl.type === 'consumer'"
+            style="vertical-align: middle; margin-left: 3px;" mat-list-icon>emoji_people</mat-icon>
 
 
-  <div >
-    <!-- <button  *ngIf="dpl?.state === 'Prêt' " (click)="relancer(dpl)" 
+          <!--            <span [ngbTooltip]="dpl.name.length > 35 ? dpl.name : ''" >{{getShortWord(dpl.name, 35)}}</span>-->
+          <span style="margin-left: 10px;">{{dpl.email}}</span>
+
+        </div>
+        <div (click)="goToDetail(dpl)" class="dpl-list-section-2">
+          <span *ngIf="!isLogo">{{dpl?.text}}</span>
+          <a [href]="dpl?.clientImageUrl" target="_blank" *ngIf="isLogo">{{dpl?.text}}</a>
+
+        </div>
+        <div (click)="goToDetail(dpl)" class="dpl-list-section-2"><span>{{dpl.date}}</span></div>
+        <div (click)="goToDetail(dpl)" class="dpl-list-section"><span>{{dpl?.state}}</span></div>
+        <!-- <div class="dpl-list-section"><span>{{dpl?.price}}</span></div> -->
+        <div [style.backgroundImage]="'url('+ dpl.typoUrl +')'" (click)="goToDetail(dpl)"
+          class="dpl-list-section colorUrlCont"></div>
+
+        <div [style.backgroundImage]="'url('+ dpl.colorUrl +')'" (click)="goToDetail(dpl)"
+          class="dpl-list-section colorUrlCont"></div>
+
+        <div style="display: flex; flex-direction: column; justify-content: flex-start;">
+
+
+          <div>
+            <!-- <button  *ngIf="dpl?.state === 'Prêt' " (click)="relancer(dpl)" 
       class="next-btn-no-margin">Relancer</button> -->
 
-      <button *ngIf="dpl?.state === 'Prêt' " (click)="relancer(dpl)"  mat-stroked-button color="primary">Relancer</button>
-      <button  (click)="deleteCommand(dpl)"  mat-stroked-button color="warn">Supprimer</button>
+            <button *ngIf="dpl?.state === 'Prêt' " (click)="relancer(dpl)" mat-stroked-button
+              color="primary">Relancer</button>
+            <button (click)="deleteCommand(dpl)" mat-stroked-button color="warn">Supprimer</button>
+            <mat-checkbox (click)="updateField(command, 'check')">Check me!</mat-checkbox>
 
-  </div>
+          </div>
 
-</div>
+        </div>
 
- </div>
+      </div>
 
-</div>
+    </div>
 
 
 
@@ -200,8 +207,10 @@
 
   <div class="ec-top-row-detail row">
     <div class="col-6 neon-canvas-cont">
-      <div *ngIf="neonSelected.filePath &&  neonSelected.filePath !== ''" [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
-      <div *ngIf="neonSelected.clientImageUrl &&  neonSelected.clientImageUrl !== ''"  [style.backgroundImage]="'url('+ neonSelected.clientImageUrl +')'" class="neon-canvas"></div>
+      <div *ngIf="neonSelected.filePath &&  neonSelected.filePath !== ''"
+        [style.backgroundImage]="'url('+ neonSelected.filePath +')'" class="neon-canvas"></div>
+      <div *ngIf="neonSelected.clientImageUrl &&  neonSelected.clientImageUrl !== ''"
+        [style.backgroundImage]="'url('+ neonSelected.clientImageUrl +')'" class="neon-canvas"></div>
 
 
     </div>

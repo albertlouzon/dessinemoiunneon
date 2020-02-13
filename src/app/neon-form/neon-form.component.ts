@@ -21,10 +21,10 @@ import {
   transition
 } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
-import {MatDialog} from '@angular/material';
-import {ModalRecapComponent} from '../modal-recap/modal-recap.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {WizardComponent} from 'angular-archwizard';
+import { MatDialog } from '@angular/material';
+import { ModalRecapComponent } from '../modal-recap/modal-recap.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { WizardComponent } from 'angular-archwizard';
 import { GoogleAnalyticsService } from '../google-analytics-service.service';
 
 export enum Direction {
@@ -63,7 +63,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     this._activeSlides = activeSlides;
   }
   constructor(private http: HttpClient, private cd: ChangeDetectorRef, private _snackBar: MatSnackBar, private googleAnalyticsService: GoogleAnalyticsService,
-     private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document, public dialog: MatDialog) { }
+    private differs: KeyValueDiffers, @Inject(DOCUMENT) private document: Document, public dialog: MatDialog) { }
   formatSizes: Array<{ size: string, width: number, url: string }> = [{
     size: 'S', width: 20, url: '../.././assets/Fichier-S.png'
   },
@@ -90,7 +90,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   userChoices = {};
   userInfoPerso = {};
   trim = String.prototype.trim;
-  suceMaBite = '  créant votre espace !';
+  dynamicLoginTitle = '  créant votre espace !';
   finalStep = false;
   signUp = true;
   styleSelected = null;
@@ -202,15 +202,15 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
   thumbnailTemplateRef: TemplateRef<any>;
   currentInterval;
   differ: KeyValueDiffer<ActiveSlides, any>;
-  @ViewChild('mainInput',  {static: false}) mainInp: ElementRef;
-  @ViewChild(WizardComponent,  {static: false})
+  @ViewChild('mainInput', { static: false }) mainInp: ElementRef;
+  @ViewChild(WizardComponent, { static: false })
   public wizard: WizardComponent;
-  enculeunponey = true;
+  isStepComplete = true;
   private _direction: Direction = Direction.Next;
 
   private _activeSlides: ActiveSlides;
   editName() {
-      // this.mainInp.nativeElement.focus();
+    // this.mainInp.nativeElement.focus();
   }
 
   ngOnInit() {
@@ -245,7 +245,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
   goToAcceuil() {
     window.top.location.href = 'https://www.dessinemoiunneon.fr';
-    this.googleAnalyticsService.eventEmitter("redirect", 'acceuil' , '', 0);
+    this.googleAnalyticsService.eventEmitter("redirect", 'acceuil', '', 0);
 
   }
   signuptrue() {
@@ -255,20 +255,20 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     // localStorage.setItem('email', null);
     // localStorage.setItem('pw', null);
     if (this.signUp) {
-      this.suceMaBite = ' vous connectant !';
+      this.dynamicLoginTitle = ' vous connectant !';
     } else {
-      this.suceMaBite = ' créant votre espace !';
+      this.dynamicLoginTitle = ' créant votre espace !';
     }
     this.signUp = !this.signUp;
-    console.log('issignup:' , this.signUp)
+    console.log('issignup:', this.signUp)
   }
 
   openRecap() {
     this.hideWizard = true;
     let width: any;
-     width = this.imageAdditionalInfo;
-    if(this.formatSizes[this.selectedFormatSize]) {
-      width =  this.formatSizes[this.selectedFormatSize].width + " cm";
+    width = this.imageAdditionalInfo;
+    if (this.formatSizes[this.selectedFormatSize]) {
+      width = this.formatSizes[this.selectedFormatSize].width + " cm";
     }
     const dialogRef = this.dialog.open(ModalRecapComponent, {
       data: {
@@ -347,19 +347,19 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     // current date
     // adjust 0 before single digit date
     let date = ("0" + date_ob.getDate()).slice(-2);
-    
+
     // current month
     let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-    
+
     // current year
     let year = date_ob.getFullYear();
-    
+
     // current hours
     let hours = date_ob.getHours();
-    
+
     // current minutes
     let minutes = date_ob.getMinutes();
-    
+
     // current seconds
     let seconds = date_ob.getSeconds();
     return year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
@@ -379,8 +379,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       data[field] = this.userInfoPerso[field];
     }
     let width: any;
-    width =  this.imageAdditionalInfo;
-    if(this.formatSizes[this.selectedFormatSize]) {
+    width = this.imageAdditionalInfo;
+    if (this.formatSizes[this.selectedFormatSize]) {
       width = this.formatSizes[this.selectedFormatSize].width;
     }
     payload.push({ title: this.projectType, data: { data } });
@@ -394,14 +394,15 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       // price: Math.floor(Math.random() * 2000) + 1 ,
       state: 'En cours de design',
       type: this.projectType,
-      date: this.getTime()
+      date: this.getTime(),
+      check: false
     };
 
     if (localStorage.getItem('email') === null || !localStorage.getItem('email')) {
       if ((this.userInfoPerso['email'] || this.userInfoPerso['password']) && (this.userInfoPerso['email'].trim() !== '' || this.userInfoPerso['password'].trim() !== '')) {
         this.loginFailed = false;
         this.loading = true;
-        this.getUser().subscribe( async (allUsers: Array<any>) => {
+        this.getUser().subscribe(async (allUsers: Array<any>) => {
           console.log('all the users , ', allUsers);
           if (allUsers) {
             if (allUsers.find(x => x['email'] === this.userInfoPerso['email'])) {
@@ -448,7 +449,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
               console.log('debu 2');
               this.signUpObs().subscribe(() => {
                 this.loading = false;
-                this.http.get('https://neon-server.herokuapp.com/users').subscribe( async (users: Array<any>) => {
+                this.http.get('https://neon-server.herokuapp.com/users').subscribe(async (users: Array<any>) => {
                   this.allUsers = users;
                   this.saveToStorage();
                   const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
@@ -501,7 +502,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                   console.log('debu 6');
 
                   this.loading = false;
-                   this.http.get('https://neon-server.herokuapp.com/users').subscribe(async (users: Array<any>) => {
+                  this.http.get('https://neon-server.herokuapp.com/users').subscribe(async (users: Array<any>) => {
                     this.allUsers = users;
                     const userId = this.allUsers.find(x => x.email === this.userInfoPerso['email']).id;
                     if (this.mainChoice === 'image') {
@@ -526,7 +527,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       this.sleep(1000);
 
                     }
-            
+
                     console.log('upload file finished AFTER RES URL ???', commandPayload['clientImageUrl']);
                     this.http.post(`https://neon-server.herokuapp.com/users/${userId}/command`, commandPayload).subscribe((newNeonList: any) => {
                       console.log('updated list after post :', newNeonList);
@@ -546,13 +547,13 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
                       }
                     });
                   });
-                } else if(err.status === 403) {
-                this.openSnackbar('Veuillez entrer un email valide')
-                this.loading = false;
-              } else if(err.status === 404) {
-                this.openSnackbar('Cet email semble introuvable')
-                this.loading = false;
-              } else {
+                } else if (err.status === 403) {
+                  this.openSnackbar('Veuillez entrer un email valide')
+                  this.loading = false;
+                } else if (err.status === 404) {
+                  this.openSnackbar('Cet email semble introuvable')
+                  this.loading = false;
+                } else {
                   console.log('signup failed', err);
                   this.openSnackbar('La tentative de connection a échoué');
                   this.loading = false;
@@ -567,15 +568,15 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
       }
     } else {
       console.log('debu 8', localStorage.getItem('email'));
-      if( ! this.allUsers.find(x => x.email === localStorage.getItem('email')) && !this.signUp) {
-          this.openSnackbar('Cet email ne semble pas dans notre base de donnée');
-          localStorage.removeItem('email');
-          localStorage.removeItem('pw');
+      if (!this.allUsers.find(x => x.email === localStorage.getItem('email')) && !this.signUp) {
+        this.openSnackbar('Cet email ne semble pas dans notre base de donnée');
+        localStorage.removeItem('email');
+        localStorage.removeItem('pw');
 
-          return;
+        return;
       }
       const userId = this.allUsers.find(x => x.email === localStorage.getItem('email')).id;
-    
+
       if (this.mainChoice === 'image') {
         if (this.imageFile) {
           commandPayload['clientImageUrl'] = '';
@@ -626,7 +627,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     }
   }
   async onCompleteStep(step: number, choice: string, data: any) {
-    this.enculeunponey = true;
+    this.isStepComplete = true;
     if (choice && step === 0) {
       if (choice !== this.mainChoice) {
         this.textInput = '';
@@ -635,7 +636,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
         setTimeout(() => {
           this.mainInp.nativeElement.focus();
         }, 200);
-        
+
       }
       this.googleAnalyticsService.eventEmitter("form", "text/image", choice, 1);
       this.mainChoice = choice;
@@ -664,8 +665,8 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
       if (localStorage.getItem('email')) {
         let width: any;
-         width = this.imageAdditionalInfo;
-        if(this.formatSizes[this.selectedFormatSize]) {
+        width = this.imageAdditionalInfo;
+        if (this.formatSizes[this.selectedFormatSize]) {
           width = this.formatSizes[this.selectedFormatSize].width;
         }
 
@@ -708,25 +709,25 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
     if (value.trim() !== '') {
       this.userInfoPerso[target] = value;
     }
-    if(target === 'email') {
+    if (target === 'email') {
       this.signUp ? localStorage.removeItem('email') : localStorage.setItem('email', value);
     }
   }
 
   goToSignupStep() {
-    this.enculeunponey = false;
+    this.isStepComplete = false;
   }
 
   onClickFirstStep(choice) {
     this.userFirstChoice = choice;
   }
   onPressPrevBtn(stepNumber) {
-    this.googleAnalyticsService.eventEmitter("form", 'précédent' , stepNumber, 0);
-    this.enculeunponey = true;
+    this.googleAnalyticsService.eventEmitter("form", 'précédent', stepNumber, 0);
+    this.isStepComplete = true;
   }
 
   onPressNextBtn(eventName, choice) {
-    this.googleAnalyticsService.eventEmitter("form",eventName , choice, 4);
+    this.googleAnalyticsService.eventEmitter("form", eventName, choice, 4);
   }
 
   signUpObs() {
@@ -755,7 +756,7 @@ export class NeonFormComponent implements OnInit, AfterViewChecked {
 
 
   saveToStorage() {
-    if(this.projectType === 'business') {
+    if (this.projectType === 'business') {
       return;
     }
     if (this.userInfoPerso['email'] && this.userInfoPerso['email'].trim() !== '') {
